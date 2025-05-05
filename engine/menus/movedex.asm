@@ -28,7 +28,7 @@ ShowMovedexMenu:
 	ld [wMovedexMoveID], a
 	ldh [hJoy7], a
 .setUpGraphics
-	ld b, SET_PAL_TOWN_MAP
+	ld b, SET_PAL_MOVEDEX
 	call RunPaletteCommand
 	callfar LoadPokedexTilePatterns
 

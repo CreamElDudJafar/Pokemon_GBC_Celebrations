@@ -416,21 +416,80 @@ ENDC
 	ret
 
 
-; PureRGBnote: ADDED: new function for setting the palette including the type icon color on the movedex data page
+; Show pokedex data
 SetPal_Movedex:
-	ld hl, PalPacket_Movedex
-	ld de, wPalPacket
-	ld bc, $10
-	rst _CopyData
 	ld a, [wcf91]
+	call DeterminePaletteID
 	ld d, a
-	callfar GetTypePalette
-	ld a, d
-	ld hl, wPalPacket + 3
-	ld [hl], a
-	ld hl, wPalPacket
-	ld de, BlkPacket_Pokedex
+	ld e, 0
+
+	ld a, 2
+	ldh [rSVBK], a
+
+	farcall LoadSGBPalette
+
+IF DEF(_BLUE)
+	ld d, PAL_BLUEMON
+ENDC
+IF DEF(_RED)
+	ld d, PAL_REDMON
+ENDC
+IF DEF(_GREEN)
+	ld d, PAL_GREENMON
+ENDC
+	ld e, 1
+	farcall LoadSGBPalette
+
+	ld bc, 20 * 18
+	ld hl, W2_TilesetPaletteMap
+	ld d, 1
+.palLoop
+	ld [hl], d
+	inc hl
+	dec bc
+	ld a, b
+	or c
+	jr nz, .palLoop
+
+	ld hl, W2_TilesetPaletteMap + 21
+	ld de, 20 - 8
+	ld b, 7
+	xor a
+.pokeLoop
+	ld c, 8
+.pokeInnerLoop
+	ld [hli], a
+	dec c
+	jr nz, .pokeInnerLoop
+	add hl, de
+	dec b
+	jr nz, .pokeLoop
+
+	CALL_INDIRECT ClearSpritePaletteMap
+
+	ld a, 3
+	ld [W2_StaticPaletteMapChanged], a
+	xor a
+	ld [W2_TileBasedPalettes], a
+
+	;xor a
+	ldh [rSVBK], a
 	ret
+; PureRGBnote: ADDED: new function for setting the palette including the type icon color on the movedex data page
+;SetPal_Movedex:
+;	ld hl, PalPacket_Movedex
+;	ld de, wPalPacket
+;	ld bc, $10
+;	rst _CopyData
+;	ld a, [wcf91]
+;	ld d, a
+;	callfar GetTypePalette
+;;	ld a, d
+;	ld hl, wPalPacket + 3
+;	ld [hl], a
+;	ld hl, wPalPacket
+;	ld de, BlkPacket_Pokedex
+;	ret
 
 ; Slots
 SetPal_Slots:

@@ -598,7 +598,7 @@ OaksLabOakGivesPokedexScript:
 	ld a, TEXT_OAKSLAB_RIVAL_LEAVE_IT_ALL_TO_ME
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_GOT_POKEDEX
+	SetEvents EVENT_GOT_POKEDEX, EVENT_GOT_MOVEDEX
 	SetEvent EVENT_OAK_GOT_PARCEL
 	ld a, HS_LYING_OLD_MAN
 	ld [wMissableObjectIndex], a
