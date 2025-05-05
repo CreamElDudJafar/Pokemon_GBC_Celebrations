@@ -34,15 +34,17 @@ BluesHouseDaisySittingText:
 .give_town_map
 	ld hl, BluesHouseDaisyOfferMapText
 	rst _PrintText
-	lb bc, TOWN_MAP, 1
-	call GiveItem
-	jr nc, .bag_full
+;	lb bc, TOWN_MAP, 1
+;	call GiveItem
+;	jr nc, .bag_full
 	ld a, HS_TOWN_MAP
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld hl, GotMapText
 	rst _PrintText
 	SetEvent EVENT_GOT_TOWN_MAP
+	ld hl, MapHelpText
+	rst _PrintText
 	jr .done
 
 .got_town_map
@@ -50,9 +52,9 @@ BluesHouseDaisySittingText:
 	rst _PrintText
 	jr .done
 
-.bag_full
-	ld hl, BluesHouseDaisyBagFullText
-	rst _PrintText
+;.bag_full
+;	ld hl, BluesHouseDaisyBagFullText
+;	rst _PrintText
 .done
 	rst TextScriptEnd
 
@@ -69,9 +71,17 @@ GotMapText:
 	sound_get_key_item
 	text_end
 
-BluesHouseDaisyBagFullText:
-	text_far _BluesHouseDaisyBagFullText
+;BluesHouseDaisyBagFullText:
+;	text_far _BluesHouseDaisyBagFullText
+;	text_end
+
+MapHelpText:
+	text_far _MapHelpText
 	text_end
+
+;BluesHouseDaisyBagFullText:
+;	text_far _BluesHouseDaisyBagFullText
+;	text_end
 
 BluesHouseDaisyUseMapText:
 	text_far _BluesHouseDaisyUseMapText

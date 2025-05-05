@@ -13,10 +13,19 @@ _BluesHouseDaisyOfferMapText::
 
 _GotMapText::
 	text "<PLAYER> got a"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
+;	line "@"
+;	text_ram wStringBuffer
+;	text "!@"
+	line "TOWN MAP!@"
 	text_end
+
+_MapHelpText::
+	text "Press SELECT"
+	line "when looking at"
+	cont "your POKéDEX to"
+	cont "view the TOWN"
+	cont "MAP. Easy!"
+	done
 
 _BluesHouseDaisyBagFullText::
 	text "You have too much"
