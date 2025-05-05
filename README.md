@@ -26,6 +26,7 @@ Some FEATURES:
  - Aerodactyl / Omanyte / Kabuto level when revived now is 44, GIFT Lapras in Saffron now is level 34 / Eevee from Celadon Roof is 30.
  - Gust is now a Flying Type instead of NORMAL
  - IN-GAME MOVES LEARNSET POKEDEX
+-  MOVEDEX IN POKEDEX
 - Base Stats displayed in POKEDEX
 - Can Now Surrender In Battle
 - Can Obtain All Starters From NPCs Now (Like Yellow Version)

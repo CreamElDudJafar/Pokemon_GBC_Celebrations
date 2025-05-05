@@ -50,13 +50,6 @@ ENDC
 	RGB 31,31,31, 23,08,00, 17,14,11, 00,00,00 ; PAL_CAVE
 	RGB 31,31,31, 31,28,14, 24,20,10, 00,00,00 ; PAL_GAMEFREAK
 	RGB 31,31,31, 30,22,17, 09,20,11, 00,00,00 ; PAL_GIRL
-	RGB 31,29,31, 15,15,15, 10,11,11, 03,02,02 ; PAL_BLACKMON ; black alt palette pokemon
-	RGB 31,29,31, 25,25,27, 20,20,23, 03,02,02 ; PAL_WHITEMON ; white alt palette pokemon
-	RGB 31,29,31, 20,26,31, 17,23,10, 03,02,02 ; PAL_BLUEGREENMON ; blue/green alt palette pokemon
-	RGB 31,29,31, 31,29,31, 02,03,03, 03,02,02 ; PAL_BLACK2 ; default move animation palette
-	RGB 31,29,31, 18,24,22, 21,14,09, 03,02,02 ; PAL_SAFARIBALL ; safari ball palette when throwing one in battle
-	RGB 31,29,31, 30,22,17, 16,14,19, 03,02,02 ; PAL_MEWMON2
-	RGB 31,29,31, 24,20,30, 11,20,30, 03,02,02 ; PAL_MEWMON3
 
 ; The following are only available with gen 2 graphics patch: individual palettes for
 ; pokemon, trainers, etc.
@@ -262,12 +255,5 @@ IF GEN_2_GRAPHICS
 	RGB 31,31,31, 29,19,15, 21,09,05, 00,00,00 ; PAL_LANCE
 	RGB 31,31,31, 28,18,17, 22,07,08, 00,00,00 ; PAL_HERO
 	RGB 31,31,31, 30,22,17, 09,20,11, 00,00,00 ; PAL_LEAF
-	RGB 31,31,31, 15,15,15, 10,11,11, 03,03,03 ; PAL_BLACKMON ; black alt palette pokemon
-	RGB 31,31,31, 25,25,27, 20,20,23, 03,03,03 ; PAL_WHITEMON ; white alt palette pokemon
-	RGB 31,31,31, 20,26,31, 12,25,06, 03,03,03 ; PAL_BLUEGREENMON ; blue/green alt palette pokemon
-	RGB 31,31,31, 31,31,31, 03,03,03, 03,03,03 ; PAL_BLACK2 ; default move animation palette	
-	RGB 31,31,31, 17,31,11, 17,09,05, 03,03,03 ; PAL_SAFARIBALL ; safari ball palette when throwing one in battle
-	RGB 31,31,31, 31,17,11, 11,05,14, 03,03,03 ; PAL_MEWMON2
-	RGB 31,31,31, 22,13,30, 00,09,31, 03,03,03 ; PAL_MEWMON3
 ENDC
 	assert_table_length NUM_SGB_PALS

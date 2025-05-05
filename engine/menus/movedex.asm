@@ -384,25 +384,22 @@ ShowNextMoveData:
 	push af
 	call LoadMoveDexMoveData
 	ld a, [wPlayerMoveType]
-	ld d, a
-	call LoadTypeIcon
-	ld a, [wPlayerMoveType]
 	ld [wcf91], a
 	ld b, SET_PAL_MOVEDEX
 	call RunPaletteCommand
 	pop af
 	ld [wMovedexMoveID], a
 
-	hlcoord 1, 3
-	ld a, $C0 ; type icon first tile
-	ld [hli], a
-	inc a
-	ld [hl], a
-	inc a
-	hlcoord 1, 4
-	ld [hli], a
-	inc a
-	ld [hl], a
+;	hlcoord 1, 3
+;	ld a, $C0 ; type icon first tile
+;	ld [hli], a
+;	inc a
+;	ld [hl], a
+;	inc a
+;	hlcoord 1, 4
+;	ld [hli], a
+;	inc a
+;	ld [hl], a
 
 	hlcoord 15, 3
 	ld a, [wPlayerMovePower]

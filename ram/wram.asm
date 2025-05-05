@@ -1966,6 +1966,7 @@ wChannel6:: channel_struct wChannel6
 wMovedexSeen:: flag_array NUM_ATTACKS
 wMovedexSeenEnd::
 
+;;;; 6 bytes remaining
 ENDU
 
 
@@ -2202,7 +2203,8 @@ wUniQuizAnswer:: db
 
 wUnusedC000:: db
 
-wSum:: dw
+wSum:: 
+;; 22 bytes left
 ;;;;;;;;;;
 ENDU
 
