@@ -87,6 +87,7 @@ PlaceNextChar::
 
 ; Check against a dictionary
 	dict "<NULL>",    NullChar
+	dict "<BAGE>",    MultiButtonPageChar
 	dict "<SCROLL>",  _ContTextNoPause
 	dict "<_CONT>",   _ContText
 	dict "<PARA>",    Paragraph
@@ -106,6 +107,8 @@ PlaceNextChar::
 	dict "<DEXEND>",  PlaceDexEnd
 	dict "<TARGET>",  PlaceMoveTargetsName
 	dict "<USER>",    PlaceMoveUsersName
+	dict "<opponent>", OpponentChar
+	dict "<user>",     UserChar
 
 	ld [hli], a
 	call PrintLetterDelay
@@ -146,6 +149,8 @@ RocketChar::  print_name RocketCharText
 PlacePOKe::   print_name PlacePOKeText
 SixDotsChar:: print_name SixDotsCharText
 PlacePKMN::   print_name PlacePKMNText
+UserChar::    print_name UserText
+OpponentChar:: print_name OpponentText
 
 PlaceMoveTargetsName::
 	ldh a, [hWhoseTurn]
@@ -187,6 +192,8 @@ PlacePOKeText::   db "POKé@"
 SixDotsCharText:: db "……@"
 EnemyText::       db "Enemy @"
 PlacePKMNText::   db "<PK><MN>@"
+UserText::        db "user@"
+OpponentText::    db "opponent@"
 
 ContText::
 	push de
@@ -266,6 +273,24 @@ PageChar::
 	push hl
 	jp NextChar
 
+;;;;;;;;; PureRGBnote: ADDED: new text command that allows multiple buttons to be watched while waiting on a text prompt 
+MultiButtonPageChar::
+	push de
+	callfar TextCommandPromptMultiButton
+	; d = what to do after this
+	ld a, d
+	and a
+	jr nz, .exit
+	pop de
+	pop hl
+	hlcoord 1, 11
+	push hl
+	jp NextChar
+.exit
+	pop de
+	jp DoneText
+;;;;;;;;;
+
 _ContText::
 	ld a, "▼"
 	ldcoord_a 18, 16
@@ -336,6 +361,7 @@ NextTextCommand::
 	ld a, [hli]
 	cp TX_END
 	jr nz, .TextCommand
+.NoNextTextCommand:
 	pop af
 	ld [wLetterPrintingDelayFlags], a
 	ret
@@ -376,9 +402,15 @@ TextCommand_BOX::
 	pop hl
 	jr NextTextCommand
 
+TextCommand_START_storeFlags:
+	ld a, [wLetterPrintingDelayFlags]
+	push af
+	jr TextCommand_START_noPop
+
 TextCommand_START::
 ; write text until "@"
 	pop hl
+TextCommand_START_noPop::
 	ld d, h
 	ld e, l
 	ld h, b
@@ -420,6 +452,30 @@ TextCommand_BCD::
 	ld c, l
 	pop hl
 	jr NextTextCommand
+
+; PureRGBnote: ADDED: jump to a different address in the same text bank so we can reuse text
+TextCommand_JUMP::
+	pop hl
+	hl_deref
+	push hl
+	jr TextCommand_START
+
+; PureRGBnote: ADDED: call different text in the same bank then come back
+TextCommand_CALL::
+	pop hl
+	push hl
+	hl_deref
+	ResetEvent FLAG_INTERRUPTED_TEXT
+	call TextCommand_START_storeFlags
+	ld b, h
+	ld c, l
+	pop hl
+	CheckEvent FLAG_INTERRUPTED_TEXT
+	jp nz, NextTextCommand.NoNextTextCommand
+	; inc hl twice to increment past the text_call address
+	inc hl
+	inc hl
+	jp TextCommand_START_noPop ; assumes after returning from call we will
 
 TextCommand_MOVE::
 ; move to a new tile
@@ -644,4 +700,6 @@ ENDC
 	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_1 (also handles other TX_SOUND_* commands)
 	dw TextCommand_DOTS          ; TX_DOTS
 	dw TextCommand_WAIT_BUTTON   ; TX_WAIT_BUTTON
+	dw TextCommand_JUMP          ; TX_JUMP
+	dw TextCommand_CALL          ; TX_CALL
 	; greater TX_* constants are handled directly by NextTextCommand

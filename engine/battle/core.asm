@@ -1665,6 +1665,8 @@ TryRunningFromBattle:
 	dec a
 .playSound
 	ld [wBattleResult], a
+	ld hl, wBattleFunctionalFlags
+	set 1, [hl]
 	ld a, SFX_RUN
 	call PlaySoundWaitForCurrent
 	ld hl, GotAwayText
@@ -3346,6 +3348,10 @@ playPlayerMoveAnimation:
 	pop af
 	ld [wAnimationType], a
 	ld a, [wPlayerMoveNum]
+	;;;;;;; PureRGBnote: ADDED: set the flag that makes the animation code mark this move as seen in the movedex
+	ld hl, wBattleFunctionalFlags
+	set 0, [hl]
+;;;;;;;;;;
 	call PlayMoveAnimation
 	call HandleExplodingAnimation
 	call DrawPlayerHUDAndHPBar
@@ -5279,6 +5285,8 @@ MetronomePickMove:
 	xor a
 	ld [wAnimationType], a
 	ld a, METRONOME
+	ld hl, wBattleFunctionalFlags
+	set 0, [hl]
 	call PlayMoveAnimation ; play Metronome's animation
 ; values for player turn
 	ld de, wPlayerMoveNum
@@ -5844,6 +5852,8 @@ playEnemyMoveAnimation:
 	pop af
 	ld [wAnimationType], a
 	ld a, [wEnemyMoveNum]
+	ld hl, wBattleFunctionalFlags
+	set 0, [hl]
 	call PlayMoveAnimation
 	call HandleExplodingAnimation
 	call DrawEnemyHUDAndHPBar

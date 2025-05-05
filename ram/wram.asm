@@ -921,6 +921,7 @@ wSavedY::
 wTempSCX::
 ; which entry from TradeMons to select
 wWhichTrade::
+wDexMaxSeenMove::
 wDexMaxSeenMon::
 wPPRestoreItem::
 wWereAnyMonsAsleep::
@@ -1164,7 +1165,9 @@ wGymCityName:: ds 17
 
 wGymLeaderName:: ds NAME_LENGTH
 
-	ds 16
+	ds 15
+
+wStoredMovedexListIndex:: db
 
 wListPointer:: dw
 
@@ -1689,6 +1692,7 @@ wPokeBallCaptureCalcTemp::
 ; upper nybble: number of animations to play
 wPokeBallAnimData::
 wUsingPPUp::
+wMovedexMoveID::
 wMaxPP::
 ; 0 for player, non-zero for enemy
 wCalculateWhoseStats::
@@ -1759,8 +1763,14 @@ wSavedSpriteScreenX:: db
 wSavedSpriteMapY:: db
 wSavedSpriteMapX:: db
 
-	ds 5
+	ds 3
 
+wDexMinSeenMon::
+wDexMinSeenMove:: db
+
+wBattleFunctionalFlags:: db
+
+wPokedexDataFlags::
 wWhichPrize:: db
 
 ; counts downward each frame
@@ -1953,14 +1963,11 @@ NEXTU
 wChannel5:: channel_struct wChannel5
 wChannel6:: channel_struct wChannel6
 
-wUniQuizAnswer:: db
-
-wUnusedC000:: db
-
-wSum:: dw
+wMovedexSeen:: flag_array NUM_ATTACKS
+wMovedexSeenEnd::
 
 ENDU
-;;;;;;;;;;
+
 
 ; number of signs in the current map (up to 16)
 wNumSigns:: db
@@ -2190,6 +2197,13 @@ wPlayerGender::
     ; $00 = male
     ; $01 = female
     ds 1
+
+wUniQuizAnswer:: db
+
+wUnusedC000:: db
+
+wSum:: dw
+;;;;;;;;;;
 ENDU
 
 wObtainedHiddenItemsFlags:: flag_array 112

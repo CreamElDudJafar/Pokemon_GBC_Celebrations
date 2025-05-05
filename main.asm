@@ -233,6 +233,8 @@ INCLUDE "engine/menus/pokedex.asm"
 INCLUDE "engine/movie/trade.asm"
 INCLUDE "engine/movie/intro.asm"
 INCLUDE "engine/movie/trade2.asm"
+INCLUDE "engine/menus/movedex.asm"
+INCLUDE "data/moves/movedex_type_palettes.asm"
 
 ; Hooks for color hack
 INCLUDE "color/trade.asm"
@@ -407,6 +409,9 @@ SECTION "Engine Spillover", ROMX
 INCLUDE "engine/overworld/use_another_repel.asm"
 INCLUDE "engine/menus/item_descriptions.asm"
 INCLUDE "engine/overworld/select_button_functionality.asm"
+INCLUDE "engine/menus/text_multi_button_prompt.asm"
+INCLUDE "engine/menus/multi_choice_menu.asm"
+INCLUDE "engine/menus/change_box_menu.asm"
 
 
 SECTION "Evo Moves", ROMX
@@ -417,5 +422,3 @@ INCLUDE "engine/pokemon/evos_moves.asm"
 SECTION "Move Descriptions", ROMX
 
 INCLUDE "engine/pokemon/move_descriptions.asm"
-INCLUDE "engine/menus/multi_choice_menu.asm"
-INCLUDE "engine/menus/change_box_menu.asm"

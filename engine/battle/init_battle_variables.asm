@@ -16,6 +16,8 @@ InitBattleVariables:
 	ld [wPlayerMonNumber], a
 	ld [wEscapedFromBattle], a
 	ld [wMapPalOffset], a
+	ld [wPokedexDataFlags], a
+	ld [wBattleFunctionalFlags], a
 	ld hl, wPlayerHPBarColor
 	ld [hli], a ; wPlayerHPBarColor
 	ld [hl], a ; wEnemyHPBarColor

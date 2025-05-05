@@ -415,6 +415,23 @@ ENDC
 	ldh [rSVBK], a
 	ret
 
+
+; PureRGBnote: ADDED: new function for setting the palette including the type icon color on the movedex data page
+SetPal_Movedex:
+	ld hl, PalPacket_Movedex
+	ld de, wPalPacket
+	ld bc, $10
+	rst _CopyData
+	ld a, [wcf91]
+	ld d, a
+	callfar GetTypePalette
+	ld a, d
+	ld hl, wPalPacket + 3
+	ld [hl], a
+	ld hl, wPalPacket
+	ld de, BlkPacket_Pokedex
+	ret
+
 ; Slots
 SetPal_Slots:
 	ld a, 2

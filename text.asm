@@ -284,9 +284,15 @@ SECTION "Move Names", ROMX
 
 INCLUDE "data/moves/names.asm"
 
+
 SECTION "Item Descriptions", ROMX
 
 INCLUDE "data/text/item_descriptions.asm"
 
 INCLUDE "text/move_deleter.asm"
 INCLUDE "text/move_relearner.asm"
+
+
+SECTION "Movedex Text", ROMX
+
+INCLUDE "data/moves/movedex_text.asm"

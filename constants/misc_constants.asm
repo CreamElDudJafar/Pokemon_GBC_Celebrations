@@ -22,3 +22,10 @@ DEF TEXT_DELAY_SLOW   EQU %101 ; 5
 
 ; wd732 flags
 DEF BIT_DEBUG_MODE EQU 1
+
+;;;;;;;;;;;;
+	const_def
+	const BIT_POKEDEX_DATA_DISPLAY_TYPE
+	const BIT_POKEDEX_WHICH_SPRITE_SHOWING
+	const BIT_VIEWING_POKEDEX
+;;;;;;;;;;;;
