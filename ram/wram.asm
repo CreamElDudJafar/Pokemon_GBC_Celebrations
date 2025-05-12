@@ -1955,6 +1955,11 @@ wUnusedC000:: db
 
 wSum:: dw
 
+wPartySpritePaletteSlot::
+; saved copy of SPRITESTATEDATA1_PICTUREID
+wSavedSpritePictureID:: db
+; saved copy of SPRITESTATEDATA1_IMAGEINDEX (used for sprite facing/anim)
+
 ENDU
 ;;;;;;;;;;
 
@@ -2036,11 +2041,11 @@ wPlayerCoins:: dw ; BCD
 wMissableObjectFlags:: flag_array $100
 wMissableObjectFlagsEnd::
 
-	ds 6
+	ds 7
 
-wPartySpritePaletteSlot::
+;wPartySpritePaletteSlot::
 ; saved copy of SPRITESTATEDATA1_PICTUREID
-wSavedSpritePictureID:: db
+;wSavedSpritePictureID:: db
 
 ; saved copy of SPRITESTATEDATA1_IMAGEINDEX (used for sprite facing/anim)
 wSavedSpriteImageIndex:: db
