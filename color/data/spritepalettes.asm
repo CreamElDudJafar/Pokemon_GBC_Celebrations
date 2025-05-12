@@ -56,6 +56,12 @@ ENDC
 	RGB 20,15,3
 	RGB 7,7,7
 
+; PAL_OW_BOULDERDUST
+	RGB 30,28,26
+	RGB 31,31,31
+	RGB 13,13,13
+	RGB 0,0,0
+
 MapSpritePalettesIndoor: ; Taken from pokemon GSC.
 
 ; PAL_OW_RED
@@ -94,16 +100,30 @@ MapSpritePalettesIndoor: ; Taken from pokemon GSC.
 	RGB 13,13,13
 	RGB 0,0,0
 
+IF SNOW
+; PAL_OW_TREE
+	RGB 27,31,27
+	RGB 1,27,27
+	RGB 5,17,31
+	RGB 7,7,7
+ELSE
 ; PAL_OW_TREE
 	RGB 18,24,9
 	RGB 15,20,1
 	RGB 9,13,0
 	RGB 7,7,7
+ENDC
 
 ; PAL_OW_ROCK
 	RGB 30,28,26
 	RGB 21,17,7
 	RGB 16,13,3
+	RGB 0,0,0
+
+; PAL_OW_BOULDERDUST
+	RGB 30,28,26
+	RGB 31,31,31
+	RGB 13,13,13
 	RGB 0,0,0
 
 MapSpritePalettesNite: ; Taken from pokemon GSC.

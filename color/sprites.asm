@@ -47,16 +47,17 @@ LoadOverworldSpritePalettes:
 	ld hl, SpritePalettesPokecenter
 	cp POKECENTER
 	jr z, .gotPaletteList
-	cp MART
+
+	;;;;;;;;;;;;;;;;;
+	ld a, [wCurMap]
+	cp INDIGO_PLATEAU_LOBBY
 	jr z, .gotPaletteList
+	;;;;;;;;;;;;;;;;;
+
  ; If it is an outdoor map, load different pals for the cut trees and boulders
   	ld hl, MapSpritePalettes
    	and a ; cp 0, check for Overworld
    	jr z, .gotPaletteList
-	cp FOREST
-	jr z, .gotPaletteList
-	cp PLATEAU
-	jr z, .gotPaletteList
  ; If not, load the Indoor Object Pals
    	ld hl, MapSpritePalettesIndoor
 .gotPaletteList
