@@ -19,10 +19,6 @@ BankswitchBack::
 Bankswitch::
 ; self-contained bankswitch, use this when not in the home bank
 ; switches to the bank in b
-	; All instructions containing [hColorHackTmps] have been added to allow Bankswitch to
-	; preserve 'a' for use in a function. 
-	; Also preserve and return the product of the function if outputted in 'a'.
-	ldh [hColorHackTmp], a ; [hColorHackTmps]
 	ldh a, [hLoadedROMBank]
 	push af
 	ld a, b
@@ -30,13 +26,10 @@ Bankswitch::
 	ld [MBC1RomBank], a
 	ld bc, .Return
 	push bc
-	ldh a, [hColorHackTmp] ; [hColorHackTmps]
 	jp hl
 .Return
-	ldh [hColorHackTmp], a ; [hColorHackTmps]
 	pop bc
 	ld a, b
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
-	ldh a, [hColorHackTmp] ; [hColorHackTmps]
 	ret
