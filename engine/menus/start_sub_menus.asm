@@ -460,6 +460,22 @@ INCLUDE "data/items/use_party.asm"
 
 INCLUDE "data/items/use_overworld.asm"
 
+StartMenu_TownMap::
+	call GBPalWhiteOut
+	call ClearScreen
+	call UpdateSprites
+	farcall ItemUseTownMap
+	call GBPalWhiteOut
+	call LoadFontTilePatterns
+	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	call RunDefaultPaletteCommand
+	call ReloadMapData
+	farcall DrawStartMenu
+	call LoadGBPal
+	call UpdateSprites
+	jp RedisplayStartMenu_DoNotDrawStartMenu
+
+
 StartMenu_TrainerInfo::
 	call GBPalWhiteOut
 	call ClearScreen
@@ -826,48 +842,3 @@ SwitchPartyMon_InitVarOrSwapData:
 	pop de
 	pop hl
 	ret
-
-StartMenu_PortablePC:: ; new
-
-; next piece is to preserve the map text pointers
-	ld hl, wCurMapTextPtr
-	ld a, [hli]
-	ld [wUniQuizAnswer], a
-	ld a, [hl]
-	ld [wUniQuizAnswer+1], a
-
-	ld a, [wCurMap] ; we don't want to cheese the Elite4, do we?
-	cp LORELEIS_ROOM
-	jr z, .cantUseItHere
-	cp BRUNOS_ROOM
-	jr z, .cantUseItHere
-	cp AGATHAS_ROOM
-	jr z, .cantUseItHere
-	cp LANCES_ROOM
-	jr z, .cantUseItHere
-; if none of the above cp is met, let's open the pc and do the things
-; normal stuff
-	callfar ActivatePC ; main part
-	jr .done
-
-.cantUseItHere ; no cheese!
-	ld hl, CantUsePCHere
-	rst _PrintText
-.done
-; next piece is to preserve the map text pointers
-	push hl
-	ld hl, wUniQuizAnswer
-	ld a, [hli]
-	ld [wCurMapTextPtr], a
-	ld a, [hl]
-	ld [wCurMapTextPtr+1], a
-	pop hl
-; normal stuff
-	call LoadScreenTilesFromBuffer2 ; restore saved screen
-	call LoadTextBoxTilePatterns
-	call UpdateSprites
-	jp RedisplayStartMenu
-
-CantUsePCHere:
-	text_far _CantUsePCHere
-	text_end

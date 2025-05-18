@@ -1,9 +1,14 @@
 ; function that displays the start menu
 DrawStartMenu::
-	CheckEvent EVENT_GOT_POKEDEX
-; menu with pokedex + portablepc
+	CheckEvent EVENT_GOT_TOWN_MAP
 	hlcoord 10, 0
-	lb bc, 16, 8 ; edited for portablepc
+	ld b, $10
+	ld c, $08
+	jr nz, .drawTextBoxBorder
+	CheckEvent EVENT_GOT_POKEDEX
+; menu with pokedex 
+	hlcoord 10, 0
+	lb bc, 14, 8 
 	jr nz, .drawTextBoxBorder
 ; shorter menu if the player doesn't have the pokedex
 	hlcoord 10, 0
@@ -25,14 +30,18 @@ DrawStartMenu::
 	ld hl, wd730
 	set 6, [hl] ; no pauses between printing each letter
 	hlcoord 12, 2
+	CheckEvent EVENT_GOT_TOWN_MAP
+	ld a, $08
+	jr nz, .printPokedexText
 	CheckEvent EVENT_GOT_POKEDEX
-; case for not having pokedex
-	ld a, $08 ; edited for portablepc
-	jr z, .storeMenuItemCount
+	ld a, $07
+	jr nz, .printPokedexText
+	ld a, $06
+	jr .storeMenuItemCount
+.printPokedexText
 ; case for having pokedex
 	ld de, StartMenuPokedexText
 	call PrintStartMenuItem
-	ld a, $07
 .storeMenuItemCount
 	ld [wMaxMenuItem], a ; number of menu items
 	ld de, StartMenuPokemonText
@@ -52,11 +61,12 @@ DrawStartMenu::
 	call PrintStartMenuItem
 	ld de, StartMenuOptionText
 	call PrintStartMenuItem
-	CheckEvent EVENT_GOT_POKEDEX ; new, for portablePC
-	jr z, .dontPrintPortablePC ; new, for portablePC
-	ld de, StartMenuPortablePCText ; new, for portablePC
-	call PrintStartMenuItem ; new, for portablePC
-.dontPrintPortablePC ; new, for portablePC
+; Check to print town map
+	CheckEvent EVENT_GOT_TOWN_MAP
+	jr z, .startMenuExit
+	ld de, StartMenuTownMapText
+	call PrintStartMenuItem
+.startMenuExit
 	ld de, StartMenuExitText
 	call PlaceString
 	ld hl, wd730
@@ -72,6 +82,9 @@ StartMenuPokemonText:
 StartMenuItemText:
 	db "ITEM@"
 
+StartMenuTownMapText:
+	db "MAP@"
+
 StartMenuSaveText:
 	db "SAVE@"
 
@@ -84,8 +97,6 @@ StartMenuExitText:
 StartMenuOptionText:
 	db "OPTION@"
 
-StartMenuPortablePCText: ; new
-	db "PORT.PC@"
 
 PrintStartMenuItem:
 	push hl
