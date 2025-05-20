@@ -22,7 +22,7 @@ DEF SLOTS_SOMEONESKEYS EQU $ff
 	const_def
 	const TRADE_FOR_TERRY
 	const TRADE_FOR_MARCEL
-	const TRADE_FOR_DRILL ; added
+	const TRADE_FOR_STINGER ; added
 	const TRADE_FOR_SAILOR
 	const TRADE_FOR_DUX
 	const TRADE_FOR_MARC

@@ -49,7 +49,7 @@ Route16Gate2FRightBinocularsText:
 
 Route16Gate2FGamblerText:
 	text_asm
-	ld a, TRADE_FOR_DRILL
+	ld a, TRADE_FOR_STINGER
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 	rst TextScriptEnd

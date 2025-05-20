@@ -8,7 +8,7 @@ TradeMons:
 	; the same species as English Red and Blue.
 	db NIDORINO,   NIDORINA,  TRADE_DIALOGSET_CASUAL,    "TERRY@@@@@@"
 	db ABRA,       MR_MIME,   TRADE_DIALOGSET_CASUAL,    "MARCEL@@@@@"
-	db BUTTERFREE, BEEDRILL,  TRADE_DIALOGSET_HAPPY,     "DRILL@@@@@@" ; added
+	db BUTTERFREE, BEEDRILL,  TRADE_DIALOGSET_HAPPY,     "STINGER@@@@" ; added
 	db PONYTA,     SEEL,      TRADE_DIALOGSET_CASUAL,    "SAILOR@@@@@"
 	db SPEAROW,    FARFETCHD, TRADE_DIALOGSET_HAPPY,     "DUX@@@@@@@@"
 	db SLOWBRO,    LICKITUNG, TRADE_DIALOGSET_CASUAL,    "MARC@@@@@@@"
