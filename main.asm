@@ -411,6 +411,7 @@ INCLUDE "engine/overworld/select_button_functionality.asm"
 INCLUDE "engine/menus/text_multi_button_prompt.asm"
 INCLUDE "engine/menus/multi_choice_menu.asm"
 INCLUDE "engine/menus/change_box_menu.asm"
+INCLUDE "engine/items/super_rod.asm"
 
 
 SECTION "Evo Moves", ROMX

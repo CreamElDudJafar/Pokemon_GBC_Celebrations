@@ -1915,13 +1915,28 @@ INCLUDE "data/wild/good_rod.asm"
 ItemUseSuperRod:
 	call FishingInit
 	jp c, ItemUseNotTime
-	call ReadSuperRodData
-	ld a, e
+	callfar ReadSuperRodData
+	ld c, e
+	ld b, d
+	ld a, $2
+	ld [wRodResponse], a
+	ld a, c
+	and a ; are there fish in the map?
+	jr z, DoNotGenerateFishingEncounter ; if not, do not generate an encounter
+	ld a, $1
+	ld [wRodResponse], a
+	call Random
+	and $1
+	jr nz, RodResponse
+	xor a
+	ld [wRodResponse], a
+	jr DoNotGenerateFishingEncounter
+
 RodResponse:
 	ld [wRodResponse], a
 
 	dec a ; is there a bite?
-	jr nz, .next
+	jr nz, DoNotGenerateFishingEncounter
 	; if yes, store level and species data
 	ld a, 1
 	ld [wMoveMissed], a
@@ -1930,7 +1945,7 @@ RodResponse:
 	ld a, c ; species
 	ld [wCurOpponent], a
 
-.next
+DoNotGenerateFishingEncounter::
 	ld hl, wWalkBikeSurfState
 	ld a, [hl] ; store the value in a
 	push af
@@ -2903,52 +2918,6 @@ IsNextTileShoreOrWater:
 
 INCLUDE "data/tilesets/water_tilesets.asm"
 
-ReadSuperRodData:
-; return e = 2 if no fish on this map
-; return e = 1 if a bite, bc = level,species
-; return e = 0 if no bite
-	ld a, [wCurMap]
-	ld de, 3 ; each fishing group is three bytes wide
-	ld hl, SuperRodFishingSlots
-	call IsInArray
-	jr c, .ReadFishingGroup
-	ld e, $2 ; $2 if no fishing groups found
-	ret
-
-.ReadFishingGroup
-; hl points to the fishing group entry in the index
-	inc hl ; skip map id
-
-	; read fishing group address
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	ld b, [hl] ; how many mons in group
-	inc hl ; point to data
-	ld e, $0 ; no bite yet
-
-.RandomLoop
-	call Random
-	srl a
-	ret c ; 50% chance of no battle
-
-	and %11 ; 2-bit random number
-	cp b
-	jr nc, .RandomLoop ; if a is greater than the number of mons, regenerate
-
-	; get the mon
-	add a
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld b, [hl] ; level
-	inc hl
-	ld c, [hl] ; species
-	ld e, $1 ; $1 if there's a bite
-	ret
-
-INCLUDE "data/wild/super_rod.asm"
 
 ; reloads map view and processes sprite data
 ; for items that cause the overworld to be displayed
