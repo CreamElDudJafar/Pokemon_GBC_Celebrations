@@ -80,7 +80,7 @@ _SaffronGymSabrinaMarshBadgeInfoText::
 
 _SaffronGymSabrinaReceivedTM46Text::
 	text "<PLAYER> received"
-	line "TM46!@"
+	line "TM46 PSYWAVE!@"
 	text_end
 
 _TM46ExplanationText::
