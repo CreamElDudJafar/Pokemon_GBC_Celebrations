@@ -131,6 +131,13 @@ IF DEF(_DEBUG)
 	ld a, STARTER1
 	ld [hl], a
 
+	; Give max money.
+	ld hl, wPlayerMoney
+	ld a, $99
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
 	ret
 
 DebugSetPokedexEntries:
