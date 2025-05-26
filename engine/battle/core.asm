@@ -954,6 +954,8 @@ TrainerBattleVictory:
 	jr z, .special1998
 	cp AGATHA
 	jr z, .special1998
+	cp PROF_OAK
+	jr z, .special1998
 	cp LANCE
 	jr nz, .special1998
 .special1998	
