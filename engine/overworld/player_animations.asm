@@ -44,6 +44,7 @@ EnterMapAnim::
 	call PlayerSpinWhileMovingDown
 	jr .done
 .flyAnimation
+	call SetCurBlackoutMap
 	pop hl
 	ld de, BirdSprite
 	ld hl, vNPCSprites

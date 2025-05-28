@@ -21,7 +21,7 @@ DisplayPokemonCenterDialogue_::
 	ld hl, ShallWeHealYourPokemonFastText
 	rst _PrintText
 .skipHealingText
-	call SetLastBlackoutMap
+;	call SetLastBlackoutMap
 	call LoadScreenTilesFromBuffer1 ; restore screen
 	call LoadCurrentMapView
 	CheckEvent EVENT_FIRST_POKECENTER
