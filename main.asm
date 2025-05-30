@@ -412,6 +412,7 @@ INCLUDE "engine/menus/text_multi_button_prompt.asm"
 INCLUDE "engine/menus/multi_choice_menu.asm"
 INCLUDE "engine/menus/change_box_menu.asm"
 INCLUDE "engine/items/super_rod.asm"
+INCLUDE "engine/gfx/animated_tiles_code.asm"
 
 
 SECTION "Evo Moves", ROMX
