@@ -787,17 +787,9 @@ FaintEnemyPokemon:
 .wild
 	ld hl, wPlayerBattleStatus1
 	res ATTACKING_MULTIPLE_TIMES, [hl]
-; Bug. This only zeroes the high byte of the player's accumulated damage,
-; setting the accumulated damage to itself mod 256 instead of 0 as was probably
-; intended. That alone is problematic, but this mistake has another more severe
-; effect. This function's counterpart for when the player mon faints,
-; RemoveFaintedPlayerMon, zeroes both the high byte and the low byte. In a link
-; battle, the other player's Game Boy will call that function in response to
-; the enemy mon (the player mon from the other side's perspective) fainting,
-; and the states of the two Game Boys will go out of sync unless the damage
-; was congruent to 0 modulo 256.
 	xor a
 	ld [wPlayerBideAccumulatedDamage], a
+	ld [wPlayerBideAccumulatedDamage + 1], a
 	ld hl, wEnemyStatsToDouble ; clear enemy statuses
 	ld [hli], a
 	ld [hli], a
@@ -1264,7 +1256,7 @@ LinkBattleLostText:
 	text_end
 
 ; slides pic of fainted mon downwards until it disappears
-; bug: when this is called, [hAutoBGTransferEnabled] is non-zero, so there is screen tearing
+
 SlideDownFaintedMonPic:
 	ld a, [wd730]
 	push af
@@ -1317,7 +1309,6 @@ SevenSpacesText:
 ; slides the player or enemy trainer off screen
 ; a is the number of tiles to slide it horizontally (always 9 for the player trainer or 8 for the enemy trainer)
 ; if a is 8, the slide is to the right, else it is to the left
-; bug: when this is called, [hAutoBGTransferEnabled] is non-zero, so there is screen tearing
 SlideTrainerPicOffScreen:
 	ldh [hSlideAmount], a
 	ld c, a
@@ -5593,8 +5584,7 @@ MoveHitTest:
 	ret z ; Swift never misses (this was fixed from the Japanese versions)
 	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
 	jr z, .noSubstitute
-; The fix for Swift broke this code. It's supposed to prevent HP draining moves from working on Substitutes.
-; Since CheckTargetSubstitute overwrites a with either $00 or $01, it never works.
+	ld a, [de]
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
 	cp DREAM_EATER_EFFECT
