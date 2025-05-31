@@ -125,6 +125,7 @@ VermilionCity_TextPointers:
 	dw_const VermilionCityGambler2Text,           TEXT_VERMILIONCITY_GAMBLER2
 	dw_const VermilionCityMachopText,             TEXT_VERMILIONCITY_MACHOP
 	dw_const VermilionCitySailor2Text,            TEXT_VERMILIONCITY_SAILOR2
+	dw_const VermilionCityOfficerJennyText,       TEXT_VERMILIONCITY_OFFICER_JENNY
 	dw_const VermilionCitySignText,               TEXT_VERMILIONCITY_SIGN
 	dw_const VermilionCityNoticeSignText,         TEXT_VERMILIONCITY_NOTICE_SIGN
 	dw_const MartSignText,                        TEXT_VERMILIONCITY_MART_SIGN
@@ -278,4 +279,78 @@ VermilionCityGymSignText:
 
 VermilionCityHarborSignText:
 	text_far _VermilionCityHarborSignText
+	text_end
+
+
+VermilionCityOfficerJennyText:
+	text_asm
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	CheckEvent EVENT_GOT_SQUIRTLE_FROM_OFFICER_JENNY
+	jr nz, .asm_1cfbf
+	ld hl, OfficerJennyText_1cfc8
+	rst _PrintText
+	ld a, [wObtainedBadges]
+	bit 2, a ;  ; THUNDER BADGE
+	jr z,  .asm_1cfb3
+	ld hl, OfficerJennyText_1cfce
+	rst _PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .asm_1cfb6
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld a, SQUIRTLE
+	ld [wd11e], a
+	ld [wcf91], a
+	call GetMonName
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	lb bc, SQUIRTLE, 10
+	call GivePokemon
+	jr nc, .asm_1cfb3
+	ld a, [wAddedToParty]
+	and a
+	call z, WaitForTextScrollButtonPress
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, OfficerJennyText_1cfd3
+	rst _PrintText
+	SetEvent EVENT_GOT_SQUIRTLE_FROM_OFFICER_JENNY
+.asm_1cfb3
+	rst TextScriptEnd
+
+.asm_1cfb6
+	ld hl, OfficerJennyText_1cfdf
+	rst _PrintText
+	rst TextScriptEnd
+
+.asm_1cfbf
+	ld hl, OfficerJennyText_1cfd9
+	call PrintText
+	rst TextScriptEnd
+
+OfficerJennyText_1cfc8:
+	text_far _OfficerJennyText1
+	text_waitbutton
+	text_end
+
+OfficerJennyText_1cfce:
+	text_far _OfficerJennyText2
+	text_end
+
+OfficerJennyText_1cfd3:
+	text_far _OfficerJennyText3
+	text_waitbutton
+	text_end
+
+OfficerJennyText_1cfd9:
+	text_far _OfficerJennyText4
+	text_waitbutton
+	text_end
+
+OfficerJennyText_1cfdf:
+	text_far _OfficerJennyText5
+	text_waitbutton
 	text_end
