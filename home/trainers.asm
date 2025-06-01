@@ -28,15 +28,15 @@ ExecuteCurMapScriptInTable::
 	ld a, [wCurMapScript]
 	ret
 
-LoadGymLeaderAndCityName::
-	push de
-	ld de, wGymCityName
-	ld bc, $11
-	rst _CopyData   ; load city name
-	pop hl
-	ld de, wGymLeaderName
-	ld bc, NAME_LENGTH
-	jp CopyData     ; load gym leader name
+;LoadGymLeaderAndCityName::
+;	push de
+;	ld de, wGymCityName
+;	ld bc, $11
+;	rst _CopyData   ; load city name
+;	pop hl
+;	ld de, wGymLeaderName
+;	ld bc, NAME_LENGTH
+;	jp CopyData     ; load gym leader name
 
 ; reads specific information from trainer header (pointed to at wTrainerHeaderPtr)
 ; a: offset in header data
