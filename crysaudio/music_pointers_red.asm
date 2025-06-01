@@ -1,10 +1,7 @@
 ; See song sections in audio.asm.
-
-Music:
 ; entries correspond to MUSIC_* constants
 
-IF GEN_2_MUSIC
-
+Gen2Music:
 	dba Music_Nothing
 	dba Music_PalletTown
 	dba Music_PokemonCenter
@@ -52,8 +49,7 @@ IF GEN_2_MUSIC
 	dba Music_LookLass
 	dba Music_LookOfficer
 
-ELSE
-
+Gen1Music:
 	dba Music_Nothing
 	dba Music_RBYPalletTown
 	dba Music_Pokecenter
@@ -100,5 +96,3 @@ ELSE
 	dba Music_MeetEvilTrainer
 	dba Music_MeetFemaleTrainer
 	dba Music_MeetMaleTrainer
-
-ENDC

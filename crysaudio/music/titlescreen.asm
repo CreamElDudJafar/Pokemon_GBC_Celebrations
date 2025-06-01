@@ -1,3 +1,4 @@
+; Chanes to allowe proper looping of instruments.
 Music_TitleScreen:
 	channel_count 4
 	channel 1, Music_TitleScreen_Ch1
@@ -14,6 +15,7 @@ Music_TitleScreen_Ch1:
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
 	volume_envelope 10, 0
+.playChannel1
 	octave 3
 	rest 4
 	volume_envelope 10, 7
@@ -271,7 +273,7 @@ Music_TitleScreen_Ch1:
 	octave 1
 	note G_, 1
 	rest 11
-	sound_ret
+	sound_loop 0, .playChannel1
 
 .sub1:
 	note_type 12, 12, 3
@@ -294,6 +296,7 @@ Music_TitleScreen_Ch1:
 
 Music_TitleScreen_Ch2:
 	duty_cycle 3
+.playChannel2
 	vibrato 20, 1, 2
 	note_type 12, 12, 7
 	volume_envelope 10, 4
@@ -553,7 +556,7 @@ Music_TitleScreen_Ch2:
 	octave 2
 	note G_, 1
 	rest 11
-	sound_ret
+	sound_loop 0, .playChannel2
 
 .sub1:
 	note_type 12, 11, 2
@@ -579,6 +582,7 @@ Music_TitleScreen_Ch2:
 
 Music_TitleScreen_Ch3:
 	stereo_panning FALSE, TRUE
+	.playChannel3
 	vibrato 16, 1, 4
 	pitch_offset 1
 	note_type 12, 1, 6
@@ -891,7 +895,8 @@ Music_TitleScreen_Ch3:
 	octave 1
 	note G_, 1
 	rest 11
-	sound_ret
+	rest 8
+	sound_loop 0, .playChannel3
 
 Music_TitleScreen_Ch4:
 	toggle_noise 5

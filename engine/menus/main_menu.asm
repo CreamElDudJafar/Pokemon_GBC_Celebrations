@@ -1,15 +1,17 @@
+EXPORT CheckForPlayerNameInSRAM
+EXPORT InitOptions
+
 MainMenu:
-; Check save file
-	call InitOptions
-	xor a
-	ld [wOptionsInitialized], a
-	inc a
-	ld [wSaveFileStatus], a
-	call CheckForPlayerNameInSRAM
-	jr nc, .mainMenuLoop
-
-	predef LoadSAV
-
+; Moved to home\init.asm
+;	call InitOptions
+;	xor a
+;	ld [wOptionsInitialized], a
+;	inc a
+;	ld [wSaveFileStatus], a
+;	call CheckForPlayerNameInSRAM
+;	jr nc, .mainMenuLoop
+	
+;	predef LoadSAV
 .mainMenuLoop
 	ld c, 20
 	rst _DelayFrames
@@ -439,25 +441,32 @@ SaveScreenInfoText:
 
 DisplayOptionMenu:
 	hlcoord 0, 0
-	ld b, 3
+	ld b, 2
 	ld c, 18
 	call TextBoxBorder
-	hlcoord 0, 5
-	ld b, 3
+	hlcoord 0, 4
+	ld b, 2
 	ld c, 18
 	call TextBoxBorder
-	hlcoord 0, 10
-	ld b, 3
+	hlcoord 0, 8
+	ld b, 2
 	ld c, 18
 	call TextBoxBorder
-	hlcoord 1, 1
+	hlcoord 0, 12
+	ld b, 2
+	ld c, 18
+	call TextBoxBorder
+	hlcoord 1, 0
 	ld de, TextSpeedOptionText
 	call PlaceString
-	hlcoord 1, 6
+	hlcoord 1, 4
 	ld de, BattleAnimationOptionText
 	call PlaceString
-	hlcoord 1, 11
+	hlcoord 1, 8
 	ld de, BattleStyleOptionText
+	call PlaceString
+	hlcoord 1, 12
+	ld de, MusicStyleOptionText
 	call PlaceString
 	hlcoord 2, 16
 	ld de, OptionMenuCancelText
@@ -468,7 +477,7 @@ DisplayOptionMenu:
 	inc a
 	ld [wLetterPrintingDelayFlags], a
 	ld [wOptionsCancelCursorX], a
-	ld a, 3 ; text speed cursor Y coordinate
+	ld a, 2 ; text speed cursor Y coordinate
 	ld [wTopMenuItemY], a
 	call SetCursorPositionsFromOptions
 	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
@@ -508,10 +517,12 @@ DisplayOptionMenu:
 	jr nz, .downPressed
 	bit BIT_D_UP, b
 	jr nz, .upPressed
-	cp 8 ; cursor in Battle Animation section?
+	cp 6 ; cursor in Battle Animation section?
 	jr z, .cursorInBattleAnimation
-	cp 13 ; cursor in Battle Style section?
+	cp 10 ; cursor in Battle Style section?
 	jr z, .cursorInBattleStyle
+	cp 14 ; cursor in Music Style section?
+	jr z, .cursorInMusicStyle
 	cp 16 ; cursor on Cancel?
 	jr z, .loop
 .cursorInTextSpeed
@@ -520,33 +531,46 @@ DisplayOptionMenu:
 	jp .pressedRightInTextSpeed
 .downPressed
 	cp 16
-	ld b, -13
+	ld b, -14
 	ld hl, wOptionsTextSpeedCursorX
 	jr z, .updateMenuVariables
-	ld b, 5
-	cp 3
+	ld b, 4
+	cp 2
 	inc hl
 	jr z, .updateMenuVariables
-	cp 8
+	cp 6
 	inc hl
 	jr z, .updateMenuVariables
-	ld b, 3
+	cp 10
+	inc hl
+	jr z, .updateMenuVariables
+	ld b, 2
 	inc hl
 	jr .updateMenuVariables
 .upPressed
-	cp 8
-	ld b, -5
+	cp 2            ; is cursor already at the top?
+	jr z, .wrapToCancel
+	cp 6
+	ld b, -4
 	ld hl, wOptionsTextSpeedCursorX
 	jr z, .updateMenuVariables
-	cp 13
+	cp 10
+	inc hl
+	jr z, .updateMenuVariables
+	cp 14
 	inc hl
 	jr z, .updateMenuVariables
 	cp 16
-	ld b, -3
+	ld b, -2
 	inc hl
 	jr z, .updateMenuVariables
-	ld b, 13
+	ld b, 16
 	inc hl
+	jr .updateMenuVariables
+.wrapToCancel
+	ld b, 14                   ; 2 → 16
+    ld hl, wOptionsTextSpeedCursorX
+    jr .updateMenuVariables
 .updateMenuVariables
 	add b
 	ld [wTopMenuItemY], a
@@ -563,6 +587,14 @@ DisplayOptionMenu:
 	ld a, [wOptionsBattleStyleCursorX] ; battle style cursor X coordinate
 	xor $0b ; toggle between 1 and 10
 	ld [wOptionsBattleStyleCursorX], a
+	jp .eraseOldMenuCursor
+.cursorInMusicStyle
+	ld a, [wOptionsMusicStyleCursorX] ; music style cursor X coordinate
+	xor $0b ; toggle between 1 and 10
+	ld [wOptionsMusicStyleCursorX], a
+	call SetOptionsFromCursorPositions	; saves the options so the next step is properly run
+	call UpdateMusic					; updates the music at real time
+	ld a, [wOptionsMusicStyleCursorX] ; loads again so the cursor is erased
 	jp .eraseOldMenuCursor
 .pressedLeftInTextSpeed
 	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
@@ -601,8 +633,23 @@ BattleStyleOptionText:
 	db   "BATTLE STYLE"
 	next " SHIFT    SET@"
 
+MusicStyleOptionText:
+	db   "MUSIC STYLE"
+	next " GEN1     GEN2@"
+
 OptionMenuCancelText:
-	db "CANCEL@"
+	db "EXIT@"
+
+UpdateMusic:
+	ld a, [wLastMusicSoundID]		; updates the music real time
+	cp $0							; no music defined, title screen then
+	jr z, .changeTitleScreenMusic
+	jr .continue
+	.changeTitleScreenMusic
+		ld a, MUSIC_TITLE_SCREEN
+	.continue
+	call PlayMusic
+	ret
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:
@@ -632,9 +679,18 @@ SetOptionsFromCursorPositions:
 	jr z, .battleStyleShift
 .battleStyleSet
 	set 6, d
-	jr .storeOptions
+	jr .checkMusicStyle
 .battleStyleShift
 	res 6, d
+.checkMusicStyle
+	ld a, [wOptionsMusicStyleCursorX] ; music style cursor X coordinate
+	cp 10
+	jr z, .musicGen2
+.musicGen1
+	res 4 , d
+	jr .storeOptions
+.musicGen2
+	set 4 , d
 .storeOptions
 	ld a, d
 	ld [wOptions], a
@@ -644,8 +700,10 @@ SetOptionsFromCursorPositions:
 SetCursorPositionsFromOptions:
 	ld hl, TextSpeedOptionData + 1
 	ld a, [wOptions]
+	ld b, a            ; <-- STORE full wOptions here for bit tests
+	and $0f            ; mask bits 0–3 (text speed)
 	ld c, a
-	and $3f
+;	and $3f
 	push bc
 	ld de, 2
 	call IsInArray
@@ -653,23 +711,36 @@ SetCursorPositionsFromOptions:
 	dec hl
 	ld a, [hl]
 	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
-	hlcoord 0, 3
+	hlcoord 0, 2
 	call .placeUnfilledRightArrow
-	sla c
+;	sla c
+	ld a, b
+	bit 7, a
 	ld a, 1 ; On
-	jr nc, .storeBattleAnimationCursorX
+	jr z, .storeBattleAnimationCursorX
 	ld a, 10 ; Off
 .storeBattleAnimationCursorX
 	ld [wOptionsBattleAnimCursorX], a ; battle animation cursor X coordinate
-	hlcoord 0, 8
+	hlcoord 0, 6
 	call .placeUnfilledRightArrow
-	sla c
+;	sla c
+	ld a, b
+	bit 6, a
 	ld a, 1
-	jr nc, .storeBattleStyleCursorX
+	jr z, .storeBattleStyleCursorX
 	ld a, 10
 .storeBattleStyleCursorX
 	ld [wOptionsBattleStyleCursorX], a ; battle style cursor X coordinate
-	hlcoord 0, 13
+	hlcoord 0, 10
+	call .placeUnfilledRightArrow
+	ld a, b
+	bit 4, a           ; music style
+	ld a, 1
+	jr z, .storeMusicStyleCursorX
+	ld a, 10
+.storeMusicStyleCursorX
+	ld [wOptionsMusicStyleCursorX], a
+	hlcoord 0, 14
 	call .placeUnfilledRightArrow
 ; cursor in front of Cancel
 	hlcoord 0, 16

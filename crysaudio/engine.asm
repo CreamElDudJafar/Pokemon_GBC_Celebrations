@@ -2453,7 +2453,15 @@ _PlayMusic::
 	ld [hl], e ; song number
 	inc hl
 	ld [hl], d ; (always 0)
-	ld hl, Music
+; Gen 1 or Gen 2 Music
+	call ObtainedStoredMusicOption
+	cp $0
+	jr z, .loadgen1music
+	ld hl, Gen2Music
+	jr .continue
+.loadgen1music
+	ld hl, Gen1Music
+.continue
 	add hl, de ; three
 	add hl, de ; byte
 	add hl, de ; pointer
@@ -2495,6 +2503,14 @@ _PlayMusic::
 	ld [wNoiseSampleDelay], a
 	ld [wMusicNoiseSampleSet], a
 	call MusicOn
+	ret
+
+ObtainedStoredMusicOption:
+	ld a, [wOptions]
+	and TEXT_MUSIC_MASK
+; Isolate bit 4
+	swap a
+; ABCD EFGH > EFGH ABCD, Places the relevant bit
 	ret
 
 _PlayCry::

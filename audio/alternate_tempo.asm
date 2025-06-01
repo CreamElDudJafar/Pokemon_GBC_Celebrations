@@ -47,9 +47,13 @@ Music_Cities1AlternateTempo::
 	ld a, MUSIC_CITIES1
 	call PlayMusic
 	ld hl, wChannel1MusicAddress
-IF GEN_2_MUSIC
+	call ObtainedStoredMusicOption
+	cp $0
+	jr z, .gen1_music
+; fall through to gen 2 music
 	ld de, Music_ViridianCity_Ch1_AltStart
-ELSE
+	jr .overwritechannel
+.gen1_music
 	ld de, Music_Cities1_Ch1_AlternateTempo
-ENDC
+.overwritechannel
 	jp Audio1_OverwriteChannelPointer

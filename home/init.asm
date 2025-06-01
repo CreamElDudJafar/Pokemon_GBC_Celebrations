@@ -95,6 +95,16 @@ DEF rLCDC_DEFAULT EQU %11100011
 
 	ei
 
+	;Check save file
+	call InitOptions
+	xor a
+	ld [wOptionsInitialized], a
+	inc a
+	ld [wSaveFileStatus], a
+	call CheckForPlayerNameInSRAM
+	jr nc, .continue
+	predef LoadSAV
+.continue
 	predef LoadSGB
 
 ;	ld a, 0 ; BANK(SFX_Shooting_Star)
