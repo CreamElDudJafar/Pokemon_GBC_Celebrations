@@ -109,7 +109,7 @@ ViridianCityFisherYouCanHaveThisText::
 
 _ViridianCityFisherReceivedTM42Text::
 	text "<PLAYER> received"
-	line "TM42!@"
+	line "TM42 DRMEATR!@"
 	text_end
 
 _ViridianCityFisherTM42ExplanationText::
