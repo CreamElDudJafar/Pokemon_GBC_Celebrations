@@ -1,17 +1,13 @@
-EXPORT CheckForPlayerNameInSRAM
-EXPORT InitOptions
-
 MainMenu:
-; Moved to home\init.asm
-;	call InitOptions
-;	xor a
-;	ld [wOptionsInitialized], a
-;	inc a
-;	ld [wSaveFileStatus], a
-;	call CheckForPlayerNameInSRAM
-;	jr nc, .mainMenuLoop
+	call InitOptions
+	xor a
+	ld [wOptionsInitialized], a
+	inc a
+	ld [wSaveFileStatus], a
+	call CheckForPlayerNameInSRAM
+	jr nc, .mainMenuLoop
 	
-;	predef LoadSAV
+	predef LoadSAV
 .mainMenuLoop
 	ld c, 20
 	rst _DelayFrames

@@ -901,6 +901,7 @@ Music_TitleScreen_Ch3:
 Music_TitleScreen_Ch4:
 	toggle_noise 5
 	stereo_panning TRUE, FALSE
+.playChannel4
 	drum_speed 12
 	rest 4
 	drum_note 1, 2
@@ -1128,7 +1129,8 @@ Music_TitleScreen_Ch4:
 	drum_speed 12
 	drum_note 1, 4
 	drum_note 12, 4
-	sound_ret
+	rest 8
+	sound_loop 0, .playChannel4
 
 .sub1:
 	drum_note 1, 2
