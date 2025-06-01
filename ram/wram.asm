@@ -1173,7 +1173,9 @@ wExpAmountGained:: dw
 wGainBoostedExp:: db
 ENDU
 
-	ds 21
+wUnusedC000:: db
+
+	ds 20
 
 UNION
 	ds 22 ; 22 of the 43 bytes of free space
@@ -2214,11 +2216,7 @@ wPlayerGender::
     ; $01 = female
     ds 1
 
-wUniQuizAnswer:: db
-
-wUnusedC000:: db
-
-;; 24 bytes left
+;; 26 bytes left
 ;;;;;;;;;;
 ENDU
 
