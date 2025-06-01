@@ -1173,11 +1173,16 @@ wExpAmountGained:: dw
 wGainBoostedExp:: db
 ENDU
 
-	ds 17
+	ds 21
 
-	ds 11
+UNION
+	ds 22 ; 22 of the 43 bytes of free space
 
-	ds 15
+NEXTU
+wMovedexSeen:: flag_array NUM_ATTACKS
+wMovedexSeenEnd::
+
+ENDU
 
 wStoredMovedexListIndex:: db
 
@@ -1977,11 +1982,6 @@ NEXTU
 
 wChannel5:: channel_struct wChannel5
 wChannel6:: channel_struct wChannel6
-
-wMovedexSeen:: flag_array NUM_ATTACKS
-wMovedexSeenEnd::
-
-;;;; 6 bytes remaining
 ENDU
 
 
