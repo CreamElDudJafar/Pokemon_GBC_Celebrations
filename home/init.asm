@@ -116,6 +116,11 @@ DEF rLCDC_DEFAULT EQU %11100011
 	ld a, rLCDC_DEFAULT
 	ldh [rLCDC], a
 
+	call CheckForPlayerNameInSRAM
+	jr nc, .noSave
+	predef LoadSAV
+.noSave
+
 	jp PrepareTitleScreen
 
 ClearVram::

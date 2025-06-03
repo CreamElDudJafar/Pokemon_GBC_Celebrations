@@ -758,7 +758,7 @@ TextSpeedOptionData:
 	db  1, TEXT_DELAY_FAST
 	db  7, -1 ; end (default X coordinate)
 
-CheckForPlayerNameInSRAM:
+CheckForPlayerNameInSRAM::
 ; Check if the player name data in SRAM has a string terminator character
 ; (indicating that a name may have been saved there) and return whether it does
 ; in carry.
