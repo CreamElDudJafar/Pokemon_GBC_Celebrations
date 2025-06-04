@@ -545,7 +545,9 @@ DisplayOptionMenu:
 	jr .updateMenuVariables
 .upPressed
 	cp 2            ; is cursor already at the top?
-	jr z, .wrapToCancel
+	ld b, 14        ; 2 → 16
+  ld hl, wOptionsCancelCursorX
+  jr z, .updateMenuVariables
 	cp 6
 	ld b, -4
 	ld hl, wOptionsTextSpeedCursorX
@@ -561,12 +563,7 @@ DisplayOptionMenu:
 	inc hl
 	jr z, .updateMenuVariables
 	ld b, 16
-	inc hl
-	jr .updateMenuVariables
-.wrapToCancel
-	ld b, 14                   ; 2 → 16
-    ld hl, wOptionsTextSpeedCursorX
-    jr .updateMenuVariables
+	inc hl ; fallthrough
 .updateMenuVariables
 	add b
 	ld [wTopMenuItemY], a
