@@ -19,7 +19,7 @@ TypePaletteMapping:
 	db PAL_PURPLEMON;poison
 	db PAL_REDMON;ground
 	db PAL_GREYMON;rock
-	db PAL_SAFARIBALL;typeless
+	db PAL_WHITEMON;typeless/bird
 	db PAL_GREENMON;bug
 	db PAL_BLACKMON;ghost
 	db PAL_BLACK2; crystal (no moves use this type)
@@ -67,7 +67,7 @@ TypeGraphicMapping:
 	dw PoisonTypeIcon;poison
 	dw GroundTypeIcon;ground
 	dw RockTypeIcon;rock
-	dw TypelessIcon;typeless
+	dw NormalTypeIcon ;typeless/bird
 	dw BugTypeIcon;bug
 	dw GhostTypeIcon;ghost
 	dw 0 ; crystal (no moves use this type)

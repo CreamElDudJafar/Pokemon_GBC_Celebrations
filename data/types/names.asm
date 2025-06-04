@@ -7,7 +7,7 @@ TypeNames:
 	dw .Poison
 	dw .Ground
 	dw .Rock
-	dw .Bird
+	dw .Normal
 	dw .Bug
 	dw .Ghost
 
