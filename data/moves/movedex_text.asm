@@ -53,7 +53,6 @@ _MegaPunchDexEntry::
 	text "A titanic punch"
 	next "that can stun"
 	next "the <opponent>."
-	; fall through
 
 	bage "No additional"
 	next "effect"
@@ -133,8 +132,9 @@ _GenericOHKOText::
 _RazorWindDexEntry::
 	text "The <user> lands"
 	next "from flying and"
-	next "rests."
-	dex
+	next "rests.@"
+	
+	text_jump _GenericNoAdditionalEffectText
 
 _SwordsDanceDexEntry::
 	text "A frenetic dance"
@@ -179,10 +179,10 @@ _WingAttackDexEntry::
 _WhirlwindDexEntry::
 	text "A massive tornado"
 	next "is summoned and"
-	next "hurled at foe."
-	dex
+	next "hurled at foe.@"
 	
-
+	text_jump _GenericNoAdditionalEffectText
+	
 _FlyDexEntry::
 	text "The #MON flies"
 	next "up high and then"
@@ -437,8 +437,9 @@ _GrowlDexEntry::
 _RoarDexEntry::
 	text "A loud scary"
 	next "roar or bark that"
-	next "hurts the ears."
-	dex
+	next "hurts the ears.@"
+	
+	text_jump _GenericNoAdditionalEffectText
 
 _SingDexEntry::
 	text "A soothing song"
@@ -766,8 +767,9 @@ _RazorLeafDexEntry::
 _SolarbeamDexEntry::
 	text "Focuses sunlight"
 	next "into a powerful"
-	next "searing beam."
-	dex
+	next "searing beam.@"
+	
+	text_jump _GenericNoAdditionalEffectText
 
 _PoisonPowderDexEntry::
 	text "A poisonous dust"
@@ -823,8 +825,9 @@ _StringShotDexEntry::
 _DragonRageDexEntry::
 	text "The foe is hit"
 	next "by a shockwave of"
-	next "draconic rage."
-	dex
+	next "draconic rage.@"
+	
+	text_jump _GenericNoAdditionalEffectText
 
 _FireSpinDexEntry::
 	text "A swirling pillar"
@@ -991,8 +994,9 @@ _QuickAttackDexEntry::
 _RageDexEntry::
 	text "The <user> releases"
 	next "pent up anger on"
-	next "the foe."
-	dex
+	next "the foe.@"
+	
+	text_jump _GenericNoAdditionalEffectText
 
 _TeleportDexEntry::
 	text "The <user> teleports"
