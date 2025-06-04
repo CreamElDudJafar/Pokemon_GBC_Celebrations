@@ -184,18 +184,18 @@ RocketHideoutB4FRocket2BattleText:
 
 RocketHideoutB4FRocket2EndBattleText:
 	text_far _RocketHideoutB4FRocket2EndBattleText
-	text_end
+	text_promptbutton
+	text_asm
+	SetEvent EVENT_ROCKET_DROPPED_LIFT_KEY
+	ld a, HS_ROCKET_HIDEOUT_B4F_ITEM_5
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	rst TextScriptEnd
 
 RocketHideoutB4FRocket2AfterBattleText:
 	text_asm
 	ld hl, .Text
 	rst _PrintText
-	CheckAndSetEvent EVENT_ROCKET_DROPPED_LIFT_KEY
-	jr nz, .done
-	ld a, HS_ROCKET_HIDEOUT_B4F_ITEM_5
-	ld [wMissableObjectIndex], a
-	predef ShowObject
-.done
 	rst TextScriptEnd
 
 .Text:
