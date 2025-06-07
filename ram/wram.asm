@@ -1977,14 +1977,16 @@ wDestinationWarpID:: db
 
 ;;;;;;
 UNION
-; original size of this empty space
-ds 128
+; original size of this empty space was 28
+ds 100
 
 NEXTU
 
 wChannel5:: channel_struct wChannel5
 wChannel6:: channel_struct wChannel6
 ENDU
+
+; 28 bytes removed for increased bag space
 
 
 ; number of signs in the current map (up to 16)
@@ -2065,7 +2067,7 @@ wPlayerCoins:: dw ; BCD
 wMissableObjectFlags:: flag_array $100
 wMissableObjectFlagsEnd::
 
-	ds 6
+	ds 3
 
 wPartySpritePaletteSlot::
 ; saved copy of SPRITESTATEDATA1_PICTUREID
@@ -2115,7 +2117,7 @@ wRedsHouse2FCurScript:: db
 wViridianMartCurScript:: db
 wRoute22GateCurScript:: db
 wCeruleanCityCurScript:: db
-	ds 7
+	ds 2
 wSSAnneBowCurScript:: db
 wViridianForestCurScript:: db
 wMuseum1FCurScript:: db
@@ -2177,7 +2179,7 @@ wCeruleanCaveB1FCurScript:: db
 wVictoryRoad1FCurScript:: db
 	ds 1
 wLancesRoomCurScript:: db
-	ds 4
+	ds 2
 wSilphCo10FCurScript:: db
 wSilphCo11FCurScript:: db
 	ds 1
@@ -2197,7 +2199,7 @@ wSeafoamIslandsB3FCurScript:: db
 wRoute23CurScript:: db
 wSeafoamIslandsB4FCurScript:: db
 wRoute18Gate1FCurScript:: db
-	ds 6
+	ds 2
 wGameProgressFlagsEnd::
 
 UNION
@@ -2206,17 +2208,7 @@ NEXTU
 wChannel7:: channel_struct wChannel7
 wChannel8:: channel_struct wChannel8
 
-wDifficulty::
-    ; $00 = normal
-    ; $01 = hard
-    ds 1
-
-wPlayerGender::
-    ; $00 = male
-    ; $01 = female
-    ds 1
-
-;; 26 bytes left
+;; 28 bytes left
 ;;;;;;;;;;
 ENDU
 
@@ -2241,7 +2233,15 @@ wFossilItem:: db
 ; mon that will result from the item
 wFossilMon:: db
 
-	ds 2
+wDifficulty::
+    ; $00 = normal
+    ; $01 = hard
+    ds 1
+
+wPlayerGender::
+    ; $00 = male
+    ; $01 = female
+    ds 1
 
 ; trainer classes start at OPP_ID_OFFSET
 wEnemyMonOrTrainerClass:: db
