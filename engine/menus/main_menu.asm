@@ -631,7 +631,7 @@ MusicStyleOptionText:
 	next " GEN1     GEN2@"
 
 OptionMenuCancelText:
-	db "EXIT@"
+	db "CANCEL@"
 
 UpdateMusic:
 	ld a, [wLastMusicSoundID]		; updates the music real time
@@ -639,7 +639,7 @@ UpdateMusic:
 	jr z, .changeTitleScreenMusic
 	jr .continue
 	.changeTitleScreenMusic
-		ld a, MUSIC_TITLE_SCREEN
+	ld a, MUSIC_TITLE_SCREEN
 	.continue
 	call PlayMusic
 	ret
