@@ -9,12 +9,14 @@ MtMoonB2F_Script:
 	ret z
 	ld hl, MtMoonB2FFossilAreaCoords
 	call ArePlayerCoordsInArray
-	jr nc, .enable_battles
 	ld hl, wd72e
+	jr nc, .enable_battles
+	ld a, [wd732]
+	bit 6, a 
+	jr nz, .enable_battles
 	set 4, [hl]
 	ret
 .enable_battles
-	ld hl, wd72e
 	res 4, [hl]
 	ret
 
