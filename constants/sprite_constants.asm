@@ -117,4 +117,5 @@ DEF FIRST_STILL_SPRITE EQU const_value
 	const SPRITE_UNUSED_GAMBLER_ASLEEP_2 ; $47
 	const SPRITE_GAMBLER_ASLEEP          ; $48
 	const SPRITE_POKEDEX1                ; $49
+	const SPRITE_POKE_BALL2              ; $50
 DEF NUM_SPRITES EQU const_value - 1

@@ -121,4 +121,5 @@ SpriteSheetPointerTable:
 	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_UNUSED_GAMBLER_ASLEEP_2
 	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_GAMBLER_ASLEEP
 	overworld_sprite Pokedex1Sprite, 4          ; SPRITE_POKEDEX1
+	overworld_sprite PokeBall2Sprite, 4         ; SPRITE_POKE_BALL2
 	assert_table_length NUM_SPRITES
