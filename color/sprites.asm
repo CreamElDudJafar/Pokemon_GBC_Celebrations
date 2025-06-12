@@ -736,9 +736,6 @@ SpritePaletteAssignments: ; Characters on the overworld
 	; SPRITE_ELECTRODE
 	db SPR_PAL_ORANGE
 
-	; SPRITE_WIGGLYTUFF
-	db SPR_PAL_PURPLE
-
 	; SPRITE_DODUO
 	db SPR_PAL_BROWN
 
@@ -814,6 +811,12 @@ SpritePaletteAssignments: ; Characters on the overworld
 
 	; 0x49: SPRITE_POKEDEX (OAKS LAB)
 	db SPR_PAL_ORANGE
+
+	; 0X50: SPRITE_BALL (POKEBALLS)
+	db SPR_PAL_ORANGE
+
+	; 0X50: SPRITE_WIGGLYTUFF
+	db SPR_PAL_PURPLE
 
 AnimationTileset1Palettes:
 	INCBIN "color/data/animtileset1palettes.bin"

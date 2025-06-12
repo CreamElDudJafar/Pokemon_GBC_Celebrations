@@ -95,7 +95,6 @@ SpriteSheetPointerTable:
 	overworld_sprite SpearowSprite, 12
 	overworld_sprite VoltorbSprite, 12
 	overworld_sprite ElectrodeSprite, 12
-	overworld_sprite WigglytuffSprite, 12
 	overworld_sprite DoduoSprite, 12
 	overworld_sprite FearowSprite, 12
 	overworld_sprite JigglypuffSprite, 12
@@ -122,4 +121,5 @@ SpriteSheetPointerTable:
 	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_GAMBLER_ASLEEP
 	overworld_sprite Pokedex1Sprite, 4          ; SPRITE_POKEDEX1
 	overworld_sprite PokeBall2Sprite, 4         ; SPRITE_POKE_BALL2
+	overworld_sprite WigglytuffSprite, 4        ; SPRITE_WIGGLYTUFF
 	assert_table_length NUM_SPRITES

@@ -89,8 +89,7 @@
 	const SPRITE_SLOWPOKE				 
 	const SPRITE_SPEAROW				 
 	const SPRITE_VOLTORB
-	const SPRITE_ELECTRODE				 
-	const SPRITE_WIGGLYTUFF				 
+	const SPRITE_ELECTRODE				 				 
 	const SPRITE_DODUO				
 	const SPRITE_FEAROW					 
 	const SPRITE_JIGGLYPUFF				 
@@ -118,4 +117,5 @@ DEF FIRST_STILL_SPRITE EQU const_value
 	const SPRITE_GAMBLER_ASLEEP          ; $48
 	const SPRITE_POKEDEX1                ; $49
 	const SPRITE_POKE_BALL2              ; $50
+	const SPRITE_WIGGLYTUFF              ; $51
 DEF NUM_SPRITES EQU const_value - 1
