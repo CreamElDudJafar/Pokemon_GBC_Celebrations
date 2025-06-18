@@ -82,7 +82,7 @@ SilphCo11Text7:
 	callfar PrintCardKeyDoneText
 	rst TextScriptEnd
 
-SilphCo11FTeamRocketLeavesScript:
+SilphCo11FTeamRocketLeavesScript::
 	ld hl, .HideMissableObjectIDs
 .hide_loop
 	ld a, [hli]
