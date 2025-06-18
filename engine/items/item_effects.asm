@@ -934,18 +934,26 @@ ItemUseMedicine:
 	cp d ; is pokemon the item was used on active in battle?
 	jp nz, .doneHealing
 ; if it is active in battle
-	xor a
-	ld [wBattleMonStatus], a ; remove the status ailment in the in-battle pokemon data
 	push hl
 	ld hl, wPlayerBattleStatus3
 	res BADLY_POISONED, [hl] ; heal Toxic status
+	ld a, [hWhoseTurn]
+	push af
+	xor a
+	ld [hWhoseTurn], a
+	callfar UndoBurnParStats
+	pop af
+	ld [hWhoseTurn], a
 	pop hl
+	xor a
+	ld [wBattleMonStatus], a
+	ld [wPlayerToxicCounter], a
 	ld bc, wPartyMon1Stats - wPartyMon1Status
 	add hl, bc ; hl now points to party stats
 	ld de, wBattleMonStats
 	ld bc, NUM_STATS * 2
-	rst _CopyData ; copy party stats to in-battle stat data
-	predef DoubleOrHalveSelectedStats
+;	rst _CopyData ; copy party stats to in-battle stat data
+;	predef DoubleOrHalveSelectedStats
 	jp .doneHealing
 .healHP
 	inc hl ; hl = address of current HP
@@ -1191,8 +1199,25 @@ ItemUseMedicine:
 	jr nz, .updateInBattleData
 	ld bc, wPartyMon1Status - (wPartyMon1MaxHP + 1)
 	add hl, bc
+		ld a, [wIsInBattle]
+	and a
+	jr z, .clearParBrn
+	push hl
+	push de
+	ld a, [hWhoseTurn]
+	push af
+	xor a
+	ld [hWhoseTurn], a
+	callfar UndoBurnParStats
+	pop af
+	ld [hWhoseTurn], a
+	pop de
+	pop hl
+.clearParBrn
+
 	xor a
 	ld [hl], a ; remove the status ailment in the party data
+	ld [wPlayerToxicCounter], a
 .updateInBattleData
 	ld h, d
 	ld l, e
