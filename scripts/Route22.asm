@@ -80,6 +80,9 @@ Route22DefaultScript:
 	db -1 ; end
 
 Route22FirstRivalBattleScript:
+	ld a, HS_ROUTE_22_RIVAL_1
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 	ld a, ROUTE22_RIVAL1
 	ld [wEmotionBubbleSpriteIndex], a
 	xor a ; EXCLAMATION_BUBBLE
@@ -233,6 +236,9 @@ Route22Rival1ExitScript:
 	ret
 
 Route22SecondRivalBattleScript:
+	ld a, HS_ROUTE_22_RIVAL_2
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 	ld a, ROUTE22_RIVAL2
 	ld [wEmotionBubbleSpriteIndex], a
 	xor a ; EXCLAMATION_BUBBLE
