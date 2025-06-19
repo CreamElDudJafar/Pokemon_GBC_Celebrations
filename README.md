@@ -15,8 +15,8 @@ Some FEATURES:
 
 
 - PLAY IN FULL COLOR
-- Play with Gen 1 or Gen 2 Sprites.... Change in Includes.asm from 0 to 1
-- Play with Gen 1 or Gen 2 Audio... Change in Includes.asm from 0 to 1
+- Play with Gen 1 or Gen 2 Sprites
+- Play with Gen 1 or Gen 2 Audio
 - Play on regular overworld map or Snowy map... Change in Includes.asm from 0 to 1
 - All Party Menu Icons now color as well... Change in Includes.asm for ALT Color
 - GREEN: Features restored, SGB Border, Flowers, Overworld and more!
@@ -33,6 +33,7 @@ Some FEATURES:
 - Base Stats displayed in POKEDEX
 - Can Now Surrender In Battle
 - PC in DayCare
+- GYM LEADER AND ELITE 4 REMATCHES POST GAME
 - Can Obtain All Starters From NPCs Now (Like Yellow Version)
 - Added Pokémon like Magmar / Electabuzz / Staryu and others to earlier routes (consult documentation) - Infinite TM's (they are reusable like newer gens)
 - Gym Leaders, Rival, Rockets and other trainers had a buff in level, moves and parties (some parties to match Anime/Lets go Pikachu/References)
@@ -47,7 +48,8 @@ Some FEATURES:
 - 60 item bag space/ CrysAudio has 20 item bag space but (Port PC)
 - Auto HM use (eg: surf, just touch the water and say YES)
 - Deletable HM's - Sort Items in BAG 
-- OAK Battle post game - Message when PC is full
+- OAK Battle post game 
+- Message when PC is full
 - Check IV/DV - hold start/select and press STATS - EXP BAR - Caught Icon in battle 
 - Moon Stone can be bought in Celadon Mart- Moon Stone can be bought in Celadon Mart
 - Rockets Received a buff in levels and parties

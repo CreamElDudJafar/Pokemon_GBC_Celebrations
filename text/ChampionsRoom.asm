@@ -81,6 +81,58 @@ _ChampionsRoomRivalAfterBattleText::
 	line "like to admit it."
 	done
 
+_ChampionsRoomRivalRematchIntroText::
+	text "Back again?"
+	line "I've been waiting,"
+	cont "<PLAYER>!"
+
+	para "This time, my"
+	line "team's stronger"
+	cont "and ready to"
+	cont "take you down!"
+
+	para "Ready to hand"
+        line "over that title?"
+
+        para "Let's do this!"
+        line "No holding back!"
+	done
+
+_RivalRematchDefeatedText::
+	text "Even"
+	line "with my"
+	cont "strongest team,"
+
+	para "your skills as"
+	line "CHAMPION..."
+
+	para "They're real."
+	prompt
+
+_RivalRematchVictoryText::
+	text "With my new"
+	line "strategies,"
+
+	para "you stood no"
+	line "chance, <PLAYER>!"
+
+	para "The title of"
+	line "champion is"
+	cont "rightfully mine!"
+	prompt
+
+_ChampionsRoomRivalRematchAfterBattleText::
+	text "Fine, you win."
+	line "You're the best," 
+	cont "<PLAYER>."
+
+	para "But I won't give"
+	line "up just yet!"
+
+	para "Next time, I'll"
+	line "be CHAMPION."
+	done
+
 _ChampionsRoomOakText::
 	text "OAK: <PLAYER>!"
 	done
@@ -143,4 +195,68 @@ _ChampionsRoomOakComeWithMeText::
 
 	para "<PLAYER>!"
 	line "Come with me!"
+	done
+
+_ChampionsRoomRematchOakCongratulatesPlayerText::
+	text "OAK: So, you won"
+	line "again!"
+
+	para "Congratulations!"
+	line "Still the CHAMP"
+	cont "I see!"
+
+	para "You've returned,"
+	line "proving your"
+	cont "strength once"
+	cont "again!"
+
+	para "Your bond with"
+	line "your #MON is"
+	cont "truly inspiring!"
+
+	para "<PLAYER>, you're"
+	line "a true CHAMPION!"
+	done
+
+_ChampionsRoomRematchOakDisappointedWithRivalText::
+	text "OAK: Ah, "
+	line "<RIVAL>..."
+
+	para "I had hoped for"
+	line "a better outcome."
+	
+	para "but I see you"
+	line "have fallen"
+	cont "short once more!"
+
+	para "Remember,"
+	line "<RIVAL>,"
+
+	para "it's not just"
+	line "about strength"
+	cont "in battle,"
+
+	para "but also about"
+	line "the bond you"
+	cont "share with your"
+	cont "#MON."
+
+	para "Reflect on this,"
+	line "and grow stronger!"
+	done
+
+_ChampionsRoomRematchOakComeWithMeText::
+	text "OAK: <PLAYER>!"
+
+	para "Your triumph is"
+	line "not yours alone!"
+
+	para "Your bond with"
+	line "your #MON is"
+	cont "a lesson for us"
+	cont "all!"
+
+	para "<PLAYER>, let's"
+	line "celebrate your"
+	cont "achievement!"
 	done
