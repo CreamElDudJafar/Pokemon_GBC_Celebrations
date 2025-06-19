@@ -303,14 +303,11 @@ SECTION "Party Mon Sprites Routines", ROMX
 ; load and place the party mon icon according to wMonPartySpriteSpecies
 LoadSinglePartyMonSprite:
 	; load into the start of VRAM
-	call DisableLCD
+;	call DisableLCD
 	ld a, [wMonPartySpriteSpecies]
-	ld de, vSprites
+	ld hl, vSprites
 	call LoadPartyMonSprite
-
 	farcall LoadSinglePartySpritePalette
-
-	call EnableLCD
 
 	; place into the start of OAM
 	ld a, [hPartyMonIndex]
@@ -326,26 +323,25 @@ LoadSinglePartyMonSprite:
 
 ; load the party mon icon for all mon in the party
 LoadPartyMonSprites:
-	call DisableLCD
-	ld de, vSprites
-	ld hl, wPartySpecies
+	ld hl, vSprites
+	ld de, wPartySpecies
 .loop
-	ld a, [hli]
+	ld a, [de]
+	inc de
 	cp -1
 	jr z, .done
-	push hl
+	push de
 	call LoadPartyMonSprite
-	pop hl
+	pop de
 	jr .loop
 .done
 
 	farcall LoadPartyMenuSpritePalettes
+	ret
 
-	jp EnableLCD
-
-; copy the 8-tile icon for the mon in register a to de
+; copy the 8-tile icon for the mon in register a to hl
 LoadPartyMonSprite:
-	push de
+	push hl
 
 	ld [wd11e], a
 	predef IndexToPokedex
@@ -364,25 +360,27 @@ LoadPartyMonSprite:
 
 	call Multiply
 
-	; hl = icon offset
+	; de = icon offset
 	ld a, [hProduct + 2]
-	ld h, a
+	ld d, a
 	ld a, [hProduct + 3]
-	ld l, a
+	ld e, a
 
 	; if offset < $4000, use first icon bank
-	bit 6, h
-	set 6, h
-	ld a, BANK(PartyMonSprites)
+	bit 6, d
+	set 6, d
+	lb bc, BANK(PartyMonSprites), 8
 	jr z, .gotBank
 
 	; otherwise, use second icon bank
-	inc a
+	inc b
 
 .gotBank
+	pop hl
+	call CopyVideoData
 	ld bc, 8 tiles
-	pop de
-	jp FarCopyData
+	add hl, bc
+	ret
 
 ; copy 1 full entry (16 bytes) from PartyMonOAM into wShadowOAM according to hPartyMonIndex
 ; and backup wShadowOAM into wMonPartySpritesSavedOAM
