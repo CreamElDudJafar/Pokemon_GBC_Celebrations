@@ -48,7 +48,7 @@ Some FEATURES:
 - 60 item bag space/ CrysAudio has 20 item bag space but (Port PC)
 - Auto HM use (eg: surf, just touch the water and say YES)
 - Deletable HM's - Sort Items in BAG 
-- OAK Battle post game 
+- OAK Battle When Pokedex Is Complete
 - Message when PC is full
 - Check IV/DV - hold start/select and press STATS - EXP BAR - Caught Icon in battle 
 - Moon Stone can be bought in Celadon Mart- Moon Stone can be bought in Celadon Mart

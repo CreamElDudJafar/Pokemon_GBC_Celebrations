@@ -978,6 +978,27 @@ OaksLabOak1Text:
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	predef DisplayDexRating
+;	CheckEvent EVENT_BEAT_ROUTE_1_OAK
+;	jp nz, .done
+	call OaksLab_PokedexCount
+	cp NUM_POKEMON  ; INCLUDE Mew
+	jr nc, .completed
+	jp .done
+.completed
+	ld hl, CompletedDexText
+	rst _PrintText
+	call GBFadeOutToBlack
+	ld a, HS_OAKS_LAB_OAK_1
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_ROUTE_1_OAK
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	predef DisplayDexRating
 	jp .done
 .check_for_poke_balls
 	ld b, POKE_BALL
@@ -1066,6 +1087,13 @@ OaksLabOak1Text:
 .HowIsYourPokedexComingText:
 	text_far _OaksLabOak1HowIsYourPokedexComingText
 	text_end
+
+OaksLab_PokedexCount:
+	ld hl, wPokedexOwned
+	ld b, wPokedexOwnedEnd - wPokedexOwned
+	call CountSetBits
+	ld a, [wNumSetBits]
+	ret
 
 OaksLabPokedexText:
 	text_asm
@@ -1221,6 +1249,10 @@ OaksLabOakThatWasMyDreamText:
 
 OaksLabRivalLeaveItAllToMeText:
 	text_far _OaksLabRivalLeaveItAllToMeText
+	text_end
+
+CompletedDexText:
+	text_far _CompletedDexText
 	text_end
 
 OaksLabScientistText:

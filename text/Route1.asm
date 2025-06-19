@@ -107,7 +107,6 @@ _OakPostBattleText::
 	para "Now I will return"
 	line "to the lab. Don't"
 	cont "forget to come"
-	cont "see me when you"
-	cont "complete the" 
-	cont "#DEX."
+	cont "see me from time"
+	cont "to time!"
 	done
