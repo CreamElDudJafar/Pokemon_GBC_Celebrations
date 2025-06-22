@@ -1153,7 +1153,7 @@ SECTION "Pics 13", ROMX
 IF GEN_2_GRAPHICS
 JaninePic::        INCBIN "gfx/gstrainers/janine.pic"
 ELSE
-JaninePic::        INCBIN "gfx/trainers/janine.pic"
+JaninePic::        INCBIN "gfx/gstrainers/janine.pic"
 ENDC
 
 
