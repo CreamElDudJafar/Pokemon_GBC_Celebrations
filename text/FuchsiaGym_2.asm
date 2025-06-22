@@ -170,6 +170,37 @@ _FuchsiaGymRocker6AfterBattleText::
 	cont "choose?"
 	done
 
+_FuchsiaGymJanineBattleText::
+	text "Fufufu..."
+	
+	para "Caught off guard?"
+
+	para "I'm JANINE, a"
+	line "ninja of KOGA's"
+	cont "GYM."
+
+	para "Prepare to face"
+	line "my poison!"
+	done
+
+_FuchsiaGymJanineEndBattleText::
+	text "You're a"
+	line "tough one. You"
+	cont "definitely won!"
+	prompt
+
+_FuchsiaGymJanineAfterBattleText::
+	text "I'm going to"
+	line "really apply"
+
+	para "myself and improve"
+	line "my skills."
+
+	para "I want to become"
+	line "better than both"
+	cont "Father and you!"
+	done
+
 _FuchsiaGymGymGuideChampInMakingText::
 	text "Yo! Champ in"
 	line "making!"
