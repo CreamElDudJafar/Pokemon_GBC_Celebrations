@@ -87,6 +87,88 @@ _VermilionCitySailor2Text::
 	line "once a year."
 	done
 
+_OfficerJennyText1::
+	text "I just caught a"
+	line "SQUIRTLE that was"
+	cont "always getting"
+	cont "into mischief."
+
+	para "I think it needs a"
+	line "good trainer to"
+	cont "set it straight."
+	done
+
+_OfficerJennyText2::
+	text "You have the"
+	line "THUNDERBADGE!?"
+
+	para "You must be a"
+	line "good trainer!"
+
+	para "I just caught a"
+	line "SQUIRTLE that was"
+	cont "always getting"
+	cont "into mischief."
+
+	para "Would you take"
+	line "good care of it?"
+	done
+
+_OfficerJennyText3::
+	text "OK! Please treat"
+	line "SQUIRTLE right!@"
+	text_end
+
+_OfficerJennyText4::
+	text "Oh... What am I"
+	line "to do now?"
+	done
+
+_OfficerJennyText5::
+	text "How is SQUIRTLE"
+	line "doing?"
+	done
+
+_JennyBattleText::
+	text "As a CHAMPION,"
+	line "you've grown"
+	cont "strong."
+
+	para "And so has that"
+	line "SQUIRTLE I gave"
+	cont "you."
+
+	para "I wonder how"
+	line "strong?"
+
+	para "Can I test your"
+	line "strength in a"
+	cont "battle?"
+	done
+
+_JennyRefusedText::
+	text "Oh, that's too"
+	line "bad. Maybe"
+	cont "another time."
+	done
+
+_JennyAcceptedText::
+	text "I knew you"
+	line "wouldn't back"
+	cont "down!"
+	done
+
+_JennyAfterBattleText::
+    	text "Incredible!"
+
+	para "You and SQUIRTLE"
+	line "are unstoppable!"
+
+	para "Keep up the"
+	line "great work,"
+	cont "CHAMPION!"
+    	done
+
 _VermilionCitySignText::
 	text "VERMILION CITY"
 	line "The Port of"
@@ -133,41 +215,4 @@ _VermillionCityText15::
 	para "After a long"
 	line "journey it's"
 	cont "back in port."
-	done
-
-_OfficerJennyText1::
-	text "I just caught a"
-	line "SQUIRTLE that was"
-	cont "always getting"
-	cont "into mischief."
-
-	para "I think it needs a"
-	line "good trainer to"
-	cont "set it straight."
-	done
-
-_OfficerJennyText2::
-	text "You have the"
-	line "THUNDERBADGE!?"
-
-	para "You must be a"
-	line "good trainer!"
-
-	para "Would you take"
-	line "good care of it?"
-	done
-
-_OfficerJennyText3::
-	text "OK! Please treat"
-	line "SQUIRTLE right!@"
-	text_end
-
-_OfficerJennyText4::
-	text "How is SQUIRTLE"
-	line "doing?"
-	done
-
-_OfficerJennyText5::
-	text "Oh... What am I"
-	line "to do now?"
 	done

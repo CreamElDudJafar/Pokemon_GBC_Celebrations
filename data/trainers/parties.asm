@@ -26,7 +26,7 @@ TrainerDataPointers:
 	dw BlackbeltData
 	dw Rival1Data
 	dw ProfOakData
-	dw ChiefData
+	dw JoyData
 	dw ScientistData
 	dw GiovanniData
 	dw RocketData
@@ -47,6 +47,8 @@ TrainerDataPointers:
 	dw ChannelerData
 	dw AgathaData
 	dw LanceData
+	dw LeafData
+	dw JennyData
 	assert_table_length NUM_TRAINERS
 
 ; if first byte != $FF, then
@@ -504,8 +506,9 @@ ProfOakData:
 	db $FF, 100, TAUROS, 100, EXEGGUTOR, 100, ARCANINE, 100, SNORLAX, 100, GYARADOS, 100, NIDOKING, 0
 	db $FF, 100, TAUROS, 100, EXEGGUTOR, 100, ARCANINE, 100, SNORLAX, 100, GYARADOS, 100, NIDOKING, 0
 
-ChiefData:
-; None
+JoyData:
+;Fuchsia Pokecenter
+	db 80, KANGASKHAN, SNORLAX, STARMIE, PORYGON, EXEGGUTOR, CHANSEY, 0
 
 ScientistData:
 ; Unused
@@ -765,3 +768,9 @@ LanceData:
 ; Rematch
 	db $FF, 85, ARCANINE, 85, ELECTABUZZ, 85, SNORLAX, 85, CHARIZARD, 85, KANGASKHAN, 85, DRAGONITE, 0
 
+LeafData:
+; None
+
+JennyData:
+; Vermilion City
+	db 80, PIDGEOT, BLASTOISE, TANGELA, GENGAR, PARASECT, ARCANINE, 0

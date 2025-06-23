@@ -26,7 +26,7 @@ TrainerNames::
 	li "BLACKBELT"
 	li "RIVAL1"
 	li "PROF.OAK"
-	li "CHIEF"
+	li "NURSE JOY"
 	li "SCIENTIST"
 	li "GIOVANNI"
 	li "ROCKET"
@@ -47,4 +47,6 @@ TrainerNames::
 	li "CHANNELER"
 	li "AGATHA"
 	li "LANCE"
+	li "LEAF"  ; Unused / Placeholder for Leaf/Green
+	li "OFC.JENNY"
 	assert_list_length NUM_TRAINERS

@@ -254,7 +254,7 @@ IF GEN_2_GRAPHICS
 	const PAL_BLACKBELT     ; $D3
 	const PAL_GARY1         ; $D4
 	const PAL_OAK           ; $D5
-	const PAL_CHIEF         ; $D6
+	const PAL_JOY           ; $D6
 	const PAL_SCIENTIST     ; $D7
 	const PAL_GIOVANNI      ; $D8
 	const PAL_ROCKET        ; $D9
@@ -277,5 +277,6 @@ IF GEN_2_GRAPHICS
 	const PAL_LANCE         ; $EA
 	const PAL_HERO          ; $EB
 	const PAL_LEAF          ; $EC
+	const PAL_JENNY         ; $ED
 ENDC
 DEF NUM_SGB_PALS EQU const_value

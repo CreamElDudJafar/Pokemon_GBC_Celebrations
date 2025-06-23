@@ -41,7 +41,7 @@ ENDM
 	trainer_const BLACKBELT      ; $18
 	trainer_const RIVAL1         ; $19
 	trainer_const PROF_OAK       ; $1A
-	trainer_const CHIEF          ; $1B
+	trainer_const JOY            ; $1B
 	trainer_const SCIENTIST      ; $1C
 	trainer_const GIOVANNI       ; $1D
 	trainer_const ROCKET         ; $1E
@@ -62,4 +62,6 @@ ENDM
 	trainer_const CHANNELER      ; $2D
 	trainer_const AGATHA         ; $2E
 	trainer_const LANCE          ; $2F
+	trainer_const LEAF           ; $30
+	trainer_const JENNY          ; $31
 DEF NUM_TRAINERS EQU const_value - 1

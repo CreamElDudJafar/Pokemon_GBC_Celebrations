@@ -30,7 +30,7 @@ TrainerAIPointers:
 	dbw 2, BlackbeltAI ; blackbelt
 	dbw 3, GenericAI ; rival1
 	dbw 3, ProfOakAI ; oak
-	dbw 1, GenericAI ; chief
+	dbw 3, GenericAI ; joy
 	dbw 3, GenericAI
 	dbw 1, GiovanniAI ; giovanni
 	dbw 3, GenericAI
@@ -51,4 +51,6 @@ TrainerAIPointers:
 	dbw 3, GenericAI
 	dbw 2, AgathaAI ; agatha
 	dbw 1, LanceAI ; lance
+	dbw 1, GenericAI ; leaf  ; Unused / Placeholder for Leaf/Green
+	dbw 3, GenericAI ; jenny
 	assert_table_length NUM_TRAINERS

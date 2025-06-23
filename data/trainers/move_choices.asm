@@ -35,7 +35,7 @@ TrainerClassMoveChoiceModifications:
 	move_choices 1, 3 ; BLACKBELT
 	move_choices 1, 3 ; RIVAL1
 	move_choices 1, 3 ; PROF_OAK
-	move_choices 1, 3 ; CHIEF
+	move_choices 1, 3 ; JOY
 	move_choices 1, 3 ; SCIENTIST
 	move_choices 1, 3 ; GIOVANNI
 	move_choices 1, 3 ; ROCKET
@@ -56,4 +56,6 @@ TrainerClassMoveChoiceModifications:
 	move_choices 1, 3 ; CHANNELER
 	move_choices 1, 3 ; AGATHA
 	move_choices 1, 3 ; LANCE
+	move_choices 1, 3 ; LEAF  ; Unused / Placeholder for Leaf/Green
+	move_choices 1, 3 ; JENNY
 	assert_list_length NUM_TRAINERS

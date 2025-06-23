@@ -37,6 +37,7 @@ INCLUDE "scripts/ViridianCity.asm"
 INCLUDE "scripts/PewterCity.asm"
 INCLUDE "scripts/CeruleanCity.asm"
 INCLUDE "scripts/VermilionCity.asm"
+INCLUDE "scripts/VermilionCity_2.asm"
 INCLUDE "scripts/CeladonCity.asm"
 INCLUDE "scripts/FuchsiaCity.asm"
 

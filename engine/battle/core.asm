@@ -7170,6 +7170,10 @@ _LoadTrainerPic:
 	ld a, [wCurOpponent]
 	cp OPP_JANINE
 	jr z, .loadBank
+	cp OPP_JOY
+	jr z, .loadBank
+	cp OPP_JENNY
+	jr z, .loadBank
 	ld b, BANK("Pics 6") ; this is where all the trainer pics are (not counting Red's)
 .loadBank
 	ld a, b

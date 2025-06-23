@@ -1,7 +1,16 @@
 FuchsiaPokecenter_Script:
 	call SetLastBlackoutMap
 	call Serial_TryEstablishingExternallyClockedConnection
-	jp EnableAutoTextBoxDrawing
+	call EnableAutoTextBoxDrawing
+	ld hl, FuchsiaPokecenter_ScriptPointers
+	ld a, [wFuchsiaPokecenterCurScript]
+	call CallFunctionInTable
+	ret
+
+FuchsiaPokecenter_ScriptPointers:
+	def_script_pointers
+	dw_const FuchsiaPokecenterScript0,             	SCRIPT_FUCHSIAPOKECENTER_DEFAULT
+	dw_const JoyPostBattleScript,                   SCRIPT_FUCHSIAPOKECENTER_POST_BATTLE
 
 FuchsiaPokecenter_TextPointers:
 	def_text_pointers
@@ -9,9 +18,81 @@ FuchsiaPokecenter_TextPointers:
 	dw_const FuchsiaPokecenterRockerText,           TEXT_FUCHSIAPOKECENTER_ROCKER
 	dw_const FuchsiaPokecenterCooltrainerFText,     TEXT_FUCHSIAPOKECENTER_COOLTRAINER_F
 	dw_const FuchsiaPokecenterLinkReceptionistText, TEXT_FUCHSIAPOKECENTER_LINK_RECEPTIONIST
+	dw_const NurseJoyAfterBattleText,       	TEXT_FUCHSIAPOKECENTER_POST_BATTLE
+
+FuchsiaPokecenterScript0:
+	ret
+
+JoyPostBattleScript:
+	ld a, [wIsInBattle]
+	inc a
+	jr z, .skip	; Kick out if the player lost.
+	SetEvent EVENT_BEAT_NURSE_JOY
+	ld a, TEXT_FUCHSIAPOKECENTER_POST_BATTLE
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+.skip
+	ld a, SCRIPT_FUCHSIAPOKECENTER_DEFAULT
+	ld [wFuchsiaPokecenterCurScript], a
+	ld [wCurMapScript], a
+	ret
+NurseJoyAfterBattleText:
+	text_far _NurseJoyAfterBattleText
+	text_end
 
 FuchsiaPokecenterNurseText:
-	script_pokecenter_nurse
+	text_asm
+	farcall DisplayPokemonCenterDialogue_
+	ld a, [wGameStage] ; Check if player has beat the game
+	and a
+	jr z, .done
+	CheckEvent EVENT_BEAT_NURSE_JOY
+	jr nz, .NotFirstBattle
+	call NewPageButtonPressCheck
+	ld a, PLAYER_DIR_UP
+	ld [wPlayerMovingDirection], a
+	ld hl, NurseJoyPreBattleText
+.continue
+	rst _PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld hl, NurseJoyAcceptedText
+	rst _PrintText
+	call Delay3
+	ld a, OPP_JOY
+	ld [wCurOpponent], a
+	ld a, 1
+	ld [wTrainerNo], a
+	ld a, $1 ; new script
+	ld [wFuchsiaPokecenterCurScript], a
+	ld [wCurMapScript], a
+	jr .done
+.refused
+	ld hl, NurseJoyRefusedText
+	rst _PrintText
+.done
+	rst TextScriptEnd
+.NotFirstBattle
+	farcall NewPageButtonPressCheck
+	ld a, PLAYER_DIR_UP
+	ld [wPlayerMovingDirection], a
+	ld hl, NurseJoyPreBattleText2
+	jr .continue
+NurseJoyPreBattleText:
+	text_far _NurseJoyBattleText
+	text_end
+NurseJoyRefusedText:
+	text_far _NurseJoyRefusedText
+	text_end
+NurseJoyAcceptedText:
+	text_far _NurseJoyAcceptedText
+	text_end
+NurseJoyPreBattleText2:
+	text_far _NurseJoyBattleText2
+	text_end
+
 
 FuchsiaPokecenterRockerText:
 	text_far _FuchsiaPokecenterRockerText
@@ -23,3 +104,16 @@ FuchsiaPokecenterCooltrainerFText:
 
 FuchsiaPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
+
+NewPageButtonPressCheck:
+.waitForButtonPressLetGo
+	call Joypad
+	ldh a, [hJoyHeld]
+	and A_BUTTON | B_BUTTON
+	jr nz, .waitForButtonPressLetGo
+.waitForButtonPress
+	call Joypad
+	ldh a, [hJoyHeld]
+	and A_BUTTON | B_BUTTON
+	jr z, .waitForButtonPress
+	ret

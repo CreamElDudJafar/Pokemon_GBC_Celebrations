@@ -37,6 +37,8 @@ VermilionCity_ScriptPointers:
 	dw_const VermilionCityPlayerExitShipScript,      SCRIPT_VERMILIONCITY_PLAYER_EXIT_SHIP
 	dw_const VermilionCityPlayerMovingUp2Script,     SCRIPT_VERMILIONCITY_PLAYER_MOVING_UP2
 	dw_const VermilionCityPlayerAllowedToPassScript, SCRIPT_VERMILIONCITY_PLAYER_ALLOWED_TO_PASS
+	dw_const VermilionCityJennyPostBattleScript,     SCRIPT_VERMILIONCITY_JENNY_POST_BATTLE
+
 
 VermilionCityDefaultScript:
 	ld a, [wObtainedBadges]
@@ -133,6 +135,7 @@ VermilionCity_TextPointers:
 	dw_const VermilionCityPokemonFanClubSignText, TEXT_VERMILIONCITY_POKEMON_FAN_CLUB_SIGN
 	dw_const VermilionCityGymSignText,            TEXT_VERMILIONCITY_GYM_SIGN
 	dw_const VermilionCityHarborSignText,         TEXT_VERMILIONCITY_HARBOR_SIGN
+	dw_const VermilionCityJennyPostBattleText,    TEXT_VERMILION_CITY_JENNY_POST_BATTLE
 
 VermilionCityBeautyText:
 	text_far _VermilionCityBeautyText
@@ -281,76 +284,25 @@ VermilionCityHarborSignText:
 	text_far _VermilionCityHarborSignText
 	text_end
 
-
 VermilionCityOfficerJennyText:
 	text_asm
-	ld a, $1
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	CheckEvent EVENT_GOT_SQUIRTLE_FROM_OFFICER_JENNY
-	jr nz, .asm_1cfbf
-	ld hl, OfficerJennyText_1cfc8
-	rst _PrintText
-	ld a, [wObtainedBadges]
-	bit 2, a ;  ; THUNDER BADGE
-	jr z,  .asm_1cfb3
-	ld hl, OfficerJennyText_1cfce
-	rst _PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .asm_1cfb6
-	ld a, $1
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld a, SQUIRTLE
-	ld [wd11e], a
-	ld [wcf91], a
-	call GetMonName
-	ld a, $1
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	lb bc, SQUIRTLE, 10
-	call GivePokemon
-	jr nc, .asm_1cfb3
-	ld a, [wAddedToParty]
-	and a
-	call z, WaitForTextScrollButtonPress
-	ld a, $1
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, OfficerJennyText_1cfd3
-	rst _PrintText
-	SetEvent EVENT_GOT_SQUIRTLE_FROM_OFFICER_JENNY
-.asm_1cfb3
+	call VermilionCityPrintOfficerJennyText
 	rst TextScriptEnd
 
-.asm_1cfb6
-	ld hl, OfficerJennyText_1cfdf
-	rst _PrintText
-	rst TextScriptEnd
+VermilionCityJennyPostBattleScript:
+	ld a, [wIsInBattle]
+	inc a
+	jr z, .skip	; Kick out if the player lost.
+	ld a, TEXT_VERMILION_CITY_JENNY_POST_BATTLE
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_BEAT_JENNY
+.skip
+	ld a, $0
+	ld [wVermilionCityCurScript], a
+	ld [wCurMapScript], a
+	ret
 
-.asm_1cfbf
-	ld hl, OfficerJennyText_1cfd9
-	call PrintText
-	rst TextScriptEnd
-
-OfficerJennyText_1cfc8:
-	text_far _OfficerJennyText1
-	text_waitbutton
-	text_end
-
-OfficerJennyText_1cfce:
-	text_far _OfficerJennyText2
-	text_end
-
-OfficerJennyText_1cfd3:
-	text_far _OfficerJennyText3
-	text_waitbutton
-	text_end
-
-OfficerJennyText_1cfd9:
-	text_far _OfficerJennyText4
-	text_waitbutton
-	text_end
-
-OfficerJennyText_1cfdf:
-	text_far _OfficerJennyText5
-	text_waitbutton
+VermilionCityJennyPostBattleText:
+	text_far _JennyAfterBattleText
 	text_end

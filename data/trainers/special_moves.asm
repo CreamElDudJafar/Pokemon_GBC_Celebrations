@@ -730,4 +730,58 @@ SpecialTrainerMoves:
     	db 6, 4, SUBSTITUTE
     	db 0
 
+	db JOY, 1 
+	db 1, 1, REST
+   	db 1, 2, DOUBLE_TEAM
+    	db 1, 3, FISSURE
+    	db 1, 4, DOUBLE_EDGE
+    	db 2, 1, REST
+        db 2, 2, ICE_BEAM
+    	db 2, 3, THUNDERPUNCH
+    	db 2, 4, FIRE_PUNCH
+    	db 3, 1, RECOVER
+    	db 3, 2, SURF
+    	db 3, 3, THUNDER_WAVE
+    	db 3, 4, PSYCHIC_M
+    	db 4, 1, TRI_ATTACK
+    	db 4, 2, BLIZZARD
+    	db 4, 3, RECOVER
+    	db 4, 4, THUNDER_WAVE
+    	db 5, 1, SOFTBOILED
+    	db 5, 2, REFLECT
+    	db 5, 3, DREAM_EATER
+    	db 5, 4, EGG_BOMB
+    	db 6, 1, SOFTBOILED
+    	db 6, 2, REFLECT
+    	db 6, 3, EGG_BOMB
+    	db 6, 4, THUNDER_WAVE
+	db 0
+
+	db JENNY, 1 
+	db 1, 1, TAKE_DOWN
+    	db 1, 2, MIRROR_MOVE
+    	db 1, 3, SKY_ATTACK
+    	db 1, 4, TOXIC
+    	db 2, 1, SURF
+    	db 2, 2, EARTHQUAKE
+    	db 2, 3, ICE_BEAM
+        db 2, 4, BODY_SLAM
+    	db 3, 1, MEGA_DRAIN
+    	db 3, 2, SLEEP_POWDER
+    	db 3, 3, MIMIC
+    	db 3, 4, BIND
+    	db 4, 1, PSYCHIC_M
+    	db 4, 2, NIGHT_SHADE
+    	db 4, 3, SELFDESTRUCT
+    	db 4, 4, THUNDERBOLT
+    	db 5, 1, SPORE
+    	db 5, 2, MEGA_DRAIN
+    	db 5, 3, RAZOR_LEAF
+    	db 5, 4, LEECH_LIFE
+    	db 6, 1, FIRE_SPIN
+    	db 6, 2, FIRE_BLAST
+    	db 6, 3, BODY_SLAM
+    	db 6, 4, DIG
+	db 0
+
 	db -1 ; end

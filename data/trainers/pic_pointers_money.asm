@@ -33,7 +33,7 @@ TrainerPicAndMoneyPointers::
 	pic_money BlackbeltPic,    2500
 	pic_money Rival1Pic,       3500
 	pic_money ProfOakPic,      9900
-	pic_money ChiefPic,        3000
+	pic_money JoyPic,          9900
 	pic_money ScientistPic,    5000
 	pic_money GiovanniPic,     9900
 	pic_money RocketPic,       3000
@@ -54,4 +54,6 @@ TrainerPicAndMoneyPointers::
 	pic_money ChannelerPic,    3000
 	pic_money AgathaPic,       9900
 	pic_money LancePic,        9900
+	pic_money ChiefPic,        9900 ; Unused / Placeholder for Leaf/Green
+	pic_money JennyPic,        9900
 	assert_table_length NUM_TRAINERS
