@@ -997,8 +997,6 @@ OaksLabOak1Text:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	predef DisplayDexRating
 	jp .done
 .check_for_poke_balls
 	ld b, POKE_BALL

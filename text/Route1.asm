@@ -50,25 +50,7 @@ _Route1SignText::
 	done
 
 _OakBeforeBattleText::
-	text "OAK: Well Well!!"
-	
-	para "You have managed"
-	line "to conquer the"
-	cont "#MON LEAGUE!"
-
-	para "<PLAYER>, you are"
-	line "truly the best"
-	cont "trainer in KANTO!"
-
-	para "However..."
-	line "There is one"
-	cont "trainer you have"
-	cont "not battled yet."
-
-	para "I gave you your"
-	line "first #MON."
-
-	para "Now it is time to"
+	text "Now it is time to"
 	line "show me why you"
 	cont "are the CHAMPION!"
 

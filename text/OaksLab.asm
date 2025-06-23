@@ -398,10 +398,8 @@ _CompletedDexText::
 	cont "with a #MON"
 	cont "battle with me!"
 
-	para "Meet me on the"
-	line "route I caught"
-	cont "your first"
-	cont "#MON!"
+	para "I will be waiting"
+	line "on Route 1!"
 	done
 
 
