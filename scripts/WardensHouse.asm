@@ -41,7 +41,7 @@ WardensHouseWardenText:
 	rst _PrintText
 	lb bc, HM_STRENGTH, 1
 	call GiveItem
-	jr nc, .bag_full
+;	jr nc, .bag_full
 	ld hl, .ReceivedHM04Text
 	rst _PrintText
 	SetEvent EVENT_GOT_HM04
@@ -50,9 +50,9 @@ WardensHouseWardenText:
 	ld hl, .HM04ExplanationText
 	rst _PrintText
 	jr .done
-.bag_full
-	ld hl, .HM04NoRoomText
-	rst _PrintText
+;.bag_full
+;	ld hl, .HM04NoRoomText
+;	rst _PrintText
 .done
 	rst TextScriptEnd
 
@@ -89,9 +89,9 @@ WardensHouseWardenText:
 	text_far _WardensHouseWardenHM04ExplanationText
 	text_end
 
-.HM04NoRoomText:
-	text_far _WardensHouseWardenHM04NoRoomText
-	text_end
+;.HM04NoRoomText:
+;	text_far _WardensHouseWardenHM04NoRoomText
+;	text_end
 
 WardensHouseDisplayText:
 	text_asm

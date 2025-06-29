@@ -70,10 +70,10 @@ _WardensHouseWardenHM04ExplanationText::
 	line "rare SURF HM."
 	done
 
-_WardensHouseWardenHM04NoRoomText::
-	text "Your pack is"
-	line "stuffed full!"
-	done
+;_WardensHouseWardenHM04NoRoomText::
+;	text "Your pack is"
+;	line "stuffed full!"
+;	done
 
 _WardensHouseDisplayPhotosAndFossilsText::
 	text "#MON photos"

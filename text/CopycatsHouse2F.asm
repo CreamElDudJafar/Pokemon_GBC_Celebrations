@@ -95,6 +95,6 @@ _CopycatsHouse2FPCMySecretsText::
 	cont "CLEFAIRY!"
 	done
 
-_CopycatsHouse2FPCCantSeeText::
-	text "Huh? Can't see!"
-	done
+;_CopycatsHouse2FPCCantSeeText::
+;	text "Huh? Can't see!"
+;	done
