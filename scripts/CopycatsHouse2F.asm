@@ -82,20 +82,5 @@ CopycatsHouse2FSNESText:
 	text_end
 
 CopycatsHouse2FPCText:
-	text_asm
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	cp SPRITE_FACING_UP
-	ld hl, .CantSeeText
-	jr nz, .notUp
-	ld hl, .MySecretsText
-.notUp
-	rst _PrintText
-	rst TextScriptEnd
-
-.MySecretsText:
 	text_far _CopycatsHouse2FPCMySecretsText
-	text_end
-
-.CantSeeText:
-	text_far _CopycatsHouse2FPCCantSeeText
 	text_end
