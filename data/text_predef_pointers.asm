@@ -42,7 +42,7 @@ TextPredefs::
 	add_tx_pre FoundHiddenItemText                  ; 24
 	add_tx_pre HiddenItemBagFullText                ; 25 XXX unused
 	add_tx_pre VermilionGymTrashText                ; 26
-	add_tx_pre IndigoPlateauHQText                  ; 27
+;	add_tx_pre IndigoPlateauHQText                  ; 27
 	add_tx_pre GameCornerOutOfOrderText             ; 28
 	add_tx_pre GameCornerOutToLunchText             ; 29
 	add_tx_pre GameCornerSomeonesKeysText           ; 2A
@@ -61,7 +61,7 @@ TextPredefs::
 	add_tx_pre EnemiesOnEverySideText               ; 37
 	add_tx_pre WhatGoesAroundComesAroundText        ; 38
 	add_tx_pre NewBicycleText                       ; 39
-;	add_tx_pre IndigoPlateauStatues                 ; 3A
+	add_tx_pre IndigoPlateauStatues                 ; 3A
 	add_tx_pre VermilionGymTrashSuccessText1        ; 3B
 ;	add_tx_pre VermilionGymTrashSuccessText2        ; 3C XXX unused
 	add_tx_pre VermilionGymTrashSuccessText3        ; 3D
