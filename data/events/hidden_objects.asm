@@ -43,7 +43,7 @@ HiddenObjectMaps:
 	db SAFFRON_POKECENTER
 	db POKEMON_TOWER_5F
 	db ROUTE_13
-	db SAFARI_ZONE_GATE
+;	db SAFARI_ZONE_GATE
 	db SAFARI_ZONE_WEST
 	db SILPH_CO_5F
 	db SILPH_CO_9F
@@ -134,7 +134,7 @@ HiddenObjectPointers:
 	dw SaffronPokecenterHiddenObjects
 	dw PokemonTower5HiddenObjects
 	dw Route13HiddenObjects
-	dw SafariZoneEntranceHiddenObjects
+;	dw SafariZoneEntranceHiddenObjects
 	dw SafariZoneWestHiddenObjects
 	dw SilphCo5FHiddenObjects
 	dw SilphCo9FHiddenObjects
@@ -481,9 +481,9 @@ Route13HiddenObjects:
 	hidden_object 16, 13, CALCIUM, HiddenItems
 	db -1 ; end
 
-SafariZoneEntranceHiddenObjects:
-	hidden_object 10,  1, NUGGET, HiddenItems ; inaccessible
-	db -1 ; end
+;SafariZoneEntranceHiddenObjects:
+;	hidden_object 10,  1, NUGGET, HiddenItems ; inaccessible
+;	db -1 ; end
 
 SafariZoneWestHiddenObjects:
 	hidden_object  6,  5, REVIVE, HiddenItems
