@@ -48,6 +48,10 @@ MainMenu:
 	ld de, NewGameText
 	call PlaceString
 .next2
+	coord hl, $00, $11
+	ld de, VersionText
+	call PlaceString
+
 	ld hl, wd730
 	res 6, [hl]
 	call UpdateSprites
@@ -348,6 +352,12 @@ CableClubOptionsText:
 	db   "TRADE CENTER"
 	next "COLOSSEUM"
 	next "CANCEL@"
+
+VersionText:
+	db " "
+	db "Version"
+	db " 2.4"
+	db "@"
 
 DisplayContinueGameInfo:
 	xor a
