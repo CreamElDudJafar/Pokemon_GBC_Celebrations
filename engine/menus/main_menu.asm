@@ -88,6 +88,7 @@ MainMenu:
 	jr z, .choseContinue
 	cp 1
 	jp z, StartNewGame
+	call ClearScreen ; Remove version text before displaying options
 	call DisplayOptionMenu
 	ld a, 1
 	ld [wOptionsInitialized], a
