@@ -338,7 +338,7 @@ wPlayerMonNumber:: db
 wMenuCursorLocation:: dw
 
 ; index in party of currently battling mon
-wMaxDaycareLevel:: db
+wMaxLevel:: db
 
 	ds 1
 

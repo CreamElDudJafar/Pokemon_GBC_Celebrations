@@ -350,14 +350,14 @@ DifficultyChoice::
 	jr DisplayDifficultyChoice
 
 InitDifficultyTextBoxParameters::
-  	ld a, $8 ; loads the value for the difficulty menu
+  	ld a, DIFFICULTY_MENU
 	ld [wTwoOptionMenuID], a
 	coord hl, 5, 5
-	ld bc, $606 ; Cursor Pos
+	lb bc, 6, 6 ; Cursor Pos
 	ret
 	
 DisplayDifficultyChoice::
-	ld a, $14
+	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	jp LoadScreenTilesFromBuffer1
@@ -369,14 +369,14 @@ YesNoNormalHardChoice::
 	jr DisplayYesNoNormalHardChoice
 
 InitYesNoNormalHardTextBoxParameters::
-  	ld a, $0 ; loads the value for the difficulty menu
+  	ld a, YES_NO_MENU
 	ld [wTwoOptionMenuID], a
 	coord hl, 7, 5
-	ld bc, $608 ; Cursor Pos
+	lb bc, 6, 8 ; Cursor Pos
 	ret
 	
 DisplayYesNoNormalHardChoice::
-	ld a, $14
+	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	jp LoadScreenTilesFromBuffer1
@@ -388,14 +388,14 @@ BoyGirlChoice::
 	jr DisplayBoyGirlChoice
 
 InitBoyGirlTextBoxParameters::
-   ld a, $1 ; loads the value for the unused North/West choice, that was changed to say Boy/Girl
+   	ld a, BOY_GIRL_MENU
 	ld [wTwoOptionMenuID], a
 	coord hl, 6, 5 
-	ld bc, $607
+	lb bc, 6, 7
 	ret
 	
 DisplayBoyGirlChoice::
-	  ld a, $14
-	  ld [wTextBoxID], a
-	  call DisplayTextBoxID
-	  jp LoadScreenTilesFromBuffer1
+	ld a, TWO_OPTION_MENU
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	jp LoadScreenTilesFromBuffer1
