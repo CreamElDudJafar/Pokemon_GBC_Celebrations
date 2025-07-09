@@ -15,8 +15,16 @@ AnimateEXPBar:
 	call LoadMonData
 	call IsCurrentMonBattleMon
 	ret nz
+	ld d, MAX_LEVEL
+	ld a, [wDifficulty]
+	and a
+	jr z, .next
+	callfar GetLevelCap
+	ld a, [wMaxLevel]
+	ld d, a
+.next
 	ld a, [wBattleMonLevel]
-	cp 100
+	cp d
 	ret z
 	ld a, SFX_HEAL_HP
 	call PlaySoundWaitForCurrent

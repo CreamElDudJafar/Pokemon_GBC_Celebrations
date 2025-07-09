@@ -1208,6 +1208,18 @@ _HitXTimesText::
 	text " times!"
 	prompt
 
+_AtLevelCapTextNoExpAllText::
+	text_ram wcd6d
+	text " is at"
+	line "the level cap!"
+	prompt
+	
+_AtLevelCapWithExpAllText::
+	text_ram wcd6d
+	text "'s EXP.ALL"
+	line "share is lost!"
+	prompt
+
 _GainedText::
 	text_ram wcd6d
 	text " gained"
@@ -1718,9 +1730,12 @@ _NormalModeText::
 	done
 
 _HardModeText::
-	text "Set mode, No items"
-	line "in battle and Gym"
-	cont "level caps apply."
+	text "Forced SET mode,"
+	line "no items allowed"
+	cont "in battle, gym"
+	cont "level caps, and"
+	cont "opponents #MON"
+	cont "have max STATS."
 	done
 
 _OakSpeechText2A::
