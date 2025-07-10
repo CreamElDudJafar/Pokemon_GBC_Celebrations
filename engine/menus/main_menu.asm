@@ -529,7 +529,7 @@ DisplayOptionMenu:
 	cp 10 ; cursor in Battle Style section?
 	jr z, .cursorInBattleStyle
 	cp 14 ; cursor in Music Style section?
-	jr z, .cursorInMusicStyle
+	jp z, .cursorInMusicStyle
 	cp 16 ; cursor on Cancel?
 	jr z, .loop
 .cursorInTextSpeed
@@ -588,8 +588,15 @@ DisplayOptionMenu:
 	ld [wOptionsBattleAnimCursorX], a
 	jp .eraseOldMenuCursor
 .cursorInBattleStyle
+	ld a, [wDifficulty]
+	and a
+	jr nz, .lockedToSet
 	ld a, [wOptionsBattleStyleCursorX] ; battle style cursor X coordinate
 	xor $0b ; toggle between 1 and 10
+	ld [wOptionsBattleStyleCursorX], a
+	jp .eraseOldMenuCursor
+.lockedToSet
+	ld a, 10 ; SET mode cursor  position
 	ld [wOptionsBattleStyleCursorX], a
 	jp .eraseOldMenuCursor
 .cursorInMusicStyle
@@ -686,6 +693,9 @@ SetOptionsFromCursorPositions:
 	jr .checkMusicStyle
 .battleStyleShift
 	res 6, d
+	ld a, [wDifficulty]
+	and a
+	jr nz, .battleStyleSet
 .checkMusicStyle
 	ld a, [wOptionsMusicStyleCursorX] ; music style cursor X coordinate
 	cp 10
@@ -728,6 +738,10 @@ SetCursorPositionsFromOptions:
 	hlcoord 0, 6
 	call .placeUnfilledRightArrow
 ;	sla c
+	ld a, [wDifficulty]
+	and a
+	ld a, 10
+	jr nz, .storeBattleStyleCursorX
 	ld a, b
 	bit 6, a
 	ld a, 1
