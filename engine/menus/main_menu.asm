@@ -654,15 +654,26 @@ AnimationOffText:
 OptionsMenu_BattleStyle:
 	ldh a, [hJoy5]
 	and D_LEFT | D_RIGHT
-	jr nz, .asm_41d6b
+	jr nz, .ButtonPressed
+	ld a, [wDifficulty]
+	and a
+	jr nz, .lockedToSet
 	ld a, [wOptions]
 	and $40 ; mask other bits
-	jr .asm_41d73
-.asm_41d6b
+	jr .noButtonPressed
+.ButtonPressed
+	ld a, [wDifficulty]
+	and a
+	jr nz, .lockedToSet
 	ld a, [wOptions]
 	xor $40
 	ld [wOptions], a
-.asm_41d73
+	jr .noButtonPressed
+.lockedToSet
+	ld a, [wOptions]
+	or $40
+	ld [wOptions], a
+.noButtonPressed
 	ld bc, $0
 	sla a
 	sla a
