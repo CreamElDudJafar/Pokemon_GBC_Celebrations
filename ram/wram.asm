@@ -852,6 +852,7 @@ wTrainerInfoTextBoxWidth:: db
 wTrainerInfoTextBoxNextRowOffset:: db
 
 NEXTU
+	ds 3
 wOptionsCursorLocation:: db
 
 NEXTU
