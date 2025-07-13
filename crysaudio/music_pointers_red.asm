@@ -96,3 +96,8 @@ Gen1Music:
 	dba Music_MeetEvilTrainer
 	dba Music_MeetFemaleTrainer
 	dba Music_MeetMaleTrainer
+
+MuteMusic:
+	rept 46
+		dba Music_Nothing
+	endr

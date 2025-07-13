@@ -588,12 +588,25 @@ DisplayOptionMenu:
 	ld [wOptionsBattleStyleCursorX], a
 	jp .eraseOldMenuCursor
 .cursorInMusicStyle
+	bit BIT_D_LEFT, b
+	jr nz, .pressedLeftInMusicStyle
+	jr .pressedRightInMusicStyle
+.pressedLeftInMusicStyle
 	ld a, [wOptionsMusicStyleCursorX] ; music style cursor X coordinate
-	xor $0b ; toggle between 1 and 10
-	ld [wOptionsMusicStyleCursorX], a
-	call SetOptionsFromCursorPositions	; saves the options so the next step is properly run
-	call UpdateMusic					; updates the music at real time
-	ld a, [wOptionsMusicStyleCursorX] ; loads again so the cursor is erased
+	cp 1
+	jr z, .updateMusicStyleXCoord
+	sub 6
+	jr .updateMusicStyleXCoord
+.pressedRightInMusicStyle
+	ld a, [wOptionsMusicStyleCursorX] ; music style cursor X coordinate
+	cp 13
+	jr z, .updateMusicStyleXCoord
+	add 6
+.updateMusicStyleXCoord
+	ld [wOptionsMusicStyleCursorX], a   ; store music style cursor X coordinate
+	call SetOptionsFromCursorPositions  ; saves the options
+	call UpdateMusic                    ; updates the music in real time
+	ld a, [wOptionsMusicStyleCursorX]   ; loads again so the cursor is erased
 	jp .eraseOldMenuCursor
 .pressedLeftInTextSpeed
 	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
@@ -634,7 +647,7 @@ BattleStyleOptionText:
 
 MusicStyleOptionText:
 	db   "MUSIC STYLE:"
-	next " GEN1     GEN2@"
+	next " GEN1  GEN2  MUTE@"
 
 OptionMenuCancelText:
 	db "CANCEL@"
@@ -644,9 +657,9 @@ UpdateMusic:
 	cp $0							; no music defined, title screen then
 	jr z, .changeTitleScreenMusic
 	jr .continue
-	.changeTitleScreenMusic
+.changeTitleScreenMusic
 	ld a, MUSIC_TITLE_SCREEN
-	.continue
+.continue
 	call PlayMusic
 	ret
 
@@ -686,7 +699,13 @@ SetOptionsFromCursorPositions:
 	jr nz, .battleStyleSet
 .checkMusicStyle
 	ld a, [wOptionsMusicStyleCursorX] ; music style cursor X coordinate
-	cp 10
+	cp 13
+	jr nz, .skipMute
+	set BIT_MUSIC_MUTE , d
+	jr .storeOptions 
+.skipMute
+	res BIT_MUSIC_MUTE , d
+	cp 7
 	jr z, .musicGen2
 .musicGen1
 	res 4 , d
@@ -740,10 +759,14 @@ SetCursorPositionsFromOptions:
 	hlcoord 0, 11
 	call .placeUnfilledRightArrow
 	ld a, b
-	bit 4, a           ; music style
+	bit BIT_MUSIC_MUTE, a
+	ld a, 13
+	jr nz, .storeMusicStyleCursorX
+	ld a, b
+	bit BIT_MUSIC_STYLE, a
 	ld a, 1
 	jr z, .storeMusicStyleCursorX
-	ld a, 10
+	ld a, 7
 .storeMusicStyleCursorX
 	ld [wOptionsMusicStyleCursorX], a
 	hlcoord 0, 15

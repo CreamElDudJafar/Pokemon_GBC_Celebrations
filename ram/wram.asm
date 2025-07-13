@@ -1894,13 +1894,16 @@ wRivalName:: ds NAME_LENGTH
 ; bit 6 = battle style
 ; 0: Shift
 ; 1: Set
+; bit 5 = mute music
+; 0: Music
+; 1: Mute
+; bit 4 = music style
+; 0: Gen1
+; 1: Gen2
 ; bits 0-3 = text speed (number of frames to delay after printing a letter)
 ; 1: Fast
 ; 3: Medium
 ; 5: Slow
-; bit 4 = music style
-; 0: Gen 1
-; 1: Gen 2
 wOptions:: db
 
 wObtainedBadges:: flag_array NUM_BADGES
