@@ -1867,11 +1867,20 @@ SendOutMon:
 	res USING_TRAPPING_MOVE, [hl]
 	ld a, $1
 	ldh [hWhoseTurn], a
+	ld a, [wcf91]
+	ld b, a
+	push bc
+	ld a, POKE_BALL
+	ld [wcf91], a
+	ld a, SENDTOSS_ANIM
+	call PlayMoveAnimation
 	ld a, POOF_ANIM
 	call PlayMoveAnimation
 	hlcoord 4, 11
 	predef AnimateSendingOutMon
-	ld a, [wcf91]
+	pop bc
+	ld a, b
+	ld [wcf91], a
 	call PlayCry
 	call PrintEmptyString
 	jp SaveScreenTilesToBuffer1
