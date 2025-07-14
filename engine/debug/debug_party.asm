@@ -5,6 +5,8 @@ SetDebugNewGameParty: ; unreferenced except in _DEBUG
 	cp -1
 	ret z
 	ld [wcf91], a
+	ld a, %01000000
+	ld [wMonDataLocation], a
 	inc de
 	ld a, [de]
 	ld [wCurEnemyLVL], a
