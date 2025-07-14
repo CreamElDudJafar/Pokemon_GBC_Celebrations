@@ -42,10 +42,16 @@ PrepareOakSpeech:
 OakSpeech:
 	ld a, SFX_STOP_ALL_MUSIC
 	rst _PlaySound
+IF DEF(_DEBUG)
+	ld hl, wd732
+	bit BIT_DEBUG_MODE, [hl]
+	jr nz, .skipMusic
+ENDC
 	ld a, BANK(Music_Routes2)
 	ld c, a
 	ld a, MUSIC_ROUTES2
 	call PlayMusic
+.skipMusic
 	call ClearScreen
 	call LoadTextBoxTilePatterns
 	call PrepareOakSpeech
@@ -158,7 +164,7 @@ ENDC
 	ld hl, IntroduceRivalText
 	rst _PrintText
 	call ChooseRivalName
-.skipSpeech
+;.skipSpeech
 	call GBFadeOutToWhite
 	call GetRedPalID ; HAX
 	ld de, RedPicFront
@@ -213,6 +219,7 @@ ENDC
 	lb bc, BANK(ShrinkPic2), $00
 	call IntroDisplayPicCenteredOrUpperRight
 	call ResetPlayerSpriteData
+.skipSpeech
 	ldh a, [hLoadedROMBank]
 	push af
 	ld a, BANK(Music_PalletTown)
@@ -226,6 +233,11 @@ ENDC
 	pop af
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
+IF DEF(_DEBUG)
+	ld hl, wd732
+	bit BIT_DEBUG_MODE, [hl]
+	jr nz, .skipDelay
+ENDC
 	ld c, 20
 	rst _DelayFrames
 	hlcoord 6, 5
@@ -238,6 +250,7 @@ ENDC
 	ld c, 50
 	rst _DelayFrames
 	call GBFadeOutToWhite
+.skipDelay
 	jp ClearScreen
 OakSpeechText1:
 	text_far _OakSpeechText1
