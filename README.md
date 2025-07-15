@@ -12,7 +12,7 @@ It builds the following ROMs:
 
 Some FEATURES:
 - 2 BRANCHES: ONE WITH RBY AUDIO AND 60 BAG SPACE, AND ONE WITH RBY/GSC AUDIO AND 20 BAG SPACE AND PORT PC
-
+- Master Branch has Pokeyellow's Audio Options in Options menu.
 
 - PLAY IN FULL COLOR
 - Play with Gen 1 or Gen 2 Sprites
@@ -75,8 +75,8 @@ CREDITS: IF ANYONE IS MISSED PLEASE LET ME KNOW. IT’S HARD TO KEEP TRACK OF AL
 
 - Pret and Pret Discord. Tons of nice people, advice and are the reason I started this project.
 - Dannye- For his amazing work on Pret with the disassembly. Used his EXP Bar, and a lot of other features he created. Also gave a lot of insight and explained things at a slow pace. He created so many features I can’t keep track. But I will gladly add in any and all for you!!! Thank You for the help!
-- Vortiene- For sprites, updates/code from PURERGB, Bag Space increase, and explanation on confusing parts of code. Thank You for feeling like your available 24/7.
-- JoJoBear13- for his using his Trainer AI code along with Vortienes, and a lot of QOL features from Shin-PokeRed. The female sprite is based on his original girl character. We kept it.
+- Vortiene- For sprites, updates/code from PURERGB, Bag Space increase, Shorter elevator time, and explanation on confusing parts of code. Thank You for feeling like your available 24/7.
+- JoJoBear13- for his using his Trainer AI code along with Vortienes, Pokeyellows backport of the audio and a lot of QOL features from Shin-PokeRed. The female sprite is based on his original girl character. We kept it.
 - RainbowMetalPigeon- For the Port PC code, and again for the help and patience with building this game. TRY HIS EXTREME YELLOW.
 -CRZ-Shadows- and Yellow Legacy Team: A lot of QOL changes came from ideas or code used in there game. See their Github for all there amazing changes.
 - JustRegularLuna/Mateo: A lot of sprites for Pokemon and Pokeball sprites used from her amazing game RED++. Move Description code and others
