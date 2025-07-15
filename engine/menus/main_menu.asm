@@ -464,7 +464,7 @@ DisplayOptionMenu:
 	call PlaceString
 	xor a
 	ld [wOptionsCursorLocation], a
-	ld b, 3 ; the number of options to loop through
+	ld b, 4 ; the number of options to loop through
 .loop
 	push bc
 	call GetOptionPointer ; updates the next option
@@ -513,7 +513,8 @@ OptionsMenu_UpdateCursorPosition:
 AllOptionsText:
 	db "TEXT SPEED :"
 	next "ANIMATION  :"
-	next "BATTLESTYLE:@"
+	next "BATTLESTYLE:"
+	next "SOUND:@"
 
 OptionMenuCancelText:
 	db "CANCEL@"
@@ -535,7 +536,7 @@ OptionMenuJumpTable:
 	dw OptionsMenu_TextSpeed
 	dw OptionsMenu_BattleAnimations
 	dw OptionsMenu_BattleStyle
-	dw OptionsMenu_Dummy
+	dw OptionsMenu_SpeakerSettings
 	dw OptionsMenu_Dummy
 	dw OptionsMenu_Dummy
 	dw OptionsMenu_Dummy
@@ -702,6 +703,64 @@ BattleStyleShiftText:
 BattleStyleSetText:
 	db "SET  @"
 
+OptionsMenu_SpeakerSettings:
+	ld a, [wOptions]
+	and $30
+	swap a
+	ld c, a
+	ldh a, [hJoy5]
+	bit 4, a
+	jr nz, .pressedRight
+	bit 5, a
+	jr nz, .pressedLeft
+	jr .asm_41dca
+.pressedRight
+	ld a, c
+	inc a
+	and $3
+	jr .asm_41dba
+.pressedLeft
+	ld a, c
+	dec a
+	and $3
+.asm_41dba
+	ld c, a
+	swap a
+	ld b, a
+	xor a
+	ldh [rNR51], a
+	ld a, [wOptions]
+	and $cf
+	or b
+	ld [wOptions], a
+.asm_41dca
+	ld b, $0
+	ld hl, SpeakerOptionStringsPointerTable
+	add hl, bc
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	hlcoord 8, 8
+	call PlaceString
+	and a
+	ret
+
+SpeakerOptionStringsPointerTable:
+	dw MonoSoundText
+	dw Earphone1SoundText
+	dw Earphone2SoundText
+	dw Earphone3SoundText
+
+MonoSoundText:
+	db "MONO     @"
+Earphone1SoundText:
+	db "EARPHONE1@"
+Earphone2SoundText:
+	db "EARPHONE2@"
+Earphone3SoundText:
+	db "EARPHONE3@"
+
 OptionsMenu_Dummy:
 	and a
 	ret
@@ -732,7 +791,7 @@ OptionsControl:
 	scf
 	ret
 .doNotWrapAround
-	cp 2    ; if last option, go down to Cancel
+	cp 3    ; if last option, go down to Cancel
 	jr c, .regularIncrement
 	ld [hl], 6
 .regularIncrement
@@ -744,7 +803,7 @@ OptionsControl:
 	ld a, [hl]
 	cp 7    ; if Cancel, go up to last option
 	jr nz, .notCancel
-	ld [hl], 2
+	ld [hl], 3
 	scf
 	ret
 .notCancel

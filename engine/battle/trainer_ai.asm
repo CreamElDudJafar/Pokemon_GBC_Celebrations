@@ -1082,7 +1082,6 @@ AIUseGuardSpec:
 ;	jp AIPrintItemUse
 
 ; PureRGBnote: ADDED: if enemy HP is below a 1/[wUnusedC000], store 1 in wUnusedC000.
-; used for checking whether the hyper ball item should guarantee success on use
 AICheckIfHPBelowFractionStore::
 	ld a, [wUnusedC000]
 	call AICheckIfHPBelowFraction

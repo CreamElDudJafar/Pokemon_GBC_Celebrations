@@ -136,5 +136,4 @@ StopAllSounds::
 	ld [wAudioFadeOutControl], a
 	ld [wNewSoundID], a
 	ld [wLastMusicSoundID], a
-	dec a
-	jp PlaySound
+	jp StopAllMusic

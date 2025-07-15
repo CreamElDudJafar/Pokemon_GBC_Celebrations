@@ -345,31 +345,17 @@ OneTwoAndText:
 	text_far _OneTwoAndText
 	text_pause
 	text_asm
-	push af
-	push bc
-	push de
-	push hl
-	ld a, $1
-	ld [wMuteAudioAndPauseMusic], a
-	rst _DelayFrame
-	ld a, [wAudioROMBank]
-	push af
-	ld a, BANK(SFX_Swap_1)
-	ld [wAudioROMBank], a
-	ld [wAudioSavedROMBank], a
-	call WaitForSoundToFinish
+	ld a, [wIsInBattle]
+	and a
+	jr nz, .inBattlePoof ; PureRGBnote: FIXED: SFX_SWAP doesn't exist in the battle audio engine so it would play an arbitrary sound
 	ld a, SFX_SWAP
-	rst _PlaySound
-	call WaitForSoundToFinish
-	pop af
-	ld [wAudioROMBank], a
-	ld [wAudioSavedROMBank], a
-	xor a
-	ld [wMuteAudioAndPauseMusic], a
-	pop hl
-	pop de
+	call PlaySoundWaitForCurrent
+	jr .done
+.inBattlePoof
+	push bc
+	farcall Music_LearnMovePoofInBattle ; play in-battle poof sound the same way the pokeflute is played in battle
 	pop bc
-	pop af
+.done
 	ld hl, PoofText
 	ret
 
