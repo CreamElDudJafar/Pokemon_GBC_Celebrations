@@ -746,7 +746,7 @@ SpritePaletteAssignments: ; Characters on the overworld
 	db SPR_PAL_BROWN
 
 	; SPRITE_JIGGLYPUFF
-	db SPR_PAL_PURPLE
+	db SPR_PAL_ORANGE
 
 	; SPRITE_KABUTO
 	db SPR_PAL_BROWN
