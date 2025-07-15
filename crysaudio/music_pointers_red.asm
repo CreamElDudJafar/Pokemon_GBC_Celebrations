@@ -98,6 +98,16 @@ Gen1Music:
 	dba Music_MeetMaleTrainer
 
 MuteMusic:
-	rept 46
-		dba Music_Nothing
-	endr
+	table_width 3
+rept 15
+	dba Music_Nothing
+endr
+	dba Music_PkmnHealed
+rept 16
+	dba Music_Nothing
+endr
+	dba Music_JigglypuffSong
+rept 13
+	dba Music_Nothing
+endr
+	assert_table_length NUM_SONGS
