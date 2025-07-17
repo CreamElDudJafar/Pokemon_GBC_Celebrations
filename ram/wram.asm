@@ -2065,7 +2065,7 @@ wPlayerCoins:: dw ; BCD
 wMissableObjectFlags:: flag_array $100
 wMissableObjectFlagsEnd::
 
-	ds 6
+	ds 2 ; was 6
 
 wPartySpritePaletteSlot::
 ; saved copy of SPRITESTATEDATA1_PICTUREID
@@ -2115,7 +2115,7 @@ wRedsHouse2FCurScript:: db
 wViridianMartCurScript:: db
 wRoute22GateCurScript:: db
 wCeruleanCityCurScript:: db
-	ds 7
+	ds 2 ; was 7
 wSSAnneBowCurScript:: db
 wViridianForestCurScript:: db
 wMuseum1FCurScript:: db
@@ -2201,7 +2201,7 @@ wRoute18Gate1FCurScript:: db
 wGameProgressFlagsEnd::
 
 UNION
-    ds 128
+    ds 104
 NEXTU
 wChannel7:: channel_struct wChannel7
 wChannel8:: channel_struct wChannel8
@@ -2216,8 +2216,8 @@ wPlayerGender::
     ; $01 = female
     ds 1
 
-;; 26 bytes left
-;;;;;;;;;;
+;; 2 bytes left
+;;;;;;;;;; 24 bytes removed for bag space
 ENDU
 
 wObtainedHiddenItemsFlags:: flag_array 112
@@ -2229,7 +2229,7 @@ wObtainedHiddenCoinsFlags:: flag_array 16
 ; $02 = surfing
 wWalkBikeSurfState:: db
 
-	ds 10
+	ds 7 ; was 10
 
 wTownVisitedFlag:: flag_array NUM_CITY_MAPS
 
@@ -2276,7 +2276,7 @@ wWhichDungeonWarp:: db
 
 wUnusedD71F:: db
 
-	ds 8 
+	ds 2 ; was 8
 
 ; bit 0: using Strength outside of battle
 ; bit 1: set by IsSurfingAllowed when surfing's allowed, but the caller resets it after checking the result
