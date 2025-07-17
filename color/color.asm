@@ -418,14 +418,13 @@ ENDC
 
 ; Show pokedex data
 SetPal_Movedex:
-	ld a, [wcf91]
-	call DeterminePaletteID
-	ld d, a
-	ld e, 0
+	farcall LoadOverworldSpritePalettes
 
 	ld a, 2
 	ldh [rSVBK], a
-
+	
+	ld d, PAL_TOWNMAP
+	ld e, 0 
 	farcall LoadSGBPalette
 
 IF DEF(_BLUE)
@@ -454,6 +453,7 @@ ENDC
 	ld hl, W2_TilesetPaletteMap + 21
 	ld de, 20 - 8
 	ld b, 7
+
 	xor a
 .pokeLoop
 	ld c, 8
@@ -475,21 +475,6 @@ ENDC
 	;xor a
 	ldh [rSVBK], a
 	ret
-; PureRGBnote: ADDED: new function for setting the palette including the type icon color on the movedex data page
-;SetPal_Movedex:
-;	ld hl, PalPacket_Movedex
-;	ld de, wPalPacket
-;	ld bc, $10
-;	rst _CopyData
-;	ld a, [wcf91]
-;	ld d, a
-;	callfar GetTypePalette
-;;	ld a, d
-;	ld hl, wPalPacket + 3
-;	ld [hl], a
-;	ld hl, wPalPacket
-;	ld de, BlkPacket_Pokedex
-;	ret
 
 ; Slots
 SetPal_Slots:
