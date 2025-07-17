@@ -2401,7 +2401,7 @@ SquirtleEvosMoves:
 	db EVOLVE_LEVEL, 16, WARTORTLE
 	db 0
 ; Learnset
-	db 5, BUBBLE
+	db 6, BUBBLE
 	db 10, WATER_GUN
 	db 15, BITE
 	db 21, BUBBLEBEAM

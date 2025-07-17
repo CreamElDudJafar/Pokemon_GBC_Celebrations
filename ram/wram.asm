@@ -1174,20 +1174,7 @@ wExpAmountGained:: dw
 wGainBoostedExp:: db
 ENDU
 
-wUnusedC000:: db
-
-	ds 20
-
-UNION
-	ds 22 ; 22 of the 43 bytes of free space
-
-NEXTU
-wMovedexSeen:: flag_array NUM_ATTACKS
-wMovedexSeenEnd::
-
-ENDU
-
-wStoredMovedexListIndex:: db
+	ds 44
 
 wListPointer:: dw
 
@@ -1982,16 +1969,23 @@ wDestinationWarpID:: db
 ;;;;;;
 UNION
 ; original size of this empty space was 28
-ds 100
+ds 128
 
 NEXTU
 
 wChannel5:: channel_struct wChannel5
 wChannel6:: channel_struct wChannel6
+
+wStoredMovedexListIndex:: db
+
+wMovedexSeen:: flag_array NUM_ATTACKS
+wMovedexSeenEnd:: ; 22 bytes
+
+wUnusedC000:: db
+
+;;; 4 bytes left
+
 ENDU
-
-; 28 bytes removed for increased bag space
-
 
 ; number of signs in the current map (up to 16)
 wNumSigns:: db
@@ -2071,7 +2065,7 @@ wPlayerCoins:: dw ; BCD
 wMissableObjectFlags:: flag_array $100
 wMissableObjectFlagsEnd::
 
-	ds 3
+	ds 6
 
 wPartySpritePaletteSlot::
 ; saved copy of SPRITESTATEDATA1_PICTUREID
@@ -2121,7 +2115,7 @@ wRedsHouse2FCurScript:: db
 wViridianMartCurScript:: db
 wRoute22GateCurScript:: db
 wCeruleanCityCurScript:: db
-	ds 2
+	ds 7
 wSSAnneBowCurScript:: db
 wViridianForestCurScript:: db
 wMuseum1FCurScript:: db
@@ -2183,7 +2177,7 @@ wCeruleanCaveB1FCurScript:: db
 wVictoryRoad1FCurScript:: db
 	ds 1
 wLancesRoomCurScript:: db
-	ds 2
+	ds 4
 wSilphCo10FCurScript:: db
 wSilphCo11FCurScript:: db
 wFuchsiaPokecenterCurScript:: db
@@ -2203,7 +2197,7 @@ wSeafoamIslandsB3FCurScript:: db
 wRoute23CurScript:: db
 wSeafoamIslandsB4FCurScript:: db
 wRoute18Gate1FCurScript:: db
-	ds 2
+	ds 6
 wGameProgressFlagsEnd::
 
 UNION
@@ -2212,7 +2206,17 @@ NEXTU
 wChannel7:: channel_struct wChannel7
 wChannel8:: channel_struct wChannel8
 
-;; 28 bytes left
+wDifficulty::
+    ; $00 = normal
+    ; $01 = hard
+    ds 1
+
+wPlayerGender::
+    ; $00 = male
+    ; $01 = female
+    ds 1
+
+;; 26 bytes left
 ;;;;;;;;;;
 ENDU
 
@@ -2237,15 +2241,7 @@ wFossilItem:: db
 ; mon that will result from the item
 wFossilMon:: db
 
-wDifficulty::
-    ; $00 = normal
-    ; $01 = hard
-    ds 1
-
-wPlayerGender::
-    ; $00 = male
-    ; $01 = female
-    ds 1
+	ds 2
 
 ; trainer classes start at OPP_ID_OFFSET
 wEnemyMonOrTrainerClass:: db
