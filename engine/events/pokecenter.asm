@@ -1,4 +1,21 @@
 DisplayPokemonCenterDialogue_::
+	ld a, [wCurMap]
+	cp MT_MOON_POKECENTER
+	jr nz, .checkRockTunnelPokecenter
+	ld c, 11
+	ld b, FLAG_SET
+	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	predef FlagActionPredef
+	jr .regularCenter
+.checkRockTunnelPokecenter
+	cp ROCK_TUNNEL_POKECENTER
+	jr nz, .regularCenter
+	ld c, 12
+	ld b, FLAG_SET
+	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	predef FlagActionPredef
+; back to vanilla
+.regularCenter
 	call SaveScreenTilesToBuffer1 ; save screen
 	CheckEvent EVENT_FIRST_POKECENTER
 	jr nz, .skiptext1
