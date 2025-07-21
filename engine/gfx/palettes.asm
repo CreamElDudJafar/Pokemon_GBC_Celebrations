@@ -155,6 +155,14 @@ ENDC
 	ld a, [hl]
 	ret
 
+DetermineDexPaletteID::
+	; input - c : Pokémon Pokédex ID
+	ld hl, MonsterPalettes
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ret
+
 
 SECTION "InitPartyMenuBlkPacket", ROMX
 
