@@ -30,6 +30,7 @@ DisplayPokemonCenterDialogue_::
 	rst _PrintText
 .skipShallWeHealYourPokemon
 	call YesNoChoicePokeCenter ; yes/no menu
+	call UpdateSprites
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .declinedHealing ; if the player chose No
@@ -41,6 +42,8 @@ DisplayPokemonCenterDialogue_::
 ;	call SetLastBlackoutMap
 	call LoadScreenTilesFromBuffer1 ; restore screen
 	call LoadCurrentMapView
+	call Delay3
+	call UpdateSprites
 	CheckEvent EVENT_FIRST_POKECENTER
 	jr nz, .skiptext2
 	ld hl, NeedYourPokemonText
