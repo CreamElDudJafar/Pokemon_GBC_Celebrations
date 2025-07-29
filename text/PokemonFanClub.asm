@@ -10,6 +10,16 @@ _PokemonFanClubPikachuFanBetterText::
 	cont "as that one!"
 	done
 
+_PokemonFanClubPikachuFanText::
+	text "Our CHAIRMAN's new"
+	line "hobby is taking"
+	cont "#MON photos."
+
+	para "He gave me a nice"
+	line "PRINT of my cute"
+	cont "PIKACHU."
+	done
+
 _PokemonFanClubSeelFanNormalText::
 	text "I just love my"
 	line "SEEL!"
@@ -23,6 +33,13 @@ _PokemonFanClubSeelFanBetterText::
 
 	para "My SEEL is far"
 	line "more attractive!"
+	done
+
+_PokemonFanClubSeelFanText::
+	text "I'm going to hook"
+	line "up the cable to"
+	cont "get a photo PRINT"
+	cont "of my SEEL!"
 	done
 
 _PokemonFanClubPikachuText::
@@ -125,6 +142,35 @@ _PokemonFanClubChairFinalText::
 _PokemonFanClubBagFullText::
 	text "Make room for"
 	line "this!"
+	done
+
+FanClubChairPrintText1::
+	text "Hi there, <PLAYER>!"
+	line "Have you seen my"
+	cont "#MON photos?"
+
+	para "I have them framed"
+	line "up on that wall."
+
+	para "Ah, I know!"
+
+	para "Would you like me"
+	line "to take a photo"
+	cont "of your #MON?"
+	done
+
+FanClubChairPrintText2::
+	text "No? That's really"
+	line "disappointing."
+	done
+
+FanClubChairPrintText3::
+	text "OK, I'm done."
+	done
+
+FanClubChairPrintText4::
+	text "Maybe we won't"
+	line "PRINT this now."
 	done
 
 _PokemonFanClubReceptionistText::

@@ -11,7 +11,17 @@ VermilionCity_Script:
 	call nz, .setFirstLockTrashCanIndex
 	ld hl, VermilionCity_ScriptPointers
 	ld a, [wVermilionCityCurScript]
-	jp CallFunctionInTable
+	call CallFunctionInTable
+	call .vermilionCityScript_19869
+	ret
+
+.vermilionCityScript_19869
+	CheckEventHL EVENT_LEFT_FANCLUB_AFTER_BIKE_VOUCHER
+	ret nz
+	CheckEventReuseHL EVENT_GOT_BIKE_VOUCHER
+	ret z
+	SetEventReuseHL EVENT_LEFT_FANCLUB_AFTER_BIKE_VOUCHER
+	ret
 
 .setFirstLockTrashCanIndex
 	call Random

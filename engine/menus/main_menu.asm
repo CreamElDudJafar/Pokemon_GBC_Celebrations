@@ -134,6 +134,8 @@ InitOptions:
 	ld [wLetterPrintingDelayFlags], a
 	ld a, TEXT_DELAY_FAST
 	ld [wOptions], a
+	ld a, 64 ; audio?
+	ld [wPrinterSettings], a
 	ret
 
 LinkMenu:
@@ -464,7 +466,7 @@ DisplayOptionMenu:
 	call PlaceString
 	xor a
 	ld [wOptionsCursorLocation], a
-	ld b, 4 ; the number of options to loop through
+	ld b, 5 ; the number of options to loop through
 .loop
 	push bc
 	call GetOptionPointer ; updates the next option
@@ -514,7 +516,8 @@ AllOptionsText:
 	db "TEXT SPEED :"
 	next "ANIMATION  :"
 	next "BATTLESTYLE:"
-	next "SOUND:@"
+	next "SOUND:"
+	next "PRINT:@"
 
 OptionMenuCancelText:
 	db "CANCEL@"
@@ -537,7 +540,7 @@ OptionMenuJumpTable:
 	dw OptionsMenu_BattleAnimations
 	dw OptionsMenu_BattleStyle
 	dw OptionsMenu_SpeakerSettings
-	dw OptionsMenu_Dummy
+	dw OptionsMenu_GBPrinterBrightness
 	dw OptionsMenu_Dummy
 	dw OptionsMenu_Dummy
 	dw OptionsMenu_Cancel
@@ -761,6 +764,95 @@ Earphone2SoundText:
 Earphone3SoundText:
 	db "EARPHONE3@"
 
+OptionsMenu_GBPrinterBrightness:
+	call Func_41e7b
+	ldh a, [hJoy5]
+	bit 4, a
+	jr nz, .pressedRight
+	bit 5, a
+	jr nz, .pressedLeft
+	jr .asm_41e32
+.pressedRight
+	ld a, c
+	cp $4
+	jr c, .asm_41e22
+	ld c, $ff
+.asm_41e22
+	inc c
+	ld a, e
+	jr .asm_41e2e
+.pressedLeft
+	ld a, c
+	and a
+	jr nz, .asm_41e2c
+	ld c, $5
+.asm_41e2c
+	dec c
+	ld a, d
+.asm_41e2e
+	ld b, a
+	ld [wPrinterSettings], a
+.asm_41e32
+	ld b, $0
+	ld hl, GBPrinterOptionStringsPointerTable
+	add hl, bc
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	hlcoord 8, 10
+	call PlaceString
+	and a
+	ret
+
+GBPrinterOptionStringsPointerTable:
+	dw LightestPrintText
+	dw LighterPrintText
+	dw NormalPrintText
+	dw DarkerPrintText
+	dw DarkestPrintText
+
+LightestPrintText:
+	db "LIGHTEST@"
+LighterPrintText:
+	db "LIGHTER @"
+NormalPrintText:
+	db "NORMAL  @"
+DarkerPrintText:
+	db "DARKER  @"
+DarkestPrintText:
+	db "DARKEST @"
+
+Func_41e7b:
+	ld a, [wPrinterSettings]
+	and a
+	jr z, .asm_41e93
+	cp $20
+	jr z, .asm_41e99
+	cp $60
+	jr z, .asm_41e9f
+	cp $7f
+	jr z, .asm_41ea5
+	ld c, $2
+	lb de, $20, $60
+	ret
+.asm_41e93
+	ld c, $0
+	lb de, $7f, $20
+	ret
+.asm_41e99
+	ld c, $1
+	lb de, $0, $40
+	ret
+.asm_41e9f
+	ld c, $3
+	lb de, $40, $7f
+	ret
+.asm_41ea5
+	ld c, $4
+	lb de, $60, $0
+	ret
+
 OptionsMenu_Dummy:
 	and a
 	ret
@@ -791,7 +883,7 @@ OptionsControl:
 	scf
 	ret
 .doNotWrapAround
-	cp 3    ; if last option, go down to Cancel
+	cp 4    ; if last option, go down to Cancel
 	jr c, .regularIncrement
 	ld [hl], 6
 .regularIncrement
@@ -801,12 +893,12 @@ OptionsControl:
 
 .pressedUp
 	ld a, [hl]
-	cp 7    ; if Cancel, go up to last option
-	jr nz, .notCancel
-	ld [hl], 3
+	cp 7    
+	jr nz, .doNotMoveCursorToPrintOption
+	ld [hl], 4
 	scf
 	ret
-.notCancel
+.doNotMoveCursorToPrintOption
 	and a    ; if first option, go down to Cancel
 	jr nz, .regularDecrement
 	ld [hl], 8

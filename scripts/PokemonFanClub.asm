@@ -1,15 +1,6 @@
 PokemonFanClub_Script:
 	jp EnableAutoTextBoxDrawing
 
-PokemonFanClub_CheckBikeInBag:
-; check if any bike paraphernalia in bag
-	CheckEvent EVENT_GOT_BIKE_VOUCHER
-	ret nz
-	ld b, BICYCLE
-	call IsItemInBag
-	ret nz
-	ld b, BIKE_VOUCHER
-	jp IsItemInBag
 
 PokemonFanClub_TextPointers:
 	def_text_pointers
@@ -19,53 +10,73 @@ PokemonFanClub_TextPointers:
 	dw_const PokemonFanClubSeelText,         TEXT_POKEMONFANCLUB_SEEL
 	dw_const PokemonFanClubChairmanText,     TEXT_POKEMONFANCLUB_CHAIRMAN
 	dw_const PokemonFanClubReceptionistText, TEXT_POKEMONFANCLUB_RECEPTIONIST
-	dw_const PokemonFanClubSign1Text,        TEXT_POKEMONFANCLUB_SIGN_1
-	dw_const PokemonFanClubSign2Text,        TEXT_POKEMONFANCLUB_SIGN_2
 
 PokemonFanClubPikachuFanText:
 	text_asm
-	CheckEvent EVENT_PIKACHU_FAN_BOAST
-	jr nz, .mineisbetter
-	ld hl, .NormalText
+	CheckEventHL EVENT_LEFT_FANCLUB_AFTER_BIKE_VOUCHER
+	jr z, .asm_59aaf
+	ld hl, .yellowtext
 	rst _PrintText
-	SetEvent EVENT_SEEL_FAN_BOAST
+	jr .done
+
+.asm_59aaf
+	CheckEventReuseHL EVENT_PIKACHU_FAN_BOAST
+	jr nz, .mineisbetter
+	SetEventReuseHL EVENT_SEEL_FAN_BOAST
+	ld hl, .normaltext
+	rst _PrintText
 	jr .done
 .mineisbetter
-	ld hl, .BetterText
+	ResetEventReuseHL EVENT_PIKACHU_FAN_BOAST
+	ld hl, .bettertext
 	rst _PrintText
-	ResetEvent EVENT_PIKACHU_FAN_BOAST
 .done
 	rst TextScriptEnd
 
-.NormalText:
+.normaltext
 	text_far _PokemonFanClubPikachuFanNormalText
 	text_end
 
-.BetterText:
+.bettertext
 	text_far _PokemonFanClubPikachuFanBetterText
+	text_end
+
+.yellowtext
+	text_far _PokemonFanClubPikachuFanText
 	text_end
 
 PokemonFanClubSeelFanText:
 	text_asm
-	CheckEvent EVENT_SEEL_FAN_BOAST
-	jr nz, .mineisbetter
-	ld hl, .NormalText
+	CheckEventHL EVENT_LEFT_FANCLUB_AFTER_BIKE_VOUCHER
+	jr z, .asm_59ae7
+	ld hl, .yellowtext
 	rst _PrintText
-	SetEvent EVENT_PIKACHU_FAN_BOAST
+	jr .done
+
+.asm_59ae7
+	CheckEventReuseHL EVENT_SEEL_FAN_BOAST
+	jr nz, .mineisbetter
+	SetEventReuseHL EVENT_PIKACHU_FAN_BOAST
+	ld hl, .normaltext
+	rst _PrintText
 	jr .done
 .mineisbetter
-	ld hl, .BetterText
+	ResetEventReuseHL EVENT_SEEL_FAN_BOAST
+	ld hl, .bettertext
 	rst _PrintText
-	ResetEvent EVENT_SEEL_FAN_BOAST
 .done
 	rst TextScriptEnd
 
-.NormalText:
+.normaltext
 	text_far _PokemonFanClubSeelFanNormalText
 	text_end
 
-.BetterText:
+.bettertext
 	text_far _PokemonFanClubSeelFanBetterText
+	text_end
+
+.yellowtext
+	text_far _PokemonFanClubSeelFanText
 	text_end
 
 PokemonFanClubPikachuText:
@@ -96,9 +107,20 @@ PokemonFanClubSeelText:
 
 PokemonFanClubChairmanText:
 	text_asm
-	call PokemonFanClub_CheckBikeInBag
-	jr nz, .nothingleft
+	CheckEventHL EVENT_LEFT_FANCLUB_AFTER_BIKE_VOUCHER
+	jr z, .check_bike_voucher
+	ld hl, Text_59c1f
+	rst _PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr z, .select_mon_to_print
+	ld hl, Text_59c24
+	jr .gbpals_print_text
 
+.check_bike_voucher
+	CheckEvent EVENT_GOT_BIKE_VOUCHER
+	jr nz, .nothingleft
 	ld hl, .IntroText
 	rst _PrintText
 	call YesNoChoice
@@ -115,20 +137,57 @@ PokemonFanClubChairmanText:
 	ld hl, .BikeVoucherText
 	rst _PrintText
 	SetEvent EVENT_GOT_BIKE_VOUCHER
-	jr .done
+	rst TextScriptEnd
 .bag_full
 	ld hl, .BagFullText
-	rst _PrintText
-	jr .done
+	jr .gbpals_print_text
 .nothanks
 	ld hl, .NoStoryText
-	rst _PrintText
-	jr .done
+	jr .gbpals_print_text
 .nothingleft
 	ld hl, .FinalText
+.gbpals_print_text
+	push hl
+	call LoadGBPal
+	pop hl
 	rst _PrintText
-.done
 	rst TextScriptEnd
+
+.select_mon_to_print
+	call GBPalWhiteOutWithDelay3
+	call LoadCurrentMapView
+	call SaveScreenTilesToBuffer2
+	ld a, $ff
+	ld [wUpdateSpritesEnabled], a
+	ld a, $00
+	ld [wTempTilesetNumTiles], a
+	call DisplayPartyMenu
+	jp nc, .print
+	call GBPalWhiteOutWithDelay3
+	call RestoreScreenTilesAndReloadTilePatterns
+	ld hl, Text_59c24
+	jr .gbpals_print_text
+
+.print
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	ld hl, wd730
+	set 6, [hl]
+	callfar PrintFanClubPortrait
+	ld hl, wd730
+	res 6, [hl]
+	call GBPalWhiteOutWithDelay3
+	call ReloadTilesetTilePatterns
+	call RestoreScreenTilesAndReloadTilePatterns
+	call LoadScreenTilesFromBuffer2
+	call Delay3
+	call GBPalNormal
+	ld hl, Text_59c2e
+	ldh a, [hOaksAideResult]
+	and a
+	jr nz, .gbpals_print_text
+	ld hl, Text_59c29
+	jr .gbpals_print_text
 
 .IntroText:
 	text_far _PokemonFanClubChairmanIntroText
@@ -156,14 +215,22 @@ PokemonFanClubChairmanText:
 	text_far _PokemonFanClubBagFullText
 	text_end
 
+Text_59c1f:
+	text_far FanClubChairPrintText1
+	text_end
+
+Text_59c24:
+	text_far FanClubChairPrintText2
+	text_end
+
+Text_59c29:
+	text_far FanClubChairPrintText3
+	text_end
+
+Text_59c2e:
+	text_far FanClubChairPrintText4
+	text_end
+
 PokemonFanClubReceptionistText:
 	text_far _PokemonFanClubReceptionistText
-	text_end
-
-PokemonFanClubSign1Text:
-	text_far _PokemonFanClubSign1Text
-	text_end
-
-PokemonFanClubSign2Text:
-	text_far _PokemonFanClubSign2Text
 	text_end

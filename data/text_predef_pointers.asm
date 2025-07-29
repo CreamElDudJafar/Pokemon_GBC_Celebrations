@@ -15,6 +15,8 @@ TextPredefs::
 	add_tx_pre AerodactylFossilText                 ; 09
 	add_tx_pre Route15UpstairsBinocularsText        ; 0A
 	add_tx_pre KabutopsFossilText                   ; 0B
+	add_tx_pre FanClubPicture1Text
+	add_tx_pre FanClubPicture2Text
 	add_tx_pre GymStatueText1                       ; 0C
 	add_tx_pre GymStatueText2                       ; 0D
 	add_tx_pre BookcaseText                         ; 0E
