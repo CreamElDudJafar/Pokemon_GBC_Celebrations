@@ -24,6 +24,12 @@ MACRO jpfar
 	ret
 ENDM
 
+MACRO callbs
+	ld a, BANK(\1)
+	call BankswitchCommon
+	call \1
+ENDM
+
 MACRO homecall
 	ldh a, [hLoadedROMBank]
 	push af

@@ -211,7 +211,7 @@ ENDC
 ;	ld a, [wAudioROMBank]
 ;	cp b
 	jr z, .correct_audio_bank
-;	call StopAllMusic
+	call StopAllMusic
 	ld a, BANK(Music_RBYTitleScreen)
 ;	ld [wAudioROMBank], a
 ;	ld [wAudioSavedROMBank], a

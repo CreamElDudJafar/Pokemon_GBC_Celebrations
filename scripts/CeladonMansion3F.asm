@@ -1,5 +1,13 @@
 CeladonMansion3F_Script:
-	jp EnableAutoTextBoxDrawing
+	call EnableAutoTextBoxDrawing
+	ret
+
+CeladonMansion3_PokedexCount:
+	ld hl, wPokedexOwned
+	ld b, wPokedexOwnedEnd - wPokedexOwned
+	call CountSetBits
+	ld a, [wNumSetBits]
+	ret
 
 CeladonMansion3F_TextPointers:
 	def_text_pointers
@@ -13,29 +21,119 @@ CeladonMansion3F_TextPointers:
 	dw_const CeladonMansion3FDevRoomSignText,    TEXT_CELADONMANSION3F_DEV_ROOM_SIGN
 
 CeladonMansion3FProgrammerText:
+	text_asm
+	call CeladonMansion3_PokedexCount
+	cp NUM_POKEMON - 1 ; discount Mew
+	ld hl, CeladonMansion3Text_486f5
+	jr nc, .print
+	ld hl, CeladonMansion3Text_486f0
+.print
+	rst _PrintText
+	rst TextScriptEnd
+
+CeladonMansion3Text_486f0:
 	text_far _CeladonMansion3FProgrammerText
 	text_end
 
+CeladonMansion3Text_486f5:
+	text_far _CeladonMansion3FProgrammerText2
+	text_end
+
 CeladonMansion3FGraphicArtistText:
+	text_asm
+	call CeladonMansion3_PokedexCount
+	cp NUM_POKEMON - 1 ; discount Mew
+	jr nc, .completed
+	ld hl, .Text1
+	jr .print
+
+.completed
+	ld hl, .Text2
+	rst _PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .declined_print
+	call SaveScreenTilesToBuffer2
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	ld hl, wd730
+	set 6, [hl]
+	callfar PrintDiploma
+	ld hl, wd730
+	res 6, [hl]
+	call GBPalWhiteOutWithDelay3
+	call ReloadTilesetTilePatterns
+	call RestoreScreenTilesAndReloadTilePatterns
+	call LoadScreenTilesFromBuffer2
+	call Delay3
+	call GBPalNormal
+	ld hl, .Text5
+	ldh a, [hCanceledPrinting]
+	and a
+	jr nz, .print
+	ld hl, .Text4
+	jr .print
+
+.declined_print
+	ld hl, .Text3
+.print
+	rst _PrintText
+	rst TextScriptEnd
+
+.Text1:
 	text_far _CeladonMansion3FGraphicArtistText
 	text_end
 
+.Text2:
+	text_far _CeladonMansion3FGraphicArtistText2
+	text_end
+
+.Text3:
+	text_far _CeladonMansion3FGraphicArtistText3
+	text_end
+
+.Text4:
+	text_far _CeladonMansion3FGraphicArtistText4
+	text_end
+
+.Text5:
+	text_far _CeladonMansion3FGraphicArtistText5
+	text_end
+
 CeladonMansion3FWriterText:
+	text_asm
+	call CeladonMansion3_PokedexCount
+	cp NUM_POKEMON - 1 ; discount Mew
+	ld hl, .Text2
+	jr nc, .print
+	ld hl, .Text1
+.print
+	rst _PrintText
+	rst TextScriptEnd
+
+.Text1:
 	text_far _CeladonMansion3FWriterText
+	text_end
+
+.Text2:
+	text_far _CeladonMansion3FWriterText2
 	text_end
 
 CeladonMansion3FGameDesignerText:
 	text_asm
-	ld hl, wPokedexOwned
-	ld b, wPokedexOwnedEnd - wPokedexOwned
-	call CountSetBits
-	ld a, [wNumSetBits]
+	call CeladonMansion3_PokedexCount
 	cp NUM_POKEMON - 1 ; discount Mew
 	jr nc, .completed_dex
 	ld hl, .Text
 	jr .done
 .completed_dex
 	ld hl, .CompletedDexText
+	rst _PrintText
+	call Delay3
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, .UnlockedDiplomaPrinting
 .done
 	rst _PrintText
 	rst TextScriptEnd
@@ -52,6 +150,11 @@ CeladonMansion3FGameDesignerText:
 	ld a, TRUE
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	rst TextScriptEnd
+
+.UnlockedDiplomaPrinting
+	text_far _CeladonMansion3FGameDesignerCompletedDexText2
+	text_end
+
 
 CeladonMansion3FGameProgramPCText:
 	text_far _CeladonMansion3FGameProgramPCText

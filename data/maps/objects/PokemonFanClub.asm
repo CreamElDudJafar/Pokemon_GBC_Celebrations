@@ -14,8 +14,6 @@ PokemonFanClub_Object:
 	warp_event  3,  7, LAST_MAP, 2
 
 	def_bg_events
-	bg_event  1,  0, TEXT_POKEMONFANCLUB_SIGN_1
-	bg_event  6,  0, TEXT_POKEMONFANCLUB_SIGN_2
 
 	def_object_events
 	object_event  6,  3, SPRITE_FISHER, STAY, LEFT, TEXT_POKEMONFANCLUB_PIKACHU_FAN

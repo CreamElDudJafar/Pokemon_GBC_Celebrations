@@ -79,6 +79,9 @@ PlayDefaultMusicCommon::
 ;CompareMapMusicBankWithCurrentBank:
 ;	ret
 
+StopAllMusic::
+	ld a, SFX_STOP_ALL_MUSIC
+;	ld [wNewSoundID], a
 ; plays music or SFX specified by a. If value is $ff, music is stopped
 PlaySound::
 	push de

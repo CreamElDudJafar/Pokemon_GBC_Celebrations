@@ -2483,6 +2483,18 @@ rept $17
 	nop
 endr
 
+ReloadMapAfterPrinter::
+	ldh a, [hLoadedROMBank]
+	push af
+	ld a, [wCurMap]
+	call SwitchToMapRomBank
+	call LoadTileBlockMap
+	pop af
+	call BankswitchCommon
+FinishReloadingMap:
+	jpfar SetMapSpecificScriptFlagsOnMapReload
+	ret ; useless
+
 ; function to switch to the ROM bank that a map is stored in
 ; Input: a = map number
 SwitchToMapRomBank::

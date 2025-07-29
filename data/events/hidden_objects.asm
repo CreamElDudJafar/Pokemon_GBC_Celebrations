@@ -86,6 +86,7 @@ HiddenObjectMaps:
 	db ROUTE_4
 	db DAYCARE
 	db BLUES_HOUSE_2F
+	db POKEMON_FAN_CLUB
 	db -1 ; end
 
 HiddenObjectPointers:
@@ -177,6 +178,7 @@ HiddenObjectPointers:
 	dw Route4HiddenObjects
 	dw DaycareHiddenObjects
 	dw BluesHouse2FHiddenObjects
+	dw PokemonFanClubHiddenObjects
 
 MACRO hidden_object
 	db \2 ; y coord
@@ -678,4 +680,10 @@ DaycareHiddenObjects:
 BluesHouse2FHiddenObjects:
 	hidden_object  0,  1, SPRITE_FACING_UP, OpenBluesPC
 	hidden_object  3,  5, ANY_FACING, PrintBlueSNESText
+	hidden_object 4, 0, SPRITE_FACING_UP, OpenPokemonCenterPC
+	db -1 ; end
+
+PokemonFanClubHiddenObjects:
+	hidden_object  1,  0, SPRITE_FACING_UP, FanClubPicture1
+	hidden_object  6,  0, SPRITE_FACING_UP, FanClubPicture2
 	db -1 ; end

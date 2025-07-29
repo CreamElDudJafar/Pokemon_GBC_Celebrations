@@ -129,7 +129,7 @@ HandlePokedexSideMenu:
 	dec a
 	jr z, .choseArea
 	dec a
-	jr z, .choseCry
+	jr z, .chosePrint
 .choseQuit
 	ld b, 1
 .exitSideMenu
@@ -192,15 +192,21 @@ HandlePokedexSideMenu:
 	ld b, 0
 	jr .exitSideMenu
 
-.choseCry
-	ld a, [wd11e]
+.chosePrint
+	ldh a, [hTileAnimations]
 	push af
-	Call PlayCry
+	xor a
+	ldh [hTileAnimations], a
+	ld a, [wd11e]
+	ld [wcf91], a
+	callfar PrintPokedexEntry
+	xor a
+	ldh [hAutoBGTransferEnabled], a
+	call ClearScreen
 	pop af
-	ld [wd11e], a
-;	call GetCryData
-;	rst _PlaySound
-	jp .handleMenuInput
+	ldh [hTileAnimations], a
+	ld b, $3
+	jp .exitSideMenu
 
 ; handles the list of pokemon on the left of the pokedex screen
 ; sets carry flag if player presses A, unsets carry flag if player presses B
@@ -432,7 +438,7 @@ PokedexMenuItemsText:
 	next "STAT"
 	next "MOVE"
 	next "AREA"
-	next "CRY"
+	next "PRNT"
 	next "QUIT@"
 
 Pokedex_PlacePokemonList:
@@ -1014,7 +1020,7 @@ EvolveItemText:
 EvolveLVLText:
 	db "<LVL>@"
 
-Pokedex_PrepareDexEntryForPrinting: ; not used anympre
+Pokedex_PrepareDexEntryForPrinting:
 	hlcoord 0, 0
 	ld de, SCREEN_WIDTH
 	lb bc, $66, $d
