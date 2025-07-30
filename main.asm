@@ -80,8 +80,6 @@ INCLUDE "engine/events/hidden_objects/book_or_sculpture.asm"
 INCLUDE "engine/events/hidden_objects/elevator.asm"
 INCLUDE "engine/events/hidden_objects/town_map.asm"
 INCLUDE "engine/events/hidden_objects/pokemon_stuff.asm"
-INCLUDE "text/tmhm_names.asm"
-tmhmNamesEnd:
 
 INCLUDE "color/update_hp_bar.asm"
 
@@ -413,6 +411,7 @@ INCLUDE "engine/menus/multi_choice_menu.asm"
 INCLUDE "engine/menus/change_box_menu.asm"
 INCLUDE "engine/items/super_rod.asm"
 INCLUDE "engine/gfx/animated_tiles_code.asm"
+INCLUDE "engine/battle/just_slot_machine_stuff.asm" ; free some space for bank1E
 
 
 SECTION "Evo Moves", ROMX
