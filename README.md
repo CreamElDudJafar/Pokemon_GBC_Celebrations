@@ -50,6 +50,7 @@ Some FEATURES:
 - Deletable HM's - Sort Items in BAG 
 - OAK Battle When Pokedex Is Complete
 - Message when PC is full
+- Can click A Button on Snorlax to use Poke Flute
 - Check IV/DV - hold start/select and press STATS - EXP BAR - Caught Icon in battle 
 - Moon Stone can be bought in Celadon Mart- Moon Stone can be bought in Celadon Mart
 - Rockets Received a buff in levels and parties
