@@ -1562,6 +1562,7 @@ HasMonFainted:
 	ld a, [wFirstMonsNotOutYet]
 	and a
 	jr nz, .done
+	call EmptyPartyMenuRedraw
 	ld hl, NoWillText
 	rst _PrintText
 .done
@@ -2544,6 +2545,7 @@ PartyMenuOrRockOrRun:
 	cp d ; check if the mon to switch to is already out
 	jr nz, .notAlreadyOut
 ; mon is already out
+	call EmptyPartyMenuRedraw
 	ld hl, AlreadyOutText
 	rst _PrintText
 	jp .partyMonDeselected
@@ -7000,6 +7002,18 @@ WantToSurrenderFromTrainerBattle:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
+	ret
+
+; PureRGBnote: FIXED: function to redraw the party menu without any bottom box text, used to avoid minor graphical glitches
+EmptyPartyMenuRedraw::
+	hlcoord 11, 11
+	lb bc, 1, 9
+	call ClearScreenArea
+	ld a, EMPTY_PARTY_MENU ; new party menu text option - it just displays no text in the bottom box since we'll be writing there immediately
+	ld [wPartyMenuTypeOrMessageID], a
+	call RedrawPartyMenu 
+	xor a ; NORMAL_PARTY_MENU
+	ld [wPartyMenuTypeOrMessageID], a
 	ret
 
 WannaSurrenderText:
