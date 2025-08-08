@@ -680,7 +680,6 @@ DaycareHiddenObjects:
 BluesHouse2FHiddenObjects:
 	hidden_object  0,  1, SPRITE_FACING_UP, OpenBluesPC
 	hidden_object  3,  5, ANY_FACING, PrintBlueSNESText
-	hidden_object 4, 0, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
 PokemonFanClubHiddenObjects:

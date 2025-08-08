@@ -52,13 +52,13 @@ PlaceString::
 PlaceNextChar::
 	ld a, [de]
 	cp "@"
-	jr nz, .NotTerminator
+	jr nz, NotTerminator
 	ld b, h
 	ld c, l
 	pop hl
 	ret
 
-.NotTerminator
+NotTerminator::
 	cp "<LF>"
 	jr z, .line_feed
 	cp "<NEXT>"
@@ -257,6 +257,15 @@ Paragraph::
 	jp NextChar
 
 PageChar::
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;adding GB_PRINTER
+	ld a, [hUILayoutFlags]
+	bit 3, a
+	jr z, .PageChar1
+	ld a, "<NEXT>"
+	jp NotTerminator
+.PageChar1
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	push de
 	ld a, "▼"
 	ldcoord_a 18, 16
