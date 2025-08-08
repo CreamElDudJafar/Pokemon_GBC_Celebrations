@@ -68,6 +68,8 @@ VBlank::
 	and a
 	call z, ReadJoypad
 
+	call SerialFunction
+
 	ld a, [wVBlankSavedROMBank]
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
