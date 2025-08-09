@@ -18,7 +18,6 @@ INCLUDE "engine/events/pick_up_item.asm"
 INCLUDE "engine/overworld/movement.asm"
 INCLUDE "engine/link/cable_club.asm"
 INCLUDE "engine/menus/main_menu.asm"
-INCLUDE "engine/menus/option_sound_test.asm"
 INCLUDE "engine/movie/oak_speech/oak_speech.asm"
 INCLUDE "engine/overworld/special_warps.asm"
 INCLUDE "engine/debug/debug_party.asm"
@@ -423,6 +422,8 @@ INCLUDE "engine/items/super_rod.asm"
 INCLUDE "engine/gfx/animated_tiles_code.asm"
 INCLUDE "engine/overworld/specific_script_flags.asm"
 INCLUDE "engine/battle/just_slot_machine_stuff.asm" ; free space for bank1E
+INCLUDE "engine/menus/options.asm"
+INCLUDE "engine/menus/option_sound_test.asm"
 
 
 SECTION "Evo Moves", ROMX
