@@ -483,16 +483,23 @@ DisplayOptionMenu:
 .optionMenuLoop
 	call JoypadLowSensitivity
 	ldh a, [hJoy5]
+	ld b, a
 	and START | B_BUTTON
-	ret nz ; exit option menu
+	jr nz, .exitOptionMenu
+	bit BIT_SELECT, b ; Select button pressed
+	jp nz, DisplaySoundTestMenu
 	call OptionsControl
 	jr c, .dpadDelay
 	call GetOptionPointer
-	ret c  ; exit option menu
+	jr c, .exitOptionMenu
 .dpadDelay
 	call OptionsMenu_UpdateCursorPosition
-	call Delay3
+	rst _DelayFrame
+	rst _DelayFrame
+	rst _DelayFrame
 	jr .optionMenuLoop
+.exitOptionMenu
+	ret
 
 
 OptionsMenu_UpdateCursorPosition:
@@ -520,7 +527,7 @@ AllOptionsText:
 	next "PRINT:@"
 
 OptionMenuCancelText:
-	db "CANCEL@"
+	db "CANCEL     SELECT@"
 
 GetOptionPointer:
 	ld a, [wOptionsCursorLocation]

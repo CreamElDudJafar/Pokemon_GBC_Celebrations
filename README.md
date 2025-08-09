@@ -21,6 +21,7 @@ Some FEATURES:
 - All Party Menu Icons now color as well... Change in Includes.asm for ALT Color
 - GREEN: Features restored, SGB Border, Flowers, Overworld and more!
 - Now you can Play Gen1 as a girl!
+- Sound Test in Options Menu (Press Select)
 - All 151 Pokémons can be caught or evolved without trading
 - Mew Under the Truck event restored
 - NPC Tradeback Guy in CELADON MART 1F (evolve trade evolutions/ or evolve them level up)

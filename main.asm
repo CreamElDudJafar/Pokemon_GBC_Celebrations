@@ -18,6 +18,7 @@ INCLUDE "engine/events/pick_up_item.asm"
 INCLUDE "engine/overworld/movement.asm"
 INCLUDE "engine/link/cable_club.asm"
 INCLUDE "engine/menus/main_menu.asm"
+INCLUDE "engine/menus/option_sound_test.asm"
 INCLUDE "engine/movie/oak_speech/oak_speech.asm"
 INCLUDE "engine/overworld/special_warps.asm"
 INCLUDE "engine/debug/debug_party.asm"
@@ -33,7 +34,6 @@ INCLUDE "engine/menus/display_text_id_init.asm"
 INCLUDE "engine/menus/draw_start_menu.asm"
 INCLUDE "engine/link/cable_club_npc.asm"
 INCLUDE "engine/menus/text_box.asm"
-INCLUDE "engine/battle/move_effects/drain_hp.asm"
 INCLUDE "engine/menus/players_pc.asm"
 INCLUDE "engine/pokemon/remove_mon.asm"
 INCLUDE "engine/events/display_pokedex.asm"
@@ -215,6 +215,7 @@ INCLUDE "engine/battle/move_effects/heal.asm"
 INCLUDE "engine/battle/move_effects/transform.asm" 
 INCLUDE "engine/battle/move_effects/reflect_light_screen.asm" 
 INCLUDE "data/pokemon/copy_base_stats.asm"
+INCLUDE "engine/battle/move_effects/drain_hp.asm" ; Moved from bank 1
 
 INCLUDE "color/draw_hud_pokeball_gfx.asm"
 
@@ -422,8 +423,6 @@ INCLUDE "engine/items/super_rod.asm"
 INCLUDE "engine/gfx/animated_tiles_code.asm"
 INCLUDE "engine/overworld/specific_script_flags.asm"
 INCLUDE "engine/battle/just_slot_machine_stuff.asm" ; free space for bank1E
-
-
 
 
 SECTION "Evo Moves", ROMX
