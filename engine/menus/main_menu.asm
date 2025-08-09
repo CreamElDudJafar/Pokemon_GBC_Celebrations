@@ -492,7 +492,8 @@ DisplayOptionMenu:
 	ldh a, [hJoy5]
 	ld b, a
 	and A_BUTTON | B_BUTTON | START | D_RIGHT | D_LEFT | D_UP | D_DOWN ; any key besides select pressed?
-	jr z, .getJoypadStateLoop
+	jp z, .checkSelectPressed
+;	jr z, .getJoypadStateLoop
 	bit BIT_B_BUTTON, b
 	jr nz, .exitMenu
 	bit BIT_START, b
@@ -636,6 +637,14 @@ DisplayOptionMenu:
 .updateTextSpeedXCoord
 	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
 	jp .eraseOldMenuCursor
+.checkSelectPressed
+	bit BIT_SELECT, b
+	jp z, .getJoypadStateLoop
+	ld a, SFX_PRESS_AB
+	call PlaySound
+	call ClearScreen
+	callfar DisplaySoundTestMenu
+	jp DisplayOptionMenu
 
 TextSpeedOptionText:
 	db   "TEXT SPEED:"
@@ -654,7 +663,7 @@ MusicStyleOptionText:
 	next " GEN1  GEN2  MUTE@"
 
 OptionMenuCancelText:
-	db "CANCEL@"
+	db "CANCEL     SELECT@"
 
 UpdateMusic:
 	ld a, [wLastMusicSoundID]		; updates the music real time
