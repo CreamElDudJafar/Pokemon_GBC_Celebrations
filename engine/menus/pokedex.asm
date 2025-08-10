@@ -15,12 +15,16 @@ ShowPokedexMenu:
 	ld b, SET_PAL_GENERIC
 	call RunPaletteCommand
 	callfar LoadPokedexTilePatterns
+.setUpPals
+	ld b, SET_PAL_GENERIC
+	call RunPaletteCommand
+;       callfar LoadPokedexTilePatterns
 	;;;;;;;;;;; PureRGBnote: ADDED: load these new button prompt graphics into VRAM
 	ld de, PokedexPromptGraphics
 	ld hl, vChars1 tile $40
 	lb bc, BANK(PokedexPromptGraphics), (PokedexPromptGraphicsEnd - PokedexPromptGraphics) / $10
 	call CopyVideoData
-;;;;;;;;;;
+	;;;;;;;;;;
 .doPokemonListMenu
 	ld hl, wTopMenuItemY
 	ld a, 3
@@ -61,6 +65,8 @@ ShowPokedexMenu:
 	jr z, .exitPokedex ; if the player chose Quit
 	dec b
 	jr z, .doPokemonListMenu ; if pokemon not seen or player pressed B button
+	dec b
+	jr z, .setUpPals
 	jp .setUpGraphics ; if pokemon data or area was shown
 .selectPressed
 	pop af
