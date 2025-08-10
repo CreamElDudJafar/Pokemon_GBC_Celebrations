@@ -40,7 +40,7 @@ PrintPokedexEntry:
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
 	ld c, $c
-	call DelayFrames
+	rst _DelayFrames
 	call SaveScreenTilesToBuffer1
 	xor a
 	ldh [hAutoBGTransferEnabled], a
@@ -80,7 +80,7 @@ PrintPokedexEntry:
 	call PrinterTransmissionJumptable
 	call GBPrinter_CheckForErrors
 	call GBPrinter_UpdateStatusMessage
-	call DelayFrame
+	rst _DelayFrame
 	jr .print_loop
 
 .completed
@@ -141,7 +141,7 @@ PrintSurfingMinigameHighScore::
 	call PrinterTransmissionJumptable
 	call GBPrinter_CheckForErrors
 	call GBPrinter_UpdateStatusMessage
-	call DelayFrame
+	rst _DelayFrame
 	jr .loop
 
 .quit
@@ -178,7 +178,7 @@ PrintDiploma::
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
 	ld c, $c
-	call DelayFrames
+	rst _DelayFrames
 	call SaveScreenTilesToBuffer1
 	xor a
 	ldh [hAutoBGTransferEnabled], a
@@ -214,7 +214,7 @@ Func_e8d11:
 	call PrinterTransmissionJumptable
 	call GBPrinter_CheckForErrors
 	call GBPrinter_UpdateStatusMessage
-	call DelayFrame
+	rst _DelayFrame
 	jr .asm_e8d14
 
 .asm_e8d31
@@ -256,7 +256,7 @@ PrintPCBox::
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
 	ld c, 12
-	call DelayFrames
+	rst _DelayFrames
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	call PrintPCBox_DrawPage2
@@ -271,7 +271,7 @@ PrintPCBox::
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
 	ld c, 12
-	call DelayFrames
+	rst _DelayFrames
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	call PrintPCBox_DrawPage3
@@ -286,7 +286,7 @@ PrintPCBox::
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
 	ld c, 12
-	call DelayFrames
+	rst _DelayFrames
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	call PrintPCBox_DrawPage4
@@ -312,7 +312,7 @@ PrintPCBox::
 
 Func_e8df4:
 	ld hl, String_e8e1f
-	call PrintText
+	rst _PrintText
 	ret
 
 Func_e8dfb:
@@ -327,7 +327,7 @@ Func_e8dfb:
 	call PrinterTransmissionJumptable
 	call GBPrinter_CheckForErrors
 	call GBPrinter_UpdateStatusMessage
-	call DelayFrame
+	rst _DelayFrame
 	jr .asm_e8dfe
 
 .asm_e8e1b
@@ -368,7 +368,7 @@ PrintFanClubPortrait::
 	call PrinterTransmissionJumptable
 	call GBPrinter_CheckForErrors
 	call GBPrinter_UpdateStatusMessage
-	call DelayFrame
+	rst _DelayFrame
 	jr .asm_e8e45
 
 .asm_e8e62
@@ -409,7 +409,7 @@ PrinterDebug:
 	jr nz, .quit
 	call PrinterDebug_DoFunction
 	call PrinterDebug_ConvertStatusFlagsToTiles
-	call DelayFrame
+	rst _DelayFrame
 	jr .loop
 
 .quit
@@ -467,14 +467,14 @@ Printer_CopyTileMapToPrinterTileBuffer:
 	hlcoord 0, 0
 	decoord 0, 0, wPrinterTileBuffer
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	call CopyData
+	rst _CopyData
 	ret
 
 Printer_CopyTileMapFromPrinterTileBuffer:
 	hlcoord 0, 0, wPrinterTileBuffer
 	decoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	call CopyData
+	rst _CopyData
 	ret
 
 Printer_ResetJoypadHRAM:
