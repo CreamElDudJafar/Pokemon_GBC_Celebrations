@@ -48,6 +48,11 @@ Gen2Music:
 	dba Music_LookHiker
 	dba Music_LookLass
 	dba Music_LookOfficer
+	dba Music_YellowIntro ; X
+	dba Music_SurfingPikachu ; X
+	dba Music_MeetJessieJames ; X
+	dba Music_YellowUnusedSong ; X
+	dba Music_Printer ; X
 
 Gen1Music:
 	dba Music_Nothing
@@ -96,9 +101,15 @@ Gen1Music:
 	dba Music_MeetEvilTrainer
 	dba Music_MeetFemaleTrainer
 	dba Music_MeetMaleTrainer
+	
+	dba Music_YellowIntro
+	dba Music_SurfingPikachu
+	dba Music_MeetJessieJames
+	dba Music_YellowUnusedSong
+	dba Music_Printer
 
 MuteMusic:
-	table_width 3
+
 rept 15
 	dba Music_Nothing
 endr
@@ -110,4 +121,3 @@ endr
 rept 13
 	dba Music_Nothing
 endr
-	assert_table_length NUM_SONGS

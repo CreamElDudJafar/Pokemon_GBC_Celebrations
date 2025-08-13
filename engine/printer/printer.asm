@@ -493,7 +493,7 @@ Printer_PlayPrinterMusic:
 ;	ld [wAudioSavedROMBank], a
 ;	ld a, 0 ; BANK(Music_MuseumGuy)
 ;	ld [wAudioROMBank], a
-	ld a, MUSIC_MUSEUM_GUY
+	ld a, MUSIC_GB_PRINTER
 ;	ld [wNewSoundID], a
 	call PlayMusic
 	ret
