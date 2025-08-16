@@ -53,6 +53,7 @@ Gen2Music:
 	dba Music_MeetJessieJames ; X
 	dba Music_YellowUnusedSong ; X
 	dba Music_Printer ; X
+	dba Music_UnusedSong ; X
 
 Gen1Music:
 	dba Music_Nothing
@@ -107,6 +108,7 @@ Gen1Music:
 	dba Music_MeetJessieJames
 	dba Music_YellowUnusedSong
 	dba Music_Printer
+	dba Music_UnusedSong
 
 MuteMusic:
 
