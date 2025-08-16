@@ -408,6 +408,7 @@ INCLUDE "engine/printer/serial.asm"
 INCLUDE "engine/printer/printer.asm"
 INCLUDE "engine/events/diploma2.asm"
 INCLUDE "engine/printer/printer2.asm"
+INCLUDE "engine/printer/printer_pc_menu.asm"
 
 
 SECTION "Engine Spillover", ROMX
