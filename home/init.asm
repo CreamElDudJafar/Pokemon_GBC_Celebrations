@@ -95,6 +95,14 @@ DEF rLCDC_DEFAULT EQU %11100011
 
 	ei
 
+
+	call CheckForPlayerNameInSRAM
+	jr nc, .noSave
+	predef LoadSAV
+	xor a
+	ldh [hTileAnimations], a
+.noSave
+
 	predef LoadSGB
 
 ;	ld a, 0 ; BANK(SFX_Shooting_Star)
@@ -118,11 +126,6 @@ ENDC
 	call ClearSprites
 	ld a, rLCDC_DEFAULT
 	ldh [rLCDC], a
-
-	call CheckForPlayerNameInSRAM
-	jr nc, .noSave
-	predef LoadSAV
-.noSave
 
 	jp PrepareTitleScreen
 
