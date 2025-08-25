@@ -7,7 +7,7 @@ Route1_Script:
 
 Route1_ScriptPointers:
 	def_script_pointers
-	dw_const Route1Script0,              			SCRIPT_ROUTE1_DEFAULT
+	dw_const Route1Script0,              		SCRIPT_ROUTE1_DEFAULT
 	dw_const OakPostBattleScript,                   SCRIPT_ROUTE1_POST_BATTLE
 
 Route1_TextPointers:
