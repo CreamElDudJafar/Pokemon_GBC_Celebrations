@@ -141,7 +141,7 @@ GameCornerClerk1Text:
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_LEFT
 	jr nz, .normal
-	CheckEvent EVENT_BEAT_ERIKA
+	CheckEvent EVENT_BEAT_KOGA
 	jr nz, .secretbargain
 .normal
 	ld hl, .DoYouNeedSomeGameCoins

@@ -361,7 +361,7 @@ CableClubOptionsText:
 VersionText:
 	db " "
 	db "Version"
-	db " 2.5"
+	db " 2.6"
 	db "@"
 
 DisplayContinueGameInfo:
