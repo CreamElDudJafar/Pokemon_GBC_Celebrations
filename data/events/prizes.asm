@@ -2,6 +2,8 @@ PrizeDifferentMenuPtrs:
 	dw PrizeMenuMon1Entries, PrizeMenuMon1Cost
 	dw PrizeMenuMon2Entries, PrizeMenuMon2Cost
 	dw PrizeMenuTMsEntries,  PrizeMenuTMsCost
+	dw PrizeMenuMon3Entries, PrizeMenuMon3Cost
+	dw PrizeMenuMon4Entries, PrizeMenuMon4Cost
 
 NoThanksText:
 	db "NO THANKS@"
@@ -64,4 +66,28 @@ PrizeMenuTMsCost:
 	bcd2 1100
 	bcd2 1200
 	bcd2 1400
+	db "@"
+
+PrizeMenuMon3Entries:
+	db MAGMAR
+	db ELECTABUZZ
+	db TAUROS
+	db "@"
+
+PrizeMenuMon3Cost:
+	bcd2 3000
+	bcd2 3000
+	bcd2 3500
+	db "@"
+
+PrizeMenuMon4Entries:
+	db MR_MIME
+	db JYNX
+	db CHANSEY
+	db "@"
+
+PrizeMenuMon4Cost:
+	bcd2 3000
+	bcd2 3000
+	bcd2 3500
 	db "@"
