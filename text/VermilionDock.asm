@@ -1,16 +1,12 @@
-;_VermilionDockUnusedText::
-;    text_start
-;    done
-
-_VermilionDockText1::
+_VermilionDockUnderTruckText::
     text "Hey! Under this"
     next "truck..."    
     prompt
 
-_VermilionDockText2::
+_VermilionDockNothingText::
     text "There's nothing!"
     done
 
-_VermilionDockText3::
+_VermilionDockMewText::
     text "There's a Mew!"
     done
