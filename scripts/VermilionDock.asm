@@ -4,7 +4,7 @@ VermilionDock_Script:
 	ld hl, VermilionDockScriptPointers
 	jp CallFunctionInTable
 
-VermilionDocksScript0:
+VermilionDockScript0:
 	CheckEventHL EVENT_STARTED_WALKING_OUT_OF_DOCK
 	jr nz, .walking_out_of_dock
 	CheckEventReuseHL EVENT_GOT_HM01
@@ -41,7 +41,17 @@ VermilionDocksScript0:
 	SetEventReuseHL EVENT_WALKED_OUT_OF_DOCK
 	ret
 
+VermilionDockScriptPointers:
+	def_script_pointers
+	dw_const  VermilionDockScript0,		           SCRIPT_VERMILIONDOCK_DEFAULT
+	dw_const  DisplayEnemyTrainerTextAndStartBattle,   SCRIPT_VERMILIONDOCK_START_BATTLE
+	dw_const  EndTrainerBattle,                        SCRIPT_VERMILIONDOCK_END_BATTLE
+	dw_const  MewPostBattleScript,                     SCRIPT_VERMILIONDOCK_POST_BATTLE
+
 VermilionDockSSAnneLeavesScript:
+	ld a, [wObtainedBadges]
+	bit BIT_MARSHBADGE, a
+	ret nz
 	SetEventForceReuseHL EVENT_SS_ANNE_LEFT
 	ld a, SFX_STOP_ALL_MUSIC
 	ld [wJoyIgnore], a
@@ -214,38 +224,15 @@ endr
 
 VermilionDock_TextPointers:
 	def_text_pointers
-;	dw_const VermilionDockUnusedText, TEXT_VERMILIONDOCK_UNUSED
-	dw_const VermilionTruck1, 	TEXT_VERMILIONDOCK_MEW
+	dw_const VermilionDockTruckText, 	TEXT_VERMILIONDOCK_MEW
 
-;VermilionDockUnusedText:
-;	text_far _VermilionDockUnusedText
-;	text_end
-	
-VermilionDockText1:
-	text_far _VermilionDockText1
-	db "@"
-
-VermilionDockText2:
-	text_far _VermilionDockText2
-	db "@"
-
-VermilionDockText3:
-	text_far _VermilionDockText3
-	db "@"
-
-VermilionDockScriptPointers:
-	dw VermilionDocksScript0
-	dw DisplayEnemyTrainerTextAndStartBattle
-	dw EndTrainerBattle
-	dw VermilionDocksScript3
-
-VermilionTruck1:
+VermilionDockTruckText:
 	text_asm
-	ld hl, VermilionDockText1
+	ld hl, VermilionDockUnderTruckText
 	rst _PrintText	
 	CheckEvent EVENT_BEAT_MEW
 	jr nz, .alreadyBattled
-	ld hl, VermilionDockText3
+	ld hl, VermilionDockMewText
 	rst _PrintText
 	ld a, MEW
 	ld [wCurOpponent], a
@@ -257,12 +244,24 @@ VermilionTruck1:
 	ld [wSSAnne2FRoomsCurScript], a
 	rst TextScriptEnd
 .alreadyBattled
-	ld hl, VermilionDockText2
+	ld hl, VermilionDockNothingText
 	rst _PrintText
 	call ResetToScript0
 	rst TextScriptEnd
 
-VermilionDocksScript3:
+VermilionDockUnderTruckText:
+	text_far _VermilionDockUnderTruckText
+	text_end
+
+VermilionDockNothingText:
+	text_far _VermilionDockNothingText
+	text_end
+
+VermilionDockMewText:
+	text_far _VermilionDockMewText
+	text_end
+
+MewPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff ; lost battle
 	jp z, ResetToScript0
