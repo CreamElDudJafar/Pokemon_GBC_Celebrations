@@ -376,8 +376,11 @@ StartMenu_Item::
 	cp a, 1
 	jp z, .infoItem
 	ld a, [wcf91]
+	cp SURFBOARD
+	jr z, .notSurfboard
 	cp BICYCLE
 	jr nz, .notBicycle
+.notSurfboard
 	ld a, [wd732]
 	bit 5, a
 	jr z, .useItem_closeMenu
