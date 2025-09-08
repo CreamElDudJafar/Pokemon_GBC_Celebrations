@@ -67,6 +67,7 @@ Some FEATURES:
 - Move Decription when learning moves
 - SS Ticket, Lift Key, Card Key, Secret Key all disappear after use
 - Buy more coins at once from shady clerk
+- Celadon Hotel has Pokemon Observer: Will give Coins based on if player owns Pokemon and in 1st Party slot. (Resets Pokemon if you exit Hotel or Save and Power Off/On
 - Trainers have unique movesets
 - Mew Glitch/Missingo Glitch Restored
 - Lapras Sprites swims now in Fuchsia City
@@ -78,7 +79,7 @@ CREDITS: IF ANYONE IS MISSED PLEASE LET ME KNOW. IT’S HARD TO KEEP TRACK OF AL
 - Pret and Pret Discord. Tons of nice people, advice and are the reason I started this project.
 - Dannye- For his amazing work on Pret with the disassembly. Used his EXP Bar, and a lot of other features he created. Also gave a lot of insight and explained things at a slow pace. He created so many features I can’t keep track. But I will gladly add in any and all for you!!! Thank You for the help!
 - Vortiene- For sprites, updates/code from PURERGB, Bag Space increase, Shorter elevator time, and explanation on confusing parts of code. Thank You for feeling like your available 24/7.
-- JoJoBear13- for his using his Trainer AI code along with Vortienes, Pokeyellows backport of the audio and a lot of QOL features from Shin-PokeRed. The female sprite is based on his original girl character. We kept it.
+- JoJoBear13- for his using his Trainer AI code along with Vortienes, Pokeyellows backport of the audio, Coin Observer, and a lot of QOL features from Shin-PokeRed. The female sprite is based on his original girl character. We kept it.
 - RainbowMetalPigeon- For the Port PC code, and again for the help and patience with building this game. TRY HIS EXTREME YELLOW.
 -CRZ-Shadows- and Yellow Legacy Team: A lot of QOL changes came from ideas or code used in there game. See their Github for all there amazing changes.
 - JustRegularLuna/Mateo: A lot of sprites for Pokemon and Pokeball sprites used from her amazing game RED++. Move Description code and others

@@ -424,7 +424,8 @@ INCLUDE "engine/overworld/specific_script_flags.asm"
 INCLUDE "engine/battle/just_slot_machine_stuff.asm" ; free space for bank1E
 INCLUDE "engine/menus/options.asm"
 INCLUDE "engine/menus/option_sound_test.asm"
-
+INCLUDE "engine/custom_function/coin_function.asm"
+INCLUDE "engine/custom_function/monlist.asm"
 
 SECTION "Evo Moves", ROMX
 
