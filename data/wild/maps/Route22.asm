@@ -9,8 +9,8 @@ IF (DEF(_RED) || DEF(_GREEN))
 	db  5, DODUO
 	db  3, SPEAROW
 	db  5, SPEAROW
-	db  3, NIDORAN_F
 	db  4, NIDORAN_F
+	db  4, POLIWAG
 ENDC
 IF DEF(_BLUE)
 	db  3, NIDORAN_F
@@ -20,8 +20,8 @@ IF DEF(_BLUE)
 	db  5, DODUO
 	db  3, SPEAROW
 	db  5, SPEAROW
-	db  3, NIDORAN_M
 	db  4, NIDORAN_M
+	db  4, POLIWAG
 ENDC
 	end_grass_wildmons
 
