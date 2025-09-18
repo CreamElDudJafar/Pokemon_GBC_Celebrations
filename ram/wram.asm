@@ -2210,7 +2210,8 @@ wFossilItem:: db
 ; mon that will result from the item
 wFossilMon:: db
 
-	ds 2
+wPokedexPlace1:: db
+wPokedexPlace2:: db
 
 ; trainer classes start at OPP_ID_OFFSET
 wEnemyMonOrTrainerClass:: db
