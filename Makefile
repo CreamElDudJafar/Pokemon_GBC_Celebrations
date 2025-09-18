@@ -176,6 +176,8 @@ gfx/intro/gengar.2bpp: tools/gfx += --remove-duplicates --preserve=0x19,0x76
 
 gfx/credits/the_end.2bpp: tools/gfx += --interleave --png=$<
 
+gfx/diploma/diploma.2bpp: tools/gfx += --trim-whitespace
+
 gfx/slots/red_slots_1.2bpp: tools/gfx += --trim-whitespace
 gfx/slots/blue_slots_1.2bpp: tools/gfx += --trim-whitespace
 gfx/slots/green_slots_1.2bpp: tools/gfx += --trim-whitespace

@@ -72,7 +72,7 @@ PrintPokedexEntry:
 	call Printer_ResetJoypadHRAM
 .print_loop
 	call JoypadLowSensitivity
-	call Printer_CheckPressingB
+	call Printer_StopIfPressB
 	jr c, .pressed_b
 	ld a, [wPrinterSendState]
 	bit 7, a
@@ -115,11 +115,11 @@ Printer_PrepareDexEntryForPrinting:
 	callfar Pokedex_PrepareDexEntryForPrinting
 	ret
 
-PrintSurfingMinigameHighScore::
+PrintDiploma::
 	xor a
 	ldh [hCanceledPrinting], a
 	call Printer_PlayPrinterMusic
-	call Printer_PrepareSurfingMinigameHighScoreTileMap
+	call _DisplayDiplomaTop
 	ldh a, [rIE]
 	push af
 	xor a
@@ -127,23 +127,26 @@ PrintSurfingMinigameHighScore::
 	ld a, $9
 	ldh [rIE], a
 	call StartTransmission_Send9Rows
-	ld a, $13
+	ld a, $10
 	ld [wcae2], a
 	call Printer_CopyTileMapToPrinterTileBuffer
-	call Printer_ResetJoypadHRAM
-.loop
-	call JoypadLowSensitivity
-	call Printer_CheckPressingB
+	call PrintDiplomaPage
 	jr c, .quit
-	ld a, [wPrinterSendState]
-	bit 7, a
-	jr nz, .quit
-	call PrinterTransmissionJumptable
-	call GBPrinter_CheckForErrors
-	call GBPrinter_UpdateStatusMessage
-	rst _DelayFrame
-	jr .loop
-
+	xor a
+	ld [wPrinterConnectionOpen], a
+	ld [wPrinterOpcode], a
+	ld c, $c
+	rst _DelayFrames
+	call SaveScreenTilesToBuffer1
+	xor a
+	ldh [hAutoBGTransferEnabled], a
+	call DisplayDiplomaBottom
+	call StartTransmission_Send9Rows
+	ld a, $3
+	ld [wcae2], a
+	call Printer_CopyTileMapToPrinterTileBuffer
+	call LoadScreenTilesFromBuffer1
+	call PrintDiplomaPage
 .quit
 	xor a
 	ld [wPrinterConnectionOpen], a
@@ -157,78 +160,33 @@ PrintSurfingMinigameHighScore::
 	call Printer_PlayMapMusic
 	ret
 
-PrintDiploma::
-	xor a
-	ldh [hCanceledPrinting], a
-	call Printer_PlayPrinterMusic
-	call DisplayDiplomaPrint
-	ldh a, [rIE]
-	push af
-	xor a
-	ldh [rIF], a
-	ld a, $9
-	ldh [rIE], a
-	call StartTransmission_Send9Rows
-	ld a, $10
-	ld [wcae2], a
-	call Printer_CopyTileMapToPrinterTileBuffer
-	call Func_e8d11
-	jr c, .asm_e8cfa
-	xor a
-	ld [wPrinterConnectionOpen], a
-	ld [wPrinterOpcode], a
-	ld c, $c
-	rst _DelayFrames
-	call SaveScreenTilesToBuffer1
-	xor a
-	ldh [hAutoBGTransferEnabled], a
-	call Func_e9ad3
-	call StartTransmission_Send9Rows
-	ld a, $3
-	ld [wcae2], a
-	call Printer_CopyTileMapToPrinterTileBuffer
-	call LoadScreenTilesFromBuffer1
-	call Func_e8d11
-.asm_e8cfa
-	xor a
-	ld [wPrinterConnectionOpen], a
-	ld [wPrinterOpcode], a
-	call Printer_CopyTileMapFromPrinterTileBuffer
-	xor a
-	ldh [rIF], a
-	pop af
-	ldh [rIE], a
-	call ReloadMapAfterPrinter
-	call Printer_PlayMapMusic
-	ret
-
-Func_e8d11:
+PrintDiplomaPage:
 	call Printer_ResetJoypadHRAM
-.asm_e8d14
+.print_loop
 	call JoypadLowSensitivity
-	call Printer_CheckPressingB
-	jr c, .asm_e8d33
+	call Printer_StopIfPressB
+	jr c, .pressed_b
 	ld a, [wPrinterSendState]
 	bit 7, a
-	jr nz, .asm_e8d31
+	jr nz, .completed
 	call PrinterTransmissionJumptable
 	call GBPrinter_CheckForErrors
 	call GBPrinter_UpdateStatusMessage
 	rst _DelayFrame
-	jr .asm_e8d14
+	jr .print_loop
 
-.asm_e8d31
+.completed
 	and a
 	ret
 
-.asm_e8d33
+.pressed_b
 	scf
 	ret
 
 PrintPCBox::
 	ld a, [wBoxDataStart]
 	and a
-	jp z, Func_e8df4
+	jp z, .emptyBox
 	ld a, [wUpdateSpritesEnabled]
 	push af
 	xor a
@@ -250,8 +208,8 @@ PrintPCBox::
 	ld [wcae2], a
 	call Printer_CopyTileMapToPrinterTileBuffer
 	call LoadScreenTilesFromBuffer1
-	call Func_e8dfb
-	jr c, .asm_e8ddc
+	call PrintPCBoxPage
+	jr c, .quit
 	xor a
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
@@ -265,8 +223,8 @@ PrintPCBox::
 	ld [wcae2], a
 	call Printer_CopyTileMapToPrinterTileBuffer
 	call LoadScreenTilesFromBuffer1
-	call Func_e8dfb
-	jr c, .asm_e8ddc
+	call PrintPCBoxPage
+	jr c, .quit
 	xor a
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
@@ -280,8 +238,8 @@ PrintPCBox::
 	ld [wcae2], a
 	call Printer_CopyTileMapToPrinterTileBuffer
 	call LoadScreenTilesFromBuffer1
-	call Func_e8dfb
-	jr c, .asm_e8ddc
+	call PrintPCBoxPage
+	jr c, .quit
 	xor a
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
@@ -295,8 +253,8 @@ PrintPCBox::
 	ld [wcae2], a
 	call Printer_CopyTileMapToPrinterTileBuffer
 	call LoadScreenTilesFromBuffer1
-	call Func_e8dfb
-.asm_e8ddc
+	call PrintPCBoxPage
+.quit
 	xor a
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
@@ -310,35 +268,35 @@ PrintPCBox::
 	ld [wUpdateSpritesEnabled], a
 	ret
 
-Func_e8df4:
-	ld hl, String_e8e1f
+.emptyBox:
+	ld hl, NoPokemonText
 	rst _PrintText
 	ret
 
-Func_e8dfb:
+PrintPCBoxPage:
 	call Printer_ResetJoypadHRAM
-.asm_e8dfe
+.print_loop
 	call JoypadLowSensitivity
-	call Printer_CheckPressingB
-	jr c, .asm_e8e1d
+	call Printer_StopIfPressB
+	jr c, .pressed_b
 	ld a, [wPrinterSendState]
 	bit 7, a
-	jr nz, .asm_e8e1b
+	jr nz, .completed
 	call PrinterTransmissionJumptable
 	call GBPrinter_CheckForErrors
 	call GBPrinter_UpdateStatusMessage
 	rst _DelayFrame
-	jr .asm_e8dfe
+	jr .print_loop
 
-.asm_e8e1b
+.completed
 	and a
 	ret
 
-.asm_e8e1d
+.pressed_b
 	scf
 	ret
 
-String_e8e1f:
+NoPokemonText:
 	text_far _NoPokemonText
 	text_end
 
@@ -358,20 +316,20 @@ PrintFanClubPortrait::
 	ld [wcae2], a
 	call Printer_CopyTileMapToPrinterTileBuffer
 	call Printer_ResetJoypadHRAM
-.asm_e8e45
+.print_loop
 	call JoypadLowSensitivity
-	call Printer_CheckPressingB
-	jr c, .asm_e8e62
+	call Printer_StopIfPressB
+	jr c, .quit
 	ld a, [wPrinterSendState]
 	bit 7, a
-	jr nz, .asm_e8e62
+	jr nz, .quit
 	call PrinterTransmissionJumptable
 	call GBPrinter_CheckForErrors
 	call GBPrinter_UpdateStatusMessage
 	rst _DelayFrame
-	jr .asm_e8e45
+	jr .print_loop
 
-.asm_e8e62
+.quit
 	xor a
 	ld [wPrinterConnectionOpen], a
 	ld [wPrinterOpcode], a
@@ -430,7 +388,7 @@ PrinterDebug:
 	pop af
 	ret
 
-Printer_CheckPressingB:
+Printer_StopIfPressB:
 	ldh a, [hJoyHeld]
 	and B_BUTTON
 	jr nz, .quit
@@ -487,6 +445,19 @@ Printer_ResetJoypadHRAM:
 	ldh [hJoy6], a
 	ret
 
+;Printer_PlayPrinterMusic:
+;	call Printer_FadeOutMusicAndWait
+;	ld a, [wAudioROMBank]
+;	ld [wAudioSavedROMBank], a
+;	ld a, BANK(Music_GBPrinter)
+;	ld [wAudioROMBank], a
+;	ld a, MUSIC_GB_PRINTER
+;	ld [wNewSoundID], a
+;	rst _PlaySound
+;	ret
+
+;The audio banks are already crammed pretty full,
+;so use something that is already in the game for less of a headache
 Printer_PlayPrinterMusic:
 	call Printer_FadeOutMusicAndWait
 ;	ld a, [wAudioROMBank]
@@ -629,116 +600,6 @@ GBPrinter_UpdateStatusMessage:
 	db   "This is not the"
 	next "Game Boy Printer!@"
 
-Printer_PrepareSurfingMinigameHighScoreTileMap::
-	call GBPalWhiteOutWithDelay3
-	call ClearScreen
-	ld de, SurfingPikachu2Graphics
-	ld hl, vChars2
-	lb bc, BANK(SurfingPikachu2Graphics), (SurfingPikachu2GraphicsEnd - SurfingPikachu2Graphics) / $10
-	call CopyVideoData
-	hlcoord 0, 0
-	call .PlaceRowAlternatingTiles
-	hlcoord 0, 17
-	call .PlaceRowAlternatingTiles
-	hlcoord 0, 0
-	call .PlaceColumnAlternatingTiles
-	hlcoord 19, 0
-	call .PlaceColumnAlternatingTiles
-	ld a, $4
-	hlcoord 0, 0
-	ld [hl], a
-	hlcoord 0, 17
-	ld [hl], a
-	hlcoord 19, 0
-	ld [hl], a
-	hlcoord 19, 17
-	ld [hl], a
-	ld de, .Tilemap1
-	hlcoord 10, 8
-	lb bc, 3, 8
-	call Diploma_Surfing_CopyBox
-	ld de, .Tilemap2
-	hlcoord 2, 11
-	lb bc, 6, 16
-	call Diploma_Surfing_CopyBox
-	ld de, .PikachusBeachString
-	hlcoord 3, 2
-	call PlaceString
-	ld de, .HiScoreString
-	hlcoord 9, 4
-	call PlaceString
-	ld de, .PointsString
-	hlcoord 12, 6
-	call PlaceString
-	ld de, wPlayerName
-	ld hl, wPlayerName
-	ld bc, 0
-.find_end_of_name
-	ld a, [hli]
-	inc c
-	cp "@"
-	jr nz, .find_end_of_name
-	ld a, 8
-	sub c
-	jr nc, .got_name_length
-	xor a
-.got_name_length
-	ld c, a
-	hlcoord 2, 4
-	add hl, bc
-	call PlaceString
-	call CopySurfingMinigameScore
-	ld b, SET_PAL_GENERIC
-	call RunPaletteCommand
-	ld a, $1
-	ldh [hAutoBGTransferEnabled], a
-	call Delay3
-	call GBPalNormal
-	ret
-
-.PlaceRowAlternatingTiles:
-	ld c, SCREEN_WIDTH / 2
-.row_loop
-	ld [hl], $0
-	inc hl
-	ld [hl], $1
-	inc hl
-	dec c
-	jr nz, .row_loop
-	ret
-
-.PlaceColumnAlternatingTiles:
-	ld c, SCREEN_HEIGHT / 2
-	ld de, SCREEN_WIDTH
-.col_loop
-	ld [hl], $2
-	add hl, de
-	ld [hl], $3
-	add hl, de
-	dec c
-	jr nz, .col_loop
-	ret
-
-.Tilemap1:
-	db $7f, $7f, $10, $11, $12, $13, $14, $15
-	db $0f, $3c, $3d, $3e, $20, $21, $30, $31
-	db $4c, $4d, $4e, $50, $34, $1a, $51, $2d
-
-.Tilemap2:
-	db $7f, $7f, $7f, $7f, $7f, $7f, $16, $17, $18, $19, $7f, $1b, $1c, $1d, $1e, $1f
-	db $7f, $7f, $22, $23, $24, $25, $26, $27, $28, $29, $2a, $2b, $2c, $7f, $2e, $2f
-	db $7f, $7f, $32, $33, $33, $35, $36, $37, $38, $39, $3a, $3b, $7f, $7f, $7f, $3f
-	db $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $4a, $4b, $40, $40, $40, $4f
-	db $52, $52, $52, $53, $54, $55, $56, $57, $58, $59, $5a, $5b, $5c, $5d, $5d, $5e
-	db $7f, $7f, $7f, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $7f, $7f, $7f
-
-.PikachusBeachString:
-	db "Pikachu's Beach@"
-.HiScoreString:
-	db "'s Hi-Score@"
-.PointsString:
-	db "Points@"
-
 Diploma_Surfing_CopyBox:
 .y
 	push bc
@@ -756,28 +617,6 @@ Diploma_Surfing_CopyBox:
 	dec b
 	jr nz, .y
 	ret
-
-CopySurfingMinigameScore:
-	ld de, wSurfingMinigameHiScore + 1
-	hlcoord 7, 6
-	ld a, [de]
-	call .BCDConvertScore
-	ld a, [de]
-.BCDConvertScore:
-	ld c, a
-	swap a
-	and $f
-	add -10
-	ld [hli], a
-	ld a, c
-	and $f
-	add -10
-	ld [hli], a
-	dec de
-	ret
-
-SurfingPikachu2Graphics: INCBIN "gfx/surfing_pikachu/surfing_pikachu_2.2bpp"
-SurfingPikachu2GraphicsEnd:
 
 PrintPCBox_DrawPage1:
 	xor a
