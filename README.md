@@ -82,6 +82,7 @@ CREDITS: IF ANYONE IS MISSED PLEASE LET ME KNOW. IT’S HARD TO KEEP TRACK OF AL
 - RainbowMetalPigeon- For the Port PC code, and again for the help and patience with building this game. TRY HIS EXTREME YELLOW.
 -CRZ-Shadows- and Yellow Legacy Team: A lot of QOL changes came from ideas or code used in there game. See their Github for all there amazing changes.
 - JustRegularLuna/Mateo: A lot of sprites for Pokemon and Pokeball sprites used from her amazing game RED++. Move Description code and others
+- Porygondolier- Pokedex Remember Position
 - DarthBR
 - Dreams897
 - Engezertorung
