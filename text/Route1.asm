@@ -76,7 +76,9 @@ _OakDefeatedText::
 	prompt
 
 _OakWonText::
-	text "Keep training"
+	text "Back in"
+	line "my day, I was a"
+	cont "serious TRAINER!"
 	prompt
 
 _OakPostBattleText::
