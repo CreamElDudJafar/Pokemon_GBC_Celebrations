@@ -145,9 +145,7 @@ SilphCo7FDefaultScript:
 	ld [wJoyIgnore], a
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
@@ -234,9 +232,7 @@ SilphCo7FRivalAfterBattleScript:
 	ld a, TEXT_SILPHCO7F_RIVAL_GOOD_LUCK_TO_YOU
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 	farcall Music_RivalAlternateStart
 	ld de, .RivalWalkAroundPlayerMovement
 	ld a, [wSavedCoordIndex]

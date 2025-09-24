@@ -175,27 +175,31 @@ ROMX $1F
 	"Audio Engine 3"
 	"Music 3"
 ROMX $20
-	"Text 1"
+	"Sound Effect Headers 4"
+	"Music Headers 4"
+	"Sound Effects 4"
+	"Audio Engine 4"
+	"Music 4"
 ROMX $21
-	"Text 2"
+	"Text 1"
 ROMX $22
-	"Text 3"
+	"Text 2"
 ROMX $23
-	"Text 4"
+	"Text 3"
 ROMX $24
-	"Text 5"
+	"Text 4"
 ROMX $25
-	"Text 6"
+	"Text 5"
 ROMX $26
-	"Text 7"
+	"Text 6"
 ROMX $27
-	"Text 8"
+	"Text 7"
 ROMX $28
-	"Text 9"
+	"Text 8"
 ROMX $29
-	"Text 10"
+	"Text 9"
 ROMX $2A
-	"Text 11"
+	"Text 10"
 ROMX $2B
 	"Pokédex Text"
 ROMX $2C

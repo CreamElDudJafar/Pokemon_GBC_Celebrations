@@ -1,4 +1,4 @@
-DEF NUM_MUSIC_TRACKS EQU 45
+DEF NUM_MUSIC_TRACKS EQU 47
 
 DisplaySoundTestMenu:
 	ld a, SFX_PRESS_AB
@@ -179,7 +179,8 @@ SoundTestTrackList:
 	dw Title_Music_MeetEvilTrainer, (MUSIC_MEET_EVIL_TRAINER << 8) | Bank(Music_MeetEvilTrainer)
 	dw Title_Music_MeetFemaleTrainer, (MUSIC_MEET_FEMALE_TRAINER << 8) | Bank(Music_MeetFemaleTrainer)
 	dw Title_Music_MeetMaleTrainer, (MUSIC_MEET_MALE_TRAINER << 8) | Bank(Music_MeetMaleTrainer)
-
+	dw Title_Music_GBPrinter, (MUSIC_GB_PRINTER << 8) | Bank(Music_GBPrinter)
+	dw Title_Music_UnusedSong, (MUSIC_UNUSED_SONG << 8) | Bank(Music_UnusedSong)
 
 Title_Music_PalletTown: db "Pallet Town@"
 Title_Music_Pokecenter: db "#MON Center@"
@@ -216,7 +217,7 @@ Title_Music_JigglypuffSong: db "Jigglypuff's Song@"
 Title_Music_BikeRiding: db "Bike Riding@"
 Title_Music_Surfing: db "Surfing@"
 Title_Music_GameCorner: db "Game Corner@"
-Title_Music_IntroBattle: db "Intro Battle@"
+Title_Music_IntroBattle: db "Red and Blue Intro@"
 Title_Music_Dungeon1: db "Dungeon 1@"
 Title_Music_Dungeon2: db "Dungeon 2@"
 Title_Music_Dungeon3: db "Dungeon 3@"
@@ -226,3 +227,5 @@ Title_Music_SilphCo: db "Silph Co.@"
 Title_Music_MeetEvilTrainer: db "Evil Trainer@"
 Title_Music_MeetFemaleTrainer: db "Female Trainer@"
 Title_Music_MeetMaleTrainer: db "Male Trainer@"
+Title_Music_GBPrinter: db "GB Printer@"
+Title_Music_UnusedSong: db "Unused Trade Song@"

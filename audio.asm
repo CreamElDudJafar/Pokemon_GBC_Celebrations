@@ -7,6 +7,9 @@ INCLUDE "audio/headers/sfxheaders2.asm"
 SECTION "Sound Effect Headers 3", ROMX
 INCLUDE "audio/headers/sfxheaders3.asm"
 
+SECTION "Sound Effect Headers 4", ROMX
+INCLUDE "audio/headers/sfxheaders4.asm"
+
 
 SECTION "Music Headers 1", ROMX
 INCLUDE "audio/headers/musicheaders1.asm"
@@ -16,6 +19,9 @@ INCLUDE "audio/headers/musicheaders2.asm"
 
 SECTION "Music Headers 3", ROMX
 INCLUDE "audio/headers/musicheaders3.asm"
+
+SECTION "Music Headers 4", ROMX
+INCLUDE "audio/headers/musicheaders4.asm"
 
 
 SECTION "Sound Effects 1", ROMX
@@ -39,9 +45,6 @@ INCLUDE "audio/sfx/noise_instrument16_1.asm"
 INCLUDE "audio/sfx/noise_instrument17_1.asm"
 INCLUDE "audio/sfx/noise_instrument18_1.asm"
 INCLUDE "audio/sfx/noise_instrument19_1.asm"
-
-Audio1_WavePointers:
-INCLUDE "audio/wave_samples.asm"
 
 INCLUDE "audio/sfx/start_menu_1.asm"
 INCLUDE "audio/sfx/pokeflute.asm"
@@ -77,7 +80,7 @@ INCLUDE "audio/sfx/push_boulder_1.asm"
 INCLUDE "audio/sfx/ss_anne_horn_1.asm"
 INCLUDE "audio/sfx/withdraw_deposit_1.asm"
 INCLUDE "audio/sfx/safari_zone_pa.asm"
-INCLUDE "audio/sfx/unused_cry_1.asm"
+;INCLUDE "audio/sfx/unused_cry_1.asm"
 INCLUDE "audio/sfx/cry09_1.asm"
 INCLUDE "audio/sfx/cry23_1.asm"
 INCLUDE "audio/sfx/cry24_1.asm"
@@ -140,9 +143,6 @@ INCLUDE "audio/sfx/noise_instrument17_2.asm"
 INCLUDE "audio/sfx/noise_instrument18_2.asm"
 INCLUDE "audio/sfx/noise_instrument19_2.asm"
 
-Audio2_WavePointers:
-INCLUDE "audio/wave_samples.asm"
-
 INCLUDE "audio/sfx/press_ab_2.asm"
 INCLUDE "audio/sfx/start_menu_2.asm"
 INCLUDE "audio/sfx/tink_2.asm"
@@ -154,6 +154,7 @@ INCLUDE "audio/sfx/ball_poof.asm"
 INCLUDE "audio/sfx/faint_thud.asm"
 INCLUDE "audio/sfx/run.asm"
 INCLUDE "audio/sfx/dex_page_added.asm"
+INCLUDE "audio/sfx/swap_2.asm" ; added in yellow
 INCLUDE "audio/sfx/pokeflute_ch7.asm"
 INCLUDE "audio/sfx/peck.asm"
 INCLUDE "audio/sfx/faint_fall.asm"
@@ -203,7 +204,7 @@ INCLUDE "audio/sfx/battle_33.asm"
 INCLUDE "audio/sfx/battle_34.asm"
 INCLUDE "audio/sfx/battle_35.asm"
 INCLUDE "audio/sfx/battle_36.asm"
-INCLUDE "audio/sfx/unused_cry_2.asm"
+;INCLUDE "audio/sfx/unused_cry_2.asm"
 INCLUDE "audio/sfx/cry09_2.asm"
 INCLUDE "audio/sfx/cry23_2.asm"
 INCLUDE "audio/sfx/cry24_2.asm"
@@ -266,9 +267,6 @@ INCLUDE "audio/sfx/noise_instrument17_3.asm"
 INCLUDE "audio/sfx/noise_instrument18_3.asm"
 INCLUDE "audio/sfx/noise_instrument19_3.asm"
 
-Audio3_WavePointers:
-INCLUDE "audio/wave_samples.asm"
-
 INCLUDE "audio/sfx/start_menu_3.asm"
 INCLUDE "audio/sfx/cut_3.asm"
 INCLUDE "audio/sfx/go_inside_3.asm"
@@ -311,7 +309,7 @@ INCLUDE "audio/sfx/slots_stop_wheel.asm"
 INCLUDE "audio/sfx/slots_reward.asm"
 INCLUDE "audio/sfx/slots_new_spin.asm"
 INCLUDE "audio/sfx/shooting_star.asm"
-INCLUDE "audio/sfx/unused_cry_3.asm"
+;INCLUDE "audio/sfx/unused_cry_3.asm"
 INCLUDE "audio/sfx/cry09_3.asm"
 INCLUDE "audio/sfx/cry23_3.asm"
 INCLUDE "audio/sfx/cry24_3.asm"
@@ -352,6 +350,84 @@ INCLUDE "audio/sfx/cry21_3.asm"
 INCLUDE "audio/sfx/cry22_3.asm"
 
 
+SECTION "Sound Effects 4", ROMX
+
+INCLUDE "audio/sfx/noise_instrument01_4.asm"
+INCLUDE "audio/sfx/noise_instrument02_4.asm"
+INCLUDE "audio/sfx/noise_instrument03_4.asm"
+INCLUDE "audio/sfx/noise_instrument04_4.asm"
+INCLUDE "audio/sfx/noise_instrument05_4.asm"
+INCLUDE "audio/sfx/noise_instrument06_4.asm"
+INCLUDE "audio/sfx/noise_instrument07_4.asm"
+INCLUDE "audio/sfx/noise_instrument08_4.asm"
+INCLUDE "audio/sfx/noise_instrument09_4.asm"
+INCLUDE "audio/sfx/noise_instrument10_4.asm"
+INCLUDE "audio/sfx/noise_instrument11_4.asm"
+INCLUDE "audio/sfx/noise_instrument12_4.asm"
+INCLUDE "audio/sfx/noise_instrument13_4.asm"
+INCLUDE "audio/sfx/noise_instrument14_4.asm"
+INCLUDE "audio/sfx/noise_instrument15_4.asm"
+INCLUDE "audio/sfx/noise_instrument16_4.asm"
+INCLUDE "audio/sfx/noise_instrument17_4.asm"
+INCLUDE "audio/sfx/noise_instrument18_4.asm"
+INCLUDE "audio/sfx/noise_instrument19_4.asm"
+
+INCLUDE "audio/sfx/press_ab_4.asm"
+INCLUDE "audio/sfx/start_menu_4.asm"
+INCLUDE "audio/sfx/heal_ailment_4.asm"
+INCLUDE "audio/sfx/heal_hp_4.asm"
+INCLUDE "audio/sfx/tink_4.asm"
+INCLUDE "audio/sfx/surfing_jump.asm"
+INCLUDE "audio/sfx/surfing_flip.asm"
+INCLUDE "audio/sfx/unknown_802cc.asm"
+INCLUDE "audio/sfx/surfing_land.asm"
+INCLUDE "audio/sfx/surfing_crash.asm"
+INCLUDE "audio/sfx/get_item2_4_2.asm"
+;INCLUDE "audio/sfx/unused_cry_4.asm"
+INCLUDE "audio/sfx/cry09_4.asm"
+INCLUDE "audio/sfx/cry23_4.asm"
+INCLUDE "audio/sfx/cry24_4.asm"
+INCLUDE "audio/sfx/cry11_4.asm"
+INCLUDE "audio/sfx/cry25_4.asm"
+INCLUDE "audio/sfx/cry03_4.asm"
+INCLUDE "audio/sfx/cry0f_4.asm"
+INCLUDE "audio/sfx/cry10_4.asm"
+INCLUDE "audio/sfx/cry00_4.asm"
+INCLUDE "audio/sfx/cry0e_4.asm"
+INCLUDE "audio/sfx/cry06_4.asm"
+INCLUDE "audio/sfx/cry07_4.asm"
+INCLUDE "audio/sfx/cry05_4.asm"
+INCLUDE "audio/sfx/cry0b_4.asm"
+INCLUDE "audio/sfx/cry0c_4.asm"
+INCLUDE "audio/sfx/cry02_4.asm"
+INCLUDE "audio/sfx/cry0d_4.asm"
+INCLUDE "audio/sfx/cry01_4.asm"
+INCLUDE "audio/sfx/cry0a_4.asm"
+INCLUDE "audio/sfx/cry08_4.asm"
+INCLUDE "audio/sfx/cry04_4.asm"
+INCLUDE "audio/sfx/cry19_4.asm"
+INCLUDE "audio/sfx/cry16_4.asm"
+INCLUDE "audio/sfx/cry1b_4.asm"
+INCLUDE "audio/sfx/cry12_4.asm"
+INCLUDE "audio/sfx/cry13_4.asm"
+INCLUDE "audio/sfx/cry14_4.asm"
+INCLUDE "audio/sfx/cry1e_4.asm"
+INCLUDE "audio/sfx/cry15_4.asm"
+INCLUDE "audio/sfx/cry17_4.asm"
+INCLUDE "audio/sfx/cry1c_4.asm"
+INCLUDE "audio/sfx/cry1a_4.asm"
+INCLUDE "audio/sfx/cry1d_4.asm"
+INCLUDE "audio/sfx/cry18_4.asm"
+INCLUDE "audio/sfx/cry1f_4.asm"
+INCLUDE "audio/sfx/cry20_4.asm"
+INCLUDE "audio/sfx/cry21_4.asm"
+INCLUDE "audio/sfx/cry22_4.asm"
+INCLUDE "audio/music/printer.asm"
+INCLUDE "audio/sfx/get_item1_4.asm"
+INCLUDE "audio/sfx/get_item1_4_2.asm"
+INCLUDE "audio/sfx/get_item2_4.asm"
+
+
 SECTION "Audio Engine 1", ROMX
 
 INCLUDE "audio/play_battle_music.asm"
@@ -367,7 +443,6 @@ INCLUDE "audio/low_health_alarm.asm"
 SECTION "Audio Engine 2", ROMX
 
 INCLUDE "audio/engine_2.asm"
-INCLUDE "audio/poke_flute.asm"
 
 
 SECTION "Audio Engine 3", ROMX
@@ -381,7 +456,15 @@ SECTION "Fade Audio", ROMX
 INCLUDE "audio/fade_audio.asm"
 
 
+SECTION "Audio Engine 4", ROMX
+
+INCLUDE "audio/engine_4.asm"
+
+
 SECTION "Music 1", ROMX
+
+Audio1_WavePointers:
+INCLUDE "audio/wave_samples.asm"
 
 INCLUDE "audio/music/pkmnhealed.asm"
 INCLUDE "audio/music/routes1.asm"
@@ -390,7 +473,7 @@ INCLUDE "audio/music/routes3.asm"
 INCLUDE "audio/music/routes4.asm"
 INCLUDE "audio/music/indigoplateau.asm"
 INCLUDE "audio/music/pallettown.asm"
-INCLUDE "audio/music/unusedsong.asm"
+;INCLUDE "audio/music/unusedsong.asm"
 INCLUDE "audio/music/cities1.asm"
 INCLUDE "audio/sfx/get_item1_1.asm"
 INCLUDE "audio/music/museumguy.asm"
@@ -412,9 +495,7 @@ INCLUDE "audio/music/pokecenter.asm"
 
 SECTION "Music 2", ROMX
 
-INCLUDE "audio/sfx/pokeflute_ch5_ch6.asm"
 ;INCLUDE "audio/sfx/unused_fanfare.asm"
-INCLUDE "audio/sfx/swap_2.asm"
 INCLUDE "audio/music/gymleaderbattle.asm"
 INCLUDE "audio/music/trainerbattle.asm"
 INCLUDE "audio/music/wildbattle.asm"
@@ -451,3 +532,8 @@ INCLUDE "audio/music/surfing.asm"
 INCLUDE "audio/music/jigglypuffsong.asm"
 INCLUDE "audio/music/halloffame.asm"
 INCLUDE "audio/music/credits.asm"
+
+
+SECTION "Music 4", ROMX
+
+INCLUDE "audio/music/unusedsong.asm" ; Unused Trade Song

@@ -44,8 +44,7 @@ PrepareOakSpeech:
 	jp CopyData
 
 OakSpeech:
-	ld a, SFX_STOP_ALL_MUSIC
-	rst _PlaySound
+	call StopAllMusic
 IF DEF(_DEBUG)
 	ld hl, wd732
 	bit BIT_DEBUG_MODE, [hl]
@@ -231,9 +230,7 @@ ENDC
 	ld [wAudioSavedROMBank], a
 	ld a, 10
 	ld [wAudioFadeOutControl], a
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 	pop af
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a

@@ -26,6 +26,7 @@ ENDM
 	music_const MUSIC_ROUTES3,             Music_Routes3
 	music_const MUSIC_ROUTES4,             Music_Routes4
 	music_const MUSIC_INDIGO_PLATEAU,      Music_IndigoPlateau
+	music_const MUSIC1_END,                Music_Audio1End
 
 	; AUDIO_2
 	music_const MUSIC_GYM_LEADER_BATTLE,   Music_GymLeaderBattle
@@ -35,6 +36,7 @@ ENDM
 	music_const MUSIC_DEFEATED_TRAINER,    Music_DefeatedTrainer
 	music_const MUSIC_DEFEATED_WILD_MON,   Music_DefeatedWildMon
 	music_const MUSIC_DEFEATED_GYM_LEADER, Music_DefeatedGymLeader
+	music_const MUSIC2_END,                Music_Audio2End
 
 	; AUDIO_3
 	music_const MUSIC_TITLE_SCREEN,        Music_TitleScreen
@@ -55,8 +57,14 @@ ENDM
 	music_const MUSIC_MEET_EVIL_TRAINER,   Music_MeetEvilTrainer
 	music_const MUSIC_MEET_FEMALE_TRAINER, Music_MeetFemaleTrainer
 	music_const MUSIC_MEET_MALE_TRAINER,   Music_MeetMaleTrainer
+	music_const MUSIC3_END,                Music_Audio3End
 
-	; AUDIO_1 AUDIO_2 AUDIO_3
+	; AUDIO_4
+	music_const MUSIC_GB_PRINTER,          Music_GBPrinter
+	music_const MUSIC_UNUSED_SONG,         Music_UnusedSong
+	music_const MUSIC4_END,                Music_Audio4End
+
+	; AUDIO_1 AUDIO_2 AUDIO_3 AUDIO_4
 DEF NOISE_INSTRUMENTS_START EQUS "SFX_NOISE_INSTRUMENT01"
 	music_const SFX_NOISE_INSTRUMENT01, SFX_Noise_Instrument01_1
 	music_const SFX_NOISE_INSTRUMENT02, SFX_Noise_Instrument02_1
@@ -127,9 +135,10 @@ DEF CRY_SFX_END EQUS "SFX_CRY_25 + 3"
 	music_const SFX_START_MENU,         SFX_Start_Menu_1
 	music_const SFX_PRESS_AB,           SFX_Press_AB_1
 
-	; AUDIO_1 AUDIO_3
+	; AUDIO_1 AUDIO_3 AUDIO_4
 	music_const SFX_GET_ITEM_1,         SFX_Get_Item1_1
 
+	; AUDIO_1 AUDIO_3
 	music_const SFX_POKEDEX_RATING,     SFX_Pokedex_Rating_1
 	music_const SFX_GET_KEY_ITEM,       SFX_Get_Key_Item_1
 	music_const SFX_POISONED,           SFX_Poisoned_1
@@ -191,7 +200,7 @@ DEF BATTLE_SFX_START EQUS "SFX_PECK"
 	music_const SFX_BATTLE_13,          SFX_Battle_13
 	music_const SFX_BATTLE_14,          SFX_Battle_14
 	music_const SFX_VINE_WHIP,          SFX_Vine_Whip
-	music_const SFX_BATTLE_16,          SFX_Battle_16 ; unused?
+;	music_const SFX_BATTLE_16,          SFX_Battle_16 ; unused?
 	music_const SFX_BATTLE_17,          SFX_Battle_17
 	music_const SFX_BATTLE_18,          SFX_Battle_18
 	music_const SFX_BATTLE_19,          SFX_Battle_19
@@ -240,5 +249,14 @@ DEF MAX_SFX_ID_2 EQUS "SFX_SILPH_SCOPE"
 	music_const SFX_SLOTS_NEW_SPIN,     SFX_Slots_New_Spin
 	music_const SFX_SHOOTING_STAR,      SFX_Shooting_Star
 DEF MAX_SFX_ID_3 EQUS "SFX_SHOOTING_STAR"
+
+	; AUDIO_4
+	music_const SFX_SURFING_JUMP,       SFX_Surfing_Jump
+	music_const SFX_SURFING_FLIP,       SFX_Surfing_Flip
+	music_const SFX_SURFING_CRASH,      SFX_Surfing_Crash
+	music_const SFX_UNKNOWN_802CC_4,    SFX_802cc_4
+	music_const SFX_SURFING_LAND,       SFX_Surfing_Land
+	music_const SFX_GET_ITEM2_4_2,      SFX_Get_Item2_4_2
+DEF MAX_SFX_ID_4 EQUS "SFX_GET_ITEM2_4_2 + 2"
 
 DEF SFX_STOP_ALL_MUSIC EQU $ff

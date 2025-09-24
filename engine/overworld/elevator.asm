@@ -4,8 +4,7 @@ ShakeElevator::
 	ld de, SCREEN_HEIGHT * $20
 	call ShakeElevatorRedrawRow
 	call Delay3
-	ld a, SFX_STOP_ALL_MUSIC
-	rst _PlaySound
+	call StopAllMusic
 ;;;;;;;;;; PureRGBnote: ADDED: elevator will shake longer depending on how far away the floor is.
 	ld a, [wCurMap]
 	cp SILPH_CO_ELEVATOR
@@ -46,8 +45,7 @@ ShakeElevator::
 	jr nz, .shakeLoop
 	ld a, d
 	ldh [hSCY], a
-	ld a, SFX_STOP_ALL_MUSIC
-	rst _PlaySound
+	call StopAllMusic
 	ld c, BANK(SFX_Safari_Zone_PA)
 	ld a, SFX_SAFARI_ZONE_PA
 	call PlayMusic

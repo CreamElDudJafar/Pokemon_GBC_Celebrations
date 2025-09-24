@@ -69,9 +69,7 @@ ENDC
 	ld a, [wWalkBikeSurfState]
 	and a
 	jr z, .walking
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 .walking
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
@@ -176,9 +174,7 @@ CeruleanCityRivalDefeatedScript:
 	ld a, TEXT_CERULEANCITY_RIVAL
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 	farcall Music_RivalAlternateStart
 	ld a, CERULEANCITY_RIVAL
 	ldh [hSpriteIndex], a

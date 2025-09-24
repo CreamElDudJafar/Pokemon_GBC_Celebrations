@@ -445,26 +445,13 @@ Printer_ResetJoypadHRAM:
 	ldh [hJoy6], a
 	ret
 
-;Printer_PlayPrinterMusic:
-;	call Printer_FadeOutMusicAndWait
-;	ld a, [wAudioROMBank]
-;	ld [wAudioSavedROMBank], a
-;	ld a, BANK(Music_GBPrinter)
-;	ld [wAudioROMBank], a
-;	ld a, MUSIC_GB_PRINTER
-;	ld [wNewSoundID], a
-;	rst _PlaySound
-;	ret
-
-;The audio banks are already crammed pretty full,
-;so use something that is already in the game for less of a headache
 Printer_PlayPrinterMusic:
 	call Printer_FadeOutMusicAndWait
 	ld a, [wAudioROMBank]
 	ld [wAudioSavedROMBank], a
-	ld a, BANK(Music_MuseumGuy)
+	ld a, BANK(Music_GBPrinter)
 	ld [wAudioROMBank], a
-	ld a, MUSIC_MUSEUM_GUY
+	ld a, MUSIC_GB_PRINTER
 	ld [wNewSoundID], a
 	rst _PlaySound
 	ret

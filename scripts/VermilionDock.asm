@@ -53,10 +53,8 @@ VermilionDockSSAnneLeavesScript:
 	bit BIT_MARSHBADGE, a
 	ret nz
 	SetEventForceReuseHL EVENT_SS_ANNE_LEFT
-	ld a, SFX_STOP_ALL_MUSIC
 	ld [wJoyIgnore], a
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 	ld c, BANK(Music_Surfing)
 	ld a, MUSIC_SURFING
 	call PlayMusic

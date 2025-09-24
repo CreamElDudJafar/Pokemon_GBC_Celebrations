@@ -1,4 +1,4 @@
-; The first of three duplicated sound engines.
+; The first of four partially duplicated sound engines.
 
 Audio1_UpdateMusic::
 	ld c, CHAN1
@@ -158,7 +158,7 @@ Audio1_PlayNextNote:
 	res BIT_PITCH_SLIDE_ON, [hl]
 	res BIT_PITCH_SLIDE_DECREASING, [hl]
 	ld a, c
-	cp CHAN5
+	cp $4
 	jr nz, .asm_918c
 	ld a, [wLowHealthAlarm]
 	bit 7, a
@@ -852,7 +852,7 @@ Audio1_note_pitch:
 
 Audio1_EnableChannelOutput:
 	ld b, 0
-	call Audio1_9972
+	call Audio1_ApplyMonoStereo
 	add hl, bc
 	ldh a, [rNR51]
 	or [hl] ; set this channel's bits
@@ -872,7 +872,7 @@ Audio1_EnableChannelOutput:
 ; If this is the SFX noise channel or a music channel whose corresponding
 ; SFX channel is off, apply stereo panning.
 	ld a, [wStereoPanning]
-	call Audio1_9972
+	call Audio1_ApplyMonoStereo
 	add hl, bc
 	and [hl]
 	ld d, a
@@ -961,17 +961,28 @@ Audio1_ApplyWavePatternAndFrequency:
 	inc hl
 	ld [hl], d ; store frequency high byte
 	ld a, c
-	cp CHAN5	
+	cp $4
 	jr c, .asm_9642
 	call Audio1_ApplyFrequencyModifier
 .asm_9642
 	ret
+.asm_9643
+	ld a, c
+	cp $4
+	ret nz
+	ld a, [wLowHealthAlarm]
+	bit 7, a
+	ret z
+	xor a
+	ld [wFrequencyModifier], a
+	ld a, $80
+	ld [wTempoModifier], a
 	ret
 
 Audio1_SetSfxTempo:
 	call Audio1_IsCry
 	jr c, .isCry
-	call Audio1_96c3
+	call Audio1_IsBattleSFX
 	jr nc, .notCry
 .isCry
 	ld d, 0
@@ -983,20 +994,19 @@ Audio1_SetSfxTempo:
 	ld [wSfxTempo + 1], a
 	ld a, d
 	ld [wSfxTempo], a
-	jr .done
+	ret
 .notCry
 	xor a
 	ld [wSfxTempo + 1], a
-	ld a, $1
+	inc a
 	ld [wSfxTempo], a
-.done
 	ret
 
 Audio1_ApplyFrequencyModifier:
 	call Audio1_IsCry
 	jr c, .isCry
-	call Audio1_96c3
-	jr nc, .done
+	call Audio1_IsBattleSFX
+	ret nc
 .isCry
 ; if playing a cry, add the cry's frequency modifier
 	ld a, [wFrequencyModifier]
@@ -1031,8 +1041,7 @@ Audio1_GoBackOneCommandIfCry:
 	scf
 	ret
 .done
-	scf
-	ccf
+	and a
 	ret
 
 Audio1_IsCry:
@@ -1053,8 +1062,8 @@ Audio1_IsCry:
 	scf
 	ret
 
-Audio1_96c3:
-; Returns whether the currently playing audio is battle sfx in carry.
+Audio1_IsBattleSFX:
+; Returns whether the currently playing audio is a battle sfx in carry.
 	ld a, [wAudioROMBank]
 	cp BANK("Audio Engine 2")
 	jr nz, .no
@@ -1073,7 +1082,6 @@ Audio1_96c3:
 .yes
 	scf
 	ret
-
 
 Audio1_ApplyPitchSlide:
 	ld hl, wChannelFlags1
@@ -1353,12 +1361,13 @@ Audio1_CalculateFrequency:
 
 Audio1_PlaySound::
 	ld [wSoundID], a
+	ld a, [wSoundID]
 	cp SFX_STOP_ALL_MUSIC
 	jp z, .stopAllAudio
 	cp MAX_SFX_ID_1
 	jp z, .playSfx
 	jp c, .playSfx
-	cp $fe
+	cp MUSIC1_END - 1
 	jr z, .playMusic
 	jp nc, .playSfx
 
@@ -1426,7 +1435,6 @@ Audio1_PlaySound::
 	ret
 .playChannel
 	call InitSFXVariables
-.skipSweepDisable
 	ld a, c
 	and a
 	jp z, .playSoundCommon
@@ -1435,15 +1443,6 @@ Audio1_PlaySound::
 
 .stopAllAudio
 	call StopAllAudio
-	ret
-
-; fills d bytes at hl with a
-.FillMem
-	ld b, d
-.loop
-	ld [hli], a
-	dec b
-	jr nz, .loop
 	ret
 
 .playSoundCommon
@@ -1559,14 +1558,14 @@ Audio1_HWChannelDisableMasks:
 	db HW_CH1_DISABLE_MASK, HW_CH2_DISABLE_MASK, HW_CH3_DISABLE_MASK, HW_CH4_DISABLE_MASK ; channels 0-3
 	db HW_CH1_DISABLE_MASK, HW_CH2_DISABLE_MASK, HW_CH3_DISABLE_MASK, HW_CH4_DISABLE_MASK ; channels 4-7
 
-Audio1_9972:
+Audio1_ApplyMonoStereo:
 	push af
 	push bc
 	ld a, [wOptions]
 	and %110000 ; channel options
 	srl a
 	ld c, a
-	ld a, 0
+	ld b, 0
 	ld hl, Audio1_HWChannelEnableMasks
 	add hl, bc
 	pop bc

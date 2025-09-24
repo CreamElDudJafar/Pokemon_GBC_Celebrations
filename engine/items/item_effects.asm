@@ -1803,8 +1803,7 @@ PlayedFluteHadEffectText:
 	and a
 	jr nz, .done
 ; play out-of-battle pokeflute music
-	ld a, SFX_STOP_ALL_MUSIC
-	rst _PlaySound
+	call StopAllMusic
 	ld a, SFX_POKEFLUTE
 	ld c, BANK(SFX_Pokeflute)
 	call PlayMusic

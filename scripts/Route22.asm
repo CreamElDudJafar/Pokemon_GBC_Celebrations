@@ -83,9 +83,7 @@ Route22FirstRivalBattleScript:
 	ld a, [wWalkBikeSurfState]
 	and a
 	jr z, .walking
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 .walking
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
@@ -170,9 +168,7 @@ Route22Rival1AfterBattleScript:
 	ld a, TEXT_ROUTE22_RIVAL1
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 	farcall Music_RivalAlternateStart
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords

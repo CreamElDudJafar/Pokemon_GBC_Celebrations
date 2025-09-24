@@ -1,12 +1,14 @@
-; this routine checks flags for music effects currently applied
+; The third of four partially duplicated sound engines.
+
 Audio3_PlaySound::
 	ld [wSoundID], a
+	ld a, [wSoundID]
 	cp SFX_STOP_ALL_MUSIC
 	jp z, .stopAllAudio
 	cp MAX_SFX_ID_3
 	jp z, .playSfx
 	jp c, .playSfx
-	cp $fe
+	cp MUSIC3_END - 1
 	jr z, .playMusic
 	jp nc, .playSfx
 
@@ -74,7 +76,6 @@ Audio3_PlaySound::
 	ret
 .playChannel
 	call InitSFXVariables
-.skipSweepDisable
 	ld a, c
 	and a
 	jp z, .playSoundCommon

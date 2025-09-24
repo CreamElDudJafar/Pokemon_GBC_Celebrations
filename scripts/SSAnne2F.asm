@@ -22,9 +22,7 @@ SSAnne2FDefaultScript:
 	ld hl, .PlayerCoordinatesArray
 	call ArePlayerCoordsInArray
 	ret nc
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
@@ -142,9 +140,7 @@ SSAnne2FRivalAfterBattleScript:
 	ld a, SSANNE2F_RIVAL
 	ldh [hSpriteIndex], a
 	call MoveSprite
-	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
-	rst _PlaySound
+	call StopAllMusic
 	farcall Music_RivalAlternateStart
 	ld a, SCRIPT_SSANNE2F_RIVAL_EXIT
 	ld [wSSAnne2FCurScript], a

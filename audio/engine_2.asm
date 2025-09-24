@@ -1,3 +1,7 @@
+; The second of four partially duplicated sound engines.
+; This copy has a few differences relating to battle sound effects
+; and the low health alarm that plays in battle
+
 Audio2_PlaySound::
 	ld [wSoundID], a
 	ld a, [wSoundID]
@@ -6,7 +10,7 @@ Audio2_PlaySound::
 	cp MAX_SFX_ID_2
 	jp z, .playSfx
 	jp c, .playSfx
-	cp $fe
+	cp MUSIC2_END - 1
 	jr z, .playMusic
 	jp nc, .playSfx
 
@@ -38,7 +42,7 @@ Audio2_PlaySound::
 	add a
 	add c
 	ld c, a
-	ld b, 0
+	ld b, $0
 	ld a, [wSfxHeaderPointer]
 	ld h, a
 	ld a, [wSfxHeaderPointer + 1]
@@ -61,7 +65,6 @@ Audio2_PlaySound::
 	cp NOISE_INSTRUMENTS_END
 	jr nc, .notNoiseInstrument
 	ret
-
 .notNoiseInstrument
 	ld a, [hl]
 	cp NOISE_INSTRUMENTS_END
@@ -80,11 +83,10 @@ Audio2_PlaySound::
 	jp z, .playSoundCommon
 	dec c
 	jp .sfxChannelLoop
-	
+
 .stopAllAudio
 	call StopAllAudio
 	ret
-
 
 .playSoundCommon
 	ld a, [wSoundID]
@@ -190,9 +192,13 @@ Audio2_PlaySound::
 Audio2_CryRet:
 	sound_ret
 
+INCLUDE "audio/poke_flute.asm"
+
+INCLUDE "audio/sfx/pokeflute_ch5_ch6.asm"
+
 Audio2_InitMusicVariables::
 	xor a
-;	ld [wUnusedC000], a
+	ld [wUnusedC000], a
 	ld [wDisableChannelOutputWhenSfxEnds], a
 	ld [wMusicTempo + 1], a
 	ld [wMusicWaveInstrument], a
@@ -370,14 +376,14 @@ Audio2_StopAllAudio::
 	ld a, $77
 	ldh [rNR50], a ; full volume
 	xor a
-;	ld [wUnusedC000], a
+	ld [wUnusedC000], a
 	ld [wDisableChannelOutputWhenSfxEnds], a
 	ld [wMuteAudioAndPauseMusic], a
 	ld [wMusicTempo + 1], a
 	ld [wSfxTempo + 1], a
 	ld [wMusicWaveInstrument], a
 	ld [wSfxWaveInstrument], a
-	ld d, $b0 ;$a0
+	ld d, $b0
 	ld hl, wChannelCommandPointers
 	call Audio2_FillMem
 	ld a, $1
