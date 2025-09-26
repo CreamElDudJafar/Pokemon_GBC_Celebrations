@@ -608,7 +608,13 @@ wLowHealthAlarmDisabled:: db
 
 wPlayerMonMinimized:: db
 
-	ds 13
+	ds 2
+
+wEXPBarPixelLength::  ds 1
+wEXPBarBaseEXP::      ds 3
+wEXPBarCurEXP::       ds 3
+wEXPBarNeededEXP::    ds 3
+wEXPBarKeepFullFlag:: ds 1
 
 ; number of hits by enemy in attacks like Double Slap, etc.
 wEnemyNumHits:: ; db
@@ -2509,12 +2515,6 @@ ENDR
 wBoxMonNicksEnd::
 
 wBoxDataEnd::
-
-wEXPBarPixelLength::  ds 1
-wEXPBarBaseEXP::      ds 3
-wEXPBarCurEXP::       ds 3
-wEXPBarNeededEXP::    ds 3
-wEXPBarKeepFullFlag:: ds 1
 
 
 SECTION "Stack", WRAM0
