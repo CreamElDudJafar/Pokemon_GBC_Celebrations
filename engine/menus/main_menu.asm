@@ -361,7 +361,7 @@ CableClubOptionsText:
 VersionText:
 	db " "
 	db "Version"
-	db " 2.6"
+	db " 2.7"
 	db "@"
 
 DisplayContinueGameInfo:
@@ -737,7 +737,7 @@ SetCursorPositionsFromOptions:
 	ld b, a            ; <-- STORE full wOptions here for bit tests
 	and $0f            ; mask bits 0–3 (text speed)
 	ld c, a
-;	and $3f
+;	and TEXT_DELAY_MASK
 	push bc
 	ld de, 2
 	call IsInArray

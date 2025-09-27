@@ -592,6 +592,9 @@ TextCommand_SOUND::
 	jr .loop
 
 .play
+	ld a, [wOptions]
+	and TEXT_DELAY_MASK
+	call z, WaitForSoundToFinish
 	ld a, [hl]
 	rst _PlaySound
 	call WaitForSoundToFinish
