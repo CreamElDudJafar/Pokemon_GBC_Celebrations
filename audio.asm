@@ -536,4 +536,5 @@ INCLUDE "audio/music/credits.asm"
 
 SECTION "Music 4", ROMX
 
+INCLUDE "audio/music/meetjessiejames.asm"
 INCLUDE "audio/music/unusedsong.asm" ; Unused Trade Song

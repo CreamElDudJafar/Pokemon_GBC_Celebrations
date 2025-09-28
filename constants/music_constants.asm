@@ -60,6 +60,7 @@ ENDM
 	music_const MUSIC3_END,                Music_Audio3End
 
 	; AUDIO_4
+	music_const MUSIC_MEET_JESSIE_JAMES,   Music_MeetJessieJames
 	music_const MUSIC_GB_PRINTER,          Music_GBPrinter
 	music_const MUSIC_UNUSED_SONG,         Music_UnusedSong
 	music_const MUSIC4_END,                Music_Audio4End

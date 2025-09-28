@@ -700,10 +700,14 @@
 	const EVENT_BEAT_SILPH_CO_10F_TRAINER_1
 	const_skip 5
 	const EVENT_SILPH_CO_10_UNLOCKED_DOOR
-	const_skip 11
+	const_skip 7
+	const EVENT_780
+	const EVENT_781
+	const EVENT_782
+	const_skip
+	const EVENT_BEAT_SILPH_CO_11F_JESSIE_JAMES
 	const EVENT_BEAT_SILPH_CO_11F_TRAINER_0
-	const EVENT_BEAT_SILPH_CO_11F_TRAINER_1
-	const_skip 2
+	const_skip 3
 	const EVENT_SILPH_CO_11_UNLOCKED_DOOR
 	const_skip 4
 	const EVENT_GOT_MASTER_BALL

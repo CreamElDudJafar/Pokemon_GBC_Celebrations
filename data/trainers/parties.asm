@@ -605,8 +605,14 @@ RocketData:
 ; Silph Co. 10F
 	db 34, ELECTRODE, 0
 ; Silph Co. 11F
-	db 33, WEEZING, HYPNO, MAGNEMITE, ARBOK, MUK, 0
+	db 33, MACHOKE, HYPNO, PERSIAN, ELECTRODE, MUK, FLAREON, 0
+; Unused
 	db 34, MACHOKE, PERSIAN, ELECTRODE, 0
+; Jessie & James
+	db 34, WEEZING, ARBOK, VICTREEBEL, LICKITUNG, MEOWTH, 0 ; Silph Co. 11F
+; Unused
+	db 14, EKANS, MEOWTH, KOFFING, 0
+	db 25, KOFFING, MEOWTH, EKANS, 0 
 
 CooltrainerMData:
 ; Viridian Gym

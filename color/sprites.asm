@@ -631,6 +631,12 @@ SpritePaletteAssignments: ; Characters on the overworld
 	; SPRITE_JANINE
 	db SPR_PAL_PURPLE
 
+	; SPRITE_JESSIE
+	db SPR_PAL_ORANGE
+
+	; SPRITE_JAMES
+	db SPR_PAL_BLUE
+
 ; Map Pokemons
 
 	; SPRITE ARTICUNO

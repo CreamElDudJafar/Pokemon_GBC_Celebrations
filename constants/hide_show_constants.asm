@@ -195,8 +195,9 @@ DEF SHOW EQU $15
 	const HS_SILPH_CO_10F_ITEM_2           ; B5 X
 	const HS_SILPH_CO_10F_ITEM_3           ; B6 X
 	const HS_SILPH_CO_11F_1                ; B7
-	const HS_SILPH_CO_11F_2                ; B8
-	const HS_SILPH_CO_11F_3                ; B9
+	const HS_SILPH_CO_11F_JAMES            ; B8
+	const HS_SILPH_CO_11F_2                ; B9
+	const HS_SILPH_CO_11F_JESSIE           ; BA
 	const HS_POKEMON_MANSION_2F_ITEM       ; BB X
 	const HS_POKEMON_MANSION_3F_ITEM_1     ; BC X
 	const HS_POKEMON_MANSION_3F_ITEM_2     ; BD X

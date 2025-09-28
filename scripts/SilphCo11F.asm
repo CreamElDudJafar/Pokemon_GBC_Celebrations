@@ -153,8 +153,9 @@ SilphCo11FTeamRocketLeavesScript::
 	db HS_SILPH_CO_10F_1
 	db HS_SILPH_CO_10F_2
 	db HS_SILPH_CO_11F_1
+	db HS_SILPH_CO_11F_JAMES
 	db HS_SILPH_CO_11F_2
-	db HS_SILPH_CO_11F_3
+	db HS_SILPH_CO_11F_JESSIE
 	db -1 ; end
 
 SilphCo11FResetCurScript:
@@ -171,13 +172,34 @@ SilphCo11F_ScriptPointers:
 	dw_const SilphCo11FDefaultScript,               SCRIPT_SILPHCO11F_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_SILPHCO11F_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_SILPHCO11F_END_BATTLE
-	dw_const SilphCo11FGiovanniBattleFacingScript,  SCRIPT_SILPHCO11F_GIOVANNI_FACING
-	dw_const SilphCo11FGiovanniStartBattleScript,   SCRIPT_SILPHCO11F_GIOVANNI_START_BATTLE
 	dw_const SilphCo11FGiovanniAfterBattleScript,   SCRIPT_SILPHCO11F_GIOVANNI_AFTER_BATTLE
+	dw_const SilphCo11FGiovanniBattleFacingScript,  SCRIPT_SILPHCO11F_GIOVANNI_START_BATTLE
+	dw_const SilphCo11FScript5,                     SCRIPT_SILPHCO11F_SCRIPT5
+	dw_const SilphCo11FScript6,                     SCRIPT_SILPHCO11F_SCRIPT6
+	dw_const SilphCo11FScript7,                     SCRIPT_SILPHCO11F_SCRIPT7
+	dw_const SilphCo11FScript8,                     SCRIPT_SILPHCO11F_SCRIPT8
+	dw_const SilphCo11FScript9,                     SCRIPT_SILPHCO11F_SCRIPT9
+	dw_const SilphCo11FScript10,                    SCRIPT_SILPHCO11F_SCRIPT10
+	dw_const SilphCo11FScript11,                    SCRIPT_SILPHCO11F_SCRIPT11
+	dw_const SilphCo11FScript12,                    SCRIPT_SILPHCO11F_SCRIPT12
+	dw_const SilphCo11FScript13,                    SCRIPT_SILPHCO11F_SCRIPT13
+	dw_const SilphCo11FScript14,                    SCRIPT_SILPHCO11F_SCRIPT14
 
 SilphCo11FDefaultScript:
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+IF DEF(_DEBUG)
+	call DebugPressedOrHeldB
 	ret nz
+ENDC
+	CheckEvent EVENT_BEAT_SILPH_CO_11F_JESSIE_JAMES
+	call z, SilphCo11FScript_6229c
+	CheckEvent EVENT_782
+	ret nz
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	call z, SilphCo11FScript_621c5
+	ret
+
+SilphCo11FScript_621c5:
 	ld hl, .PlayerCoordsArray
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -195,7 +217,7 @@ SilphCo11FDefaultScript:
 	call SetSpriteMovementBytesToFF
 	ld de, .GiovanniMovement
 	call MoveSprite
-	ld a, SCRIPT_SILPHCO11F_GIOVANNI_FACING
+	ld a, SCRIPT_SILPHCO11F_GIOVANNI_START_BATTLE
 	jp SilphCo11FSetCurScript
 
 .PlayerCoordsArray:
@@ -211,11 +233,11 @@ SilphCo11FDefaultScript:
 
 SilphCo11FSetPlayerAndSpriteFacingDirectionScript:
 	ld [wPlayerMovingDirection], a
-	ld a, SILPHCO11F_GIOVANNI
-	ldh [hSpriteIndex], a
 	ld a, b
-	ldh [hSpriteFacingDirection], a
-	jp SetSpriteFacingDirectionAndDelay
+	ld [wSprite03StateData1FacingDirection], a
+	ld a, $2
+	ld [wSprite03StateData1MovementStatus], a
+	ret
 
 SilphCo11FGiovanniAfterBattleScript:
 	ld a, [wIsInBattle]
@@ -266,10 +288,8 @@ SilphCo11FGiovanniBattleFacingScript:
 .continue
 	call SilphCo11FSetPlayerAndSpriteFacingDirectionScript
 	call Delay3
-	ld a, SCRIPT_SILPHCO11F_GIOVANNI_START_BATTLE
-	jp SilphCo11FSetCurScript
-
-SilphCo11FGiovanniStartBattleScript:
+	xor a
+	ld [wJoyIgnore], a
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
@@ -280,28 +300,306 @@ SilphCo11FGiovanniStartBattleScript:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	xor a
-	ld [wJoyIgnore], a
 	ld a, SCRIPT_SILPHCO11F_GIOVANNI_AFTER_BATTLE
 	jp SilphCo11FSetCurScript
+
+SilphCo11FScript_6229c:
+	ld a, [wYCoord]
+	cp $3
+	ret nz
+	ld a, [wXCoord]
+	cp $4
+	ret nc
+	ResetEvents EVENT_780, EVENT_781
+	ld a, [wXCoord]
+	cp $3
+	jr z, .asm_622c3
+	SetEventReuseHL EVENT_780
+	ld a, [wXCoord]
+	cp $2
+	jr z, .asm_622c3
+	ResetEventReuseHL EVENT_780
+	SetEventReuseHL EVENT_781
+.asm_622c3
+	call StopAllMusic
+	ld c, BANK(Music_MeetJessieJames)
+	ld a, MUSIC_MEET_JESSIE_JAMES
+	call PlayMusic
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld a, TEXT_SILPHCO11F_TEXT8
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	SetEvent EVENT_782
+	ld a, SCRIPT_SILPHCO11F_SCRIPT5
+	jp SilphCo11FSetCurScript
+
+SilphCo11FMovementData_622f5:
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db -1
+
+SilphCo11FMovementData_622fb:
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db -1
+
+SilphCo11FMovementData_62300:
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db -1
+
+SilphCo11FMovementData_62305:
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db -1
+
+SilphCo11FMovementData_6230b:
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db -1
+
+SilphCo11FMovementData_62311:
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db -1
+
+SilphCo11FScript5:
+	ld de, SilphCo11FMovementData_622f5
+	CheckEitherEventSet EVENT_780, EVENT_781
+	and a
+	jr z, .asm_6232d
+	ld de, SilphCo11FMovementData_62300
+	cp $1
+	jr z, .asm_6232d
+	ld de, SilphCo11FMovementData_6230b
+.asm_6232d
+	ld a, SILPHCO11F_JAMES
+	ldh [hSpriteIndexOrTextID], a
+	call MoveSprite
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_SILPHCO11F_SCRIPT6
+	jp SilphCo11FSetCurScript
+
+SilphCo11FScript6:
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wd730]
+	bit 0, a
+	ret nz
+SilphCo11FScript7:
+	ld a, $2
+	ld [wSprite04StateData1MovementStatus], a
+	ld hl, wSprite04StateData1FacingDirection
+	ld [hl], SPRITE_FACING_RIGHT
+	CheckEitherEventSet EVENT_780, EVENT_781
+	and a
+	jr z, .asm_6235e
+	ld [hl], SPRITE_FACING_UP
+.asm_6235e
+	call Delay3
+	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+SilphCo11FScript8:
+	ld de, SilphCo11FMovementData_622fb
+	CheckEitherEventSet EVENT_780, EVENT_781
+	and a
+	jr z, .asm_6237b
+	ld de, SilphCo11FMovementData_62305
+	cp $1
+	jr z, .asm_6237b
+	ld de, SilphCo11FMovementData_62311
+.asm_6237b
+	ld a, SILPHCO11F_JESSIE
+	ldh [hSpriteIndexOrTextID], a
+	call MoveSprite
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_SILPHCO11F_SCRIPT9
+	jp SilphCo11FSetCurScript
+
+SilphCo11FScript9:
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wd730]
+	bit 0, a
+	ret nz
+	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+SilphCo11FScript10:
+	ld a, $2
+	ld [wSprite06StateData1MovementStatus], a
+	ld hl, wSprite06StateData1FacingDirection
+	ld [hl], SPRITE_FACING_UP
+	CheckEitherEventSet EVENT_780, EVENT_781
+	and a
+	jr z, .asm_623b1
+	ld [hl], SPRITE_FACING_LEFT
+.asm_623b1
+	call Delay3
+	ld a, TEXT_SILPHCO11F_TEXT9
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+SilphCo11FScript11:
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, SilphCo11FText_624c2
+	ld de, SilphCo11FText_624c2
+	call SaveEndBattleTextPointers
+	ld a, OPP_ROCKET
+	ld [wCurOpponent], a
+	ld a, $2a
+	ld [wTrainerNo], a
+	xor a
+	ldh [hJoyHeld], a
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_SILPHCO11F_SCRIPT12
+	jp SilphCo11FSetCurScript
+
+
+SilphCo11FScript12:
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, SilphCo11FResetCurScript
+	ld a, $2
+	ld [wSprite04StateData1MovementStatus], a
+	ld [wSprite06StateData1MovementStatus], a
+	xor a
+	ld [wSprite04StateData1FacingDirection], a
+	ld [wSprite06StateData1FacingDirection], a
+	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld a, TEXT_SILPHCO11F_TEXT10
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	call StopAllMusic
+	ld c, BANK(Music_MeetJessieJames)
+	ld a, MUSIC_MEET_JESSIE_JAMES
+	call PlayMusic
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_SILPHCO11F_SCRIPT13
+	jp SilphCo11FSetCurScript
+
+SilphCo11FScript13:
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	call GBFadeOutToBlack
+	ld a, HS_SILPH_CO_11F_JAMES
+	call SilphCo11FScript_HideObject
+	ld a, HS_SILPH_CO_11F_JESSIE
+	call SilphCo11FScript_HideObject
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+	ld a, SCRIPT_SILPHCO11F_SCRIPT14
+	jp SilphCo11FSetCurScript
+
+SilphCo11FScript14:
+	call PlayDefaultMusic
+	xor a
+	ldh [hJoyHeld], a
+	ld [wJoyIgnore], a
+	ResetEvent EVENT_782
+	SetEventReuseHL EVENT_BEAT_SILPH_CO_11F_JESSIE_JAMES
+	ld a, SCRIPT_SILPHCO11F_DEFAULT
+	jp SilphCo11FSetCurScript
+
+SilphCo11FScript_ShowObject:
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	call UpdateSprites
+	call Delay3
+	ret
+
+SilphCo11FScript_HideObject:
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ret
 
 SilphCo11F_TextPointers:
 	def_text_pointers
 	dw_const SilphCo11FSilphPresidentText,            TEXT_SILPHCO11F_SILPH_PRESIDENT
 	dw_const SilphCo11FBeautyText,                    TEXT_SILPHCO11F_BEAUTY
 	dw_const SilphCo11FGiovanniText,                  TEXT_SILPHCO11F_GIOVANNI
+	dw_const SilphCo11FJessieJamesText,               TEXT_SILPHCO11F_JAMES
 	dw_const SilphCo11FRocket1Text,                   TEXT_SILPHCO11F_ROCKET1
-	dw_const SilphCo11FRocket2Text,                   TEXT_SILPHCO11F_ROCKET2
+	dw_const SilphCo11FJessieJamesText,               TEXT_SILPHCO11F_JESSIE
 	dw_const SilphCo11FGiovanniYouRuinedOurPlansText, TEXT_SILPHCO11F_GIOVANNI_YOU_RUINED_OUR_PLANS
+	dw_const SilphCo11FJessieJamesText,               TEXT_SILPHCO11F_TEXT8
+	dw_const SilphCo11FText9,                         TEXT_SILPHCO11F_TEXT9
+	dw_const SilphCo11FText10,                        TEXT_SILPHCO11F_TEXT10
 	dw_const SilphCo11Text7,                          TEXT_SILPHCO11F_CARD_KEY_DONE
 
 SilphCo11TrainerHeaders:
-	def_trainers 4
+	def_trainers 5
 SilphCo11TrainerHeader0:
-	trainer EVENT_BEAT_SILPH_CO_11F_TRAINER_0, 4, SilphCo11FRocket1BattleText, SilphCo11FRocket1EndBattleText, SilphCo11FRocket1AfterBattleText
-SilphCo11TrainerHeader1:
-	trainer EVENT_BEAT_SILPH_CO_11F_TRAINER_1, 3, SilphCo11FRocket2BattleText, SilphCo11FRocket2EndBattleText, SilphCo11FRocket2AfterBattleText
+	trainer EVENT_BEAT_SILPH_CO_11F_TRAINER_0, 3, SilphCo11FRocket1BattleText, SilphCo11FRocket1EndBattleText, SilphCo11FRocket1AfterBattleText
 	db -1 ; end
+
+SilphCo11FJessieJamesText:
+	text_far _SilphCoJessieJamesText1
+	text_asm
+	ld c, 10
+	rst _DelayFrames
+	ld a, $4
+	ld [wPlayerMovingDirection], a
+	ld a, $0
+	ld [wEmotionBubbleSpriteIndex], a
+	ld a, EXCLAMATION_BUBBLE
+	ld [wWhichEmotionBubble], a
+	predef EmotionBubble
+	ld c, 20
+	rst _DelayFrames
+	rst TextScriptEnd
+
+SilphCo11FText9:
+	text_far _SilphCoJessieJamesText2
+	text_end
+
+SilphCo11FText_624c2:
+	text_far _SilphCoJessieJamesText3
+	text_end
+
+SilphCo11FText10:
+	text_far _SilphCoJessieJamesText4
+	text_asm
+	ld c, 64
+	rst _DelayFrames
+	rst TextScriptEnd
 
 SilphCo11FSilphPresidentText:
 	text_asm
@@ -376,33 +674,3 @@ SilphCo11FRocket1EndBattleText:
 SilphCo11FRocket1AfterBattleText:
 	text_far _SilphCo11FRocket1AfterBattleText
 	text_end
-
-SilphCo11FRocket2Text:
-	text_asm
-	ld hl, SilphCo11TrainerHeader1
-	call TalkToTrainer
-	rst TextScriptEnd
-
-SilphCo11FRocket2BattleText:
-	text_far _SilphCo11FRocket2BattleText
-	text_end
-
-SilphCo11FRocket2EndBattleText:
-	text_far _SilphCo11FRocket2EndBattleText
-	text_end
-
-SilphCo11FRocket2AfterBattleText:
-	text_far _SilphCo11FRocket2AfterBattleText
-	text_end
-
-;SilphCo10FPorygonText: ; unreferenced
-;	text_asm
-;	ld hl, .Text
-;	rst _PrintText
-;	ld a, PORYGON
-;	call DisplayPokedex
-;	rst TextScriptEnd
-
-;.Text:
-;	text_far _SilphCo10FPorygonText
-;	text_end

@@ -113,9 +113,7 @@ ROMX $12
 	"Maps 8"
 ROMX $13
 	"Pics 6"
-	org $7d04
-	"Maps 9"
-	"Predefs"
+	org $7f3f
 ROMX $14
 	"Maps 10"
 	"Battle Engine 8"
@@ -143,6 +141,8 @@ ROMX $18
 	"Hidden Objects 4"
 ROMX $19
 	"Tilesets 1"
+	"Maps 9"
+	"Predefs"
 ROMX $1A
 	"Battle Engine 11"
 	"Tilesets 2"
