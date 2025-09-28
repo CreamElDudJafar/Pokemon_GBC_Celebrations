@@ -59,7 +59,7 @@ _SilphCo11FBeautyText::
 	done
 
 _SilphCo11FGiovanniText::
-	text "Ah <PLAYER>!"
+	text "Ah, <PLAYER>!"
 	line "So we meet again!"
 
 	para "The PRESIDENT and"
@@ -71,7 +71,7 @@ _SilphCo11FGiovanniText::
 	line "out of grown-up"
 	cont "matters..."
 
-	para "Or, experience a"
+	para "or, experience a"
 	line "world of pain!"
 	done
 
@@ -127,9 +127,4 @@ _SilphCo11FRocket2AfterBattleText::
 	text "Watch your step,"
 	line "my BOSS likes his"
 	cont "#MON tough!"
-	done
-
-_SilphCo10FPorygonText::
-	text "The monitor has"
-	line "#MON on it!"
 	done
