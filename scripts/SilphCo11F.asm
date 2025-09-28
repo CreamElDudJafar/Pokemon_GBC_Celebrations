@@ -395,14 +395,14 @@ SilphCo11FRocket2AfterBattleText:
 	text_far _SilphCo11FRocket2AfterBattleText
 	text_end
 
-SilphCo10FPorygonText: ; unreferenced
-	text_asm
-	ld hl, .Text
-	rst _PrintText
-	ld a, PORYGON
-	call DisplayPokedex
-	rst TextScriptEnd
+;SilphCo10FPorygonText: ; unreferenced
+;	text_asm
+;	ld hl, .Text
+;	rst _PrintText
+;	ld a, PORYGON
+;	call DisplayPokedex
+;	rst TextScriptEnd
 
-.Text:
-	text_far _SilphCo10FPorygonText
-	text_end
+;.Text:
+;	text_far _SilphCo10FPorygonText
+;	text_end
