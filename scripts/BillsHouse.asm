@@ -11,7 +11,9 @@ BillsHouse_ScriptPointers:
 	dw_const BillsHousePokemonEntersMachineScript, SCRIPT_BILLSHOUSE_POKEMON_ENTERS_MACHINE
 	dw_const BillsHouseBillExitsMachineScript,     SCRIPT_BILLSHOUSE_BILL_EXITS_MACHINE
 	dw_const BillsHouseCleanupScript,              SCRIPT_BILLSHOUSE_CLEANUP
-	dw_const BillsHousePCScript,                   SCRIPT_BILLSHOUSE_PC
+	dw_const BillsHousePlayerWalksToBillScript,    SCRIPT_BILLSHOUSE_PLAYER_WALKS_TO_BILL
+	dw_const BillsHousePlayerFacesBillScript,      SCRIPT_BILLSHOUSE_PLAYER_FACES_BILL
+;	dw_const BillsHousePCScript,                   SCRIPT_BILLSHOUSE_PC
 
 BillsHousePokemonWalkToMachineScript:
 	ld a, [wSpritePlayerStateData1FacingDirection]
@@ -101,17 +103,61 @@ BillsHouseCleanupScript:
 	ld [wJoyIgnore], a
 	SetEvent EVENT_MET_BILL_2 ; this event seems redundant
 	SetEvent EVENT_MET_BILL
-	ld a, SCRIPT_BILLSHOUSE_DEFAULT
+	ld a, SCRIPT_BILLSHOUSE_PLAYER_WALKS_TO_BILL
 	ld [wBillsHouseCurScript], a
 	ret
 
-BillsHousePCScript:
-	ld a, TEXT_BILLSHOUSE_ACTIVATE_PC
+BillsHousePlayerWalksToBillScript:
+	xor a
+	ld [wPlayerMovingDirection], a
+	ld a, SPRITE_FACING_UP
+	ld [wSpritePlayerStateData1FacingDirection], a
+	ld a, ~(A_BUTTON | B_BUTTON)
+	ld [wJoyIgnore], a
+	ld de, PlayerMovementToBill
+	ld hl, wSimulatedJoypadStatesEnd
+	call DecodeRLEList
+	dec a
+	ld [wSimulatedJoypadStatesIndex], a
+	call StartSimulatingJoypadStates
+	ld a, SCRIPT_BILLSHOUSE_PLAYER_FACES_BILL
+	ld [wBillsHouseCurScript], a
+	ret
+
+; Make Player Walk to Bill
+PlayerMovementToBill:
+	db D_RIGHT, $3
+	db $FF
+
+BillsHousePlayerFacesBillScript:
+	ld a, [wSimulatedJoypadStatesIndex]
+	and a
+	ret nz
+	xor a
+	ld [wPlayerMovingDirection], a
+	ld a, SPRITE_FACING_UP
+	ld [wSpritePlayerStateData1FacingDirection], a
+	ld a, BILLSHOUSE_BILL1
+	ldh [hSpriteIndex], a
+	ld a, SPRITE_FACING_DOWN
+	ldh [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+	xor a
+	ld [wJoyIgnore], a
+	ld a, TEXT_BILLSHOUSE_BILL_SS_TICKET
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, SCRIPT_BILLSHOUSE_DEFAULT
 	ld [wBillsHouseCurScript], a
 	ret
+
+;BillsHousePCScript: ; Unreferenced
+;	ld a, TEXT_BILLSHOUSE_ACTIVATE_PC
+;	ldh [hSpriteIndexOrTextID], a
+;	call DisplayTextID
+;	ld a, SCRIPT_BILLSHOUSE_DEFAULT
+;	ld [wBillsHouseCurScript], a
+;	ret
 
 BillsHouse_TextPointers:
 	def_text_pointers
@@ -119,10 +165,10 @@ BillsHouse_TextPointers:
 	dw_const BillsHouseBillPokemonText,               TEXT_BILLSHOUSE_BILL_POKEMON
 	dw_const BillsHouseBillSSTicketText,              TEXT_BILLSHOUSE_BILL_SS_TICKET
 	dw_const BillsHouseBillCheckOutMyRarePokemonText, TEXT_BILLSHOUSE_BILL_CHECK_OUT_MY_RARE_POKEMON
-	dw_const BillsHouseActivatePCScript,              TEXT_BILLSHOUSE_ACTIVATE_PC
+;	dw_const BillsHouseActivatePCScript,              TEXT_BILLSHOUSE_ACTIVATE_PC
 
-BillsHouseActivatePCScript:
-	script_bills_pc
+;BillsHouseActivatePCScript:
+;	script_bills_pc
 
 BillsHouseBillPokemonText:
 	text_asm
