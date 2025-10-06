@@ -63,6 +63,9 @@ PokedexTileGraphicsEnd:
 WorldMapTileGraphics: INCBIN "gfx/town_map/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 
+MonNestOptionsTileGraphics: INCBIN "gfx/town_map/mon_nest_options.2bpp" ; marcelnote - new
+MonNestOptionsTileGraphicsEnd:
+
 IF (DEF(_RED) || DEF(_BLUE)) 
 PlayerCharacterTitleGraphics: INCBIN "gfx/title/player.2bpp"
 ELSE
