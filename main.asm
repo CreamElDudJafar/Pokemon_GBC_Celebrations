@@ -418,7 +418,6 @@ INCLUDE "engine/overworld/select_button_functionality.asm"
 INCLUDE "engine/menus/text_multi_button_prompt.asm"
 INCLUDE "engine/menus/multi_choice_menu.asm"
 INCLUDE "engine/menus/change_box_menu.asm"
-INCLUDE "engine/items/super_rod.asm"
 INCLUDE "engine/gfx/animated_tiles_code.asm"
 INCLUDE "engine/overworld/specific_script_flags.asm"
 INCLUDE "engine/battle/just_slot_machine_stuff.asm" ; free space for bank1E

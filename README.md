@@ -30,7 +30,8 @@ Some FEATURES:
 - Aerodactyl / Omanyte / Kabuto level when revived now is 44, GIFT Lapras in Saffron now is level 34 / Eevee from Celadon Roof is 30.
 - Gust is now a Flying Type instead of NORMAL
 - IN-GAME MOVES LEARNSET POKEDEX
--  MOVEDEX IN POKEDEX
+- MOVEDEX IN POKEDEX
+- Can change between LAND, WATER (SURF), and RODs to see wild Pokemon locations
 - Base Stats displayed in POKEDEX
 - Can Now Surrender In Battle
 - PC in DayCare
@@ -84,6 +85,7 @@ CREDITS: IF ANYONE IS MISSED PLEASE LET ME KNOW. IT’S HARD TO KEEP TRACK OF AL
 -CRZ-Shadows- and Yellow Legacy Team: A lot of QOL changes came from ideas or code used in there game. See their Github for all there amazing changes.
 - JustRegularLuna/Mateo: A lot of sprites for Pokemon and Pokeball sprites used from her amazing game RED++. Move Description code and others
 - THOTH33- Helping give Old Man his own palette color in the catching tutorial
+- PokeFanMarcel- For the Nurse Joy SS Anne room, LAND,WATER, ROD Pokedex Area function, Running sprites and the code to make the EXP ALL a key item that can turn on or off
 - Porygondolier- Pokedex Remember Position
 - DarthBR
 - Dreams897

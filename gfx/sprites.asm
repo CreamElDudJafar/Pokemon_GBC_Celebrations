@@ -29,7 +29,7 @@ OldAmberSprite::         INCBIN "gfx/sprites/old_amber.2bpp"
 GamblerAsleepSprite::    INCBIN "gfx/sprites/gambler_asleep.2bpp"
 LittleBoySprite::        INCBIN "gfx/sprites/little_boy.2bpp"
 BaldingGuySprite::       INCBIN "gfx/sprites/balding_guy.2bpp"
-WaiterSprite::           INCBIN "gfx/sprites/waiter.2bpp"
+;WaiterSprite::           INCBIN "gfx/sprites/waiter.2bpp" ;; moved
 
 
 SECTION "NPC Sprites 2", ROMX
@@ -139,6 +139,7 @@ DaisySprite::            INCBIN "gfx/sprites/daisy.2bpp"
 LanceSprite::            INCBIN "gfx/sprites/lance.2bpp"
 MomSprite::              INCBIN "gfx/sprites/mom.2bpp"
 GameboyKidSprite::       INCBIN "gfx/sprites/gameboy_kid.2bpp"
+WaiterSprite::           INCBIN "gfx/sprites/waiter.2bpp"
 AgathaSprite::           INCBIN "gfx/sprites/agatha.2bpp"
 Pokedex1Sprite::         INCBIN "gfx/sprites/pokedex1.2bpp"
 PokeBall2Sprite::        INCBIN "gfx/sprites/poke_ball2.2bpp"
