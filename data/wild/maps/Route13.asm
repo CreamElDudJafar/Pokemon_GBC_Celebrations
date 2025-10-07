@@ -26,5 +26,15 @@ IF DEF(_BLUE)
 ENDC
 	end_grass_wildmons
 
-	def_water_wildmons 0 ; encounter rate
+	def_water_wildmons 3 ; encounter rate
+	db 15, SLOWPOKE
+	db 15, SLOWPOKE
+	db 15, SLOWPOKE
+	db 15, SLOWPOKE
+	db 15, SLOWPOKE
+	db 15, SLOWPOKE
+	db 15, SLOWPOKE
+	db 15, SLOWPOKE
+	db 15, SLOWBRO
+	db 20, SLOWBRO
 	end_water_wildmons

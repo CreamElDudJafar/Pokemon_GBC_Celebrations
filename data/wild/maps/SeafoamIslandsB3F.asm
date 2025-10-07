@@ -25,5 +25,15 @@ ENDC
 	db 37, DEWGONG
 	end_grass_wildmons
 
-	def_water_wildmons 0 ; encounter rate
+	def_water_wildmons 5 ; encounter rate
+	db 25, GOLDEEN
+	db 30, GOLDEEN
+	db 30, GOLDEEN
+	db 30, STARYU
+	db 35, HORSEA
+	db 40, STARYU
+	db 40, HORSEA
+	db 40, SEADRA
+	db 40, SEADRA
+	db 40, STARMIE
 	end_water_wildmons

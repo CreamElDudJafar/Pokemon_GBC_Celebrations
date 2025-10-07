@@ -30,8 +30,8 @@ WildDataPointers:
 	dw Route16WildMons         ; ROUTE_16
 	dw Route17WildMons         ; ROUTE_17
 	dw Route18WildMons         ; ROUTE_18
-	dw SeaRoutesWildMons       ; ROUTE_19
-	dw SeaRoutesWildMons       ; ROUTE_20
+	dw Route19WildMons         ; ROUTE_19
+	dw Route20WildMons         ; ROUTE_20
 	dw Route21WildMons         ; ROUTE_21
 	dw Route22WildMons         ; ROUTE_22
 	dw Route23WildMons         ; ROUTE_23
@@ -301,7 +301,8 @@ INCLUDE "data/wild/maps/SafariZoneCenter.asm"
 INCLUDE "data/wild/maps/SafariZoneEast.asm"
 INCLUDE "data/wild/maps/SafariZoneNorth.asm"
 INCLUDE "data/wild/maps/SafariZoneWest.asm"
-INCLUDE "data/wild/maps/SeaRoutes.asm"
+INCLUDE "data/wild/maps/Route19.asm"
+INCLUDE "data/wild/maps/Route20.asm"
 INCLUDE "data/wild/maps/SeafoamIslands1F.asm"
 INCLUDE "data/wild/maps/SeafoamIslandsB1F.asm"
 INCLUDE "data/wild/maps/SeafoamIslandsB2F.asm"
