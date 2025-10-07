@@ -26,5 +26,15 @@ IF DEF(_BLUE)
 ENDC
 	end_grass_wildmons
 
-	def_water_wildmons 0 ; encounter rate
+	def_water_wildmons 3 ; encounter rate
+	db 15, PSYDUCK
+	db 15, PSYDUCK
+	db 15, PSYDUCK
+	db 15, PSYDUCK
+	db 15, PSYDUCK
+	db 15, PSYDUCK
+	db 15, PSYDUCK
+	db 28, GOLDUCK
+	db 28, GOLDUCK
+	db 30, GOLDUCK
 	end_water_wildmons
