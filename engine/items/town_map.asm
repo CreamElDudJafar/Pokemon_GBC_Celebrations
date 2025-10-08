@@ -139,8 +139,8 @@ LoadTownMap_Nest:
 	ldh a, [hJoy5]
 	and A_BUTTON
 	jr z, .exit
-	ld a, SFX_TINK
-	rst _PlaySound
+;	ld a, SFX_TINK
+;	rst _PlaySound
 	jr .switchToWater
 .exit
 	call ExitTownMap
@@ -171,8 +171,8 @@ LoadTownMap_Nest:
 	ldh a, [hJoy5]
 	and A_BUTTON
 	jr z, .exit
-	ld a, SFX_TINK
-	rst _PlaySound
+;	ld a, SFX_TINK
+;	rst _PlaySound
 	jr .switchToRods
 
 .switchToRodsCountdown
@@ -200,8 +200,8 @@ LoadTownMap_Nest:
 	ldh a, [hJoy5]
 	and A_BUTTON
 	jr z, .exit
-	ld a, SFX_TINK
-	rst _PlaySound
+;	ld a, SFX_TINK
+;	rst _PlaySound
 	jr .switchToLand
 
 .switchToLandCountdown
@@ -225,8 +225,8 @@ LoadTownMap_Nest:
 	ldh a, [hJoy5]
 	and A_BUTTON
 	jp z, .exit
-	ld a, SFX_TINK
-	rst _PlaySound
+;	ld a, SFX_TINK
+;	rst _PlaySound
 	jp .switchToWater
 
 .printAreaUnknown
