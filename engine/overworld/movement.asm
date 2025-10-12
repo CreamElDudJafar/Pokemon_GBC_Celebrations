@@ -356,6 +356,7 @@ UpdateSpriteInWalkingAnimation:
 	ld l, a
 	ldh a, [hRandomAdd]
 	and $7f
+	inc a
 	ld [hl], a                       ; x#SPRITESTATEDATA2_MOVEMENTDELAY:
 	                                 ; set next movement delay to a random value in [0,$7f]
 	inc [hl]                               
@@ -448,7 +449,9 @@ InitializeSpriteStatus:
 	ld a, $8
 	ld [hli], a   ; [x#SPRITESTATEDATA2_YDISPLACEMENT] = 8
 	ld [hl], a    ; [x#SPRITESTATEDATA2_XDISPLACEMENT] = 8
-	ret
+;	ret
+	;fall through to InitializeSpriteScreenPosition
+	;This is essentially what Pokemon Yellow does to fix the amazing man glitch
 
 ; calculates the sprite's screen position from its map position and the player position
 InitializeSpriteScreenPosition:
