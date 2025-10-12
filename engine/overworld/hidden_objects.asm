@@ -78,6 +78,12 @@ CheckForHiddenObject::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	;joenote - Unlike signs and NPCs, sprites are not updated for hidden objects (trash cans, statues, etc).
+	;This can cause an "amazing man" glitch, particularly in vermillion gym.
+	;Update the prites here to prevent this from happening.
+	push hl
+	call UpdateSprites
+	pop hl
 	ret
 .noMatch
 	ld a, $ff
