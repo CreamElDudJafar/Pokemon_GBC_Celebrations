@@ -49,6 +49,7 @@ Some FEATURES:
 - Auto HM use (eg: surf, just touch the water and say YES)
 - Deletable HM's - Sort Items in BAG 
 - OAK Battle When Pokedex Is Complete
+- SS Anne Icon In Town Map
 - Message when PC is full
 - Can click A Button on Snorlax to use Poke Flute
 - Check IV/DV - hold start/select and press STATS - EXP BAR - Caught Icon in battle 
@@ -80,9 +81,10 @@ CREDITS: IF ANYONE IS MISSED PLEASE LET ME KNOW. IT’S HARD TO KEEP TRACK OF AL
 - Vortiene- For sprites, updates/code from PURERGB, Bag Space increase, Shorter elevator time, and explanation on confusing parts of code. Thank You for feeling like your available 24/7.
 - JoJoBear13- for his using his Trainer AI code along with Vortienes, Pokeyellows backport of the audio, Coin Observer, and a lot of QOL features from Shin-PokeRed. The female sprite is based on his original girl character. We kept it.
 - RainbowMetalPigeon- For the Port PC code, and again for the help and patience with building this game. TRY HIS EXTREME YELLOW.
--CRZ-Shadows- and Yellow Legacy Team: A lot of QOL changes came from ideas or code used in there game. See their Github for all there amazing changes.
+- CRZ-Shadows- and Yellow Legacy Team: A lot of QOL changes came from ideas or code used in there game. See their Github for all there amazing changes.
 - JustRegularLuna/Mateo: A lot of sprites for Pokemon and Pokeball sprites used from her amazing game RED++. Move Description code and others
 - Porygondolier- Pokedex Remember Position
+- PokeFanMarcel- For the Nurse Joy SS Anne room, LAND,WATER, ROD Pokedex Area function, SS Anne Map Icon, Running sprites and the code to make the EXP ALL a key item that can turn on or off
 - DarthBR
 - Dreams897
 - Engezertorung
