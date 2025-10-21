@@ -194,43 +194,43 @@ WriteMonPartySpriteOAMBySpecies:
 	ld [wOAMBaseTile], a
 	jr WriteMonPartySpriteOAM
 
-UnusedPartyMonSpriteFunction:
+;UnusedPartyMonSpriteFunction:
 ; This function is unused and doesn't appear to do anything useful. It looks
 ; like it may have been intended to load the tile patterns and OAM data for
 ; the mon party sprite associated with the species in [wCurPartySpecies].
 ; However, its calculations are off and it loads garbage data.
-	ld a, [wcf91]
-	call GetPartyMonSpriteID
-	push af
-	ld hl, vSprites tile $00
-	call .LoadTilePatterns
-	pop af
-	add $54
-	ld hl, vSprites tile $04
-	call .LoadTilePatterns
-	xor a
-	ld [wMonPartySpriteSpecies], a
-	jr WriteMonPartySpriteOAMBySpecies
+;	ld a, [wcf91]
+;	call GetPartyMonSpriteID
+;	push af
+;	ld hl, vSprites tile $00
+;	call .LoadTilePatterns
+;	pop af
+;	add $54
+;	ld hl, vSprites tile $04
+;	call .LoadTilePatterns
+;	xor a
+;	ld [wMonPartySpriteSpecies], a
+;	jr WriteMonPartySpriteOAMBySpecies
 
-.LoadTilePatterns
-	push hl
-	add a
-	ld c, a
-	ld b, 0
-	ld hl, MonPartySpritePointers
-	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	ld b, a
-	pop hl
-	jp CopyVideoData
+;.LoadTilePatterns
+;	push hl
+;	add a
+;	ld c, a
+;	ld b, 0
+;	ld hl, MonPartySpritePointers
+;	add hl, bc
+;	add hl, bc
+;	add hl, bc
+;	ld a, [hli]
+;	ld e, a
+;	ld a, [hli]
+;	ld d, a
+;	ld a, [hli]
+;	ld c, a
+;	ld a, [hli]
+;	ld b, a
+;	pop hl
+;	jp CopyVideoData
 
 WriteMonPartySpriteOAM:
 ; Write the OAM blocks for the first animation frame into the OAM buffer and
