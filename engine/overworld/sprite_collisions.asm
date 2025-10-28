@@ -52,7 +52,7 @@ UpdateNonPlayerSprite:
 ; The reason that 4 is added below to the coordinate is to make it align with a
 ; multiple of $10 to make comparisons easier.
 DetectCollisionBetweenSprites:
-	nop
+	;nop
 
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]

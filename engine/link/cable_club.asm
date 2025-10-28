@@ -359,9 +359,7 @@ TradeCenter_SelectMon:
 	dec a
 	ld [wCurrentMenuItem], a
 .displayEnemyMonStats
-	ld a, INIT_ENEMYOT_LIST
-	ld [wInitListType], a
-	callfar InitList ; the list isn't used
+	callfar InitEnemyOTList ; the list isn't used
 	ld hl, wEnemyMons
 	call TradeCenter_DisplayStats
 	jp .getNewInput
@@ -418,9 +416,7 @@ TradeCenter_SelectMon:
 	jr z, .playerMonMenu_ANotPressed
 	jp .chosePlayerMon ; jump if A button pressed
 ; unreachable code
-	ld a, INIT_PLAYEROT_LIST
-	ld [wInitListType], a
-	callfar InitList ; the list isn't used
+	callfar InitPlayerOTList ; the list isn't used
 	call TradeCenter_DisplayStats
 	jp .getNewInput
 .playerMonMenu_ANotPressed
@@ -513,9 +509,7 @@ TradeCenter_SelectMon:
 .displayPlayerMonStats
 	pop af
 	ld [wCurrentMenuItem], a
-	ld a, INIT_PLAYEROT_LIST
-	ld [wInitListType], a
-	callfar InitList ; the list isn't used
+	callfar InitPlayerOTList ; the list isn't used
 	call TradeCenter_DisplayStats
 	call LoadScreenTilesFromBuffer1
 	jp .playerMonMenu
