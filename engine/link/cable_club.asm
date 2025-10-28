@@ -811,7 +811,7 @@ TradeCenter_Trade:
 	call AddNTimes
 	ld de, wLoadedMon
 	ld bc, wEnemyMon2 - wEnemyMon1
-	rst _CopyData
+	call CopyData
 	call AddEnemyMonToPlayerParty
 	ld a, [wPartyCount]
 	dec a
@@ -896,7 +896,7 @@ CableClub_Run:
 	jr z, .doBattleOrTrade
 	cp LINK_STATE_RESET ; this is never used
 	ret nz
-	predef EmptyFunc
+;	predef EmptyFunc
 	jp Init
 .doBattleOrTrade
 	call CableClub_DoBattleOrTrade
@@ -925,8 +925,8 @@ CableClub_Run:
 	ld [wNewSoundID], a
 	jp PlaySound
 
-EmptyFunc:
-	ret
+;EmptyFunc:
+;	ret
 
 Diploma_TextBoxBorder:
 	call GetPredefRegisters
