@@ -781,6 +781,9 @@ SpritePaletteAssignments: ; Characters on the overworld
 	; 0X50: SPRITE_WIGGLYTUFF
 	db SPR_PAL_PURPLE
 
+	assert_table_length NUM_SPRITES
+
+
 AnimationTileset1Palettes:
 	INCBIN "color/data/animtileset1palettes.bin"
 
