@@ -1692,8 +1692,7 @@ wUnusedD119:: db
 ; wWalkBikeSurfState is sometimes copied here, but it doesn't seem to be used for anything
 wWalkBikeSurfStateCopy:: db
 
-; the type of list for InitList to init
-wInitListType:: db
+	ds 1
 
 ; 0 if no mon was captured
 wCapturedMonSpecies:: db
