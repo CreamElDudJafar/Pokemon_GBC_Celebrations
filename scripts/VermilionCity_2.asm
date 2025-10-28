@@ -55,7 +55,7 @@ VermilionCityPrintOfficerJennyText::
 	jr nz, .refused
 
 	ld hl, JennyAcceptedText
-	call PrintText
+	rst _PrintText
 	call Delay3
 	ld a, OPP_JENNY
 	ld [wCurOpponent], a
