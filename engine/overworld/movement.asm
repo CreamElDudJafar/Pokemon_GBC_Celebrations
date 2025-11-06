@@ -69,8 +69,25 @@ UpdatePlayerSprite:
 	ld a, [hl]
 	inc a
 	ld [hl], a
-	cp 4
-	jr nz, .calcImageIndex
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - If B is being held to go faster and full joypad is enabled (i.e. not in a cutscene),
+;Then increase player animation speed by 25%
+	push bc
+	ld c, 4
+	ld b, a
+	ld a, [wJoyIgnore]
+	and a
+	jr nz, .doneSpeed
+	ld a, [hJoyHeld]
+	and B_BUTTON
+	jr z, .doneSpeed
+	ld c, 3
+.doneSpeed
+	ld a, b
+	cp c
+	pop bc
+	jr c, .calcImageIndex
+;;;;;;;;;;;;;
 	xor a
 	ld [hl], a
 	inc hl
