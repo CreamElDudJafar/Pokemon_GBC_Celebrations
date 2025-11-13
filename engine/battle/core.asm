@@ -6315,13 +6315,11 @@ LoadEnemyMonData:
 	jr nz, .storeDVs
 	ld a, [wIsInBattle]
 	cp $2 ; is it a trainer battle?
-	jr nz, .wildMon
 ; fixed DVs for trainer mon
 	ld a, ATKDEFDV_TRAINER
 	ld b, SPDSPCDV_TRAINER
 	jr z, .storeDVs
 ; random DVs for wild mon
-.wildMon
 	call BattleRandom
 	ld b, a
 	call BattleRandom
