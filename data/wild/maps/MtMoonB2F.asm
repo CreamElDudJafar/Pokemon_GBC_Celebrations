@@ -4,7 +4,7 @@ MtMoonB2FWildMons:
 	db 11, GEODUDE
 	db 13, PARAS
 	db 11, GEODUDE
-	db 11, ZUBAT
+	db 11, PARAS
 	db 12, ZUBAT
 	db 13, ZUBAT
 	db 10, CLEFAIRY

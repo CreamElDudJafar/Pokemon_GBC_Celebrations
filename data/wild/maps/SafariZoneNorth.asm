@@ -1,26 +1,26 @@
 SafariZoneNorthWildMons:
 	def_grass_wildmons 30 ; encounter rate
 IF (DEF(_RED) || DEF(_GREEN)) 
-	db 22, NIDORAN_M
-	db 26, RHYHORN
-	db 23, PARAS
-	db 25, EXEGGCUTE
-	db 30, NIDORINO
-	db 27, EXEGGCUTE
-	db 30, NIDORINA
+	db 33, NIDOKING
+	db 33, RHYHORN
+	db 35, PARAS
+	db 34, EXEGGCUTE
+	db 35, NIDOQUEEN
+	db 36, MAROWAK
+	db 35, KANGASKHAN
 ENDC
 IF DEF(_BLUE)
-	db 22, NIDORAN_F
-	db 26, RHYHORN
-	db 23, PARAS
-	db 25, EXEGGCUTE
-	db 30, NIDORINA
-	db 27, EXEGGCUTE
-	db 30, NIDORINO
+	db 33, NIDOQUEEN
+	db 33, RHYHORN
+	db 35, PARAS
+	db 34, EXEGGCUTE
+	db 35, NIDOKING
+	db 36, MAROWAK
+	db 35, KANGASKHAN
 ENDC
-	db 32, VENOMOTH
-	db 26, CHANSEY
-	db 28, TAUROS
+	db 36, VENOMOTH
+	db 37, CHANSEY
+	db 40, TAUROS
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate
