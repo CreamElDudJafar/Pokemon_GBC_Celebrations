@@ -1,15 +1,15 @@
 Route21WildMons:
 	def_grass_wildmons 25 ; encounter rate
-	db 21, RATTATA
-	db 23, PIDGEY
-	db 30, RATICATE
-	db 30, EEVEE
-	db 33, EEVEE
-	db 30, PIDGEOTTO
-	db 32, PIDGEOTTO
-	db 28, TANGELA
-	db 30, TANGELA
-	db 32, TANGELA
+	db 25, PIDGEY
+	db 23, RATTATA
+	db 20, PARAS
+	db 22, VULPIX
+	db 22, TANGELA
+	db 25, MR_MIME
+	db 26, TANGELA
+	db 30, FEAROW
+	db 27, MR_MIME
+	db 30, PIDGEOT
 	end_grass_wildmons
 
 	def_water_wildmons 5 ; encounter rate

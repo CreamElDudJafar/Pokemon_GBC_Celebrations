@@ -8,7 +8,7 @@ Route18WildMons:
 	db 26, DODUO
 	db 28, DODUO
 	db 29, RATICATE
-	db 27, FEAROW
+	db 27, PIDGEOT
 	db 29, FEAROW
 	end_grass_wildmons
 

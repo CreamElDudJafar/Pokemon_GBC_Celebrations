@@ -4,22 +4,22 @@ Route4WildMons:
 	db 10, SPEAROW
 	db 12, MANKEY
 IF (DEF(_RED) || DEF(_GREEN)) 
-	db  6, EKANS
-	db  8, SPEAROW
+	db  9, EKANS
+	db 11, SPEAROW
 	db 10, SANDSHREW
 	db 12, EKANS
 	db 12, SANDSHREW
-	db 10, BULBASAUR
-	db 12, BULBASAUR
+	db 10, PSYDUCK
+	db 12, FARFETCHD
 ENDC
 IF DEF(_BLUE)
-	db  6, SANDSHREW
-	db  8, SPEAROW
+	db  9, SANDSHREW
+	db 11, SPEAROW
 	db 10, EKANS
 	db 12, SANDSHREW
-	db 12, SPEAROW
-	db 10, BULBASAUR
-	db 12, BULBASAUR
+	db 12, EKANS
+	db 10, PSYDUCK
+	db 12, FARFETCHD
 ENDC
 	end_grass_wildmons
 

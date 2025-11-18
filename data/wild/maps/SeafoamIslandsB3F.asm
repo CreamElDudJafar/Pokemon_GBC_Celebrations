@@ -7,7 +7,7 @@ IF (DEF(_RED) || DEF(_GREEN))
 	db 33, SEEL
 	db 29, HORSEA
 	db 31, SHELLDER
-	db 31, HORSEA
+	db 31, JYNX
 	db 29, SHELLDER
 	db 39, SEADRA
 ENDC
@@ -18,7 +18,7 @@ IF DEF(_BLUE)
 	db 33, SEEL
 	db 29, KRABBY
 	db 31, STARYU
-	db 31, KRABBY
+	db 31, JYNX
 	db 29, STARYU
 	db 39, KINGLER
 ENDC

@@ -1,15 +1,15 @@
 CeruleanCave2FWildMons:
 	def_grass_wildmons 15 ; encounter rate
-	db 51, MAROWAK
-	db 51, BLASTOISE
-	db 51, CHARIZARD
-	db 52, VENUSAUR
-	db 52, HITMONCHAN
-	db 52, AERODACTYL
-	db 56, PORYGON
-	db 54, WIGGLYTUFF
-	db 55, GENGAR
-	db 60, CHANSEY
+	db 64, STARMIE
+	db 64, SANDSLASH
+	db 64, WIGGLYTUFF
+	db 64, MAROWAK
+	db 64, DODRIO
+	db 65, MR_MIME
+	db 65, MAGNETON
+	db 65, KANGASKHAN
+	db 65, PORYGON
+	db 65, LAPRAS
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate
