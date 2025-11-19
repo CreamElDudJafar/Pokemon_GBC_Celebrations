@@ -138,26 +138,29 @@ GameCornerClerk1Text:
 	text_asm
 	; Show player's coins
 	call GameCornerDrawCoinBox
+	ld hl, .DoYouNeedSomeGameCoins
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_LEFT
 	jr nz, .normal
 	CheckEvent EVENT_BEAT_KOGA
 	jr nz, .secretbargain
 .normal
-	ld hl, .DoYouNeedSomeGameCoins
 	rst _PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .declined
+	ld hl, .PleaseComePlaySometime
+	jr nz, .print_text ; declined
 	; Can only get more coins if you
 	; - have the Coin Case
 	ld b, COIN_CASE
 	call IsItemInBag
-	jr z, .no_coin_case
+	ld hl, .DontHaveCoinCase
+	jr z, .print_text ; no coin case
 	; - have room in the Coin Case for at least 9 coins
 	call Has9990Coins
-	jr nc, .coin_case_full
+	ld hl, .CoinCaseIsFull
+	jr nc, .print_text ; coin case full
 	; - have at least 1000 yen
 	xor a
 	ldh [hMoney], a
@@ -167,7 +170,9 @@ GameCornerClerk1Text:
 	call HasEnoughMoney
 	jr nc, .buy_coins
 	ld hl, .CantAffordTheCoins
-	jr .print_ret
+.print_text
+	rst _PrintText
+	rst TextScriptEnd
 .buy_coins
 	; Spend 1000 yen
 	xor a
@@ -191,31 +196,33 @@ GameCornerClerk1Text:
 	predef AddBCDPredef
 	; Update display
 	call GameCornerDrawCoinBox
+	ld a, SFX_PURCHASE           
+	call PlaySoundWaitForCurrent  ; added purchase sound
+	call WaitForSoundToFinish     ; when buying coins
 	ld hl, .ThanksHereAre50Coins
-	jr .print_ret
-.declined
-	ld hl, .PleaseComePlaySometime
-	jr .print_ret
-.coin_case_full
-	ld hl, .CoinCaseIsFull
-	jr .print_ret
-.no_coin_case
-	ld hl, .DontHaveCoinCase
-.print_ret
+; next few lines are new for buying coins faster
 	rst _PrintText
-	rst TextScriptEnd
+	ld hl, .WantMoreCoins
+	jr .normal ; need more coins
 .secretbargain
 	ld hl, .DoYouNeedSomeGameCoins2
+.secretBargainFaster
 	rst _PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .declined
+	ld hl, .PleaseComePlaySometime
+	jr nz, .print_text2 ; declined
+	; Can only get more coins if you
+	; - have the Coin Case
 	ld b, COIN_CASE
 	call IsItemInBag
-	jr z, .no_coin_case
+	ld hl, .DontHaveCoinCase
+	jr z, .print_text2 ; no coin case
+	; - have room in the Coin Case for at least 9 coins
 	call Has9990Coins
-	jr nc, .coin_case_full
+	ld hl, .CoinCaseIsFull
+	jr nc, .print_text2 ; coin case full
 	xor a
 	ld a, $01
 	ldh [hMoney], a
@@ -225,7 +232,9 @@ GameCornerClerk1Text:
 	call HasEnoughMoney
 	jr nc, .buy_secret_coins
 	ld hl, .CantAffordTheCoins
-	jr .print_ret
+.print_text2
+	rst _PrintText
+	rst TextScriptEnd
 .buy_secret_coins
 	xor a
 	ldh [hMoney], a
@@ -243,16 +252,23 @@ GameCornerClerk1Text:
 	ldh [hCoins], a
 	ld a, $00            
 	ldh [hCoins + 2], a     
-	ld a, $05           
+	ld a, $08           
 	ldh [hCoins + 1], a  
 	ld de, wPlayerCoins + 1
 	ld hl, hCoins + 1
 	ld hl, hCoins + 2
 	ld c, $2
 	predef AddBCDPredef
+	; Update display
 	call GameCornerDrawCoinBox
-	ld hl, .ThanksHereAre500Coins
-	jr .print_ret
+	ld a, SFX_PURCHASE           
+	call PlaySoundWaitForCurrent  ; added purchase sound
+	call WaitForSoundToFinish     ; when buying coins
+	ld hl, .ThanksHereAre800Coins
+; next few lines are new for buying coins faster
+	rst _PrintText
+	ld hl, .WantMoreCoins2
+	jr .secretBargainFaster ; need more coins
 
 .DoYouNeedSomeGameCoins:
 	text_far _GameCornerClerk1DoYouNeedSomeGameCoinsText
@@ -266,8 +282,16 @@ GameCornerClerk1Text:
 	text_far _GameCornerClerk1ThanksHereAre50CoinsText
 	text_end
 
-.ThanksHereAre500Coins:
-	text_far _GameCornerClerk1ThanksHereAre500CoinsText
+.ThanksHereAre800Coins:
+	text_far _GameCornerClerk1ThanksHereAre800CoinsText
+	text_end
+
+.WantMoreCoins:
+	text_far _GameCornerClerkWantMoreCoinsText
+	text_end
+
+.WantMoreCoins2:
+	text_far _GameCornerClerkWantMoreCoinsText2
 	text_end
 
 .PleaseComePlaySometime:
@@ -545,20 +569,18 @@ GameCornerDrawCoinBox:
 	ld hl, wd730
 	set 6, [hl]
 	hlcoord 11, 0
-	ld b, 5
-	ld c, 7
+	lb bc, 5, 7
 	call TextBoxBorder
 	call UpdateSprites
 	hlcoord 12, 1
-	ld b, 4
-	ld c, 7
+	lb bc, 4, 7
 	call ClearScreenArea
 	hlcoord 12, 2
 	ld de, GameCornerMoneyText
 	call PlaceString
-	hlcoord 12, 3
-	ld de, GameCornerBlankText1
-	call PlaceString
+;	hlcoord 12, 3
+;	ld de, GameCornerBlankText1
+;	call PlaceString
 	hlcoord 12, 3
 	ld de, wPlayerMoney
 	ld c, 3 | MONEY_SIGN | LEADING_ZEROES
@@ -566,9 +588,9 @@ GameCornerDrawCoinBox:
 	hlcoord 12, 4
 	ld de, GameCornerCoinText
 	call PlaceString
-	hlcoord 12, 5
-	ld de, GameCornerBlankText2
-	call PlaceString
+;	hlcoord 12, 5
+;	ld de, GameCornerBlankText2
+;	call PlaceString
 	hlcoord 15, 5
 	ld de, wPlayerCoins
 	ld c, $82
@@ -581,12 +603,9 @@ GameCornerMoneyText:
 	db "MONEY@"
 
 GameCornerCoinText:
-	db "COIN@"
+	db "COINS@"
 
-GameCornerBlankText1:
-	db "       @"
-
-GameCornerBlankText2:
+GameCornerBlankText:
 	db "       @"
 
 Has9990Coins:
