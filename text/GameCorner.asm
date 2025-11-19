@@ -17,7 +17,7 @@ _GameCornerClerk1DoYouNeedSomeGameCoinsText::
 	para "It's ¥1000 for 50"
 	line "coins. Would you"
 	cont "like some?"
-	done
+	prompt
 
 _GameCornerClerk1DoYouNeedSomeGameCoins2Text::
 	text "Between you and I,"
@@ -39,7 +39,7 @@ _GameCornerClerk1DoYouNeedSomeGameCoins2Text::
 	line "coins at a more"
 	cont "realistic price?"
 
-	para "¥10,000 for 500"
+	para "¥10,000 for 800"
 	line "coins is what I"
 	cont "can offer you"
 	cont "today."
@@ -51,11 +51,21 @@ _GameCornerClerk1DoYouNeedSomeGameCoins2Text::
 _GameCornerClerk1ThanksHereAre50CoinsText::
 	text "Thanks! Here are"
 	line "your 50 coins!"
+	prompt
+
+_GameCornerClerkWantMoreCoinsText::
+	text "More? It's ¥1000"
+	line "for 50 coins."
 	done
 
-_GameCornerClerk1ThanksHereAre500CoinsText::
+_GameCornerClerk1ThanksHereAre800CoinsText::
 	text "Thanks! Here are"
-	line "your 500 coins!"
+	line "your 800 coins!"
+	prompt
+
+_GameCornerClerkWantMoreCoinsText2::
+	text "More? It's ¥10,000"
+	line "for 800 coins."
 	done
 
 _GameCornerClerk1PleaseComePlaySometimeText::
