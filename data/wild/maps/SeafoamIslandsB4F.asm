@@ -7,8 +7,8 @@ IF (DEF(_RED) || DEF(_GREEN))
 	db 33, JYNX
 	db 29, SLOWPOKE
 	db 31, JYNX
-	db 31, JYNX
-	db 29, SEEL
+	db 30, SEEL
+	db 38, DEWGONG
 	db 39, SLOWBRO
 ENDC
 IF DEF(_BLUE)
@@ -18,8 +18,8 @@ IF DEF(_BLUE)
 	db 33, STARYU
 	db 29, PSYDUCK
 	db 31, JYNX
-	db 31, JYNX
-	db 29, SEEL
+	db 30, SEEL
+	db 38, DEWGONG
 	db 39, GOLDUCK
 ENDC
 	db 32, GOLBAT
@@ -29,9 +29,9 @@ ENDC
 	db 35, GOLDUCK
 	db 35, SEAKING
 	db 35, STARYU
+	db 35, STARYU
 	db 35, KINGLER
 	db 35, POLIWHIRL
-	db 35, DEWGONG
 	db 40, CLOYSTER
 	db 40, CLOYSTER
 	db 40, POLIWRATH
