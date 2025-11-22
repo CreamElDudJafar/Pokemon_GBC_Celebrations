@@ -68,7 +68,7 @@ Some FEATURES:
 - Select Button to use Bicycle (If Obtained)
 - Move Decription when learning moves
 - SS Ticket, Lift Key, Card Key, Secret Key all disappear after use
-- Buy more coins at once from shady clerk
+- Coin Clerk in Celadon will sell coins in bulk after beating Koga
 - Celadon Hotel has Pokemon Observer: Will give Coins based on if player owns Pokemon and in 1st Party slot. (Resets Pokemon if you exit Hotel or Save and Power Off/On
 - Trainers have unique movesets
 - Mew Glitch/Missingo Glitch Restored
