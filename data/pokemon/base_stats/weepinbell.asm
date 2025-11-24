@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw WeepinbellPicFront, WeepinbellPicBack
 
-	db VINE_WHIP, GROWTH, WRAP, NO_MOVE ; level 1 learnset
+	db GROWTH, POISONPOWDER, VINE_WHIP, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset

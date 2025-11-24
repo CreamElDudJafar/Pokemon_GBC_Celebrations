@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw MachopPicFront, MachopPicBack
 
-	db KARATE_CHOP, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
+	db LOW_KICK, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset

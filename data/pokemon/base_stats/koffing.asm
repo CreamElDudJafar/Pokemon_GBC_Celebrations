@@ -18,9 +18,9 @@ ENDC
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        RAGE,         THUNDERBOLT,  THUNDER,      MIMIC,        \
+	tmhm TOXIC,  RAGE,  THUNDERBOLT,  THUNDER,     MIMIC,        SUBSTITUTE,   \
 	     DOUBLE_TEAM,  BIDE,         SELFDESTRUCT, FIRE_BLAST,   REST,         \
-	     EXPLOSION,    SUBSTITUTE
+	     EXPLOSION
 	; end
 
 	db BANK(KoffingPicFront)

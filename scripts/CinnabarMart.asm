@@ -16,4 +16,4 @@ CinnabarMartScientistText:
 	text_end
 
 CinnabarMartClerkText::
-	script_mart ULTRA_BALL, HYPER_POTION, MAX_REPEL, ESCAPE_ROPE, FULL_HEAL, REVIVE
+	script_mart ULTRA_BALL, HYPER_POTION, MAX_REPEL, ESCAPE_ROPE, FULL_HEAL, REVIVE, TM_FLAMETHROWER

@@ -1,6 +1,6 @@
 	db DEX_RAPIDASH ; pokedex id
 
-	db  65, 100,  70, 105,  80
+	db  65, 100,  70, 115,  80
 	;   hp  atk  def  spd  spc
 
 	db FIRE, FIRE ; type
@@ -14,14 +14,14 @@ ELSE
 ENDC
 	dw RapidashPicFront, RapidashPicBack
 
-	db EMBER, TAIL_WHIP, STOMP, GROWL ; level 1 learnset
+	db EMBER, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
+	tmhm TOXIC, HORN_DRILL, BODY_SLAM, TAKE_DOWN,  DOUBLE_EDGE,  REST,\
 	     HYPER_BEAM,   RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         \
-	     SUBSTITUTE
+	     BIDE,         FIRE_BLAST,   SWIFT,        SKULL_BASH,    SUBSTITUTE,         \
+	     FLAMETHROWER
 	; end
 
 	db BANK(RapidashPicFront)

@@ -1,6 +1,6 @@
 	db DEX_VILEPLUME ; pokedex id
 
-	db  75,  80,  85,  50, 100
+	db  90,  80,  85,  50, 100
 	;   hp  atk  def  spd  spc
 
 	db GRASS, POISON ; type
@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw VileplumePicFront, VileplumePicBack
 
-	db STUN_SPORE, SLEEP_POWDER, ACID, PETAL_DANCE ; level 1 learnset
+	db TACKLE, STUN_SPORE, SLEEP_POWDER, ACID ; level 1 learnset
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset

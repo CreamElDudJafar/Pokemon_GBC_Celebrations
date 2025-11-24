@@ -18,10 +18,10 @@ ENDC
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
+	tmhm TOXIC,   HORN_DRILL, BODY_SLAM, TAKE_DOWN,  DOUBLE_EDGE, REST,  \
 	     RAGE,         THUNDERBOLT,  THUNDER,      EARTHQUAKE,   FISSURE,      \
 	     DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         FIRE_BLAST,   \
-	     SKULL_BASH,   REST,         ROCK_SLIDE,   SUBSTITUTE,   STRENGTH
+	     SKULL_BASH,   ROCK_SLIDE,   SUBSTITUTE,   STRENGTH,     FLAMETHROWER
 	; end
 
 	db BANK(RhyhornPicFront)
