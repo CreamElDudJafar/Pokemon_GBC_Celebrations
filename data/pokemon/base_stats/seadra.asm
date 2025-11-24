@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw SeadraPicFront, SeadraPicBack
 
-	db BUBBLE, SMOKESCREEN, NO_MOVE, NO_MOVE ; level 1 learnset
+	db BUBBLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

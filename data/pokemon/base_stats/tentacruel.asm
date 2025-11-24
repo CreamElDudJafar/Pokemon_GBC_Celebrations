@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw TentacruelPicFront, TentacruelPicBack
 
-	db ACID, SUPERSONIC, WRAP, NO_MOVE ; level 1 learnset
+	db WRAP, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset

@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw TangelaPicFront, TangelaPicBack
 
-	db CONSTRICT, BIND, NO_MOVE, NO_MOVE ; level 1 learnset
+	db CONSTRICT, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

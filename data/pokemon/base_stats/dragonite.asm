@@ -4,7 +4,7 @@
 	;   hp  atk  def  spd  spc
 
 	db DRAGON, FLYING ; type
-	db 45 ; catch rate
+	db 9 ; catch rate
 	db 218 ; base exp
 
 IF GEN_2_GRAPHICS
@@ -14,16 +14,16 @@ ELSE
 ENDC
 	dw DragonitePicFront, DragonitePicBack
 
-	db WRAP, LEER, THUNDER_WAVE, AGILITY ; level 1 learnset
+	db WRAP, LEER, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm RAZOR_WIND,   TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    \
+	tmhm RAZOR_WIND,   TOXIC,    HORN_DRILL,   BODY_SLAM,       TAKE_DOWN,    \
 	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
 	     HYPER_BEAM,   RAGE,         DRAGON_RAGE,  THUNDERBOLT,  THUNDER,      \
 	     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         FIRE_BLAST,   \
 	     SWIFT,        SKULL_BASH,   REST,         THUNDER_WAVE, SUBSTITUTE,   \
-	     FLY,          SURF,         STRENGTH
+	     SURF,         STRENGTH, 	 FLY,          FLAMETHROWER
 	; end
 
 	db BANK(DragonitePicFront)

@@ -1,6 +1,6 @@
 	db DEX_PONYTA ; pokedex id
 
-	db  50,  85,  55,  90,  65
+	db  50,  85,  55, 100,  65
 	;   hp  atk  def  spd  spc
 
 	db FIRE, FIRE ; type
@@ -18,9 +18,9 @@ ENDC
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
+	tmhm TOXIC,  HORN_DRILL, BODY_SLAM, TAKE_DOWN, DOUBLE_EDGE,  SUBSTITUTE, \
 	     RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE
+	     FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         FLAMETHROWER
 	; end
 
 	db BANK(PonytaPicFront)

@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw KakunaPicFront, KakunaPicBack
 
-	db HARDEN, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
+	db POISON_STING, STRING_SHOT, HARDEN, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

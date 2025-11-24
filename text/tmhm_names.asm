@@ -55,3 +55,4 @@ tmhmNames::
 	db "TM48 ROKSLID@"
 	db "TM49 TRIATTK@"
 	db "TM50 SUBSTUT@"
+	db "TM51 FLMTHWR@"

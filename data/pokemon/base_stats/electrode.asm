@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw ElectrodePicFront, ElectrodePicBack
 
-	db TACKLE, SCREECH, SONICBOOM, NO_MOVE ; level 1 learnset
+	db TACKLE, SCREECH, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

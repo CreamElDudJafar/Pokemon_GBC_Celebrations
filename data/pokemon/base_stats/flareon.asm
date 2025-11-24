@@ -14,13 +14,13 @@ ELSE
 ENDC
 	dw FlareonPicFront, FlareonPicBack
 
-	db TACKLE, SAND_ATTACK, QUICK_ATTACK, EMBER ; level 1 learnset
+	db TACKLE, TAIL_WHIP, EMBER, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   \
+	tmhm TOXIC, BODY_SLAM, TAKE_DOWN, DOUBLE_EDGE,  HYPER_BEAM,  REST, \
 	     RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE
+	     FIRE_BLAST,   SWIFT,        SKULL_BASH,   SUBSTITUTE,   FLAMETHROWER
 	; end
 
 	db BANK(FlareonPicFront)

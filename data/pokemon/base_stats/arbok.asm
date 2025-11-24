@@ -1,6 +1,6 @@
 	db DEX_ARBOK ; pokedex id
 
-	db  60,  85,  69,  80,  65
+	db  62,  95,  69,  90,  65
 	;   hp  atk  def  spd  spc
 
 	db POISON, POISON ; type
@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw ArbokPicFront, ArbokPicBack
 
-	db WRAP, LEER, POISON_STING, NO_MOVE ; level 1 learnset
+	db LEER, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

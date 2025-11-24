@@ -1,6 +1,6 @@
 	db DEX_HITMONLEE ; pokedex id
 
-	db  50, 120,  53,  87,  35
+	db  65, 120,  70,  93,  60
 	;   hp  atk  def  spd  spc
 
 	db FIGHTING, FIGHTING ; type
@@ -21,7 +21,7 @@ ENDC
 	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
 	     DOUBLE_EDGE,  SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         \
 	     MIMIC,        DOUBLE_TEAM,  BIDE,         METRONOME,    SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE,   STRENGTH
+	     SKULL_BASH,   REST,         SUBSTITUTE,   STRENGTH, ROCK_SLIDE
 	; end
 
 	db BANK(HitmonleePicFront)

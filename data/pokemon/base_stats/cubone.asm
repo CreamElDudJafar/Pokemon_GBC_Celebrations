@@ -14,15 +14,15 @@ ELSE
 ENDC
 	dw CubonePicFront, CubonePicBack
 
-	db BONE_CLUB, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset
+	db GROWL, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
+	tmhm MEGA_PUNCH,   MEGA_KICK, TOXIC, BODY_SLAM,  TAKE_DOWN,  BIDE,  \
 	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
 	     SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         EARTHQUAKE,   \
-	     FISSURE,      DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         \
-	     FIRE_BLAST,   SKULL_BASH,   REST,         SUBSTITUTE,   STRENGTH
+	     FISSURE,      DIG,          MIMIC,        DOUBLE_TEAM,  SWORDS_DANCE,         \
+	     FIRE_BLAST,   SKULL_BASH,   REST, SUBSTITUTE,   CUT,  STRENGTH	   \
 	; end
 
 	db BANK(CubonePicFront)

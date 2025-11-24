@@ -14,14 +14,14 @@ ELSE
 ENDC
 	dw MoltresPicFront, MoltresPicBack
 
-	db PECK, FIRE_SPIN, NO_MOVE, NO_MOVE ; level 1 learnset
+	db PECK, EMBER, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm RAZOR_WIND,   WHIRLWIND,    TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  \
+	tmhm RAZOR_WIND,   TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  REST,        \
 	     HYPER_BEAM,   RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         FIRE_BLAST,   SWIFT,        SKY_ATTACK,   REST,         \
-	     SUBSTITUTE,   FLY
+	     BIDE,         FIRE_BLAST,   SWIFT,        SKY_ATTACK,   SUBSTITUTE,         \
+	     FLY,          FLAMETHROWER, WHIRLWIND
 	; end
 
 	db BANK(MoltresPicFront)

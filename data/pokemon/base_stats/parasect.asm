@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw ParasectPicFront, ParasectPicBack
 
-	db SCRATCH, STUN_SPORE, LEECH_LIFE, NO_MOVE ; level 1 learnset
+	db SCRATCH, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

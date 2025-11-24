@@ -394,6 +394,7 @@ ItemSortList::
 	db TM01 + 47
 	db TM01 + 48
 	db TM01 + 49
+	db TM01 + 50
 	; HMs
 	db HM01
 	db HM01 + 1

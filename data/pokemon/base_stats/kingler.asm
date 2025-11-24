@@ -14,7 +14,7 @@ ELSE
 ENDC
 	dw KinglerPicFront, KinglerPicBack
 
-	db BUBBLE, LEER, VICEGRIP, NO_MOVE ; level 1 learnset
+	db BUBBLE, LEER, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
