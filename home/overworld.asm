@@ -1619,10 +1619,10 @@ AdvancePlayerSprite::
 	or $98
 	ld [wMapViewVRAMPointer + 1], a
 .adjustXCoordWithinBlock
-	ld a, c
-	and a
-	jr z, .pointlessJump ; mistake?
-.pointlessJump
+;	ld a, c
+;	and a
+;	jr z, .pointlessJump ; mistake?
+;.pointlessJump
 	ld hl, wXBlockCoord
 	ld a, [hl]
 	add c
