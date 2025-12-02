@@ -595,9 +595,15 @@ TextCommand_SOUND::
 	ld a, [wOptions]
 	and TEXT_DELAY_MASK
 	call z, WaitForSoundToFinish
+	ld a, [wAudioFadeOutControl]
+	push af
+	xor a
+	ld [wAudioFadeOutControl], a ; don't allow fading out audio to skip the sound being played
 	ld a, [hl]
 	rst _PlaySound
 	call WaitForSoundToFinish
+	pop af
+	ld [wAudioFadeOutControl], a
 	pop hl
 	pop bc
 	jp NextTextCommand
