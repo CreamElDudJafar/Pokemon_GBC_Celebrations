@@ -3687,8 +3687,8 @@ CheckPlayerStatusConditions:
 .MonHurtItselfOrFullyParalysed
 	ld hl, wPlayerBattleStatus1
 	ld a, [hl]
-	; clear bide, thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage)
-	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	; clear bide, thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage), and invulernable moves
+	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
 	ld [hl], a
 	ld a, [wPlayerMoveEffect]
 	cp FLY_EFFECT
@@ -6149,7 +6149,7 @@ CheckEnemyStatusConditions:
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
 	; clear bide, thrashing about, charging up, and multi-turn moves such as warp
-	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE)  | (1 << INVULNERABLE))
 	ld [hl], a
 	ld a, [wEnemyMoveEffect]
 	cp FLY_EFFECT
