@@ -58,10 +58,6 @@ BlkPacket_WholeScreen:
 	ATTR_BLK_DATA %011, 0,0,0, 00,00, 19,17
 	ds 8, 0
 
-; unused
-	db $03, 00,00, 19,17, $00
-	db $00
-
 BlkPacket_Battle:
 	ATTR_BLK 5
 	ATTR_BLK_DATA %111, 2,2,0, 00,12, 19,17 ; message box: pal 2
