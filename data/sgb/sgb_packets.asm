@@ -70,39 +70,15 @@ BlkPacket_Battle:
 	ATTR_BLK_DATA %011, 2,2,0, 00,04, 08,11 ; player mon: pal 2
 	ATTR_BLK_DATA %011, 3,3,0, 11,00, 19,06 ; enemy mon : pal 3
 
-; unused
-	db $03, 00,00, 19,11, $00
-	db $03, 00,12, 19,17, $02
-	db $03, 01,00, 10,03, $01
-	db $03, 10,08, 19,10, $00
-	db $03, 00,04, 08,11, $02
-	db $03, 11,00, 19,07, $03
-	db $00
-
 BlkPacket_StatusScreen:
 	ATTR_BLK 1
 	ATTR_BLK_DATA %111, 1,1,0, 01,00, 07,06 ; mon: pal 1, HP bar: pal 0
 	ds 8, 0
 
-; unused
-	db $02, 00,00, 17,00
-	db $03, 01,00, 07,06, $01
-	db $03, 01,07, 19,17, $00
-	db $03, 08,00, 19,06, $00
-	db $00
-
 BlkPacket_Pokedex:
 	ATTR_BLK 1
 	ATTR_BLK_DATA %111, 1,1,0, 01,01, 08,08 ; mon: pal 1, everything else: pal 0
 	ds 8, 0
-
-; unused
-	db $02, 00,00, 17,00
-	db $01, 00,01, 19,00
-	db $03, 01,01, 08,08, $01
-	db $03, 01,09, 08,17, $00
-	db $03, 09,01, 19,17, $00
-	db $00
 
 BlkPacket_Slots:
 	ATTR_BLK 5
@@ -112,14 +88,6 @@ BlkPacket_Slots:
 	ATTR_BLK_DATA %011, 0,0,0, 04,04, 15,09 ; slot reels: pal 0
 	ATTR_BLK_DATA %011, 0,0,0, 00,12, 19,17 ; message box: pal 0
 
-; unused
-	db $03, 00,00, 19,11, $01
-	db $03, 00,04, 19,09, $02
-	db $03, 00,06, 19,07, $03
-	db $03, 04,04, 15,09, $00
-	db $03, 00,12, 19,17, $00
-	db $00
-
 BlkPacket_Titlescreen:
 	ATTR_BLK 3
 	ATTR_BLK_DATA %011, 0,0,0, 00,00, 19,07 ; pokemon logo: pal 0
@@ -127,24 +95,12 @@ BlkPacket_Titlescreen:
 	ATTR_BLK_DATA %011, 2,2,0, 00,10, 19,17 ; player, mon, copyright text: pal 2
 	ds 12, 0
 
-; unused
-	db $03, 00,00, 19,07, $00
-	db $03, 00,08, 19,09, $01
-	db $03, 00,10, 19,17, $02
-	db $00
-
 BlkPacket_NidorinoIntro:
 	ATTR_BLK 3
 	ATTR_BLK_DATA %011, 1,1,0, 00,00, 19,03 ; upper black bar: pal 1
 	ATTR_BLK_DATA %011, 0,0,0, 00,04, 19,13 ; letterbox: pal 0
 	ATTR_BLK_DATA %011, 1,1,0, 00,14, 19,17 ; lower black bar: pal 1
 	ds 12, 0
-
-; unused
-	db $03, 00,00, 19,03, $01
-	db $03, 00,04, 19,13, $00
-	db $03, 00,14, 19,17, $01
-	db $00
 
 BlkPacket_PartyMenu:
 	ATTR_BLK 7
@@ -156,19 +112,6 @@ BlkPacket_PartyMenu:
 	ATTR_BLK_DATA %010, 0,0,0, 05,09, 11,09 ; HP bar 4: pal set dynamically
 	ATTR_BLK_DATA %010, 0,0,0, 05,11, 11,11 ; HP bar 5: pal set dynamically
 	ds 4, 0
-
-; unused
-	db $02, 00,00, 17,01
-	db $03, 01,00, 02,12, $00
-	db $03, 01,13, 02,17, $01
-	db $03, 03,00, 19,17, $01
-	db $03, 12,00, 18,01, $00
-	db $03, 12,02, 18,03, $00
-	db $03, 12,04, 18,05, $00
-	db $03, 12,06, 18,07, $00
-	db $03, 12,08, 18,09, $00
-	db $03, 12,10, 18,11, $00
-	db $00
 
 BlkPacket_TrainerCard:
 	ATTR_BLK 10
@@ -184,36 +127,12 @@ BlkPacket_TrainerCard:
 	ATTR_BLK_DATA %010, 1,1,0, 15,15, 16,16 ; Earth Badge
 	ds 2, 0
 
-; unused
-	db $03, 03,12, 04,13, $00
-	db $03, 07,12, 08,13, $01
-	db $03, 11,12, 12,13, $03
-	db $03, 16,11, 17,12, $02
-	db $03, 14,13, 15,14, $01
-	db $03, 16,13, 17,14, $03
-	db $03, 03,15, 04,16, $02
-	db $03, 07,15, 08,16, $03
-	db $03, 11,15, 12,16, $02
-	db $03, 15,15, 16,16, $01
-	db $00
-
 BlkPacket_GameFreakIntro:
 	ATTR_BLK 3
 	ATTR_BLK_DATA %111, 1,1,0, 05,11, 07,13 ; falling stars (left): pal 1, GameFreak logo: pal 0
 	ATTR_BLK_DATA %010, 2,2,0, 08,11, 09,13 ; falling stars (middle): pal 2
 	ATTR_BLK_DATA %011, 3,3,0, 12,11, 14,13 ; falling stars (right): pal 3
 	ds 12, 0
-
-; unused
-	db $03, 00,00, 19,10, $00
-	db $03, 00,11, 04,13, $00
-	db $03, 05,11, 07,13, $01
-	db $03, 08,11, 19,13, $00
-	db $03, 00,14, 19,17, $00
-	db $03, 08,11, 09,13, $02
-	db $03, 12,11, 14,13, $03
-	db $00
-
 
 PalPacket_Empty:          PAL_SET 0, 0, 0, 0
 PalPacket_PartyMenu:      PAL_SET PAL_MEWMON, PAL_GREENBAR, PAL_YELLOWBAR, PAL_REDBAR
