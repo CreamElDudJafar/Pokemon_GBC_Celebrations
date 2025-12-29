@@ -8,7 +8,7 @@ RockTunnelPokecenter_Script:
 	bit 5, [hl]
 	res 5, [hl]
 	ret z
-	lb bc, FLAG_SET, FLYLOC_ROUTE_4_CENTER
+	lb bc, FLAG_SET, FLYLOC_ROUTE_10_CENTER
 	ld hl, wTownVisitedFlag
 	predef_jump FlagActionPredef
 
