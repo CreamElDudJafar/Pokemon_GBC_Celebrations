@@ -96,6 +96,7 @@ PlayerPCDeposit:
 .loop
 	ld hl, WhatToDepositText
 	rst _PrintText
+	callfar DrawItemCountBox
 	ld hl, wNumBagItems
 	ld a, l
 	ld [wListPointer], a
@@ -157,6 +158,7 @@ PlayerPCWithdraw:
 .loop
 	ld hl, WhatToWithdrawText
 	rst _PrintText
+	callfar DrawStoredItemCountBox
 	ld hl, wNumBoxItems
 	ld a, l
 	ld [wListPointer], a
@@ -211,6 +213,7 @@ PlayerPCToss:
 .loop
 	ld hl, WhatToTossText
 	rst _PrintText
+	callfar DrawStoredItemCountBox
 	ld hl, wNumBoxItems
 	ld a, l
 	ld [wListPointer], a
