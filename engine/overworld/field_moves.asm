@@ -3,6 +3,8 @@ TryFieldMove:: ; predef
 	call TrySurf
 	ret z
 	call TryCut
+	ret z
+	call TryFlash
 	ret
 
 TrySurf:
@@ -95,6 +97,29 @@ IsCutTile:
 	and a
 	ret
 
+TryFlash::
+	ldh a, [hJoyHeld]
+	bit BIT_A_BUTTON, a
+	ret z
+; A button is pressed
+	ld a, [wMapPalOffset]
+   	and a
+    	ret z
+; area is dark and needs Flash
+    	ld a, [wObtainedBadges] ; badges obtained
+    	bit BIT_BOULDERBADGE, a ; BROCK	
+	jr z, TrySurf.no2
+	call InitializeFieldMoveTextBox
+	ld hl, PromptToFlashText
+	rst _PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, TrySurf.no2
+	xor a
+	ld [wMapPalOffset], a
+	tx_pre_jump FlashLightsAreaText2
+
 HasPartyMove::
 ; Return z (optional: in wWhichTrade) if a PartyMon has move d.
 ; Updates wWhichPokemon.
@@ -174,3 +199,17 @@ ExplainCutText:
 PromptToCutText:
 	text "Would you like to"
 	line "use CUT?@@"
+
+PromptToFlashText:
+	text "Would you like to"
+	line "light this dark"
+	cont "tunnel with FLASH?@@"
+
+FlashLightsAreaText2::
+	text_far _FlashLightsAreaText2
+	text_end
+
+_FlashLightsAreaText2::
+	text "A blinding FLASH"
+	line "lights the area!"
+	done
