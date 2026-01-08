@@ -110,6 +110,7 @@ OverworldLoopLessDelay::
 	jr nz, .displayDialogue
 	predef TryFieldMove
 	jp OverworldLoop
+	callfar TryFlash ; jp OverworldLoop if succeeds
 	jp z, OverworldLoop
 
 .displayDialogue
