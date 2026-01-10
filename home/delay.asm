@@ -26,6 +26,7 @@ WaitForSoundToFinish::
 	inc hl
 	inc hl
 	or [hl]
+	and a
 	jr nz, .waitLoop
 	pop hl
 	ret
