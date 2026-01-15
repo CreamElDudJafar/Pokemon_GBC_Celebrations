@@ -10,6 +10,22 @@ DrawItemCountBox::
 	cp 10
 	jr c, .singleDigitCount
 ; two digit number
+	cp 50
+	jr c, .sub40DigitCount
+	sub 50
+	hlcoord 14, 1
+	ld [hl], "5"
+	add "0"
+	jr .next2
+.sub40DigitCount
+	cp 40
+	jr c, .sub30DigitCount
+	sub 40
+	hlcoord 14, 1
+	ld [hl], "4"
+	add "0"
+	jr .next2
+.sub30DigitCount
 	cp 30
 	jr c, .sub20DigitCount
 	sub 30
