@@ -17,5 +17,3 @@ Route1_Object:
 	object_event 11, 29, SPRITE_OAK, STAY, DOWN, 3, OPP_PROF_OAK, 1
 	def_warps_to ROUTE_1
 
-	; unused
-	warp_to 2, 7, 4
