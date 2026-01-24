@@ -455,6 +455,10 @@ ShowNextMoveData:
 	jr z, .specialDamage
 	cp SUPER_FANG_EFFECT
 	jr z, .specialDamage
+	ld a, [wPlayerMoveNum]
+	cp COUNTER
+	ld de, MoveQuestionMarkPowerText
+	jr z, .specialDamage
 	ld de, wPlayerMovePower
 	jr .normalMove
 .zeroPowerMove
