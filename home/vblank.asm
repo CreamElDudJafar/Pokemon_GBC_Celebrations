@@ -62,13 +62,13 @@ VBlank::
 
 	callbs Music_DoLowHealthAlarm
 	callbs Audio1_UpdateMusic
+	call SerialFunction
+
 	farcall TrackPlayTime ; keep track of time played
 
 	ldh a, [hDisableJoypadPolling]
 	and a
 	call z, ReadJoypad
-
-	call SerialFunction
 
 	ld a, [wVBlankSavedROMBank]
 	ldh [hLoadedROMBank], a
