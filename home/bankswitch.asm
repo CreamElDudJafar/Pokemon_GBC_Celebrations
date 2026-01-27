@@ -6,6 +6,7 @@ BankswitchHome::
 	ld [wBankswitchHomeSavedROMBank], a
 	ld a, [wBankswitchHomeTemp]
 BankswitchCommon::
+SetRomBank::
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
 	ret
@@ -51,10 +52,5 @@ _LoadMapVramAndColors:
 	ld [MBC1RomBank], a
 	call LoadMapVramAndColors
 	pop af
-	ld [MBC1RomBank], a
-	ret
-
-SetRomBank::
-	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
 	ret
