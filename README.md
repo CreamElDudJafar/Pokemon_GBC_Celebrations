@@ -86,6 +86,7 @@ CREDITS: IF ANYONE IS MISSED PLEASE LET ME KNOW. IT’S HARD TO KEEP TRACK OF AL
 - CRZ-Shadows- and Yellow Legacy Team: A lot of QOL changes came from ideas or code used in there game. See their Github for all there amazing changes.
 - JustRegularLuna/Mateo: A lot of sprites for Pokemon and Pokeball sprites used from her amazing game RED++. Move Description code and others
 - THOTH33- Helping give Old Man his own palette color in the catching tutorial
+- Daylight/Enzo-Matrix23- DVs and Stat Exp when printing Pokemon stats in Vermilion City.
 - Porygondolier- Pokedex Remember Position
 - PokeFanMarcel- For the Nurse Joy SS Anne room, LAND,WATER, ROD Pokedex Area function, SS Anne Map Icon, Running sprites and the code to make the EXP ALL a key item that can turn on or off
 - DarthBR
