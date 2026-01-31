@@ -1736,8 +1736,12 @@ ItemUsePokeFlute:
 ; if some pokemon were asleep
 	ld hl, PlayedFluteHadEffectText
 	rst _PrintText
-	ld a, [wLowHealthAlarm]
-	and $80
+;	ld a, [wLowHealthAlarm]
+;	and $80
+;joenote - more adjustments for the modified low HP alarm
+	ld a, [wLowHealthTonePairs]
+	bit 7, a
+
 	jr nz, .skipMusic
 	call WaitForSoundToFinish ; wait for sound to end
 	farcall Music_PokeFluteInBattle ; play in-battle pokeflute music

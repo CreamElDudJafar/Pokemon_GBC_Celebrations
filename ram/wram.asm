@@ -959,7 +959,10 @@ wRightGBMonSpecies:: db
 ; bit 6: tried pushing against boulder once (you need to push twice before it will move)
 wFlags_0xcd60:: db
 
-	ds 9
+wLowHealthTonePairs:: db ;in battle, used as a counter for low hp alarm tone pairs. Bit 7 is a flag that indicates tones are currently being played.
+;;;;;;;;;;
+
+	ds 8
 
 ; This has overlapping related uses.
 ; When the player tries to use an item or use certain field moves, 0 is stored
