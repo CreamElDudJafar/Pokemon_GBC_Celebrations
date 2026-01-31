@@ -426,6 +426,35 @@ INCLUDE "audio/music/printer.asm"
 INCLUDE "audio/sfx/get_item1_4.asm"
 INCLUDE "audio/sfx/get_item1_4_2.asm"
 INCLUDE "audio/sfx/get_item2_4.asm"
+INCLUDE "audio/sfx/pokedex_rating_4.asm"
+INCLUDE "audio/sfx/get_key_item_4.asm"
+INCLUDE "audio/sfx/poisoned_4.asm"
+INCLUDE "audio/sfx/trade_machine_4.asm"
+INCLUDE "audio/sfx/turn_on_pc_4.asm"
+INCLUDE "audio/sfx/turn_off_pc_4.asm"
+INCLUDE "audio/sfx/enter_pc_4.asm"
+INCLUDE "audio/sfx/shrink_4.asm"
+INCLUDE "audio/sfx/switch_4.asm"
+INCLUDE "audio/sfx/healing_machine_4.asm"
+INCLUDE "audio/sfx/teleport_exit1_4.asm"
+INCLUDE "audio/sfx/teleport_enter1_4.asm"
+INCLUDE "audio/sfx/teleport_exit2_4.asm"
+INCLUDE "audio/sfx/ledge_4.asm"
+INCLUDE "audio/sfx/teleport_enter2_4.asm"
+INCLUDE "audio/sfx/fly_4.asm"
+INCLUDE "audio/sfx/denied_4.asm"
+INCLUDE "audio/sfx/arrow_tiles_4.asm"
+INCLUDE "audio/sfx/push_boulder_4.asm"
+INCLUDE "audio/sfx/ss_anne_horn_4.asm"
+INCLUDE "audio/sfx/withdraw_deposit_4.asm"
+INCLUDE "audio/sfx/cut_4.asm"
+INCLUDE "audio/sfx/go_inside_4.asm"
+INCLUDE "audio/sfx/swap_4.asm"
+INCLUDE "audio/sfx/59_4.asm"
+INCLUDE "audio/sfx/purchase_4.asm"
+INCLUDE "audio/sfx/collision_4.asm"
+INCLUDE "audio/sfx/go_outside_4.asm"
+INCLUDE "audio/sfx/save_4.asm"
 
 
 SECTION "Audio Engine 1", ROMX
@@ -451,14 +480,14 @@ INCLUDE "audio/pokedex_rating_sfx.asm"
 INCLUDE "audio/engine_3.asm"
 
 
-SECTION "Fade Audio", ROMX
-
-INCLUDE "audio/fade_audio.asm"
-
-
 SECTION "Audio Engine 4", ROMX
 
 INCLUDE "audio/engine_4.asm"
+
+
+SECTION "Fade Audio", ROMX
+
+INCLUDE "audio/fade_audio.asm"
 
 
 SECTION "Music 1", ROMX
@@ -473,7 +502,6 @@ INCLUDE "audio/music/routes3.asm"
 INCLUDE "audio/music/routes4.asm"
 INCLUDE "audio/music/indigoplateau.asm"
 INCLUDE "audio/music/pallettown.asm"
-;INCLUDE "audio/music/unusedsong.asm"
 INCLUDE "audio/music/cities1.asm"
 INCLUDE "audio/sfx/get_item1_1.asm"
 INCLUDE "audio/music/museumguy.asm"
@@ -495,7 +523,7 @@ INCLUDE "audio/music/pokecenter.asm"
 
 SECTION "Music 2", ROMX
 
-;INCLUDE "audio/sfx/unused_fanfare.asm"
+;INCLUDE "audio/sfx/unused_fanfare.asm" ;; Unreferenced 
 INCLUDE "audio/music/gymleaderbattle.asm"
 INCLUDE "audio/music/trainerbattle.asm"
 INCLUDE "audio/music/wildbattle.asm"
@@ -536,5 +564,8 @@ INCLUDE "audio/music/credits.asm"
 
 SECTION "Music 4", ROMX
 
+INCLUDE "audio/music/surfingpikachu.asm"
+INCLUDE "audio/music/yellowunusedsong.asm"
 INCLUDE "audio/music/meetjessiejames.asm"
 INCLUDE "audio/music/unusedsong.asm" ; Unused Trade Song
+INCLUDE "audio/music/yellowintro.asm" ; Yellow Intro

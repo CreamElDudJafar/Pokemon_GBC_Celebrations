@@ -1,4 +1,4 @@
-DEF NUM_MUSIC_TRACKS EQU 48
+DEF NUM_MUSIC_TRACKS EQU 51
 
 DisplaySoundTestMenu:
 	ld a, SFX_PRESS_AB
@@ -170,6 +170,7 @@ SoundTestTrackList:
 	dw Title_Music_Surfing, (MUSIC_SURFING << 8) | Bank(Music_Surfing)
 	dw Title_Music_GameCorner, (MUSIC_GAME_CORNER << 8) | Bank(Music_GameCorner)
 	dw Title_Music_IntroBattle, (MUSIC_INTRO_BATTLE << 8) | Bank(Music_IntroBattle)
+	dw Title_Music_YellowIntro, (MUSIC_YELLOW_INTRO << 8) | Bank(Music_YellowIntro)
 	dw Title_Music_Dungeon1, (MUSIC_DUNGEON1 << 8) | Bank(Music_Dungeon1)
 	dw Title_Music_Dungeon2, (MUSIC_DUNGEON2 << 8) | Bank(Music_Dungeon2)
 	dw Title_Music_Dungeon3, (MUSIC_DUNGEON3 << 8) | Bank(Music_Dungeon3)
@@ -179,7 +180,9 @@ SoundTestTrackList:
 	dw Title_Music_MeetEvilTrainer, (MUSIC_MEET_EVIL_TRAINER << 8) | Bank(Music_MeetEvilTrainer)
 	dw Title_Music_MeetFemaleTrainer, (MUSIC_MEET_FEMALE_TRAINER << 8) | Bank(Music_MeetFemaleTrainer)
 	dw Title_Music_MeetMaleTrainer, (MUSIC_MEET_MALE_TRAINER << 8) | Bank(Music_MeetMaleTrainer)
+	dw Title_Music_SurfingPikachu,  (MUSIC_SURFING_PIKACHU << 8) | Bank(Music_SurfingPikachu)
 	dw Title_Music_MeetJessieJames, (MUSIC_MEET_JESSIE_JAMES << 8) | Bank(Music_MeetJessieJames)
+	dw Title_Music_YellowUnusedSong, (MUSIC_YELLOW_UNUSED_SONG << 8) | Bank(Music_YellowUnusedSong)
 	dw Title_Music_GBPrinter, (MUSIC_GB_PRINTER << 8) | Bank(Music_GBPrinter)
 	dw Title_Music_UnusedSong, (MUSIC_UNUSED_SONG << 8) | Bank(Music_UnusedSong)
 
@@ -219,6 +222,7 @@ Title_Music_BikeRiding: db "Bike Riding@"
 Title_Music_Surfing: db "Surfing@"
 Title_Music_GameCorner: db "Game Corner@"
 Title_Music_IntroBattle: db "Intro Battle@"
+Title_Music_YellowIntro: db "Yellow Intro@"
 Title_Music_Dungeon1: db "Dungeon 1@"
 Title_Music_Dungeon2: db "Dungeon 2@"
 Title_Music_Dungeon3: db "Dungeon 3@"
@@ -228,6 +232,8 @@ Title_Music_SilphCo: db "Silph Co.@"
 Title_Music_MeetEvilTrainer: db "Evil Trainer@"
 Title_Music_MeetFemaleTrainer: db "Female Trainer@"
 Title_Music_MeetMaleTrainer: db "Male Trainer@"
+Title_Music_SurfingPikachu: db "Surfing Pikachu@"
 Title_Music_MeetJessieJames: db "Meet JessieJames@"
+Title_Music_YellowUnusedSong: db "Yellow Unused Song@"
 Title_Music_GBPrinter: db "GB Printer@"
 Title_Music_UnusedSong: db "Unused Trade Song@"

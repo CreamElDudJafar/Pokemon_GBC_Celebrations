@@ -60,9 +60,12 @@ ENDM
 	music_const MUSIC3_END,                Music_Audio3End
 
 	; AUDIO_4
+	music_const MUSIC_SURFING_PIKACHU,     Music_SurfingPikachu
 	music_const MUSIC_MEET_JESSIE_JAMES,   Music_MeetJessieJames
+	music_const MUSIC_YELLOW_UNUSED_SONG,  Music_YellowUnusedSong
 	music_const MUSIC_GB_PRINTER,          Music_GBPrinter
 	music_const MUSIC_UNUSED_SONG,         Music_UnusedSong
+	music_const MUSIC_YELLOW_INTRO,        Music_YellowIntro ; Yellow Intro
 	music_const MUSIC4_END,                Music_Audio4End
 
 	; AUDIO_1 AUDIO_2 AUDIO_3 AUDIO_4
@@ -139,7 +142,6 @@ DEF CRY_SFX_END EQUS "SFX_CRY_25 + 3"
 	; AUDIO_1 AUDIO_3 AUDIO_4
 	music_const SFX_GET_ITEM_1,         SFX_Get_Item1_1
 
-	; AUDIO_1 AUDIO_3
 	music_const SFX_POKEDEX_RATING,     SFX_Pokedex_Rating_1
 	music_const SFX_GET_KEY_ITEM,       SFX_Get_Key_Item_1
 	music_const SFX_POISONED,           SFX_Poisoned_1
