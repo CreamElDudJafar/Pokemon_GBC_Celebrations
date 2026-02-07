@@ -166,9 +166,6 @@ DebugItemsList:
 	db LIFT_KEY, 1
 	db CHEAT_CANDY, 1
 	db -1 ; end
-
-DebugUnusedList:
-	db -1 ; end
 ELSE
 	ret
 ENDC
