@@ -1343,9 +1343,7 @@ _SwiftDexEntry::
 	next "Speed Star"
 	next "by trainers."
 
-	bage "Always goes"
-	next "first and"
-	next "never misses"
+	bage "Never misses"
 	dex
 
 _SkullBashDexEntry::
