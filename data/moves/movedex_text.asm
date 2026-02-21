@@ -1169,10 +1169,7 @@ _GenericThisEffectOnlyAppliesToOriginalUser::
 
 _HazeDexEntry::
 	text "Black haze that"
-	next "disrupts psychic"
-	next "powers is spread"
-
-	bage "all over."
+	next "spreads all over."
 
 	bage "Resets all stat"
 	next "changes and cures"
