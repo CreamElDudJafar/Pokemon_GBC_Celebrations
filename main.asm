@@ -372,8 +372,6 @@ INCLUDE "engine/movie/credits.asm"
 INCLUDE "engine/pokemon/status_ailments.asm"
 INCLUDE "engine/items/itemfinder.asm"
 
-INCLUDE "color/itemfinder.asm"
-
 
 SECTION "Vending Machine", ROMX
 

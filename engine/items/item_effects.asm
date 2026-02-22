@@ -1911,7 +1911,8 @@ ItemUseItemfinder:
 	and a
 	jp nz, ItemUseNotTime
 	call ItemUseReloadOverworldData
-	farcall HiddenItemNear ; check for hidden items, hook to fix player sprite disappearing when finding item
+	rst _DelayFrame
+	farcall HiddenItemNear ; check for hidden items
 	ld hl, ItemfinderFoundNothingText
 	jr nc, .printText ; if no hidden items
 	ld c, 4
