@@ -1,4 +1,4 @@
-_HiddenItemNear:
+HiddenItemNear:
 	ld hl, HiddenItemCoords
 	ld b, 0
 .loop
