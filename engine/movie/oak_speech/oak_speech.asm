@@ -193,7 +193,7 @@ ENDC
 	ldh a, [hLoadedROMBank]
 	push af
 	ld a, SFX_SHRINK
-	rst _PlaySound
+	call PlaySoundWaitForCurrent
 	pop af
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
