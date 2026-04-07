@@ -30,19 +30,17 @@ Bankswitch::
 	ld a, b
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
-	ld bc, .Return
-	push bc
 	ldh a, [hColorHackTmp2] ; [hColorHackTmps]
-	jp hl
-.Return
-	ldh [hColorHackTmp2], a ; [hColorHackTmps]
+	call JumpToAddress
 	pop bc
+	ld c, a
 	ld a, b
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
-	ldh a, [hColorHackTmp2] ; [hColorHackTmps]
+	ld a, c
 	ret
-
+JumpToAddress::
+	jp hl
 
 ;; Code moved from home/header
 _LoadMapVramAndColors:
