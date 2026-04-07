@@ -4322,7 +4322,7 @@ IgnoredOrdersText:
 GetDamageVarsForPlayerAttack:
 	xor a
 	ld hl, wDamage ; damage to eventually inflict, initialise to zero
-	ldi [hl], a
+	ld [hli], a
 	ld [hl], a
 	ld hl, wPlayerMovePower
 	ld a, [hli]
@@ -4628,8 +4628,8 @@ CalculateDamage:
 
 	xor a
 	ld hl, hDividend
-	ldi [hl], a
-	ldi [hl], a
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 
 ; Multiply level by 2
@@ -4642,7 +4642,7 @@ CalculateDamage:
 	pop af
 .nc
 	inc hl
-	ldi [hl], a
+	ld [hli], a
 
 ; Divide by 5
 	ld a, 5
