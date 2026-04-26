@@ -706,10 +706,24 @@ StartMenu_Option::
 	call ClearScreen
 	call UpdateSprites
 	callfar DisplayOptionMenu
+	jr nc, .returnToOptionsMenu
+	jr nz, .goHome ; Go Home sets C and clears Z
+.returnToOptionsMenu
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
 	jp RedisplayStartMenu
+.goHome
+	ld a, PALLET_TOWN
+	ld [wLastBlackoutMap], a
+	ld hl, wd732
+	set 3, [hl]
+	set 6, [hl]
+	ld hl, wd72e
+	res 4, [hl]
+	call GBPalWhiteOutWithDelay3
+	call RestoreScreenTilesAndReloadTilePatterns
+	jp CloseTextDisplay
 
 SwitchPartyMon::
 	call SwitchPartyMon_InitVarOrSwapData ; swap data
