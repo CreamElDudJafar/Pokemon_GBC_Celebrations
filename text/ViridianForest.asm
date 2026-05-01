@@ -62,7 +62,41 @@ _ViridianForestYoungster4AfterBattleText::
 	cont "dropped!"
 	done
 
-_ViridianForestYoungster5Text::
+_ViridianForestCooltrainerFBattleText::
+	text "Hi, do you have a"
+	line "PIKACHU?"
+	done
+
+_ViridianForestCooltrainerFEndBattleText::
+	text "Oh no,"
+	line "really?"
+	prompt
+
+_ViridianForestCooltrainerFAfterBattleText::
+	text "It took me a long"
+	line "time, but I found"
+	cont "a PIKACHU here!"
+	done
+
+_ViridianForestYoungster5BattleText::
+	text "I'm gonna be the"
+	line "best. You just"
+	cont "can't beat me!"
+	done
+
+_ViridianForestYoungster5EndBattleText::
+	text "After"
+	line "all I did..."
+	prompt
+
+_ViridianForestYoungster5AfterBattleText::
+	text "A METAPOD is cool"
+	line "because its"
+	cont "attack is its"
+	cont "defense!"
+	done
+
+_ViridianForestYoungster6Text::
 	text "I ran out of #"
 	line "BALLs to catch"
 	cont "#MON with!"

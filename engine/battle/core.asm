@@ -2013,10 +2013,6 @@ DrawEnemyHUDAndHPBar:
 	lb bc, 4, 12
 	call ClearScreenArea
 	callfar PlaceEnemyHUDTiles
-	;============================== start of code to add the caught symbol
-	ld a, [wIsInBattle] ;dannyE fix
-	dec a ;dannyE fix
-	jr  nz, .notWildBattle ;dannyE fix
 	push hl
 	ld a, [wEnemyMonSpecies2]
 	ld [wd11e], a
@@ -2036,8 +2032,6 @@ DrawEnemyHUDAndHPBar:
 	ld [hl], $DF ; replace this with your Poké Ball icon or other character
 .notOwned
 	pop hl
-	.notWildBattle ;dannyE fix
-	;============================== end of new code
 	ld de, wEnemyMonNick
 	hlcoord 1, 0
 	call CenterMonName
