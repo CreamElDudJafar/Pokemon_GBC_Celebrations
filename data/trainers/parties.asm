@@ -99,8 +99,8 @@ BugCatcherData:
 ; Route 6
 	db 20, VENONAT, CATERPIE, WEEDLE, 0 
 	db 20, BUTTERFREE, 0 
-; Unused
-	db 18, METAPOD, CATERPIE, VENONAT, 0
+; Viridian Forest
+	db 8, KAKUNA, METAPOD, 0
 ; Route 9
 	db 24, BEEDRILL, BUTTERFREE, 0
 	db 23, VENOMOTH, SCYTHER, PINSIR, 0
@@ -119,7 +119,7 @@ LassData:
 	db 16, EEVEE, PONYTA, 0 
 	db 15, NIDORAN_F, BULBASAUR, 0 
 ; Route 25
-		db 17, NIDORINA, NIDORAN_F, 0 
+	db 17, NIDORINA, NIDORAN_F, 0 
 	db 16, ODDISH, JIGGLYPUFF, SEEL, 0 
 ; SS Anne 1F Rooms
 	db 21, PSYDUCK, EEVEE, 0
@@ -133,6 +133,8 @@ LassData:
 ; Celadon Gym
 	db 31, NIDORINA, WEEPINBELL, 0
 	db 31, CHANSEY, GLOOM, 0
+; Viridian Forest
+	db 8, PIKACHU, 0
 
 SailorData:
 ; SS Anne Stern
@@ -505,7 +507,7 @@ ProfOakData:
 	db 100, TAUROS, EXEGGUTOR, ARCANINE, SNORLAX, GYARADOS, NIDOKING, 0
 
 JoyData:
-;Fuchsia Pokecenter
+; Fuchsia Pokecenter
 	db 80, KANGASKHAN, SNORLAX, STARMIE, PORYGON, EXEGGUTOR, CHANSEY, 0
 
 ScientistData:
