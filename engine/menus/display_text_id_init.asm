@@ -11,6 +11,12 @@ DisplayTextIDInit::
 ; if text ID is 0 (i.e. the start menu)
 ; Note that the start menu text border is also drawn in the function directly
 ; below this, so this seems unnecessary.
+	CheckEvent EVENT_GOT_TOWN_MAP
+; start menu with pokedex and town map
+	hlcoord 10, 0
+	ld b, $10
+	ld c, $08
+	jr nz, .drawTextBoxBorder
 	CheckEvent EVENT_GOT_POKEDEX
 ; start menu with pokedex
 	hlcoord 10, 0
