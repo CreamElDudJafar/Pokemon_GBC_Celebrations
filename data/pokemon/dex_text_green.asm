@@ -6,7 +6,7 @@ _RhydonDexEntry::
 	next "on its hind legs"
 	next "after evolution."
 
-	page "It can bash holes"
+	bage "It can bash holes"
 	next "through boulders"
 	next "with its horn"
 	dex
@@ -16,7 +16,7 @@ _KangaskhanDexEntry::
 	next "babies in a pouch"
 	next "on its belly."
 
-	page "It is skilled at"
+	bage "It is skilled at"
 	next "attacking with"
 	next "COMET PUNCH"
 	dex
@@ -26,7 +26,7 @@ _NidoranMDexEntry::
 	next "flap like wings"
 	next "when listening to"
 
-	page "distant sounds."
+	bage "distant sounds."
 	next "It extends toxic"
 	next "barbs when angry"
 	dex
@@ -36,7 +36,7 @@ _ClefairyDexEntry::
 	next "appearance makes"
 	next "it a popular pet."
 
-	page "But it is rare"
+	bage "But it is rare"
 	next "and particularly"
 	next "difficult to find"
 	dex
@@ -46,7 +46,7 @@ _SpearowDexEntry::
 	next "about to and fro."
 	next "Even if it is"
 
-	page "frail, it can be"
+	bage "frail, it can be"
 	next "a tough foe that"
 	next "uses MIRROR MOVE"
 	dex
@@ -56,7 +56,7 @@ _VoltorbDexEntry::
 	next "identity is"
 	next "unknown. It is"
 
-	page "said to SCREECH"
+	bage "said to SCREECH"
 	next "or suddenly"
 	next "SELFDESTRUCT"
 	dex
@@ -66,7 +66,7 @@ _NidokingDexEntry::
 	next "by its rock-hard"
 	next "hide and its long"
 
-	page "horn. Be careful"
+	bage "horn. Be careful"
 	next "with the horn as"
 	next "it contains venom"
 	dex
@@ -76,7 +76,7 @@ _SlowbroDexEntry::
 	next "went hunting at"
 	next "sea, its tail was"
 	
-	page "bit by SHELLDER."
+	bage "bit by SHELLDER."
 	next "It then evolved"
 	next "into SLOWBRO"
 	dex
@@ -86,7 +86,7 @@ _IvysaurDexEntry::
 	next "its back. When it"
 	next "absorbs sunlight,"
 	
-	page "the bulb is said"
+	bage "the bulb is said"
 	next "to blossom into a"
 	next "large flower"
 	dex
@@ -96,7 +96,7 @@ _ExeggutorDexEntry::
 	next "Walking Tropical"
 	next "Rainforest. Each"
 	
-	page "of the nuts has a"
+	bage "of the nuts has a"
 	next "face and a will"
 	next "of its own"
 	dex
@@ -106,7 +106,7 @@ _LickitungDexEntry::
 	next "twice the length"
 	next "of its body. Like"
 	
-	page "an arm, it can"
+	bage "an arm, it can"
 	next "be moved to grab"
 	next "food or attack"
 	dex
@@ -116,7 +116,7 @@ _ExeggcuteDexEntry::
 	next "as eggs of some"
 	next "sort, it has been"
 	
-	page "found to be a"
+	bage "found to be a"
 	next "life-form akin to"
 	next "plant seeds"
 	dex
@@ -126,7 +126,7 @@ _GrimerDexEntry::
 	next "x-rays from the"
 	next "moon transforms"
 	
-	page "into GRIMER. It"
+	bage "into GRIMER. It"
 	next "loves feeding on"
 	next "filthy things"
 	dex
@@ -136,7 +136,7 @@ _GengarDexEntry::
 	next "emerge from the"
 	next "dark to steal the"
 	
-	page "lives of those"
+	bage "lives of those"
 	next "who become lost"
 	next "in the mountains"
 	dex
@@ -146,7 +146,7 @@ _NidoranFDexEntry::
 	next "must be treated"
 	next "with care due to"
 	
-	page "its toxic barbs."
+	bage "its toxic barbs."
 	next "The female has"
 	next "smaller horns"
 	dex
@@ -156,7 +156,7 @@ _NidoqueenDexEntry::
 	next "stiff needle-like"
 	next "scales. If it"
 	
-	page "becomes excited,"
+	bage "becomes excited,"
 	next "the needles"
 	next "bristle outwards"
 	dex
@@ -166,7 +166,7 @@ _CuboneDexEntry::
 	next "mother's skull on"
 	next "its head. When it"
 	
-	page "becomes lonesome,"
+	bage "becomes lonesome,"
 	next "it is said to cry"
 	next "loudly"
 	dex
@@ -176,7 +176,7 @@ _RhyhornDexEntry::
 	next "too bright, this"
 	next "#MON can"
 	
-	page "shatter even a"
+	bage "shatter even a"
 	next "tower with its"
 	next "charging TACKLES"
 	dex
@@ -186,7 +186,7 @@ _LaprasDexEntry::
 	next "enables it to"
 	next "understand human"
 	
-	page "speech. It likes"
+	bage "speech. It likes"
 	next "to ferry people"
 	next "on its back"
 	dex
@@ -196,7 +196,7 @@ _ArcanineDexEntry::
 	next "described in"
 	next "Chinese legends."
 	
-	page "It is said to"
+	bage "It is said to"
 	next "race at an"
 	next "amazing speed"
 	dex
@@ -206,7 +206,7 @@ _MewDexEntry::
 	next "#MON that was"
 	next "thought to have"
 	
-	page "been extinct. It"
+	bage "been extinct. It"
 	next "is very smart and"
 	next "learns any move"
 	dex
@@ -216,7 +216,7 @@ _GyaradosDexEntry::
 	next "very aggressive."
 	next "The HYPER BEAM it"
 	
-	page "shoots from its"
+	bage "shoots from its"
 	next "mouth incinerates"
 	next "all targets"
 	dex
@@ -226,7 +226,7 @@ _ShellderDexEntry::
 	next "a shell that is"
 	next "harder than "
 	
-	page "diamond. But the"
+	bage "diamond. But the"
 	next "inside of it is"
 	next "surprisingly soft"
 	dex
@@ -236,7 +236,7 @@ _TentacoolDexEntry::
 	next "transparent as"
 	next "crystals. From"
 	
-	page "them, it shoots"
+	bage "them, it shoots"
 	next "mysterious beams"
 	next "of light"
 	dex
@@ -246,7 +246,7 @@ _GastlyDexEntry::
 	next "thin gas. An "
 	next "Indian elephant"
 	
-	page "can be toppled in"
+	bage "can be toppled in"
 	next "2 seconds by "
 	next "encasing the prey"
 	dex
@@ -256,7 +256,7 @@ _ScytherDexEntry::
 	next "with its wickedly"
 	next "sharp scythes."
 	
-	page "It very rarely"
+	bage "It very rarely"
 	next "spreads its wings"
 	next "to fly"
 	dex
@@ -266,7 +266,7 @@ _StaryuDexEntry::
 	next "large numbers by"
 	next "seashores."
 	
-	page "Its central core"
+	bage "Its central core"
 	next "flashes with red"
 	next "light at night"
 	dex
@@ -276,7 +276,7 @@ _BlastoiseDexEntry::
 	next "under its heavy"
 	next "body for a K.O."
 	
-	page "In a pinch, it"
+	bage "In a pinch, it"
 	next "will withdraw"
 	next "inside its shell"
 	dex
@@ -286,7 +286,7 @@ _PinsirDexEntry::
 	next "are powerful."
 	next "Once they grip an"
 	
-	page "enemy, they won't"
+	bage "enemy, they won't"
 	next "release until the"
 	next "foe is torn twain"
 	dex
@@ -296,7 +296,7 @@ _TangelaDexEntry::
 	next "the #MON's"
 	next "identity in a"
 	
-	page "tangled mass. It"
+	bage "tangled mass. It"
 	next "snares anything"
 	next "that gets close"
 	dex
@@ -306,7 +306,7 @@ _GrowlitheDexEntry::
 	next "faithful to"
 	next "people. It will"
 	
-	page "try to repel"
+	bage "try to repel"
 	next "enemies with"
 	next "barks and biting"
 	dex
@@ -316,7 +316,7 @@ _OnixDexEntry::
 	next "underground. It"
 	next "searches for food"
 	
-	page "while boring its"
+	bage "while boring its"
 	next "way through the"
 	next "ground at 80 KPH"
 	dex
@@ -326,7 +326,7 @@ _FearowDexEntry::
 	next "wings can keep it"
 	next "aloft in the sky."
 	
-	page "It can remain so"
+	bage "It can remain so"
 	next "for a whole day"
 	next "without landing"
 	dex
@@ -336,7 +336,7 @@ _PidgeyDexEntry::
 	next "fight. It hides"
 	next "in tall grass and"
 	
-	page "overgrowth while"
+	bage "overgrowth while"
 	next "hunting for small"
 	next "bugs to eat"
 	dex
@@ -346,7 +346,7 @@ _SlowpokeDexEntry::
 	next "lost in thought,"
 	next "but no one knows"
 	
-	page "what it ponders."
+	bage "what it ponders."
 	next "It fishes well"
 	next "with its tail"
 	dex
@@ -356,7 +356,7 @@ _KadabraDexEntry::
 	next "morning - a boy"
 	next "with extrasensory"
 	
-	page "powers awoke in"
+	bage "powers awoke in"
 	next "bed transformed"
 	next "into a KADABRA"
 	dex
@@ -366,7 +366,7 @@ _GravelerDexEntry::
 	next "hiking mountain"
 	next "trails. GRAVELER"
 	
-	page "may come rolling"
+	bage "may come rolling"
 	next "down the path"
 	next "without slowing"
 	dex
@@ -376,7 +376,7 @@ _ChanseyDexEntry::
 	next "eggs a day. They"
 	next "are apparently"
 	
-	page "rich in nutrients"
+	bage "rich in nutrients"
 	next "and extremely"
 	next "delicious"
 	dex
@@ -386,7 +386,7 @@ _MachokeDexEntry::
 	next "body never gets"
 	next "tired. It helps"
 	
-	page "people with work"
+	bage "people with work"
 	next "such as moving"
 	next "heavy goods"
 	dex
@@ -396,7 +396,7 @@ _MrMimeDexEntry::
 	next "tricking people."
 	next "It is said to be"
 	
-	page "able to create"
+	bage "able to create"
 	next "walls out of thin"
 	next "air by miming"
 	dex
@@ -406,7 +406,7 @@ _HitmonleeDexEntry::
 	next "stretch and"
 	next "contract."
 	
-	page "They allow it to"
+	bage "They allow it to"
 	next "hit a distant foe"
 	next "with rising kicks"
 	dex
@@ -416,7 +416,7 @@ _HitmonchanDexEntry::
 	next "pro boxer infuses"
 	next "this #MON."
 	
-	page "It throws punches"
+	bage "It throws punches"
 	next "that outspeed a"
 	next "bullet train"
 	dex
@@ -426,7 +426,7 @@ _ArbokDexEntry::
 	next "appears to be a"
 	next "frightening face."
 	
-	page "Weak foes will"
+	bage "Weak foes will"
 	next "flee just at the"
 	next "pattern's sight"
 	dex
@@ -436,7 +436,7 @@ _ParasectDexEntry::
 	next "spores from the"
 	next "mushroom cap."
 	
-	page "In China, the"
+	bage "In China, the"
 	next "spores serve as"
 	next "herbal medicine"
 	dex
@@ -446,7 +446,7 @@ _PsyduckDexEntry::
 	next "it constantly."
 	next "When the headache"
 	
-	page "gets worse, it"
+	bage "gets worse, it"
 	next "starts using"
 	next "mysterious powers"
 	dex
@@ -456,7 +456,7 @@ _DrowzeeDexEntry::
 	next "the fabled baku,"
 	next "which is said to"
 	
-	page "eat dreams. It is"
+	bage "eat dreams. It is"
 	next "very skilled at"
 	next "hypnotism"
 	dex
@@ -466,7 +466,7 @@ _GolemDexEntry::
 	next "body is extremely"
 	next "hard. It can"
 
-	page "easily withstand"
+	bage "easily withstand"
 	next "dynamite blasts"
 	next "without damage"
 	dex
@@ -476,7 +476,7 @@ _MagmarDexEntry::
 	next "of volcanos. This"
 	next "fire-breather's"
 	
-	page "body temperature"
+	bage "body temperature"
 	next "is nearly 1,200"
 	next "degrees-C"
 	dex
@@ -486,7 +486,7 @@ _ElectabuzzDexEntry::
 	next "on electricity."
 	next "It occasionally"
 	
-	page "appears around"
+	bage "appears around"
 	next "power plants and"
 	next "sub-stations"
 	dex
@@ -496,7 +496,7 @@ _MagnetonDexEntry::
 	next "formed of several"
 	next "MAGNEMITE. It"
 	
-	page "discharges strong"
+	bage "discharges strong"
 	next "magnetic waves at"
 	next "high voltage"
 	dex
@@ -506,7 +506,7 @@ _KoffingDexEntry::
 	next "like body is"
 	next "inflated by"
 	
-	page "horribly toxic"
+	bage "horribly toxic"
 	next "gases. It reeks"
 	next "when it is nearby"
 	dex
@@ -516,7 +516,7 @@ _MankeyDexEntry::
 	next "on its feet, and"
 	next "ferocious in"
 	
-	page "temperament. When"
+	bage "temperament. When"
 	next "angered, it flies"
 	next "into a frenzy"
 	dex
@@ -526,7 +526,7 @@ _SeelDexEntry::
 	next "blue fur, its"
 	next "hide is thick and"
 	
-	page "tough. It is"
+	bage "tough. It is"
 	next "active in bitter"
 	next "cold of -40 deg-C"
 	dex
@@ -536,7 +536,7 @@ _DiglettDexEntry::
 	next "the ground at a"
 	next "shallow depth."
 	
-	page "Easy to spot from"
+	bage "Easy to spot from"
 	next "the raised earth"
 	next "left in its wake"
 	dex
@@ -546,7 +546,7 @@ _TaurosDexEntry::
 	next "to TACKLE, it"
 	next "whips its body"
 	
-	page "repeatedly with"
+	bage "repeatedly with"
 	next "its three long"
 	next "tails"
 	dex
@@ -556,7 +556,7 @@ _FarfetchdDexEntry::
 	next "about with a"
 	next "plant stalk"
 	
-	page "clamped in its"
+	bage "clamped in its"
 	next "beak used for"
 	next "building its nest"
 	dex
@@ -566,7 +566,7 @@ _VenonatDexEntry::
 	next "radar, letting it"
 	next "be active in the"
 	
-	page "dark. The eyes"
+	bage "dark. The eyes"
 	next "can also shoot"
 	next "powerful beams"
 	dex
@@ -576,7 +576,7 @@ _DragoniteDexEntry::
 	next "its big and bulky"
 	next "physique."
 	
-	page "It can circle the"
+	bage "It can circle the"
 	next "globe in just 16"
 	next "hours"
 	dex
@@ -586,7 +586,7 @@ _DoduoDexEntry::
 	next "#MON that was"
 	next "discovered as a"
 	
-	page "sudden mutation."
+	bage "sudden mutation."
 	next "It runs at a pace"
 	next "of over 100 KPH"
 	dex
@@ -596,7 +596,7 @@ _PoliwagDexEntry::
 	next "skin is thin and"
 	next "damp. Part of its"
 	
-	page "spiral-patterned"
+	bage "spiral-patterned"
 	next "guts can be seen"
 	next "through the skin"
 	dex
@@ -606,7 +606,7 @@ _JynxDexEntry::
 	next "language that "
 	next "sounds human. "
 	
-	page "Research is under"
+	bage "Research is under"
 	next "way to determine"
 	next "what it is saying"
 	dex
@@ -616,7 +616,7 @@ _MoltresDexEntry::
 	next "POKéMON. Those"
 	next "seeing it are"
 	
-	page "awestruck by its"
+	bage "awestruck by its"
 	next "orange wings that"
 	next "look like flames"
 	dex
@@ -626,7 +626,7 @@ _ArticunoDexEntry::
 	next "POKéMON. With its"
 	next "long tail plumes"
 	
-	page "trailing behind,"
+	bage "trailing behind,"
 	next "its flying form"
 	next "is magnificent"
 	dex
@@ -636,7 +636,7 @@ _ZapdosDexEntry::
 	next "POKéMON. While it"
 	next "is flying, it"
 	
-	page "makes crackling"
+	bage "makes crackling"
 	next "and snapping"
 	next "sounds"
 	dex
@@ -646,7 +646,7 @@ _DittoDexEntry::
 	next "recombine its own"
 	next "cellular"
 	
-	page "structure to"
+	bage "structure to"
 	next "transform into"
 	next "other life-forms"
 	dex
@@ -656,7 +656,7 @@ _MeowthDexEntry::
 	next "all it does is"
 	next "sleep. At night,"
 	
-	page "it patrols its"
+	bage "it patrols its"
 	next "territory with"
 	next "its eyes aglow"
 	dex
@@ -666,7 +666,7 @@ _KrabbyDexEntry::
 	next "near the sea. The"
 	next "large pincers"
 	
-	page "grow back if they"
+	bage "grow back if they"
 	next "are torn out of"
 	next "their sockets"
 	dex
@@ -676,7 +676,7 @@ _VulpixDexEntry::
 	next "has six gorgeous"
 	next "tails. When it"
 	
-	page "grows older, a"
+	bage "grows older, a"
 	next "few more tails"
 	next "sprout forth"
 	dex
@@ -686,7 +686,7 @@ _NinetalesDexEntry::
 	next "tails and golden,"
 	next "gleaming fur."
 	
-	page "It's said to have"
+	bage "It's said to have"
 	next "a lifespan of"
 	next "1,000 years"
 	dex
@@ -696,7 +696,7 @@ _PikachuDexEntry::
 	next "electric sacs on"
 	next "both its cheeks."
 	
-	page "If threatened, it"
+	bage "If threatened, it"
 	next "looses electric"
 	next "charges from them"
 	dex
@@ -706,7 +706,7 @@ _RaichuDexEntry::
 	next "shocks can go up"
 	next "to 100,000 volts."
 	
-	page "Careless contact"
+	bage "Careless contact"
 	next "can K.O. even an"
 	next "Indian elephant"
 	dex
@@ -716,7 +716,7 @@ _DratiniDexEntry::
 	next "exceed 2 meters"
 	next "in length. "
 	
-	page "It grows larger"
+	bage "It grows larger"
 	next "by repeatedly"
 	next "shedding skin"
 	dex
@@ -726,7 +726,7 @@ _DragonairDexEntry::
 	next "seas and lakes."
 	next "Even though it has"
 	
-	page "no wings, it has"
+	bage "no wings, it has"
 	next "been seen flying"
 	next "occasionally"
 	dex
@@ -736,7 +736,7 @@ _KabutoDexEntry::
 	next "regenerated from"
 	next "the fossil of an"
 	
-	page "ancient creature."
+	bage "ancient creature."
 	next "It's protected"
 	next "with a hard shell"
 	dex
@@ -746,7 +746,7 @@ _KabutopsDexEntry::
 	next "through water. It"
 	next "catches prey with"
 	
-	page "its scythe-like"
+	bage "its scythe-like"
 	next "arms and drains"
 	next "their fluids"
 	dex
@@ -756,7 +756,7 @@ _HorseaDexEntry::
 	next "balance using its"
 	next "tail, which is"
 	
-	page "wound up like a"
+	bage "wound up like a"
 	next "coil. Its mouth"
 	next "can spray ink"
 	dex
@@ -766,7 +766,7 @@ _SeadraDexEntry::
 	next "with sharp pins."
 	next "An errant prick"
 	
-	page "from carelessly"
+	bage "from carelessly"
 	next "touching it can"
 	next "cause fainting"
 	dex
@@ -776,7 +776,7 @@ _SandshrewDexEntry::
 	next "underground. If"
 	next "threatened, it"
 	
-	page "curls itself up"
+	bage "curls itself up"
 	next "into a ball for"
 	next "protection"
 	dex
@@ -786,7 +786,7 @@ _SandslashDexEntry::
 	next "using the spines"
 	next "on its back and"
 	
-	page "its sharp claws "
+	bage "its sharp claws "
 	next "while quickly"
 	next "scurrying about"
 	dex
@@ -796,7 +796,7 @@ _OmanyteDexEntry::
 	next "POKéMON lived in"
 	next "a primordial sea."
 	
-	page "It swims by"
+	bage "It swims by"
 	next "whirling its 10"
 	next "tentacles about"
 	dex
@@ -806,7 +806,7 @@ _OmastarDexEntry::
 	next "highly developed"
 	next "as if they were"
 	
-	page "hands and feet."
+	bage "hands and feet."
 	next "It bites prey"
 	next "upon ensaring it"
 	dex
@@ -816,7 +816,7 @@ _JigglypuffDexEntry::
 	next "with its huge,"
 	next "round eyes, then"
 	
-	page "lulls them to"
+	bage "lulls them to"
 	next "sleep by singing"
 	next "a soothing melody"
 	dex
@@ -826,7 +826,7 @@ _WigglytuffDexEntry::
 	next "fine, dense, and"
 	next "supple fur."
 	
-	page "Such exquisitness"
+	bage "Such exquisitness"
 	next "conveys an image"
 	next "of luxury"
 	dex
@@ -836,7 +836,7 @@ _EeveeDexEntry::
 	next "#MON that may"
 	next "evolve in several"
 	
-	page "different ways"
+	bage "different ways"
 	next "depending on"
 	next "exposed stimuli"
 	dex
@@ -846,7 +846,7 @@ _FlareonDexEntry::
 	next "bag in its body."
 	next "After inhaling"
 	
-	page "deeply, it blows"
+	bage "deeply, it blows"
 	next "out flames near"
 	next "1,700 degrees-C"
 	dex
@@ -856,7 +856,7 @@ _JolteonDexEntry::
 	next "startled, the fur"
 	next "all over its body"
 	
-	page "bristles like"
+	bage "bristles like"
 	next "sharp needles"
 	next "that pierce foes"
 	dex
@@ -866,7 +866,7 @@ _VaporeonDexEntry::
 	next "structure is"
 	next "similar to a H2O"
 	
-	page "molecule. It can"
+	bage "molecule. It can"
 	next "invisibly melt"
 	next "into water"
 	dex
@@ -876,7 +876,7 @@ _MachopDexEntry::
 	next "made of muscles."
 	next "Though it's the"
 	
-	page "size of a human"
+	bage "size of a human"
 	next "child, it can"
 	next "hurl 100 adults"
 	dex
@@ -886,7 +886,7 @@ _ZubatDexEntry::
 	next "instead relying"
 	next "on its ultrasonic"
 	
-	page "cries for echo-"
+	bage "cries for echo-"
 	next "location to flit"
 	next "about in darkness"
 	dex
@@ -896,7 +896,7 @@ _EkansDexEntry::
 	next "grassy places. It"
 	next "flicks its tongue"
 	
-	page "in and out to"
+	bage "in and out to"
 	next "sense danger in"
 	next "its surroundings"
 	dex
@@ -906,7 +906,7 @@ _ParasDexEntry::
 	next "INSECT PLANTS"
 	next "live on its back."
 	
-	page "The mushrooms"
+	bage "The mushrooms"
 	next "grow with the bug"
 	next "as their host"
 	dex
@@ -916,7 +916,7 @@ _PoliwhirlDexEntry::
 	next "well developed."
 	next "Even though it"
 	
-	page "can live on land,"
+	bage "can live on land,"
 	next "it prefers living"
 	next "in water"
 	dex
@@ -926,7 +926,7 @@ _PoliwrathDexEntry::
 	next "it knows the front"
 	next "crawl, butterfly,"
 	
-	page "and more. Faster"
+	bage "and more. Faster"
 	next "than even the best"
 	next "human swimmers"
 	dex
@@ -936,7 +936,7 @@ _WeedleDexEntry::
 	next "grasslands and"
 	next "forests. It has a"
 	
-	page "sharp, toxic barb"
+	bage "sharp, toxic barb"
 	next "around 5 cm long"
 	next "atop its head"
 	dex
@@ -946,7 +946,7 @@ _KakunaDexEntry::
 	next "in a temporary"
 	next "stage while"
 	
-	page "making its body."
+	bage "making its body."
 	next "It cannot move at"
 	next "all on its own"
 	dex
@@ -956,7 +956,7 @@ _BeedrillDexEntry::
 	next "swarm. Flies at"
 	next "violent speeds,"
 	
-	page "all the while"
+	bage "all the while"
 	next "stabbing with its"
 	next "toxic stingers"
 	dex
@@ -966,7 +966,7 @@ _DodrioDexEntry::
 	next "3-headed species."
 	next "Joy, sadness, and"
 	
-	page "anger are embod-"
+	bage "anger are embod-"
 	next "ied in each head"
 	next "respectively"
 	dex
@@ -976,7 +976,7 @@ _PrimeapeDexEntry::
 	next "utterly furious."
 	next "If chasing, it"
 	
-	page "will tenaciously"
+	bage "will tenaciously"
 	next "track the target"
 	next "no matter how far"
 	dex
@@ -986,7 +986,7 @@ _DugtrioDexEntry::
 	next "digs through the"
 	next "ground to strike"
 	
-	page "unsuspecting foes"
+	bage "unsuspecting foes"
 	next "from unexpected"
 	next "directions"
 	dex
@@ -996,7 +996,7 @@ _VenomothDexEntry::
 	next "covered with"
 	next "dustlike scales."
 	
-	page "Every flap of its"
+	bage "Every flap of its"
 	next "wings looses"
 	next "highly toxic dust"
 	dex
@@ -1006,7 +1006,7 @@ _DewgongDexEntry::
 	next "covered with a"
 	next "pure white fur."
 	
-	page "The colder the"
+	bage "The colder the"
 	next "weather, the more"
 	next "active it becomes"
 	dex
@@ -1016,7 +1016,7 @@ _CaterpieDexEntry::
 	next "green skin. Once"
 	next "grown, it molts,"
 	
-	page "coats itself in"
+	bage "coats itself in"
 	next "silk, and becomes"
 	next "a cocoon"
 	dex
@@ -1026,7 +1026,7 @@ _MetapodDexEntry::
 	next "a sturdy shell,"
 	next "the body inside"
 	
-	page "is fragile. It"
+	bage "is fragile. It"
 	next "can't withstand a"
 	next "harsh attack"
 	dex
@@ -1036,7 +1036,7 @@ _ButterfreeDexEntry::
 	next "covered in rain-"
 	next "repellent dust."
 	
-	page "As a result, this"
+	bage "As a result, this"
 	next "#MON can fly"
 	next "even in rain"
 	dex
@@ -1046,7 +1046,7 @@ _MachampDexEntry::
 	next "developed arms"
 	next "can launch a"
 	
-	page "flurry of 1,000"
+	bage "flurry of 1,000"
 	next "punches in just"
 	next "two seconds"
 	dex
@@ -1056,7 +1056,7 @@ _GolduckDexEntry::
 	next "help make it an"
 	next "adept swimmer. It"
 	
-	page "can be seen"
+	bage "can be seen"
 	next "swimming nimbly"
 	next "in lakes or ponds"
 	dex
@@ -1066,7 +1066,7 @@ _HypnoDexEntry::
 	next "like devices."
 	next "There once was an"
 	
-	page "incident where"
+	bage "incident where"
 	next "it hypnotized and"
 	next "took away a child"
 	dex
@@ -1076,7 +1076,7 @@ _GolbatDexEntry::
 	next "its prey with"
 	next "needle-sharp"
 	
-	page "fangs and drains"
+	bage "fangs and drains"
 	next "over 300 ccm of"
 	next "blood in one gulp"
 	dex
@@ -1086,7 +1086,7 @@ _MewtwoDexEntry::
 	next "genetic code was"
 	next "recombined often"
 	
-	page "for research. It"
+	bage "for research. It"
 	next "turned vicious as"
 	next "a result"
 	dex
@@ -1096,7 +1096,7 @@ _SnorlaxDexEntry::
 	next "until eating over"
 	next "400 kg of food"
 	
-	page "every day. When"
+	bage "every day. When"
 	next "done, it goes"
 	next "promptly to sleep"
 	dex
@@ -1106,7 +1106,7 @@ _MagikarpDexEntry::
 	next "both power and"
 	next "speed. It is the"
 	
-	page "most weak and"
+	bage "most weak and"
 	next "pathetic POKéMON"
 	next "in the world"
 	dex
@@ -1116,7 +1116,7 @@ _MukDexEntry::
 	next "from camouflaging"
 	next "with the ground."
 	
-	page "Touching it can"
+	bage "Touching it can"
 	next "cause terrible"
 	next "poisoning"
 	dex
@@ -1128,7 +1128,7 @@ _KinglerDexEntry::
 	next "hard pincer has"
 	next "10,000-horsepower"
 	
-	page "strength. Though,"
+	bage "strength. Though,"
 	next "being so big, it"
 	next "is clumsy to move"
 	dex
@@ -1138,7 +1138,7 @@ _CloysterDexEntry::
 	next "hard that not"
 	next "even a bomb can"
 	
-	page "shatter it. The"
+	bage "shatter it. The"
 	next "shell opens only"
 	next "when it attacks"
 	dex
@@ -1148,7 +1148,7 @@ _ElectrodeDexEntry::
 	next "response to even"
 	next "minor stimuli."
 	
-	page "It is feared with"
+	bage "It is feared with"
 	next "the nickname of"
 	next "THE BOMB BALL"
 	dex
@@ -1158,7 +1158,7 @@ _ClefableDexEntry::
 	next "sense of hearing."
 	next "It can easily"
 	
-	page "hear a pin being"
+	bage "hear a pin being"
 	next "dropped nearly"
 	next "1,000 km away"
 	dex
@@ -1168,7 +1168,7 @@ _WeezingDexEntry::
 	next "mutation can"
 	next "cause two small"
 	
-	page "KOFFING twins to"
+	bage "KOFFING twins to"
 	next "become conjoined"
 	next "as a WEEZING"
 	dex
@@ -1178,7 +1178,7 @@ _PersianDexEntry::
 	next "demeanor. Beware"
 	next "a tail raised"
 	
-	page "upward. It is a"
+	bage "upward. It is a"
 	next "signal preceeding"
 	next "a pounce and bite"
 	dex
@@ -1188,7 +1188,7 @@ _MarowakDexEntry::
 	next "was originally"
 	next "very weak. Its"
 	
-	page "behavior turned"
+	bage "behavior turned"
 	next "ferocious when it"
 	next "began using bones"
 	dex
@@ -1198,7 +1198,7 @@ _HaunterDexEntry::
 	next "feeling of being"
 	next "watched in the"
 	
-	page "dark when nobody"
+	bage "dark when nobody"
 	next "is around, a"
 	next "HAUNTER is there"
 	dex
@@ -1208,7 +1208,7 @@ _AbraDexEntry::
 	next "hours a day. It"
 	next "uses a variety of"
 	
-	page "extrasensory"
+	bage "extrasensory"
 	next "powers even while"
 	next "asleep"
 	dex
@@ -1218,7 +1218,7 @@ _AlakazamDexEntry::
 	next "physical attacks"
 	next "much. Instead, it"
 	
-	page "uses extrasensory"
+	bage "uses extrasensory"
 	next "power at will to"
 	next "defeat foes"
 	dex
@@ -1228,7 +1228,7 @@ _PidgeottoDexEntry::
 	next "feet are well"
 	next "developed. It can"
 	
-	page "carry prey like"
+	bage "carry prey like"
 	next "EXEGGCUTE to its"
 	next "nest 100 km away"
 	dex
@@ -1238,7 +1238,7 @@ _PidgeotDexEntry::
 	next "gorgeous wings"
 	next "widely to scare"
 	
-	page "enemies. It races"
+	bage "enemies. It races"
 	next "through the skies"
 	next "at Mach-2 speed"
 	dex
@@ -1248,7 +1248,7 @@ _StarmieDexEntry::
 	next "a geometric body."
 	next "Because of its"
 	
-	page "body, local folk"
+	bage "body, local folk"
 	next "suspect that it's"
 	next "an alien creature"
 	dex
@@ -1258,7 +1258,7 @@ _BulbasaurDexEntry::
 	next "seed on its back"
 	next "from the day this"
 	
-	page "#MON is born."
+	bage "#MON is born."
 	next "The seed slowly"
 	next "grows larger"
 	dex
@@ -1268,7 +1268,7 @@ _VenusaurDexEntry::
 	next "aroma wafts from"
 	next "its flower. The"
 	
-	page "fragrance becalms"
+	bage "fragrance becalms"
 	next "those engaged in"
 	next "a battle"
 	dex
@@ -1278,7 +1278,7 @@ _TentacruelDexEntry::
 	next "that move about"
 	next "freely. They can"
 	
-	page "sting to cause"
+	bage "sting to cause"
 	next "poisoning and"
 	next "stabbing pain"
 	dex
@@ -1288,7 +1288,7 @@ _GoldeenDexEntry::
 	next "pectoral fins are"
 	next "strongly built"
 	
-	page "like muscles. It"
+	bage "like muscles. It"
 	next "can swim at a"
 	next "speed of 5 knots"
 	dex
@@ -1298,7 +1298,7 @@ _SeakingDexEntry::
 	next "head is sharp"
 	next "like a drill."
 	
-	page "It bores a hole"
+	bage "It bores a hole"
 	next "in a boulder to"
 	next "make its nest"
 	dex
@@ -1308,7 +1308,7 @@ _PonytaDexEntry::
 	next "and its legs have"
 	next "amazing power."
 	
-	page "It can jump over"
+	bage "It can jump over"
 	next "Tokyo Tower with"
 	next "a single leap"
 	dex
@@ -1318,7 +1318,7 @@ _RapidashDexEntry::
 	next "a top speed of "
 	next "240 KPH, and can"
 	
-	page "race as fast as a"
+	bage "race as fast as a"
 	next "bullet train when"
 	next "brightly ablaze"
 	dex
@@ -1328,7 +1328,7 @@ _RattataDexEntry::
 	next "are very sharp."
 	next "They continuously"
 	
-	page "grow, so it gnaws"
+	bage "grow, so it gnaws"
 	next "on hard things to"
 	next "whittle them down"
 	dex
@@ -1338,7 +1338,7 @@ _RaticateDexEntry::
 	next "have three toes"
 	next "each. They are"
 	
-	page "webbed, enabling"
+	bage "webbed, enabling"
 	next "it to swim across"
 	next "rivers"
 	dex
@@ -1348,7 +1348,7 @@ _NidorinoDexEntry::
 	next "By swinging its"
 	next "well-developed"
 	
-	page "horn wildly, it"
+	bage "horn wildly, it"
 	next "can even punch"
 	next "through diamond"
 	dex
@@ -1358,7 +1358,7 @@ _NidorinaDexEntry::
 	next "gentle demeanor."
 	next "Emits ultrasonic"
 	
-	page "cries that have"
+	bage "cries that have"
 	next "the power to"
 	next "befuddle foes"
 	dex
@@ -1368,7 +1368,7 @@ _GeodudeDexEntry::
 	next "makes it easy to"
 	next "lift. You can"
 	
-	page "grab it and hurl"
+	bage "grab it and hurl"
 	next "it as if it were"
 	next "a stone"
 	dex
@@ -1378,7 +1378,7 @@ _PorygonDexEntry::
 	next "technologies,"
 	next "scientists"
 	
-	page "finally made the"
+	bage "finally made the"
 	next "first artificial"
 	next "#MON"
 	dex
@@ -1388,7 +1388,7 @@ _AerodactylDexEntry::
 	next "from a dinosaur's"
 	next "DNA found inside"
 	
-	page "amber. It makes"
+	bage "amber. It makes"
 	next "high-pitched"
 	next "cries as it soars"
 	dex
@@ -1398,7 +1398,7 @@ _MagnemiteDexEntry::
 	next "always hovering."
 	next "Discharges moves"
 	
-	page "like THUNDER WAVE"
+	bage "like THUNDER WAVE"
 	next "from the units at"
 	next "its sides"
 	dex
@@ -1408,7 +1408,7 @@ _CharmanderDexEntry::
 	next "is born, a flame"
 	next "burns at the tip"
 	
-	page "of its tail. Its"
+	bage "of its tail. Its"
 	next "life would go out"
 	next "with this flame"
 	dex
@@ -1418,7 +1418,7 @@ _SquirtleDexEntry::
 	next "its long neck"
 	next "into its shell,"
 	
-	page "it squirts out"
+	bage "it squirts out"
 	next "water with "
 	next "vigorous force"
 	dex
@@ -1428,7 +1428,7 @@ _CharmeleonDexEntry::
 	next "with its tail to"
 	next "knock down foes."
 	
-	page "It then tears at"
+	bage "It then tears at"
 	next "the fallen with"
 	next "sharp claws"
 	dex
@@ -1438,7 +1438,7 @@ _WartortleDexEntry::
 	next "very popular as a"
 	next "pet. Its fur-"
 	
-	page "covered tail is a"
+	bage "covered tail is a"
 	next "symbol of its "
 	next "longevity"
 	dex
@@ -1448,7 +1448,7 @@ _CharizardDexEntry::
 	next "this POKéMON near"
 	next "an altitude of"
 	
-	page "1,400 m. It blows"
+	bage "1,400 m. It blows"
 	next "out fire at very"
 	next "high temperatures"
 	dex
@@ -1460,7 +1460,7 @@ _OddishDexEntry::
 	next "on its two root-"
 	next "like feet,"
 	
-	page "earning it the"
+	bage "earning it the"
 	next "nickname NOODLES"
 	next "ON THE GO"
 	dex
@@ -1470,7 +1470,7 @@ _GloomDexEntry::
 	next "a terribly foul"
 	next "odor. The horrid"
 	
-	page "stench can cause"
+	bage "stench can cause"
 	next "fainting at a"
 	next "distance of 2 km"
 	dex
@@ -1480,7 +1480,7 @@ _VileplumeDexEntry::
 	next "largest petals."
 	next "It fiendishly"
 	
-	page "scatters allergy-"
+	bage "scatters allergy-"
 	next "causing pollen"
 	next "from its petals"
 	dex
@@ -1490,7 +1490,7 @@ _BellsproutDexEntry::
 	next "a human face."
 	next "Due to the bud,"
 	
-	page "it is rumored to"
+	bage "it is rumored to"
 	next "be the legendary"
 	next "mandrake plant"
 	dex
@@ -1500,7 +1500,7 @@ _WeepinbellDexEntry::
 	next "act as blades for"
 	next "slashing foes."
 	
-	page "It spits a fluid"
+	bage "It spits a fluid"
 	next "that dissolves"
 	next "everything"
 	dex
@@ -1510,7 +1510,7 @@ _VictreebelDexEntry::
 	next "its mouth with a"
 	next "honeylike aroma."
 	
-	page "The helpless prey"
+	bage "The helpless prey"
 	next "is melted with a"
 	next "dissolving fluid"
 	dex
