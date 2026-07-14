@@ -925,7 +925,15 @@ Printer_RenderSecondPage::
 
 ; Place the five DVs on screen.
 Printer_PlaceDVsOn_Page2::
-	hlcoord 0, 10
+	hlcoord 0, 8
+	lb bc, 3, 18
+	call TextBoxBorder
+
+	hlcoord 8, 9
+	ld de, .DVs
+	call PlaceString
+
+	hlcoord 1, 10
 	ld de, .Page2DV
 	call PlaceString
 
@@ -973,7 +981,7 @@ Printer_PlaceDVsOn_Page2::
 	ld d, h
 	ld e, l
 
-	hlcoord 0, 11
+	hlcoord 1, 11
 	ld bc, 2
 	ld a, 5
 
@@ -988,6 +996,9 @@ Printer_PlaceDVsOn_Page2::
 	dec a
 	jr nz, .printNextDV
 	ret
+
+.DVs:
+	db "DVs:@"
 
 .Page2DV:
 	db "HP ATK DEF SPD SPC@"
