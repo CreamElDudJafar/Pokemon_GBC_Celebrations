@@ -1,5 +1,7 @@
 DEF NOT_VISITED EQU $fe
 
+DEF BIRD_BASE_TILE EQU $04
+
 DisplayTownMap:
 	call LoadTownMap
 	ld hl, wUpdateSpritesEnabled
@@ -12,7 +14,7 @@ DisplayTownMap:
 	ld a, [wCurMap]
 	push af
 	ld b, $0
-	call DrawPlayerOrBirdSprite ; player sprite
+	call DrawPlayerOrBirdSprite
 	hlcoord 1, 0
 	ld de, wcd6d
 	call PlaceString
@@ -20,11 +22,14 @@ DisplayTownMap:
 	ld de, wShadowOAMBackupSprite00
 	ld bc, 4 * 4
 	rst _CopyData
-	ld hl, vSprites tile $04
+	ld hl, vSprites tile BIRD_BASE_TILE
 	ld de, TownMapCursor
 	lb bc, BANK(TownMapCursor), (TownMapCursorEnd - TownMapCursor) / $8
 	call CopyVideoDataDouble
-	xor a
+	pop af
+	push af
+	call GetWildDataTownMapID
+	call GetTownMapOrderFromMapID
 	ld [wWhichTownMapLocation], a
 	pop af
 	jr .enterLoop
@@ -55,7 +60,7 @@ DisplayTownMap:
 	ld a, [hli]
 	ld [de], a
 	inc de
-	cp $50
+	cp "@"
 	jr nz, .copyMapName
 	hlcoord 1, 0
 	ld de, wcd6d
@@ -73,10 +78,12 @@ DisplayTownMap:
 	jr z, .inputLoop
 	ld a, SFX_TINK
 	rst _PlaySound
-	bit 6, b
-	jr nz, .pressedUp
-	bit 7, b
-	jr nz, .pressedDown
+	bit BIT_A_BUTTON, b
+	jr nz, .pressedA
+	bit BIT_D_UP, b
+	jr nz, .townMapPressedUp
+	bit BIT_D_DOWN, b
+	jr nz, .townMapPressedDown
 	xor a
 	ld [wTownMapSpriteBlinkingEnabled], a
 	ldh [hJoy7], a
@@ -86,7 +93,35 @@ DisplayTownMap:
 	pop af
 	ld [hl], a
 	ret
-.pressedUp
+
+.pressedA
+	ld a, [wWhichTownMapLocation]
+	push af
+	call GetCurrentTownMap
+	ld d, a
+	push de
+	callfar TownMapLocationHasWildData
+	pop de
+	jr c, .hasWildData
+	pop af
+	ld [wWhichTownMapLocation], a
+	jp .townMapLoop
+
+.hasWildData
+	callfar ShowMapWildEncounters
+	pop af
+	ld [wWhichTownMapLocation], a
+	call LoadTownMap
+	ld a, [wCurMap]
+	ld b, $0
+	call DrawPlayerOrBirdSprite
+	ld hl, vSprites tile BIRD_BASE_TILE
+	ld de, TownMapCursor
+	lb bc, BANK(TownMapCursor), (TownMapCursorEnd - TownMapCursor) / $8
+	call CopyVideoDataDouble
+	jp .townMapLoop
+
+.townMapPressedUp
 	ld a, [wWhichTownMapLocation]
 	inc a
 	cp TownMapOrderEnd - TownMapOrder ; number of list items + 1
@@ -95,7 +130,7 @@ DisplayTownMap:
 .noOverflow
 	ld [wWhichTownMapLocation], a
 	jp .townMapLoop
-.pressedDown
+.townMapPressedDown
 	ld a, [wWhichTownMapLocation]
 	dec a
 	cp -1
@@ -104,6 +139,127 @@ DisplayTownMap:
 .noUnderflow
 	ld [wWhichTownMapLocation], a
 	jp .townMapLoop
+
+;Func_70f87: ; unreferenced
+;	ldh a, [hJoy5]
+;	and D_DOWN | D_UP
+;	ret z
+;	callfar PlayPikachuSoundClip
+;	ret
+
+GetWildDataTownMapID:
+	cp FIRST_INDOOR_MAP
+	ret c
+	ld hl, InternalMapEntries
+	ld de, 4
+	ld b, 0
+.loop
+	cp [hl]
+	jr c, .foundGroup
+	add hl, de
+	inc b
+	jr .loop
+.foundGroup
+	ld hl, WildDataTownMapIDs
+	ld c, b
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ret
+
+GetTownMapOrderFromMapID:
+; in:  a = canonical Town Map map ID
+; out: a = matching TownMapOrder index, or 0 only if the canonical ID is absent
+	ld c, a
+	ld hl, TownMapOrder
+	ld b, 0
+.loop
+	ld a, [hli]
+	cp c
+	jr z, .found
+	inc b
+	ld a, b
+	cp TownMapOrderEnd - TownMapOrder
+	jr c, .loop
+	xor a
+	ret
+.found
+	ld a, b
+	ret
+
+WildDataTownMapIDs:
+	table_width 1
+	db PALLET_TOWN
+	db VIRIDIAN_CITY
+	db ROUTE_2
+	db VIRIDIAN_FOREST
+	db PEWTER_CITY
+	db MT_MOON_1F
+	db CERULEAN_CITY
+	db ROUTE_4
+	db CERULEAN_CITY
+	db ROUTE_5
+	db ROUTE_6
+	db ROUTE_7
+	db ROUTE_8
+	db ROCK_TUNNEL_POKECENTER
+	db POWER_PLANT
+	db ROUTE_11
+	db ROUTE_12
+	db BILLS_HOUSE
+	db VERMILION_DOCK
+	db SS_ANNE_1F
+	db VICTORY_ROAD_1F
+	db INDIGO_PLATEAU
+	db CELADON_CITY
+	db INDIGO_PLATEAU
+	db CELADON_CITY
+	db CELADON_CITY
+	db LAVENDER_TOWN
+	db POKEMON_TOWER_3F
+	db LAVENDER_TOWN
+	db FUCHSIA_CITY
+	db SAFARI_ZONE_EAST
+	db FUCHSIA_CITY
+	db SEAFOAM_ISLANDS_1F
+	db VERMILION_CITY
+	db FUCHSIA_CITY
+	db POKEMON_MANSION_1F
+	db CINNABAR_ISLAND
+	db INDIGO_PLATEAU
+	db SAFFRON_CITY
+	db ROUTE_15
+	db ROUTE_16
+	db ROUTE_12
+	db ROUTE_18
+	db SEAFOAM_ISLANDS_1F
+	db ROUTE_22
+	db VICTORY_ROAD_1F
+	db ROUTE_12
+	db VERMILION_CITY
+	db DIGLETTS_CAVE
+	db VICTORY_ROAD_1F
+	db CELADON_CITY
+	db SAFFRON_CITY
+	db POKEMON_MANSION_1F
+	db SAFARI_ZONE_EAST
+	db CERULEAN_CAVE_1F
+	db LAVENDER_TOWN
+	db CERULEAN_CITY
+	db ROCK_TUNNEL_POKECENTER
+	db SAFFRON_CITY
+	db PALLET_TOWN
+	db INDIGO_PLATEAU
+	assert_table_length 61
+
+GetCurrentTownMap:
+	ld hl, TownMapOrder
+	ld a, [wWhichTownMapLocation]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ret
 
 INCLUDE "data/maps/town_map_order.asm"
 
