@@ -427,7 +427,7 @@ INCLUDE "engine/overworld/specific_script_flags.asm"
 INCLUDE "engine/custom_function/coin_function.asm"
 INCLUDE "engine/custom_function/monlist.asm"
 INCLUDE "engine/menus/item_display_count.asm"
-
+INCLUDE "engine/menus/map_wild_data.asm"
 
 
 SECTION "Evo Moves", ROMX
