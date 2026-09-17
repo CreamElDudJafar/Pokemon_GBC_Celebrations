@@ -541,13 +541,36 @@ IsPokemonBitSet:
 
 ; function to display pokedex data from outside the pokedex
 ShowPokedexData:
+	ld hl, wPokedexDataFlags
+	set BIT_POKEDEX_DATA_DISPLAY_TYPE, [hl]
+	xor a
+	ld [wPokedexModeSelect], a
+	ld [wMoveListCounter], a
+	CheckEvent EVENT_GOT_POKEDEX
+	ld a, B_BUTTON
+	jr nz, .setExternalWatchedKeys
+	xor a
+.setExternalWatchedKeys
+	ld [wMenuWatchedKeys], a
+	hlcoord 18, 16
+	ld a, h
+	ld [wMenuCursorLocation], a
+	ld a, l
+	ld [wMenuCursorLocation + 1], a
 	call GBPalWhiteOutWithDelay3
 	call ClearScreen
 	call UpdateSprites
 	callfar LoadPokedexTilePatterns ; load pokedex tiles
+	jr ShowPokedexDataCommon
 
 ; function to display pokedex data from inside the pokedex
 ShowPokedexDataInternal:
+	ld hl, wPokedexDataFlags
+	res BIT_POKEDEX_DATA_DISPLAY_TYPE, [hl]
+	ld a, B_BUTTON
+	ld [wMenuWatchedKeys], a
+
+ShowPokedexDataCommon:
 	ld hl, wd72c
 	set 1, [hl]
 	ld a, $33 ; 3/7 volume
@@ -586,24 +609,19 @@ ShowPokedexDataInternal:
 	ld [wd11e], a
 	call DrawDexEntryOnScreen
 	jp z, .displaySeenBottomInfo
-	; description pages inside TextCommandProcessor. B/Left/Right can
-	; interrupt at a prompt and are checked immediately afterward.
-	ld a, B_BUTTON | D_LEFT | D_RIGHT
-	ld [wMenuWatchedKeys], a
 	call c, Pokedex_PrintFlavorTextAtRow11
-	; TextCommandProcessor returns immediately when one of the watched
-	; buttons is pressed at either description-page prompt. Do not call
-	; TextCommandPromptMultiButton here: doing so creates an extra blank page
-	; after the final description page.
 	ldh a, [hJoy5]
 	ld b, a
 .descriptionButtonTracking
 	bit BIT_B_BUTTON, b
 	jr nz, .exitDataPage
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_DISPLAY_TYPE, a
+	jr nz, .waitForButtonPress
 	bit BIT_D_LEFT, b
 	jr nz, .previousPokemon
 	bit BIT_D_RIGHT, b
-	jr nz, .nextPokemon
+	jp nz, .nextPokemon
 	jr .waitForButtonPress
 .PrintMoves
 	pop af
@@ -632,11 +650,25 @@ ShowPokedexDataInternal:
 .waitForButtonPress
 	call JoypadLowSensitivity
 	ldh a, [hJoy5]
+	ld b, a
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_DISPLAY_TYPE, a
+	ld a, b
+	jr nz, .externalPageButtons
 	and A_BUTTON | B_BUTTON | D_LEFT | D_RIGHT
+	jr z, .waitForButtonPress
+	jr .handlePageInput
+.externalPageButtons
+	and A_BUTTON | B_BUTTON
 	jr z, .waitForButtonPress
 
 .handlePageInput
 	ldh a, [hJoy5]
+	ld b, a
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_DISPLAY_TYPE, a
+	ld a, b
+	jr nz, .exitDataPage
 	bit BIT_D_LEFT, a
 	jr nz, .previousPokemon
 	bit BIT_D_RIGHT, a
@@ -700,8 +732,12 @@ Pokedex_WaitForPageInput:
 	ld a, l
 	ld [wMenuCursorLocation + 1], a
 
-	; Watch A, B, Left, and Right.
-	ld a, B_BUTTON | D_LEFT | D_RIGHT
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_DISPLAY_TYPE, a
+	ld a, B_BUTTON
+	jr nz, .setPageWatchedKeys
+	or D_LEFT | D_RIGHT
+.setPageWatchedKeys
 	ld [wMenuWatchedKeys], a
 
 	; Use the text engine's real flashing-arrow routine, but without
@@ -709,10 +745,16 @@ Pokedex_WaitForPageInput:
 	callfar PokedexPromptMultiButton
 
 	ldh a, [hJoy5]
+	ld b, a
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_DISPLAY_TYPE, a
+	ld a, b
+	jr nz, .checkPageB
 	bit BIT_D_LEFT, a
 	jr nz, .navigation
 	bit BIT_D_RIGHT, a
 	jr nz, .navigation
+.checkPageB
 	bit BIT_B_BUTTON, a
 	jr nz, .navigation
 	and a
@@ -771,8 +813,15 @@ PokedexDataDividerLine:
 	db "@"
 
 DrawPokedexDataArrows:
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_DISPLAY_TYPE, a
+	ret nz
 	CheckEvent EVENT_GOT_POKEDEX
 	ret z
+
+	ld a, [wMenuWatchedKeys]
+	or D_LEFT | D_RIGHT
+	ld [wMenuWatchedKeys], a
 
 	; wd11e normally contains the internal species index here.
 	; Save it, convert it to the actual Pokédex number for the
